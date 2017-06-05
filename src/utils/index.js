@@ -1,7 +1,7 @@
 export Ajax from './Ajax';
 export Cfg from './Cfg';
 export Comp from './Comp';
-export Const from './Const';
+export {Color, Dir, EvtType, Theme} from './Const';
 export HTML from './HTML';
 export Model from './Model';
 export Path from './Path';
