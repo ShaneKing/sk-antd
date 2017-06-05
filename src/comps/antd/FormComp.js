@@ -1,3 +1,4 @@
+import React from 'react';
 import SK from 'sk-js';
 import SKCol from './SKCol';
 import SKFormItem from './SKFormItem';

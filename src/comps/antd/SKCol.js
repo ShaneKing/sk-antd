@@ -1,4 +1,5 @@
 import {Col} from 'antd';
+import React from 'react';
 import SK from 'sk-js';
 import Comp from '../../utils/Comp';
 

@@ -1,5 +1,6 @@
 import {DatePicker} from 'antd';
 import moment from 'moment';
+import React from 'react';
 import SK from 'sk-js';
 import {I18N} from 'sk-l10n';
 import Comp from '../../utils/Comp';
