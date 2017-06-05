@@ -33,11 +33,11 @@ gulp.task('lib', ['libClean'], () => {
   gulp.start('libBuild');
 });
 
-gulp.task('distJsClean', () => {
+gulp.task('distClean', () => {
   return gulp.src(['dist/js'], {read: false})
     .pipe(gclean());
 });
-gulp.task('distJsBuild', () => {
+gulp.task('distBuild', () => {
   return gulp.src('src/index.js')
     .pipe(gwebpack(distJsWebpack))
     .pipe(gulp.dest('dist/'))
@@ -47,6 +47,6 @@ gulp.task('distJsBuild', () => {
     .pipe(gsourcemaps.write('./'))
     .pipe(gulp.dest('./dist'));
 });
-gulp.task('distJs', ['distJsClean'], () => {
-  gulp.start('distJsBuild');
+gulp.task('dist', ['distClean'], () => {
+  gulp.start('distBuild');
 });

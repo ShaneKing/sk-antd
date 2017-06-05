@@ -2,6 +2,7 @@
 import jdenticon from 'jdenticon';
 import md5 from 'js-md5';
 import React from 'react';
+import SK from 'sk-js';
 import Comp from '../../utils/Comp';
 import REACT from '../../utils/REACT';
 

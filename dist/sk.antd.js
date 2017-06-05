@@ -6102,6 +6102,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _skJs = __webpack_require__(4);
+
+	var _skJs2 = _interopRequireDefault(_skJs);
+
 	var _Comp2 = __webpack_require__(7);
 
 	var _Comp3 = _interopRequireDefault(_Comp2);
@@ -6165,7 +6169,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  compTag: _REACT2.default.TAG.canvas
 
 	};
-	SKJdenticon.propTypes = SK.assign({}, _Comp3.default.SK_PROPS_TYPE, {
+	SKJdenticon.propTypes = _skJs2.default.assign({}, _Comp3.default.SK_PROPS_TYPE, {
 	  size: _react2.default.PropTypes.number
 	});
 	exports.default = SKJdenticon;
