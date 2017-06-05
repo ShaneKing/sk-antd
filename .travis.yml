@@ -1,0 +1,18 @@
+language: node_js
+sudo: false # faster builds
+
+node_js:
+  - stable
+
+cache:
+  directories:
+    - node_modules
+
+before_install:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
+#install: default run: npm install
+
+#script: default run: npm test
