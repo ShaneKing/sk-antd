@@ -6,7 +6,6 @@ import {Dir} from './Const';
 import HTML from './HTML';
 import Model from './Model';
 import REACT from './REACT';
-import ReactUtils from './ReactUtils';
 
 /**
  * props:compTag,model(skModel),modelId,labelDir(skLabelDir),labelWidth(skLabelWidth)

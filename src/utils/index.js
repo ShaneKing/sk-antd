@@ -1,13 +1,13 @@
 export Ajax from './Ajax';
 export Cfg from './Cfg';
 export Comp from './Comp';
-export {Color, Dir, EvtType, Theme} from './Const';
+export {Dir, EvtType} from './Const';
 export HTML from './HTML';
 export Model from './Model';
 export Path from './Path';
 export REACT from './REACT';
-export ReactUtils from './ReactUtils';
+export ReactUtil from './ReactUtil';
 export Req from './Req';
-export Resp from './Resp';
-export Utils from './Utils';
+export Resp, {RespMsg} from './Resp';
+export Util from './Util';
 export Validator from './Validator';

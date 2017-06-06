@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class ReactUtils {
+export default class ReactUtil {
 
   /**
    * Iterates through children that are typically specified as `props.children`,

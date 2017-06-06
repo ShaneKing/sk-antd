@@ -1,7 +1,5 @@
-import {browserHistory} from 'react-router';
-
 //0 ref
-export default class Utils {
+export default class Util {
 
   /**
    * Safe chained function
@@ -26,10 +24,6 @@ export default class Utils {
           f.apply(this, args);
         };
       }, null);
-  }
-
-  static forward(url) {
-    browserHistory.push(url);
   }
 
   static isTrivialHref(href) {
