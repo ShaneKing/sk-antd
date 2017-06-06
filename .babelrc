@@ -8,6 +8,22 @@
     "react"
   ],
   "plugins": [
-    "add-module-exports"
+    [
+      "add-module-exports"
+    ],
+    [
+      "import",
+      [
+        {
+          "libraryName": "antd",
+          "libraryDirectory": "lib",
+          "style": true
+        },
+        {
+          "libraryName": "antd-mobile",
+          "libraryDirectory": "component"
+        }
+      ]
+    ]
   ]
 }
