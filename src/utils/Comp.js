@@ -6,6 +6,7 @@ import {Dir} from './Const';
 import HTML from './HTML';
 import Model from './Model';
 import REACT from './REACT';
+import ReactUtil from './ReactUtil';
 
 /**
  * props:compTag,model(skModel),modelId,labelDir(skLabelDir),labelWidth(skLabelWidth)
@@ -194,8 +195,6 @@ export default class Comp extends React.Component {
       return new Error('The [' + componentName + ']\'s [' + propName + '] is not a model!');
     }
   }
-
-  static propTypes = SK.assign({}, Comp.propTypes);
 
   /**
    * Filter sk props
@@ -450,7 +449,7 @@ export default class Comp extends React.Component {
   }
 
   hasSpecialChild(specialChildName) {
-    return ReactUtils.some(this.props.children, (child, idx) => {
+    return ReactUtil.some(this.props.children, (child, idx) => {
       return child.type && child.type.name == specialChildName
     }, this);
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import SK from 'sk-js';
 import Comp from '../../utils/Comp';
-import Path from '../../utils/Path';
+import ReactUtil from '../../utils/ReactUtil';
 import REACT from '../../utils/REACT';
 
 export default class SKLink extends Comp {
@@ -18,7 +18,7 @@ export default class SKLink extends Comp {
   }
 
   handleClick() {
-    Path.forward(this.props.to);
+    ReactUtil.forward(this.props.to);
   }
 
   render() {

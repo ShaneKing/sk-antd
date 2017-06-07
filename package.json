@@ -1,6 +1,6 @@
 {
   "name": "sk-antd",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "ShaneKing for AntD",
   "main": "lib/index.js",
   "directories": {

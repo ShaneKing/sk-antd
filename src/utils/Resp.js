@@ -1,7 +1,7 @@
 import {message, Modal, notification} from 'antd';
 import _ from 'lodash';
 import {Codes, I18N} from 'sk-l10n';
-import Path from './Path';
+import ReactUtil from './ReactUtil';
 
 export class RespMsg {
   static TYPE = {
@@ -78,7 +78,7 @@ export default class Resp {
       if (!this.done && this.rslt.getType() == RespMsg.TYPE.ERROR) {
         Modal.error({
           title: this.rslt.getType(), content: this.rslt.getMessage(), okText: I18N.get('Return'), onOk() {
-            Path.forward('/');
+            ReactUtil.forward('/');
           }
         });
       } else {

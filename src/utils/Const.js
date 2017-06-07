@@ -1,9 +1,9 @@
-export let Dir = {
+export const Dir = {
   Horizontal: 'horizontal',
   Inline: 'inline',
   Vertical: 'vertical'
 };
-export let EvtType = {
+export const EvtType = {
   Changed: 'Changed',
   Errored: 'Errored'
 };
