@@ -4,6 +4,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import SK from 'sk-js';
 import Comp from '../../utils/Comp';
+import {Dir} from '../../utils/Const';
 import SKIcon from './SKIcon';
 import SKMenuItem from './SKMenuItem';
 import SKSubMenu from './SKSubMenu';
@@ -38,26 +39,28 @@ export default class SKMenu extends Comp {
   handleOpenChange(es) {
     if (this.props.onOpenChange && _.isFunction(this.props.onOpenChange)) {
       this.props.onOpenChange(es);
+    }else{
+      let newVal = _.clone(this.skVal());
+      newVal.openKeys = es.slice(0);
+      this.skVal(newVal);
     }
-    let newVal = _.clone(this.skVal());
-    newVal.openKeys = es.slice(0);
-    this.skVal(newVal);
   }
 
   handleClick(e) {
     if (this.props.onClick && _.isFunction(this.props.onClick)) {
       this.props.onClick(e);
+    }else{
+      let newVal = _.clone(this.skVal());
+      // newVal.openKeys = this.skVal().openKeys;
+      newVal.selectedKeys = [e.key];
+      this.skVal(newVal);
     }
-    let newVal = _.clone(this.skVal());
-    // newVal.openKeys = this.skVal().openKeys;
-    newVal.selectedKeys = [e.key];
-    this.skVal(newVal);
   }
 
   menuMap(menuCfg) {
     let {displayItem, menuCfgs, mode} = this.props;
 
-    let displayTitle = ((mode == 'inline') || menuCfgs.indexOf(menuCfg) == -1);
+    let displayTitle = ((mode == Dir.Inline) || menuCfgs.indexOf(menuCfg) == -1);
     let rtnCfgs = [];
 
     if (menuCfg.children && !_.isEmpty(menuCfg.children)) {
@@ -88,9 +91,9 @@ export default class SKMenu extends Comp {
         openKeys={this.skVal().openKeys}
         selectedKeys={this.skVal().selectedKeys}
         theme={theme}>
-        {menuCfgs.map((menuCfg) => {
+        {menuCfgs ? menuCfgs.map((menuCfg) => {
           return this.menuMap(menuCfg);
-        })}
+        }) : this.skPropsTrans()}
       </CompTag>
     );
   }
