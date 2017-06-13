@@ -10,7 +10,9 @@ import SKMenuItem from './SKMenuItem';
 import SKSubMenu from './SKSubMenu';
 
 Menu.propTypes = SK.assign({}, Menu.propTypes, {
-  inlineIndent: React.PropTypes.number
+  inlineIndent: React.PropTypes.number,
+  onClick: React.PropTypes.func,
+  onOpenChange: React.PropTypes.func
 }, {
   level: React.PropTypes.number
 });
