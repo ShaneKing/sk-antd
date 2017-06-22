@@ -25,7 +25,6 @@ export default class Ajax {
       async: true//sk extend jquery
     }
   }
-
   static doAjax(settings) {
     if (settings.progress) {
       if (Ajax.CURRENT_PROGRESS_COUNT == 0) {
@@ -74,18 +73,15 @@ export default class Ajax {
   }
 
   static doDelete(url, data = {}, options = {}) {
-    return Ajax.doAjax(SK.assign({}, Ajax.getDefaultSettings(), {url: url}, {data: data}, options, {method: Ajax.METHOD.DELETE}));
+    return Ajax.doAjax(SK.assign({}, Ajax.getDefaultSettings(), {url: url}, {data: data}, {method: Ajax.METHOD.DELETE}, options));
   }
-
   static doGet(url, data = {}, options = {}) {
-    return Ajax.doAjax(SK.assign({}, Ajax.getDefaultSettings(), {url: url}, {data: data}, options, {method: Ajax.METHOD.GET}));
+    return Ajax.doAjax(SK.assign({}, Ajax.getDefaultSettings(), {url: url}, {data: data}, {method: Ajax.METHOD.GET}, options));
   }
-
   static doPost(url, data = {}, options = {}) {
-    return Ajax.doAjax(SK.assign({}, Ajax.getDefaultSettings(), {url: url}, {data: data}, options, {method: Ajax.METHOD.POST}));
+    return Ajax.doAjax(SK.assign({}, Ajax.getDefaultSettings(), {url: url}, {data: data}, {method: Ajax.METHOD.POST}, options));
   }
-
   static doPut(url, data = {}, options = {}) {
-    return Ajax.doAjax(SK.assign({}, Ajax.getDefaultSettings(), {url: url}, {data: data}, options, {method: Ajax.METHOD.PUT}));
+    return Ajax.doAjax(SK.assign({}, Ajax.getDefaultSettings(), {url: url}, {data: data}, {method: Ajax.METHOD.PUT}, options));
   }
 }
