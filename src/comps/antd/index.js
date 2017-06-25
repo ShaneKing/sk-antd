@@ -21,6 +21,7 @@ export SKMenuItem from './SKMenuItem';
 export SKPopover from './SKPopover';
 export SKRow from './SKRow';
 export SKSearch from './SKSearch';
+export SKSelect from './SKSelect';
 export SKSider from './SKSider';
 export SKSpin from './SKSpin';
 export SKSubMenu from './SKSubMenu';
