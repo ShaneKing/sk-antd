@@ -18,6 +18,7 @@ export SKInput from './SKInput';
 export SKLayout from './SKLayout';
 export SKMenu from './SKMenu';
 export SKMenuItem from './SKMenuItem';
+export SKModal from './SKModal';
 export SKPopover from './SKPopover';
 export SKRow from './SKRow';
 export SKSearch from './SKSearch';
