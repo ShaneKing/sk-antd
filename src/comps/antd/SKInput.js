@@ -32,6 +32,7 @@ export default class SKInput extends Comp {
     return (
       <CompTag {...this.compValidProps(CompTag)}
         onChange={this.handleChange.bind(this)}
+        size={this.skProp(Comp.SK_PROPS.SIZE)}
         value={this.skVal()}>
         {this.skPropsTrans()}
       </CompTag>

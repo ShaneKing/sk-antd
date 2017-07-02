@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import SK from 'sk-js';
 import Cfg from './Cfg';
-import {Dir} from './Const';
+import {Dir, SIZE} from './Const';
 import HTML from './HTML';
 import Model from './Model';
 import REACT from './REACT';
@@ -33,6 +33,7 @@ export default class Comp extends React.Component {
     GRID_GUTTER: 'gridGutter',
     IN_FROM_ITEM: 'inFormItem',
     IN_FROM_ROW: 'inFormRow',
+    SIZE: 'size',
     //ui state, are bfo (boolean, function, object{deps:,func:})
     //deps to monitor
     ACTIVE: 'active',
@@ -109,6 +110,8 @@ export default class Comp extends React.Component {
     skInFormItem: React.PropTypes.bool,
     inFormRow: React.PropTypes.bool,
     skInFormRow: React.PropTypes.bool,
+    size: React.PropTypes.oneOf([SIZE.Large, SIZE.Default, SIZE.Small]),
+    skSize: React.PropTypes.oneOf([SIZE.Large, SIZE.Default, SIZE.Small]),
 
     active: React.PropTypes.oneOfType([
       React.PropTypes.bool,

@@ -30,6 +30,7 @@ export default class SKDatePicker extends Comp {
       <CompTag {...this.compValidProps(CompTag)}
         onChange={this.handleChange.bind(this)}
         placeholder={I18N.get('Please_select_date')}
+        size={this.skProp(Comp.SK_PROPS.SIZE)}
         value={this.skVal() ? moment(this.skVal(), SK.DEFAULT_MOMENT_DATE) : undefined}>
         {this.skPropsTrans()}
       </CompTag>

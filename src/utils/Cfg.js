@@ -1,4 +1,4 @@
-import {Dir} from './Const';
+import {Dir, SIZE} from './Const';
 
 let Cfg = {
   //AntD Default
@@ -7,6 +7,7 @@ let Cfg = {
   DEFAULT_FORM_LAYOUT: Dir.Horizontal,
   DEFAULT_FORM_WRAPPER_COL: {span: 16},
   DEFAULT_GRID_GUTTER: 0,
+  DEFAULT_SIZE: SIZE.Default,
 
   //Properties
   PROP_DEPS: 'deps',
