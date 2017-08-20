@@ -1,2 +1,2 @@
-export * from './comps';
-export * from './utils';
+export * from './comp';
+export * from './util';
