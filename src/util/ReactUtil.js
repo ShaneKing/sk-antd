@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
-import {browserHistory} from 'react-router';
+import createHistory from 'history/createBrowserHistory';
 
 export default class ReactUtil {
 
@@ -141,9 +141,9 @@ export default class ReactUtil {
   }
 
   static forward(url) {
-    browserHistory.push(url);
+    createHistory().push(url);
   }
-  
+
   /**
    * Iterates through children that are typically specified as `props.children`,
    * but only maps over children that are "valid components".
