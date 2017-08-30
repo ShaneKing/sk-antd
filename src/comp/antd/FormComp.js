@@ -60,9 +60,9 @@ export default class FormComp extends Comp {
       this.monitors.push(idOrReg);
     }
     if (_.isRegExp(idOrReg)) {
-      this.iModel().addRegErroredListener(idOrReg, this._updateUI);
+      this.iModel().addRegErroredListener(idOrReg, this.updateUI);
     } else {
-      this.iModel().addIdErroredListener(idOrReg, this._updateUI)
+      this.iModel().addIdErroredListener(idOrReg, this.updateUI)
     }
   }
 
@@ -74,9 +74,9 @@ export default class FormComp extends Comp {
 
   rmvErroredMonitor(idOrReg) {
     if (_.isRegExp(idOrReg)) {
-      this.iModel().rmvRegErroredListener(idOrReg, this._updateUI);
+      this.iModel().rmvRegErroredListener(idOrReg, this.updateUI);
     } else {
-      this.iModel().rmvIdErroredListener(idOrReg, this._updateUI)
+      this.iModel().rmvIdErroredListener(idOrReg, this.updateUI)
     }
     this.monitors.skRmv(idOrReg);
   }
