@@ -20,8 +20,8 @@ export default class SKFormItem extends Comp {
 
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        labelCol={labelCol}
-        wrapperCol={wrapperCol}>
+               labelCol={labelCol}
+               wrapperCol={wrapperCol}>
         {this.skPropsTrans()}
       </CompTag>
     );

@@ -26,7 +26,7 @@ export default class SKCol extends Comp {
 
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        span={span}>
+               span={span}>
         {this.skPropsTrans()}
       </CompTag>
     );

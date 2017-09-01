@@ -121,8 +121,8 @@ export default class SKECharts extends Comp {
     return (
       <SKSpin {...this.compValidProps(SKSpin)} modelId={loadingId} size={Const.SIZE.Large}>
         <CompTag {...this.compValidProps(CompTag)}
-          style={_.isEmpty(style) ? {height: '300px', width: '100%'} : style}
-          ref='echartsDomRef'/>
+                 style={_.isEmpty(style) ? {height: '300px', width: '100%'} : style}
+                 ref='echartsDomRef'/>
       </SKSpin>
     );
   }

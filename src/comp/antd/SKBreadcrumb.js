@@ -18,8 +18,8 @@ export default class SKBreadcrumb extends Comp {
 
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        params={params}
-        routes={routes}>
+               params={params}
+               routes={routes}>
         {this.skPropsTrans()}
       </CompTag>
     );

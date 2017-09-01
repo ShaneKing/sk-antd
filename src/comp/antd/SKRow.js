@@ -19,7 +19,7 @@ export default class SKRow extends Comp {
 
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        gutter={gutter}>
+               gutter={gutter}>
         {this.skPropsTrans()}
       </CompTag>
     );

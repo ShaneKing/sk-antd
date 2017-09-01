@@ -13,7 +13,7 @@ export default class Ajax {
   };
   static CURRENT_PROGRESS_COUNT = 0;
   static CURRENT_SYNC_COUNT = 0;
-  
+
   static CONTENT_JSON_UTF_8 = 'application/json; charset=UTF-8';
 
   static getDefaultSettings() {
@@ -78,12 +78,15 @@ export default class Ajax {
   static doDelete(url, data = {}, options = {}) {
     return Ajax.doAjax(SK.assign({}, Ajax.getDefaultSettings(), {url: url}, {data: data}, {method: Ajax.METHOD.DELETE}, options));
   }
+
   static doGet(url, data = {}, options = {}) {
     return Ajax.doAjax(SK.assign({}, Ajax.getDefaultSettings(), {url: url}, {data: data}, {method: Ajax.METHOD.GET}, options));
   }
+
   static doPost(url, data = {}, options = {}) {
     return Ajax.doAjax(SK.assign({}, Ajax.getDefaultSettings(), {url: url}, {data: data}, {method: Ajax.METHOD.POST}, options));
   }
+
   static doPut(url, data = {}, options = {}) {
     return Ajax.doAjax(SK.assign({}, Ajax.getDefaultSettings(), {url: url}, {data: data}, {method: Ajax.METHOD.PUT}, options));
   }

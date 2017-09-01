@@ -16,7 +16,7 @@ export default class SKMenuItem extends Comp {
   static defaultProps = SK.assign({}, Menu.Item.defaultProps, {
     compTag: Menu.Item
   });
-  static propTypes = SK.assign({}, Comp.propTypes, Menu.Item.propTypes, {});
+  static propTypes = SK.assign({}, Comp.propTypes, Menu.propTypes, Menu.Item.propTypes, {});
 
   constructor(...args) {
     super(...args);

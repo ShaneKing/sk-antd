@@ -21,8 +21,8 @@ export default class SKModal extends Comp {
 
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        onCancel={this.handleCancel.bind(this)}
-        visible={this.skVal()}>
+               onCancel={this.handleCancel.bind(this)}
+               visible={this.skVal()}>
         {this.skPropsTrans()}
       </CompTag>
     );

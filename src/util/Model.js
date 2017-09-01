@@ -45,10 +45,10 @@ export default class Model {
   regListeners = {};
 
   /**
-   * 
+   *
    * @param property plain object
    * @param validator
-     */
+   */
   constructor(property = {}, validator = new Validator()) {
     this.property = property;
     this.validator = validator;
@@ -171,7 +171,7 @@ export default class Model {
   //validator end
   hasErrors() {
     let rtn = false;
-    Object.keys(this.errors).forEach(($modelId)=> {
+    Object.keys(this.errors).forEach(($modelId) => {
       rtn = rtn || !_.isEmpty(this.errors[$modelId]);
     });
     return rtn;

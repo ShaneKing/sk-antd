@@ -1,5 +1,4 @@
 import {Input} from 'antd';
-import _ from 'lodash';
 import React from 'react';
 import SK from 'sk-js';
 import SKInput from './SKInput';

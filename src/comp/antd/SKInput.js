@@ -14,8 +14,7 @@ export default class SKInput extends Comp {
   static defaultProps = {
     compTag: Input
   };
-  static propTypes = SK.assign({}, Comp.propTypes, Input.propTypes, {
-  });
+  static propTypes = SK.assign({}, Comp.propTypes, Input.propTypes, {});
 
   constructor(...args) {
     super(...args);
@@ -30,9 +29,9 @@ export default class SKInput extends Comp {
 
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        onChange={this.handleChange.bind(this)}
-        size={this.skProp(Comp.SK_PROPS.SIZE)}
-        value={this.skVal()}>
+               onChange={this.handleChange.bind(this)}
+               size={this.skProp(Comp.SK_PROPS.SIZE)}
+               value={this.skVal()}>
         {this.skPropsTrans()}
       </CompTag>
     );

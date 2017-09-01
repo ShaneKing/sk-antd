@@ -22,8 +22,8 @@ export default class SKSpin extends Comp {
 
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        className={className}
-        spinning={this.skVal()}>
+               className={className}
+               spinning={this.skVal()}>
         {this.skPropsTrans()}
       </CompTag>
     );

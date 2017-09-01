@@ -30,8 +30,8 @@ export default class SKPopover extends Comp {
 
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        onVisibleChange={this.handleVisibleChange.bind(this)}
-        visible={this.skVal()}>
+               onVisibleChange={this.handleVisibleChange.bind(this)}
+               visible={this.skVal()}>
         {this.skPropsTrans()}
       </CompTag>
     );

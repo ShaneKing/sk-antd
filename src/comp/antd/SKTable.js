@@ -46,10 +46,10 @@ export default class SKTable extends Comp {
 
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        dataSource={this.skVal()}
-        loading={this.iModel().skVal(this.props.loadingId)}
-        pagination={this.iModel().skVal(this.props.paginationId)}
-        scroll={tmpScroll}/>
+               dataSource={this.skVal()}
+               loading={this.iModel().skVal(this.props.loadingId)}
+               pagination={this.iModel().skVal(this.props.paginationId)}
+               scroll={tmpScroll}/>
     );
   }
 }

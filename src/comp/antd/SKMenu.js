@@ -69,7 +69,7 @@ export default class SKMenu extends Comp {
     if (itemInfo.children && !_.isEmpty(itemInfo.children)) {
       rtnCfgs.push(<SKSubMenu key={itemInfo.router}
                               title={<span>
-                                <SKIcon type={itemInfo.icon} />
+                                <SKIcon type={itemInfo.icon}/>
                                 <span>{displayTitle && itemInfo.title}</span>
                               </span>}>
         {itemInfo.children.map(this.menuMap.bind(this))}
@@ -92,12 +92,12 @@ export default class SKMenu extends Comp {
 
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        mode={mode}
-        onClick={this.handleClick.bind(this)}
-        onOpenChange={this.handleOpenChange.bind(this)}
-        openKeys={this.skVal().openKeys}
-        selectedKeys={this.skVal().selectedKeys}
-        theme={theme}>
+               mode={mode}
+               onClick={this.handleClick.bind(this)}
+               onOpenChange={this.handleOpenChange.bind(this)}
+               openKeys={this.skVal().openKeys}
+               selectedKeys={this.skVal().selectedKeys}
+               theme={theme}>
         {dataId ? this.iModel().skVal(dataId).map(($itemInfo) => {
           return this.menuMap($itemInfo);
         }) : this.skPropsTrans()}

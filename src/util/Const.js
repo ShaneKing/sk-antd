@@ -8,8 +8,8 @@ export const EvtType = {
   Errored: 'Errored'
 };
 export const SIZE = {
-  Large: 'large', 
-  Default: 'default', 
+  Large: 'large',
+  Default: 'default',
   Small: 'small'
 };
 

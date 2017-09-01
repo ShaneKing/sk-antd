@@ -20,7 +20,7 @@ export default class SKSelect extends Comp {
   handleSelect(value, option) {
     if (this.props.onSelect && _.isFunction(this.props.onSelect)) {
       this.props.onSelect(value);
-    }else{
+    } else {
       this.skVal(value);
     }
   }
@@ -34,8 +34,8 @@ export default class SKSelect extends Comp {
 
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        onSelect={this.handleSelect.bind(this)}
-        value={this.skVal()}>
+               onSelect={this.handleSelect.bind(this)}
+               value={this.skVal()}>
         {dataId ? this.iModel().skVal(dataId).map((selectOption) => {
           return this.optionMap(selectOption);
         }) : this.skPropsTrans()}

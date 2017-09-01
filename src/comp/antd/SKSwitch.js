@@ -22,10 +22,10 @@ export default class SKSwitch extends Comp {
 
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        checked={this.skVal()}
-        checkedChildren={checkedChildren}
-        onChange={this.handleChange.bind(this)}
-        unCheckedChildren={unCheckedChildren}/>
+               checked={this.skVal()}
+               checkedChildren={checkedChildren}
+               onChange={this.handleChange.bind(this)}
+               unCheckedChildren={unCheckedChildren}/>
     );
   }
 }

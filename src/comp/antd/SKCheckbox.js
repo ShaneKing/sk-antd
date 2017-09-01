@@ -22,8 +22,8 @@ export default class SKCheckbox extends Comp {
 
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        checked={this.skVal()}
-        onChange={this.handleChange.bind(this)}>
+               checked={this.skVal()}
+               onChange={this.handleChange.bind(this)}>
         {this.skPropsTrans()}
       </CompTag>
     );

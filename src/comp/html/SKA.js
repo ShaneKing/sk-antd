@@ -23,8 +23,8 @@ export default class SKA extends Comp {
     let {compTag: CompTag} = this.props;
     return (
       <CompTag {...this.compValidProps(CompTag)}
-        href={'javascript:void(0);'}
-        onClick={this.handleClick.bind(this)}>
+               href={'javascript:void(0);'}
+               onClick={this.handleClick.bind(this)}>
         {this.skPropsTrans()}
       </CompTag>
     );
