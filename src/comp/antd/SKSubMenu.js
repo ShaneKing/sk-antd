@@ -16,7 +16,7 @@ export default class SKSubMenu extends Comp {
   static defaultProps = SK.assign({}, Menu.SubMenu.defaultProps, {
     compTag: Menu.SubMenu
   });
-  static propTypes = SK.assign({}, Comp.propTypes, Menu.SubMenu.propTypes, {});
+  static propTypes = SK.assign({}, Comp.propTypes, Menu.propTypes, Menu.SubMenu.propTypes, {});
 
   constructor(...args) {
     super(...args);

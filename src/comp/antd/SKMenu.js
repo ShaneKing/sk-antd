@@ -67,7 +67,7 @@ export default class SKMenu extends Comp {
     let rtnCfgs = [];
 
     if (itemInfo.children && !_.isEmpty(itemInfo.children)) {
-      rtnCfgs.push(<SKSubMenu key={itemInfo.router}
+      rtnCfgs.push(<SKSubMenu {...this.compValidProps(SKSubMenu)} key={itemInfo.router}
                               title={<span>
                                 <SKIcon type={itemInfo.icon}/>
                                 <span>{displayTitle && itemInfo.title}</span>
@@ -76,7 +76,7 @@ export default class SKMenu extends Comp {
       </SKSubMenu>);
     } else {
       if (displayItem && displayItem(itemInfo)) {
-        rtnCfgs.push(<SKMenuItem key={itemInfo.router}>
+        rtnCfgs.push(<SKMenuItem {...this.compValidProps(SKMenuItem)} key={itemInfo.router}>
           <Link to={itemInfo.router}>
             {itemInfo.icon && <SKIcon type={itemInfo.icon}/>}
             {displayTitle && itemInfo.title}
