@@ -5,7 +5,7 @@ import elementResizeEvent from 'element-resize-event';
 import SK from 'sk-js';
 import SKSpin from '../antd/SKSpin';
 import Comp from '../../util/Comp';
-import Const from '../../util/Const';
+import {SIZE} from '../../util/Const';
 import REACT from '../../util/REACT';
 
 export default class SKECharts extends Comp {
@@ -119,7 +119,7 @@ export default class SKECharts extends Comp {
     let {compTag: CompTag, loadingId, style} = this.props;
 
     return (
-      <SKSpin {...this.compValidProps(SKSpin)} modelId={loadingId} size={Const.SIZE.Large}>
+      <SKSpin {...this.compValidProps(SKSpin)} modelId={loadingId} size={SIZE.Large}>
         <CompTag {...this.compValidProps(CompTag)}
                  style={_.isEmpty(style) ? {height: '300px', width: '100%'} : style}
                  ref='echartsDomRef'/>

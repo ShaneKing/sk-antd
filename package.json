@@ -1,6 +1,6 @@
 {
   "name": "sk-antd",
-  "version": "0.0.18",
+  "version": "0.0.24",
   "description": "ShaneKing for AntD",
   "main": "lib/index.js",
   "directories": {
@@ -11,7 +11,7 @@
     "lint": "eslint --ext .js src"
   },
   "dependencies": {
-    "antd": "^2.12.7",
+    "antd": "2.10.0",
     "babel-runtime": "^6.26.0",
     "classnames": "^2.2.5",
     "countup.js": "^1.9.1",

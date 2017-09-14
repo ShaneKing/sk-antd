@@ -1,13 +1,13 @@
 import {Menu} from 'antd';
 import _ from 'lodash';
 import React from 'react';
-import {Link} from 'react-router-dom';
 import SK from 'sk-js';
 import Comp from '../../util/Comp';
 import {Dir} from '../../util/Const';
 import SKIcon from './SKIcon';
 import SKMenuItem from './SKMenuItem';
 import SKSubMenu from './SKSubMenu';
+import SKLink from '../react/SKLink';
 
 Menu.propTypes = SK.assign({}, Menu.propTypes, {
   inlineIndent: React.PropTypes.number,
@@ -77,10 +77,10 @@ export default class SKMenu extends Comp {
     } else {
       if (displayItem && displayItem(itemInfo)) {
         rtnCfgs.push(<SKMenuItem {...this.compValidProps(SKMenuItem)} key={itemInfo.router}>
-          <Link to={itemInfo.router}>
-            {itemInfo.icon && <SKIcon type={itemInfo.icon}/>}
+          <SKLink {...this.compValidProps(SKLink)} to={itemInfo.router}>
+            {itemInfo.icon && <SKIcon {...this.compValidProps(SKIcon)} type={itemInfo.icon}/>}
             {displayTitle && itemInfo.title}
-          </Link>
+          </SKLink>
         </SKMenuItem>);
       }
     }
