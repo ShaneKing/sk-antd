@@ -60,7 +60,7 @@ export default class SKCountUp extends Comp {
   shouldComponentUpdate(nextProps, nextState) {
     return this.props.duration !== nextProps.duration ||
       this.props.end !== nextProps.end ||
-      $(this.refs.countupDomRef).text() != nextProps.end.skCurrencyFmt() ||
+      $(this.refs.countupDomRef).text() != this.skVal().skCurrencyFmt(nextProps.decimals) ||
       this.props.start !== nextProps.start;
   }
 
