@@ -1,4 +1,5 @@
 import CountUp from 'countup.js';
+import $ from 'jquery';
 import SK from 'sk-js';
 import _ from 'lodash';
 import React from 'react';
@@ -59,6 +60,7 @@ export default class SKCountUp extends Comp {
   shouldComponentUpdate(nextProps, nextState) {
     return this.props.duration !== nextProps.duration ||
       this.props.end !== nextProps.end ||
+      $(this.refs.countupDomRef).text() != nextProps.end.skCurrencyFmt() ||
       this.props.start !== nextProps.start;
   }
 

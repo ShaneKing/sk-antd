@@ -1,6 +1,6 @@
 {
   "name": "sk-antd",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "ShaneKing for AntD",
   "main": "lib/index.js",
   "directories": {
@@ -26,8 +26,8 @@
     "nprogress": "^0.2.0",
     "react": "^15.6.1",
     "react-router-dom": "^4.1.1",
-    "sk-js": "^0.1.24",
-    "sk-l10n": "^0.0.6"
+    "sk-js": "^0.1.25",
+    "sk-l10n": "^0.0.8"
   },
   "devDependencies": {
     "assert": "^1.4.1",
