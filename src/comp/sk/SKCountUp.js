@@ -46,15 +46,20 @@ export default class SKCountUp extends Comp {
     super(...args);
   }
 
+  componentDidMount() {
+    super.componentDidMount();
+    this.startAnimation(this);
+  }
+
+  componentDidUpdate() {
+    super.componentDidUpdate();
+    this.startAnimation(this);
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     return this.props.duration !== nextProps.duration ||
       this.props.end !== nextProps.end ||
       this.props.start !== nextProps.start;
-  }
-
-  updateUI(evt) {
-    super.updateUI(evt);
-    this.startAnimation(this);
   }
 
   startAnimation(comp) {
