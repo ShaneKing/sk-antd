@@ -1,24 +1,32 @@
-import {Popover} from 'antd';
+import {Popover, Tooltip} from 'antd';
+import PropTypes from 'prop-types';
 import React from 'react';
-import SK from 'sk-js';
-import Comp from '../../util/Comp';
+import {SK} from 'sk-js';
+import AntdComp from './AntdComp';
 
-Popover.propTypes = SK.assign({}, Popover.propTypes, {
-  onVisibleChange: React.PropTypes.func,
-  overlayClassName: React.PropTypes.string,
-  placement: React.PropTypes.string,
-  visible: React.PropTypes.bool,
-  trigger: React.PropTypes.string
-}, {});
+Popover.defaultProps = SK.assign({}, {}, Tooltip.COMMON_DEFAULT_PROPS, Popover.defaultProps, {});
 
-export default class SKPopover extends Comp {
-  static defaultProps = {
+Popover.propTypes = SK.assign({}, {
+  content: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node
+  ]),
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node
+  ])
+}, Tooltip.COMMON_PROP_TYPES, Popover.propTypes, {});
+
+export default class SKPopover extends AntdComp {
+  static defaultProps = SK.assign({}, AntdComp.defaultProps, Popover.defaultProps, {
     compTag: Popover
-  };
-  static propTypes = SK.assign({}, Comp.propTypes, Popover.propTypes, {});
+  });
+  static propTypes = SK.assign({}, AntdComp.propTypes, Popover.propTypes, {});
+
 
   constructor(...args) {
     super(...args);
+    this.compName = 'SKPopover';
   }
 
   handleVisibleChange(visible) {
@@ -29,10 +37,10 @@ export default class SKPopover extends Comp {
     let {compTag: CompTag} = this.props;
 
     return (
-      <CompTag {...this.compValidProps(CompTag)}
+      <CompTag {...this.skTransProps2Self(CompTag)}
                onVisibleChange={this.handleVisibleChange.bind(this)}
                visible={this.skVal()}>
-        {this.skPropsTrans()}
+        {this.skTransProps2Child()}
       </CompTag>
     );
   }

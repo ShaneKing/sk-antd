@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import createHistory from 'history/createBrowserHistory';
 
-export default class ReactUtil {
+export default class Reacts {
 
   /**
    * Count the number of "valid components" in the Children container.
@@ -140,8 +140,13 @@ export default class ReactUtil {
     });
   }
 
+  /**
+   * forward
+   *
+   * @param url like /dashboard
+   */
   static forward(url) {
-    createHistory().push(url);
+    createHistory().push({pathname: url});
   }
 
   /**

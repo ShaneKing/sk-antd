@@ -1,14 +1,27 @@
 import {Icon} from 'antd';
-import SK from 'sk-js';
-import Comp from '../../util/Comp';
+import PropTypes from 'prop-types';
+import {SK} from 'sk-js';
+import AntdComp from './AntdComp';
 
-export default class SKIcon extends Comp {
-  static defaultProps = {
+Icon.defaultProps = SK.assign({}, {
+  spin: false
+}, Icon.defaultProps, {});
+
+Icon.propTypes = SK.assign({}, {
+  spin: PropTypes.bool,
+  style: PropTypes.object,
+  type: PropTypes.string
+}, Icon.propTypes, {});
+
+export default class SKIcon extends AntdComp {
+  static defaultProps = SK.assign({}, AntdComp.defaultProps, Icon.defaultProps, {
     compTag: Icon
-  };
-  static propTypes = SK.assign({}, Comp.propTypes, Icon.propTypes, {});
+  });
+  static propTypes = SK.assign({}, AntdComp.propTypes, Icon.propTypes, {});
+
 
   constructor(...args) {
     super(...args);
+    this.compName = 'SKIcon';
   }
 }

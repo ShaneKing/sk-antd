@@ -1,3 +1,4 @@
+export AntdComp from './AntdComp';
 export FormComp from './FormComp';
 export FormDatePicker from './FormDatePicker';
 export FormInput from './FormInput';
@@ -28,3 +29,4 @@ export SKSpin from './SKSpin';
 export SKSubMenu from './SKSubMenu';
 export SKSwitch from './SKSwitch';
 export SKTable from './SKTable';
+export SKTooltip from './SKTooltip';

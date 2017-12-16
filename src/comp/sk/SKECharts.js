@@ -1,15 +1,17 @@
 //https://github.com/ecomfe/echarts
-import React from 'react';
+import _ from 'lodash';
 import echarts from 'echarts';
 import elementResizeEvent from 'element-resize-event';
-import SK from 'sk-js';
+import PropTypes from 'prop-types';
+import React from 'react';
+import {SK} from 'sk-js';
 import SKSpin from '../antd/SKSpin';
 import Comp from '../../util/Comp';
 import {SIZE} from '../../util/Const';
 import REACT from '../../util/REACT';
 
 export default class SKECharts extends Comp {
-  static defaultProps = {
+  static defaultProps = SK.assign({}, Comp.defaultProps, {
     compTag: REACT.TAG.div,
 
     lazyUpdate: true,
@@ -20,21 +22,23 @@ export default class SKECharts extends Comp {
       chart.hideLoading();
     },
     onEvents: {}
-  };
-  static propTypes = SK.assign({}, Comp.SK_PROPS_TYPE, {
-    lazyUpdate: React.PropTypes.bool,
-    loadingId: React.PropTypes.string.isRequired,
-    notMerge: React.PropTypes.bool,
-    onChartReady: React.PropTypes.func,
-    onEvents: React.PropTypes.object,
-    // option: React.PropTypes.object,
-    optionUpdate: React.PropTypes.func,
-    style: React.PropTypes.object,
-    theme: React.PropTypes.string
   });
+  static propTypes = SK.assign({}, Comp.propTypes, {
+    lazyUpdate: PropTypes.bool,
+    loadingId: PropTypes.string.isRequired,
+    notMerge: PropTypes.bool,
+    onChartReady: PropTypes.func,
+    onEvents: PropTypes.object,
+    // option: PropTypes.object,
+    optionUpdate: PropTypes.func,
+    style: PropTypes.object,
+    theme: PropTypes.string
+  });
+
 
   constructor(...props) {
     super(...props);
+    this.compName = 'SKECharts';
   }
 
   componentDidMount() {
@@ -119,8 +123,8 @@ export default class SKECharts extends Comp {
     let {compTag: CompTag, loadingId, style} = this.props;
 
     return (
-      <SKSpin {...this.compValidProps(SKSpin)} modelId={loadingId} size={SIZE.Large}>
-        <CompTag {...this.compValidProps(CompTag)}
+      <SKSpin {...this.skTransProps2Self(SKSpin)} modelId={loadingId} size={SIZE.Large}>
+        <CompTag {...this.skTransProps2Self(CompTag)}
                  style={_.isEmpty(style) ? {height: '300px', width: '100%'} : style}
                  ref='echartsDomRef'/>
       </SKSpin>

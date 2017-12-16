@@ -1,6 +1,5 @@
 import _ from 'lodash';
-import SK from 'sk-js';
-import Cfg from './Cfg';
+import {SK} from 'sk-js';
 import {EvtType} from './Const';
 import Validator from './Validator';
 
@@ -9,27 +8,33 @@ export default class Model {
   static PROP_SK = 'skModel';
   static PROP_SYS = 'skSysModel';
 
-  static object2Paths(prefix, paths = [], object = {}) {
+  /**
+   * {a:{b:true,c:false}} => a.b
+   * @param prefix
+   * @param modelIds
+   * @param object
+   */
+  static object2ModelIds(prefix, modelIds = [], object = {}) {
     Object.keys(object).forEach(($k) => {
       let tmpKey = prefix + (String(prefix).skBlank() ? SK.EMPTY : SK.CHAR_DOT) + $k;
       let tmpVal = object[$k];
       if (_.isPlainObject(tmpVal)) {
-        Model.object2Paths(tmpKey, paths, tmpVal)
+        Model.object2ModelIds(tmpKey, modelIds, tmpVal)
       } else if (SK.s4b(tmpVal) && tmpVal) {
-        paths.push(tmpKey);
+        modelIds.push(tmpKey);
       }
     });
   };
 
   /**
-   * @param sao string[reg], string array or object
+   * @param sao is string[reg], array[string] or object
    * @returns {Array}
    */
   static parseSao(sao) {
     let rtn = [];
     if (sao) {
       if (_.isPlainObject(sao)) {
-        Model.object2Paths(SK.EMPTY, rtn, sao);
+        Model.object2ModelIds(SK.EMPTY, rtn, sao);
       } else if (_.isArray(sao)) {
         rtn = rtn.concat(sao);
       } else if (_.isString(sao)) {
@@ -46,143 +51,14 @@ export default class Model {
 
   /**
    *
-   * @param property plain object
+   * @param freeObject plain object
    * @param validator
    */
-  constructor(property = {}, validator = new Validator()) {
-    this.property = property;
+  constructor(freeObject = {}, validator = new Validator()) {
+    this.freeObject = freeObject;
     this.validator = validator;
 
     this.addAllValidatorMonitor();
-  }
-
-  //validator begin
-  addAllValidatorMonitor() {
-    let tmpConfigs = this.getValidator().getConfigs();
-    Object.keys(tmpConfigs).forEach(($key) => {
-      this.addValidatorMonitor($key, tmpConfigs[$key]);
-    });
-  }
-
-  addValidatorMonitor(id, config) {
-    Object.keys(config).forEach(($key) => {
-      this.addValidatorRuleMonitor(id, $key, config[$key]);
-    });
-  }
-
-  addValidatorRuleMonitor(id, rule, setting) {
-    if (!this.monitors[id]) {
-      this.errors[id] = {};
-      this.monitors[id] = this.validate.bind(id);
-      this.addIdChangedListener(id, this.monitors[id])
-    }
-    if (rule == Cfg.PROP_DEPS) {
-      Model.parseSao(setting).forEach(($i) => {
-        if (_.isRegExp($i)) {
-          this.addRegChangedListener($i, this.monitors[id]);
-        } else {
-          this.addIdChangedListener($i, this.monitors[id])
-        }
-      });
-    } else {
-      let tmpSettingDeps = setting[Cfg.PROP_DEPS];
-      if (tmpSettingDeps) {
-        Model.parseSao(tmpSettingDeps).forEach(($i) => {
-          if (_.isRegExp($i)) {
-            this.addRegChangedListener($i, this.monitors[id]);
-          } else {
-            this.addIdChangedListener($i, this.monitors[id])
-          }
-        });
-      }
-    }
-  }
-
-  rmvValidatorMonitor(id, config) {
-    Object.keys(config).forEach(($key) => {
-      if ($key == Cfg.PROP_DEPS) {
-        Model.parseSao(config[$key]).forEach(($i) => {
-          if (_.isRegExp($i)) {
-            this.rmvRegChangedListener($i, this.monitors[id]);
-          } else {
-            this.rmvIdChangedListener($i, this.monitors[id])
-          }
-        });
-      } else {
-        this.rmvValidatorRuleMonitor(id, $key, config[$key]);
-      }
-    });
-  }
-
-  rmvValidatorRuleMonitor(id, rule, setting) {
-    let tmpSettingDeps = setting[Cfg.PROP_DEPS];
-    if (tmpSettingDeps) {
-      Model.parseSao(tmpSettingDeps).forEach(($i) => {
-        if (_.isRegExp($i)) {
-          this.rmvRegChangedListener($i, this.monitors[id]);
-        } else {
-          this.rmvIdChangedListener($i, this.monitors[id])
-        }
-      });
-    }
-  }
-
-  validateByScenario(scenario) {
-    let configs = this.getValidator().getConfigs();
-    Object.keys(configs).forEach(($modelId) => {
-      if (!scenario || scenario == configs[$modelId][Cfg.PROP_SCENARIO]) {
-        this.validate.call($modelId, {model: this});
-      }
-    });
-  }
-
-  validate(evt) {
-    let tmpId = this;
-    let tmpModel = evt.model;
-    let tmpConfig = evt.model.getValidator().getConfigs()[tmpId];
-    if (tmpConfig && _.isObject(tmpConfig)) {
-      Object.keys(tmpConfig).forEach(($key) => {
-        if ($key == Cfg.PROP_SCENARIO) {
-          //ignore
-        } else if ($key == Cfg.PROP_FUNC) {
-          tmpModel.execValidate($key, tmpId, tmpConfig[$key], tmpModel, undefined);
-        } else {
-          let tmpRule = tmpModel.getValidator().getRules()[$key];
-          if (_.isFunction(tmpRule)) {
-            tmpModel.execValidate($key, tmpId, tmpRule, tmpModel, tmpConfig[$key]);
-          } else if (_.isObject(tmpRule) && _.isFunction(tmpRule[Cfg.PROP_FUNC])) {
-            tmpModel.execValidate($key, tmpId, tmpRule[Cfg.PROP_FUNC], tmpModel, undefined);
-          }
-        }
-      });
-    }
-  }
-
-  execValidate(rule, id, func, model, setting) {
-    let tmpRtn = func(model, model.skVal(id), setting);
-    if (!_.isBoolean(tmpRtn)) {//true or message
-      this.errors.skVal(id + SK.CHAR_DOT + rule, tmpRtn);
-    } else {
-      delete this.errors[id][rule];
-    }
-    this.fireErroredEvent(id, model.skVal(id), model.skVal(id));
-  }
-
-  //validator end
-  hasErrors() {
-    let rtn = false;
-    Object.keys(this.errors).forEach(($modelId) => {
-      rtn = rtn || !_.isEmpty(this.errors[$modelId]);
-    });
-    return rtn;
-  }
-
-  getAllErrors() {
-    return this.errors;
-  }
-
-  getErrors(id) {
-    return SK.s4o(this.errors[id]);
   }
 
   /**
@@ -266,10 +142,10 @@ export default class Model {
   }
 
   fireEvent(evt) {
-    var matchedListeners = [];
-    var idListeners = this.idListeners[evt.type] ? this.idListeners[evt.type] : {};
+    let matchedListeners = [];
+    let idListeners = this.idListeners[evt.type] ? this.idListeners[evt.type] : {};
     matchedListeners.push.apply(matchedListeners, idListeners[evt.id] ? idListeners[evt.id] : []);
-    var regListeners = this.regListeners[evt.type] ? this.regListeners[evt.type] : {};
+    let regListeners = this.regListeners[evt.type] ? this.regListeners[evt.type] : {};
     Object.keys(regListeners).forEach(reg => {
       matchedListeners.push.apply(matchedListeners, evt.id.match(reg) ? listeners[reg] : []);
     });
@@ -278,6 +154,26 @@ export default class Model {
       listener(evt);
     });
     return this;
+  }
+
+  getAllErrors() {
+    return this.errors;
+  }
+
+  getErrors(id) {
+    return SK.s4o(this.errors[id]);
+  }
+
+  getValidator() {
+    return this.validator;
+  }
+
+  hasErrors() {
+    let rtn = false;
+    Object.keys(this.errors).forEach(($modelId) => {
+      rtn = rtn || !_.isEmpty(this.errors[$modelId]);
+    });
+    return rtn;
   }
 
   rmvIdChangedListener(id, listener) {
@@ -321,10 +217,10 @@ export default class Model {
   }
 
   skVal(id, value) {
-    var oldValue = this.property.skVal(id);
+    let oldValue = this.freeObject.skVal(id);
     if (arguments.length > 1) {
-      if (oldValue != value) {
-        this.property.skVal(id, value);
+      if (oldValue !== value) {
+        this.freeObject.skVal(id, value);
         this.fireChangedEvent(id, oldValue, value);
       }
       return this;
@@ -333,7 +229,119 @@ export default class Model {
     }
   }
 
-  getValidator() {
-    return this.validator;
+  //validator begin
+  addAllValidatorMonitor() {
+    let tmpModelIds = this.getValidator().getModelIds();
+    Object.keys(tmpModelIds).forEach(($key) => {
+      this.addValidatorMonitor($key, tmpModelIds[$key]);
+    });
   }
+
+  addValidatorMonitor(modelId, config) {
+    Object.keys(config).forEach(($key) => {
+      this.addValidatorRuleMonitor(modelId, $key, config[$key]);
+    });
+  }
+
+  addValidatorRuleMonitor(modelId, rule, setting) {
+    if (!this.monitors[modelId]) {
+      this.errors[modelId] = {};
+      this.monitors[modelId] = this.validate.bind(modelId);
+      this.addIdChangedListener(modelId, this.monitors[modelId])
+    }
+    if (rule === Validator.PROP_DEPS) {
+      //when dependencies changed, need validate too
+      Model.parseSao(setting).forEach(($i) => {
+        if (_.isRegExp($i)) {
+          this.addRegChangedListener($i, this.monitors[modelId]);
+        } else {
+          this.addIdChangedListener($i, this.monitors[modelId])
+        }
+      });
+    } else {
+      let tmpSettingDeps = setting[Validator.PROP_DEPS];
+      if (tmpSettingDeps) {
+        //see Validator.constructor comments
+        Model.parseSao(tmpSettingDeps).forEach(($i) => {
+          if (_.isRegExp($i)) {
+            this.addRegChangedListener($i, this.monitors[modelId]);
+          } else {
+            this.addIdChangedListener($i, this.monitors[modelId])
+          }
+        });
+      }
+    }
+  }
+
+  execValidate(rule, id, func, model, setting) {
+    let tmpRtn = func(model, model.skVal(id), setting);
+    if (!_.isBoolean(tmpRtn)) {//true or message
+      this.errors.skVal(id + SK.CHAR_DOT + rule, tmpRtn);
+    } else {
+      delete this.errors[id][rule];
+    }
+    this.fireErroredEvent(id, model.skVal(id), model.skVal(id));
+  }
+
+  rmvValidatorMonitor(id, config) {
+    Object.keys(config).forEach(($key) => {
+      if ($key === Validator.PROP_DEPS) {
+        Model.parseSao(config[$key]).forEach(($i) => {
+          if (_.isRegExp($i)) {
+            this.rmvRegChangedListener($i, this.monitors[id]);
+          } else {
+            this.rmvIdChangedListener($i, this.monitors[id])
+          }
+        });
+      } else {
+        this.rmvValidatorRuleMonitor(id, $key, config[$key]);
+      }
+    });
+  }
+
+  rmvValidatorRuleMonitor(id, rule, setting) {
+    let tmpSettingDeps = setting[Validator.PROP_DEPS];
+    if (tmpSettingDeps) {
+      Model.parseSao(tmpSettingDeps).forEach(($i) => {
+        if (_.isRegExp($i)) {
+          this.rmvRegChangedListener($i, this.monitors[id]);
+        } else {
+          this.rmvIdChangedListener($i, this.monitors[id])
+        }
+      });
+    }
+  }
+
+  validate(evt) {
+    let tmpModelId = this;
+    let tmpModel = evt.model;
+    let tmpConfig = evt.model.getValidator().getModelIds()[tmpModelId];
+    if (tmpConfig && _.isObject(tmpConfig)) {
+      Object.keys(tmpConfig).forEach(($key) => {
+        if ($key === Validator.PROP_SCENARIO) {
+          //ignore
+        } else if ($key === Validator.PROP_FUNC) {
+          tmpModel.execValidate($key, tmpModelId, tmpConfig[$key], tmpModel, undefined);
+        } else {
+          let tmpRule = tmpModel.getValidator().getRules()[$key];
+          if (_.isFunction(tmpRule)) {
+            tmpModel.execValidate($key, tmpModelId, tmpRule, tmpModel, tmpConfig[$key]);
+          } else if (_.isObject(tmpRule) && _.isFunction(tmpRule[Validator.PROP_FUNC])) {
+            tmpModel.execValidate($key, tmpModelId, tmpRule[Validator.PROP_FUNC], tmpModel, undefined);
+          }
+        }
+      });
+    }
+  }
+
+  validateByScenario(scenario) {
+    let configs = this.getValidator().getModelIds();
+    Object.keys(configs).forEach(($modelId) => {
+      if (!scenario || scenario === configs[$modelId][Validator.PROP_SCENARIO]) {
+        this.validate.call($modelId, {model: this});
+      }
+    });
+  }
+
+  //validator end
 }

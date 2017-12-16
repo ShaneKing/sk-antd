@@ -1,30 +1,44 @@
 import {Spin} from 'antd';
+import PropTypes from 'prop-types';
 import React from 'react';
-import SK from 'sk-js';
-import Comp from '../../util/Comp';
+import {SK} from 'sk-js';
+import AntdComp from './AntdComp';
+import {SIZE} from '../../util/Const';
 
-Spin.propTypes = SK.assign({}, Spin.propTypes, {
-  tip: React.PropTypes.string
-}, {});
+Spin.defaultProps = SK.assign({}, {
+  size: SIZE.Default,
+  spinning: true
+}, Spin.defaultProps, {});
 
-export default class SKSpin extends Comp {
-  static defaultProps = {
+Spin.propTypes = SK.assign({}, {
+  delay: PropTypes.number,
+  indicator: PropTypes.node,
+  size: PropTypes.string,
+  spinning: PropTypes.bool,
+  tip: PropTypes.string,
+  wrapperClassName: PropTypes.string
+}, Spin.propTypes, {});
+
+export default class SKSpin extends AntdComp {
+  static defaultProps = SK.assign({}, AntdComp.defaultProps, Spin.defaultProps, {
     compTag: Spin
-  };
-  static propTypes = SK.assign({}, Comp.propTypes, Spin.propTypes, {});
+  });
+  static propTypes = SK.assign({}, AntdComp.propTypes, Spin.propTypes, {});
+
 
   constructor(...args) {
     super(...args);
+    this.compName = 'SKSpin';
   }
 
   render() {
     let {compTag: CompTag, className} = this.props;
 
     return (
-      <CompTag {...this.compValidProps(CompTag)}
+      <CompTag {...this.skTransProps2Self(CompTag)}
                className={className}
                spinning={this.skVal()}>
-        {this.skPropsTrans()}
+        {this.skTransProps2Child()}
       </CompTag>
     );
   }

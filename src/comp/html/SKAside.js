@@ -1,12 +1,15 @@
+import {SK} from 'sk-js';
 import Comp from '../../util/Comp';
 import REACT from '../../util/REACT';
 
 export default class SKAside extends Comp {
-  static defaultProps = {
+  static defaultProps = SK.assign({}, Comp.defaultProps, {
     compTag: REACT.TAG.aside
-  };
+  });
+
 
   constructor(...args) {
     super(...args);
+    this.compName = 'SKAside';
   }
 }

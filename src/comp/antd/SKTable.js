@@ -1,28 +1,69 @@
 import {Table} from 'antd';
+import PropTypes from 'prop-types';
 import React from 'react';
-import SK from 'sk-js';
-import Comp from '../../util/Comp';
+import {SK} from 'sk-js';
+import AntdComp from './AntdComp';
+import {SIZE} from '../../util/Const';
 
-Table.propTypes = SK.assign({}, Table.propTypes, {
-  rowKey: React.PropTypes.func,
-  scroll: React.PropTypes.object,
-  size: React.PropTypes.string
-}, {});
+Table.defaultProps = SK.assign({}, {
+  bordered: false,
+  defaultExpandAllRows: false,
+  expandRowByClick: false,
+  indentSize: 15,
+  loading: false,
+  rowSelection: null,
+  showHeader: true,
+  size: SIZE.Default
+}, Table.defaultProps, {});
 
-export default class SKTable extends Comp {
-  static defaultProps = {
+Table.propTypes = SK.assign({}, {
+  bordered: PropTypes.bool,
+  columns: PropTypes.array,
+  components: PropTypes.object,
+  dataSource: PropTypes.array,
+  defaultExpandAllRows: PropTypes.bool,
+  defaultExpandedRowKeys: PropTypes.array,
+  expandedRowKeys: PropTypes.array,
+  expandedRowRender: PropTypes.func,
+  expandRowByClick: PropTypes.bool,
+  footer: PropTypes.func,
+  indentSize: PropTypes.number,
+  loading: PropTypes.any,//
+  locale: PropTypes.object,
+  pagination: PropTypes.object,
+  rowClassName: PropTypes.func,
+  rowKey: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func
+  ]),
+  rowSelection: PropTypes.object,
+  scroll: PropTypes.object,
+  showHeader: PropTypes.bool,
+  size: PropTypes.string,
+  title: PropTypes.func,
+  onChange: PropTypes.func,
+  onExpand: PropTypes.func,
+  onExpandedRowsChange: PropTypes.func,
+  onHeaderRow: PropTypes.func,
+  onRow: PropTypes.func
+}, Table.propTypes, {});
+
+export default class SKTable extends AntdComp {
+  static defaultProps = SK.assign({}, AntdComp.defaultProps, Table.defaultProps, {
     compTag: Table,
     bordered: true,
     loadingId: undefined,
     paginationId: undefined
-  };
-  static propTypes = SK.assign({}, Comp.propTypes, Table.propTypes, {
-    loadingId: React.PropTypes.string.isRequired,
-    paginationId: React.PropTypes.string.isRequired
   });
+  static propTypes = SK.assign({}, AntdComp.propTypes, Table.propTypes, {
+    loadingId: PropTypes.string.isRequired,
+    paginationId: PropTypes.string.isRequired
+  });
+
 
   constructor(...args) {
     super(...args);
+    this.compName = 'SKTable';
   }
 
   addExtendChangedMonitor() {
@@ -45,10 +86,10 @@ export default class SKTable extends Comp {
     tmpScroll = scroll || tmpScroll;
 
     return (
-      <CompTag {...this.compValidProps(CompTag)}
+      <CompTag {...this.skTransProps2Self(CompTag)}
                dataSource={this.skVal()}
-               loading={this.iModel().skVal(this.props.loadingId)}
-               pagination={this.iModel().skVal(this.props.paginationId)}
+               loading={this.skModel().skVal(this.props.loadingId)}
+               pagination={this.skModel().skVal(this.props.paginationId)}
                scroll={tmpScroll}/>
     );
   }

@@ -1,12 +1,11 @@
-import React from 'react';
 import _ from 'lodash';
-import SK from 'sk-js';
-import Cfg from './Cfg';
-import {Dir, SIZE} from './Const';
+import PropTypes from 'prop-types';
+import React, {Component} from 'react';
+import {SK} from 'sk-js';
+import DEFAULT from './DEFAULT';
 import HTML from './HTML';
 import Model from './Model';
 import REACT from './REACT';
-import ReactUtil from './ReactUtil';
 
 /**
  * props:compTag,model(skModel),modelId,labelDir(skLabelDir),labelWidth(skLabelWidth)
@@ -14,7 +13,7 @@ import ReactUtil from './ReactUtil';
  * func ,m2eConvertor,e2mConvertor,m2vConvertor,v2mConvertor
  * html ,className,role,style
  */
-export default class Comp extends React.Component {
+export default class Comp extends Component {
   static SK_COMP_STATE_ID_PREFIX = 'skCompStateUid';
   static SK_PROPS_PREFIX = 'sk';
   static SK_PROPS_SYS = 'sys';
@@ -23,20 +22,6 @@ export default class Comp extends React.Component {
     COMP_TAG: 'compTag',
     MODEL: 'model',
     MODEL_ID: 'modelId',
-    //AntD
-    COL_SPAN: 'colSpan',
-    COL_XS: 'colXs',
-    COL_SM: 'colSm',
-    COL_MD: 'colMd',
-    COL_LG: 'colLg',
-    COL_XL: 'colXl',
-    FORM_LABEL_COL: 'formLabelCol',
-    FORM_LAYOUT: 'formLayout',
-    FORM_WRAPPER_COL: 'formWrapperCol',
-    GRID_GUTTER: 'gridGutter',
-    IN_FROM_ITEM: 'inFormItem',
-    IN_FROM_ROW: 'inFormRow',
-    SIZE: 'size',
     //ui state, are bfo (boolean, function, object{deps:,func:})
     //deps to monitor
     ACTIVE: 'active',
@@ -48,143 +33,88 @@ export default class Comp extends React.Component {
     //component monitor list, can be string[reg], string array or object
     MONITOR: 'monitor'
   };
+  static defaultProps = {};
   static propTypes = {
-    compTag: React.PropTypes.oneOfType([
-      React.PropTypes.element,
-      React.PropTypes.func,
-      React.PropTypes.string
+    compTag: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.func,
+      PropTypes.string
     ]),//React component or Brad Component
     model: Comp.IS_PROP_TYPES_MODEL,//Business Model(part of page), PlainObject or Brad.Model
     skModel: Comp.IS_PROP_TYPES_MODEL,//Business Model(page), PlainObject or Brad.Model
     skSysModel: Comp.IS_PROP_TYPES_MODEL,//System Model(whole of page), PlainObject or Brad.Model
-    modelId: React.PropTypes.string,
-    colSpan: React.PropTypes.number,
-    skColSpan: React.PropTypes.number,
-    colXs: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.object
-    ]),
-    skColXs: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.object
-    ]),
-    colSm: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.object
-    ]),
-    skColSm: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.object
-    ]),
-    colMd: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.object
-    ]),
-    skColMd: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.object
-    ]),
-    colLg: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.object
-    ]),
-    skColLg: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.object
-    ]),
-    colXl: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.object
-    ]),
-    skColXl: React.PropTypes.oneOfType([
-      React.PropTypes.number,
-      React.PropTypes.object
-    ]),
-    formLayout: React.PropTypes.oneOf([Dir.Horizontal, Dir.Vertical, Dir.Inline]),
-    skFormLayout: React.PropTypes.oneOf([Dir.Horizontal, Dir.Vertical, Dir.Inline]),//Const.Dir
-    formLabelCol: React.PropTypes.object,
-    skFormLabelCol: React.PropTypes.object,
-    formWrapperCol: React.PropTypes.object,
-    skFormWrapperCol: React.PropTypes.object,
-    gridGutter: React.PropTypes.number,
-    skGridGutter: React.PropTypes.number,
-    inFormItem: React.PropTypes.bool,
-    skInFormItem: React.PropTypes.bool,
-    inFormRow: React.PropTypes.bool,
-    skInFormRow: React.PropTypes.bool,
-    size: React.PropTypes.oneOf([SIZE.Large, SIZE.Default, SIZE.Small]),
-    skSize: React.PropTypes.oneOf([SIZE.Large, SIZE.Default, SIZE.Small]),
+    modelId: PropTypes.string,
+    monitor: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+      PropTypes.object
+    ]),//monitor is string[reg], array[string] or object
 
-    active: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.func,
-      React.PropTypes.object
+    active: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.func,
+      PropTypes.object
     ]),
-    skActive: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.func,
-      React.PropTypes.object
+    skActive: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.func,
+      PropTypes.object
     ]),
-    disabled: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.func,
-      React.PropTypes.object
+    disabled: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.func,
+      PropTypes.object
     ]),
-    skDisabled: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.func,
-      React.PropTypes.object
+    skDisabled: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.func,
+      PropTypes.object
     ]),
-    hidden: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.func,
-      React.PropTypes.object
+    hidden: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.func,
+      PropTypes.object
     ]),
-    skHidden: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.func,
-      React.PropTypes.object
+    skHidden: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.func,
+      PropTypes.object
     ]),
-    preview: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.func,
-      React.PropTypes.object
+    preview: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.func,
+      PropTypes.object
     ]),
-    skPreview: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.func,
-      React.PropTypes.object
+    skPreview: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.func,
+      PropTypes.object
     ]),
-    readOnly: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.func,
-      React.PropTypes.object
+    readOnly: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.func,
+      PropTypes.object
     ]),
-    skReadOnly: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.func,
-      React.PropTypes.object
+    skReadOnly: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.func,
+      PropTypes.object
     ]),
-    required: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.func,
-      React.PropTypes.object
+    required: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.func,
+      PropTypes.object
     ]),
-    skRequired: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.func,
-      React.PropTypes.object
-    ]),
-    monitor: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.array,
-      React.PropTypes.object
+    skRequired: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.func,
+      PropTypes.object
     ]),
 
-    m2eConvertor: React.PropTypes.func,//Model 2 Editing
-    e2mConvertor: React.PropTypes.func,//Editing 2 Model
-    m2vConvertor: React.PropTypes.func,//Model 2 View, like Date Comp, moment format to view: YYYY-MM-DDTHH:mm:ss.SSSZ -> YYYY-MM-DD
-    v2mConvertor: React.PropTypes.func//View 2 Model, like Check Comp, true is checked: true -> 1, false -> 0
+    m2eConvertor: PropTypes.func,//Model 2 Editing
+    e2mConvertor: PropTypes.func,//Editing 2 Model
+    m2vConvertor: PropTypes.func,//Model 2 View, like Date Comp, moment format to view: YYYY-MM-DDTHH:mm:ss.SSSZ -> YYYY-MM-DD
+    v2mConvertor: PropTypes.func//View 2 Model, like Check Comp, true is checked: true -> 1, false -> 0
   };
 
   /**
@@ -211,13 +141,14 @@ export default class Comp extends React.Component {
     return _.startsWith(SK.s4s(k), Comp.SK_PROPS_PREFIX);
   }
 
-  monitors = [];
-
   constructor(...args) {
     super(...args);
+    this.compName = 'Comp';
+    this.monitors = [];
   }
 
   componentDidMount() {
+    //super.componentDidMount();
     this.addAllChangedMonitor();
     this.addExtendChangedMonitor();
   }
@@ -225,9 +156,11 @@ export default class Comp extends React.Component {
   componentWillUpdate() {
     this.rmvAllChangedMonitor();
     this.rmvExtendChangedMonitor();
+    //super.componentWillUpdate();
   }
 
   componentDidUpdate() {
+    //super.componentDidUpdate();
     this.addAllChangedMonitor();
     this.addExtendChangedMonitor();
   }
@@ -235,6 +168,7 @@ export default class Comp extends React.Component {
   componentWillUnmount() {
     this.rmvAllChangedMonitor();
     this.rmvExtendChangedMonitor();
+    //super.componentWillUnmount();
   }
 
   addExtendChangedMonitor() {
@@ -251,8 +185,8 @@ export default class Comp extends React.Component {
       this.addChangedMonitor($i);
     });
     //Self value monitor
-    if (this.iModelId()) {
-      this.addChangedMonitor(this.iModelId());
+    if (this.getModelId()) {
+      this.addChangedMonitor(this.getModelId());
     }
   }
 
@@ -262,9 +196,9 @@ export default class Comp extends React.Component {
         this.monitors.push(idOrReg);
       }
       if (_.isRegExp(idOrReg)) {
-        this.iModel().addRegChangedListener(idOrReg, this.updateUI);
+        this.skModel().addRegChangedListener(idOrReg, this.updateUI);
       } else {
-        this.iModel().addIdChangedListener(idOrReg, this.updateUI);
+        this.skModel().addIdChangedListener(idOrReg, this.updateUI);
       }
     }
   }
@@ -277,9 +211,9 @@ export default class Comp extends React.Component {
 
   rmvChangedMonitor(idOrReg) {
     if (_.isRegExp(idOrReg)) {
-      this.iModel().rmvRegChangedListener(idOrReg, this.updateUI);
+      this.skModel().rmvRegChangedListener(idOrReg, this.updateUI);
     } else {
-      this.iModel().rmvIdChangedListener(idOrReg, this.updateUI)
+      this.skModel().rmvIdChangedListener(idOrReg, this.updateUI)
     }
     this.monitors.skRmv(idOrReg);
   }
@@ -290,54 +224,86 @@ export default class Comp extends React.Component {
 
   //monitor end
 
+  /**
+   * @param {React.Component} child
+   * @returns {Function}
+   */
+  allowTransProps2Child(child) {
+    return {};
+  }
+
+  allowTransProps2Self() {
+    return [];
+  }
+
+  denyTransProps2Self() {
+    return [];
+  }
+
+  /**
+   * Returns boolean value of boolean, function or object with skWhen properties
+   *
+   * @param {boolean|function|object} bfo
+   * @param {boolean} defaultValue
+   * @returns {boolean}
+   */
+  execBfo(bfo, defaultValue = false) {
+    if (_.isBoolean(bfo)) {
+      return bfo;
+    } else if (_.isFunction(bfo)) {
+      return bfo.call(this);
+    } else if (_.isObject(bfo) && _.isFunction(bfo.func)) {
+      return bfo.func.call(this);
+    } else {
+      return defaultValue;
+    }
+  }
+
   getErrors() {
-    return this.iModel().getErrors(this.iModelId());
+    return this.skModel().getErrors(this.getModelId());
+  }
+
+  /**
+   * Get modelId: x.xx.xxx
+   *
+   * @returns {string}
+   */
+  getModelId() {
+    return this.props.modelId;
+  }
+
+  getSysModel() {
+    return this.props.skSysModel;
   }
 
   render() {
     let {compTag: CompTag} = this.props;
 
     return (
-      <CompTag {...this.compValidProps(CompTag)}>
-        {this.skPropsTrans()}
+      <CompTag {...this.skTransProps2Self(CompTag)}>
+        {this.skTransProps2Child()}
       </CompTag>
     );
   }
 
-  //Properties
+  /**
+   * @see Comp.execBfo
+   */
+  skBfo(prop, defaultValue = false) {
+    return this.execBfo(this.skProp(prop, defaultValue))
+  }
+
   /**
    * Get model if exist, else skModel
    *
    * @returns {Model}
    */
-  iModel() {
+  skModel() {
     return this.skProp(Comp.SK_PROPS.MODEL);
   }
 
   /**
-   * Get modelId: x.xx.xxx.xxxx
-   *
-   * @returns {string}
-   */
-  iModelId() {
-    return this.props.modelId;
-  }
-
-  /**
-   * Get skModel
-   *
-   * @returns {Model}
-   */
-  skModel() {
-    return this.props.skModel;
-  }
-
-  sysModel() {
-    return this.props.skSysModel;
-  }
-
-  /**
-   * Get prop value: prop -> skProp -> DEFAULT_PROP
+   * Get prop value: prop -> skProp -> DEFAULT.PROP
    *
    * @param {string}prop
    * @param {*} defaultValue
@@ -352,75 +318,11 @@ export default class Comp extends React.Component {
       rtn = this.props[Comp.SK_PROPS_PREFIX + SK.upperWordsFirstChar(Comp.SK_PROPS_SYS) + SK.upperWordsFirstChar(prop)]
     }
     if (rtn === undefined) {
-      rtn = Cfg[SK.STR_DEFAULT.toUpperCase() + SK.upperWordsFirstChar(prop).replace(/[A-Z]/g, ($1) => {
+      rtn = DEFAULT[SK.upperWordsFirstChar(prop).replace(/[A-Z]/g, ($1) => {
         return SK.CHAR_UNDERLINE + $1;
-      }).toUpperCase()]
+      }).toUpperCase().slice(1)]
     }
     return rtn === undefined ? defaultValue : rtn;
-  }
-
-  /**
-   * set/get value for modelId
-   *
-   * @param {*} val
-   * @returns {*}
-   */
-  skVal(val) {
-    if (arguments.length > 0) {
-      this.iModel().skVal(this.iModelId(), val);
-      return this;
-    } else {
-      return this.iModel().skVal(this.iModelId());
-    }
-  }
-
-  //Functions
-  /**
-   * Returns valid props for this comp
-   *
-   * @param {Comp|string} comp
-   * @param {PlainObject} prop
-   * @returns {PlainObject}
-   */
-  compValidProps(comp, prop) {
-    comp = comp || this.props.compTag;
-    prop = prop || this.props;
-
-    let tmpProps = REACT.P.skVals();
-    tmpProps = comp.propTypes ? tmpProps.concat(Object.keys(comp.propTypes)) : tmpProps;
-    tmpProps = (comp.type && comp.type.propTypes) ? tmpProps.concat(Object.keys(comp.type.propTypes)) : tmpProps;
-
-    return _.omit(_.pick(prop, tmpProps), [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID]);
-  }
-
-  /**
-   * Returns boolean value of boolean, function or object with skWhen properties
-   *
-   * @param {string} prop
-   * @param {boolean} defaultValue
-   * @returns {boolean}
-   */
-  skBfo(prop, defaultValue = false) {
-    return this.execBfo(this.skProp(prop, defaultValue))
-  }
-
-  /**
-   * Returns boolean value of boolean, function or object with skWhen properties
-   *
-   * @param {boolean|Function|Object} bfo
-   * @param {boolean} defaultValue
-   * @returns {boolean}
-   */
-  execBfo(bfo, defaultValue = false) {
-    if (_.isBoolean(bfo)) {
-      return bfo;
-    } else if (_.isFunction(bfo)) {
-      return bfo.call(this);
-    } else if (_.isObject(bfo) && _.isFunction(bfo.func)) {
-      return bfo.skWhen.call(this);
-    } else {
-      return defaultValue;
-    }
   }
 
   /**
@@ -431,30 +333,44 @@ export default class Comp extends React.Component {
    * @param {React.Children} children
    * @returns {React.Children}
    */
-  skPropsTrans(children = undefined) {
+  skTransProps2Child(children = undefined) {
     let skProps = this.props.skFilter(false, Comp.skPropsFilter);
     return React.Children.map(children ? children : this.props.children, child => {
       if (React.isValidElement(child)) {
         let tmpProps = (REACT.TAG[child.type] && HTML.PROP[child.type]) ? {} : skProps;
-        return React.cloneElement(child, _.assign(this.childPropsTrans(child), tmpProps, child.props.skFilter(false, Comp.skPropsFilter)));
+        return React.cloneElement(child, _.assign({}, this.allowTransProps2Child(child), tmpProps, child.props.skFilter(false, Comp.skPropsFilter)));
       }
       return child;
     })
   }
 
   /**
-   * Gen props trans to children
+   * Valid props for this comp
    *
-   * @param {React.Component} child
-   * @returns {PlainObject}
+   * @param {Comp|string} comp
+   * @param {object} prop
+   * @returns {object}
    */
-  childPropsTrans(child) {
-    return {};
+  skTransProps2Self(comp = this.props.compTag, prop = this.props) {
+    let tmpProps = REACT.P.skVals();
+    tmpProps = comp.propTypes ? tmpProps.concat(Object.keys(comp.propTypes)) : tmpProps;
+    tmpProps = (comp.type && comp.type.propTypes) ? tmpProps.concat(Object.keys(comp.type.propTypes)) : tmpProps;
+
+    return _.omit(_.pick(prop, tmpProps.concat(this.allowTransProps2Self())), [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID].concat(this.denyTransProps2Self()));
   }
 
-  hasSpecialChild(specialChildName) {
-    return ReactUtil.some(this.props.children, (child, idx) => {
-      return child.type && child.type.name == specialChildName
-    }, this);
+  /**
+   * set/get value for modelId
+   *
+   * @param {*} val
+   * @returns {*}
+   */
+  skVal(val) {
+    if (arguments.length > 0) {
+      this.skModel().skVal(this.getModelId(), val);
+      return this;
+    } else {
+      return this.skModel().skVal(this.getModelId());
+    }
   }
 }

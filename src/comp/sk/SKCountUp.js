@@ -1,13 +1,14 @@
 import CountUp from 'countup.js';
 import $ from 'jquery';
-import SK from 'sk-js';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 import React from 'react';
+import {SK} from 'sk-js';
 import Comp from '../../util/Comp';
 import REACT from '../../util/REACT';
 
 export default class SKCountUp extends Comp {
-  static defaultProps = {
+  static defaultProps = SK.assign({}, Comp.defaultProps, {
     compTag: REACT.TAG.span,
     decimal: SK.CHAR_DOT,
     decimals: 0,
@@ -25,26 +26,28 @@ export default class SKCountUp extends Comp {
     style: undefined,
     useEasing: true,
     useGrouping: true
-  };
-  static propTypes = SK.assign({}, Comp.propTypes, {
-    decimal: React.PropTypes.string,
-    decimals: React.PropTypes.number,
-    duration: React.PropTypes.number,
-    easingFn: React.PropTypes.func,
-    end: React.PropTypes.number,
-    formattingFn: React.PropTypes.func,
-    onComplete: React.PropTypes.func,
-    onStart: React.PropTypes.func,
-    prefix: React.PropTypes.string,
-    separator: React.PropTypes.string,
-    start: React.PropTypes.number,
-    suffix: React.PropTypes.string,
-    useEasing: React.PropTypes.bool,
-    useGrouping: React.PropTypes.bool
   });
+  static propTypes = SK.assign({}, Comp.propTypes, {
+    decimal: PropTypes.string,
+    decimals: PropTypes.number,
+    duration: PropTypes.number,
+    easingFn: PropTypes.func,
+    end: PropTypes.number,
+    formattingFn: PropTypes.func,
+    onComplete: PropTypes.func,
+    onStart: PropTypes.func,
+    prefix: PropTypes.string,
+    separator: PropTypes.string,
+    start: PropTypes.number,
+    suffix: PropTypes.string,
+    useEasing: PropTypes.bool,
+    useGrouping: PropTypes.bool
+  });
+
 
   constructor(...args) {
     super(...args);
+    this.compName = 'SKCountUp';
   }
 
   componentDidMount() {
@@ -119,7 +122,7 @@ export default class SKCountUp extends Comp {
     let {compTag: CompTag, start} = this.props;
 
     return (
-      <CompTag {...this.compValidProps(CompTag)} ref='countupDomRef'>
+      <CompTag {...this.skTransProps2Self(CompTag)} ref='countupDomRef'>
         {start}
       </CompTag>
     );

@@ -1,26 +1,46 @@
 import {Row} from 'antd';
+import PropTypes from 'prop-types';
 import React from 'react';
-import SK from 'sk-js';
-import Comp from '../../util/Comp';
+import {SK} from 'sk-js';
+import AntdComp from './AntdComp';
+import {ALIGN, JUSTIFY} from '../../util/Const';
 
-export default class SKRow extends Comp {
-  static defaultProps = {
+Row.defaultProps = SK.assign({}, {
+  align: ALIGN.Top,
+  gutter: 0,
+  justify: JUSTIFY.Start
+}, Row.defaultProps, {});
+
+Row.propTypes = SK.assign({}, {
+  align: PropTypes.oneOf(Object.values(ALIGN)),
+  gutter: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.object
+  ]),
+  justify: PropTypes.oneOf(Object.values(JUSTIFY)),
+  type: PropTypes.string
+}, Row.propTypes, {});
+
+export default class SKRow extends AntdComp {
+  static defaultProps = SK.assign({}, AntdComp.defaultProps, Row.defaultProps, {
     compTag: Row
-  };
-  static propTypes = SK.assign({}, Comp.propTypes, Row.propTypes, {});
+  });
+  static propTypes = SK.assign({}, AntdComp.propTypes, Row.propTypes, {});
+
 
   constructor(...args) {
     super(...args);
+    this.compName = 'SKRow';
   }
 
   render() {
     let {compTag: CompTag, gutter} = this.props;
-    gutter = gutter || this.skProp(Comp.SK_PROPS.GRID_GUTTER);
+    gutter = gutter || this.skProp(AntdComp.SK_PROPS.GRID_GUTTER);
 
     return (
-      <CompTag {...this.compValidProps(CompTag)}
+      <CompTag {...this.skTransProps2Self(CompTag)}
                gutter={gutter}>
-        {this.skPropsTrans()}
+        {this.skTransProps2Child()}
       </CompTag>
     );
   }

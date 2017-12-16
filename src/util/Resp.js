@@ -1,8 +1,8 @@
-import {message, Modal, notification} from 'antd';
+import {message, Modal} from 'antd';
 import _ from 'lodash';
-import SK from 'sk-js';
+import {SK} from 'sk-js';
 import {Codes, I18N} from 'sk-l10n';
-import ReactUtil from './ReactUtil';
+import ReactUtil from './Reacts';
 
 export class RespMsg {
   static TYPE = {
@@ -16,10 +16,6 @@ export class RespMsg {
     this.type = msg.type;//Message Type
     this.code = msg.code;//Message Code or Message Content
     this.args = msg.args;//Message Arguments, Array or Object, format by skFmtArr or skFmt
-  }
-
-  getType() {
-    return this.type;
   }
 
   getMessage() {
@@ -41,10 +37,14 @@ export class RespMsg {
       }))
     } else if (_.isPlainObject(this.args) && !_.isEmpty(this.args)) {
       rtn = i18nMsg.skFmt(this.args);
-    } else if (i18nMsg != key) {
+    } else if (i18nMsg !== key) {
       rtn = i18nMsg;
     }
     return rtn;
+  }
+
+  getType() {
+    return this.type;
   }
 }
 
@@ -52,38 +52,21 @@ export default class Resp {
   constructor(respJsonData) {
     this.data = respJsonData.data;//Business Data
     this.done = respJsonData.done;//true: No Unknown Exception,false: has Unknown Exception
-    if (_.isPlainObject(respJsonData.rslt) && !_.isEmpty(respJsonData.rslt)) {//Result Message Object, Required if done is false
-      this.rslt = new RespMsg(respJsonData.rslt);
-    }
-    if (Array.isArray(respJsonData.ntfs) && !_.isEmpty(respJsonData.ntfs)) {//Notifications Array
-      this.ntfs = respJsonData.ntfs.map(ntf => {
-        return new RespMsg(ntf);
-      });
+    if (_.isPlainObject(respJsonData.mesg) && !_.isEmpty(respJsonData.mesg)) {//Result Message Object, Required if done is false
+      this.mesg = new RespMsg(respJsonData.mesg);
     }
   }
 
-  showNotifications() {
-    if (this.ntfs) {
-      this.ntfs.forEach(($respMsg) => {
-        if ($respMsg instanceof RespMsg) {
-          if ($respMsg.getType() && $respMsg.getMessage()) {
-            notification[_.lowerCase($respMsg.getType())]({message: $respMsg.getType(), description: $respMsg.getMessage()});
-          }
-        }
-      });
-    }
-  }
-
-  showResult() {
-    if (this.rslt && this.rslt.getType() && this.rslt.getMessage()) {
-      if (!this.done && this.rslt.getType() == RespMsg.TYPE.ERROR) {
+  feedback() {
+    if (this.mesg && this.mesg.getType() && this.mesg.getMessage()) {
+      if (!this.done && this.mesg.getType() === RespMsg.TYPE.ERROR) {
         Modal.error({
-          title: this.rslt.getType(), content: this.rslt.getMessage(), okText: I18N.get('Return'), onOk() {
+          title: this.mesg.getType(), content: this.mesg.getMessage(), okText: I18N.get('Return'), onOk() {
             ReactUtil.forward(SK.CHAR_SLASH);
           }
         });
       } else {
-        message[_.lowerCase(this.rslt.getType())](this.rslt.getMessage());
+        message[_.lowerCase(this.mesg.getType())](this.mesg.getMessage());
       }
     }
   }

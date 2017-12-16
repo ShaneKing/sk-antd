@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import SK from 'sk-js';
+import {SK} from 'sk-js';
 import NProgress from 'nprogress';
 import Model from './Model';
 import Resp from './Resp';
@@ -47,7 +47,7 @@ export default class Ajax {
     try {
       return $.ajax(settings).done((data, textStatus, jqXHR) => {
         let response = new Resp(data);
-        response.showResult();
+        response.feedback();
       }).fail((jqXHR, textStatus, errorThrown) => {
         console.error(jqXHR);
         console.error(textStatus);
