@@ -7,6 +7,10 @@ import {Dir, SIZE} from '../../util/Const';
 import Model from '../../util/Model';
 import Reacts from '../../util/Reacts';
 
+/**
+ * 1.The defaultProps and propTypes of AntD just can be use in wrapper Comp or non-Comp
+ * 2.if origin exist, must be use origin
+ */
 export default class AntdComp extends Comp {
   static SK_PROPS = {
     COL_SPAN: 'colSpan',

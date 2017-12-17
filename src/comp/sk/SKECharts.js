@@ -5,7 +5,7 @@ import elementResizeEvent from 'element-resize-event';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
-import SKSpin from '../antd/SKSpin';
+import SKSpin from '../antd/spin/SKSpin';
 import Comp from '../../util/Comp';
 import {SIZE} from '../../util/Const';
 import REACT from '../../util/REACT';
