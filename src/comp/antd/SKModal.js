@@ -55,15 +55,14 @@ export default class SKModal extends AntdComp {
     compTag: Modal
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, Modal.propTypes, {});
+  handleCancel = (domEvent) => {
+    this.skVal(false);
+  };
 
   constructor(...args) {
     super(...args);
     this.compName = 'SKModal';
   }
-
-  handleCancel = (domEvent) => {
-    this.skVal(false);
-  };
 
   render() {
     let {compTag: CompTag} = this.props;

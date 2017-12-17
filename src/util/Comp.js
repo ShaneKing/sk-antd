@@ -116,6 +116,15 @@ export default class Comp extends Component {
     m2vConvertor: PropTypes.func,//Model 2 View, like Date Comp, moment format to view: YYYY-MM-DDTHH:mm:ss.SSSZ -> YYYY-MM-DD
     v2mConvertor: PropTypes.func//View 2 Model, like Check Comp, true is checked: true -> 1, false -> 0
   };
+  updateUI = (evt) => {
+    this.setState({stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX)});
+  };
+
+  constructor(...args) {
+    super(...args);
+    this.compName = 'Comp';
+    this.monitors = [];
+  }
 
   /**
    * Assert Model
@@ -139,12 +148,6 @@ export default class Comp extends Component {
    */
   static skPropsFilter(k) {
     return _.startsWith(SK.s4s(k), Comp.SK_PROPS_PREFIX);
-  }
-
-  constructor(...args) {
-    super(...args);
-    this.compName = 'Comp';
-    this.monitors = [];
   }
 
   componentDidMount() {
@@ -217,10 +220,6 @@ export default class Comp extends Component {
     }
     this.monitors.skRmv(idOrReg);
   }
-
-  updateUI = (evt) => {
-    this.setState({stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX)});
-  };
 
   //monitor end
 

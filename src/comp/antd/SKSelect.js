@@ -86,13 +86,13 @@ export default class SKSelect extends AntdComp {
     dataId: PropTypes.string
   });
 
-  static optionMap(selectOption) {
-    return (<Select.Option key={selectOption.id}>{selectOption.text}</Select.Option>);
-  }
-
   constructor(...args) {
     super(...args);
     this.compName = 'SKSelect';
+  }
+
+  static optionMap(selectOption) {
+    return (<Select.Option key={selectOption.id}>{selectOption.text}</Select.Option>);
   }
 
   handleSelect(value, option) {

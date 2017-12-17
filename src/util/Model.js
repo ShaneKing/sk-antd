@@ -9,6 +9,23 @@ export default class Model {
   static PROP_SYS = 'skSysModel';
 
   /**
+   *
+   * @param freeObject plain object
+   * @param validator
+   */
+  constructor(freeObject = {}, validator = new Validator()) {
+
+    this.errors = {};
+    this.idListeners = {};
+    this.monitors = {};
+    this.regListeners = {};
+    this.freeObject = freeObject;
+    this.validator = validator;
+
+    this.addAllValidatorMonitor();
+  }
+
+  /**
    * {a:{b:true,c:false}} => a.b
    * @param prefix
    * @param modelIds
@@ -42,23 +59,6 @@ export default class Model {
       }
     }
     return rtn;
-  }
-
-  errors = {};
-  idListeners = {};
-  monitors = {};
-  regListeners = {};
-
-  /**
-   *
-   * @param freeObject plain object
-   * @param validator
-   */
-  constructor(freeObject = {}, validator = new Validator()) {
-    this.freeObject = freeObject;
-    this.validator = validator;
-
-    this.addAllValidatorMonitor();
   }
 
   /**
