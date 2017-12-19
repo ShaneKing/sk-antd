@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {SK} from 'sk-js';
-import Comp from '../../util/Comp';
+import Comp from '../Comp';
 
 export default class SKLink extends Comp {
   static defaultProps = SK.assign({}, Comp.defaultProps, Link.defaultProps, {

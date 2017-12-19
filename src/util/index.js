@@ -1,8 +1,6 @@
 export Ajax from './Ajax';
-export Comp from './Comp';
 export {Dir, EvtType, SIZE} from './Const';
 export DEFAULT from './DEFAULT';
-export HTML from './HTML';
 export Model from './Model';
 export REACT from './REACT';
 export Reacts from './Reacts';

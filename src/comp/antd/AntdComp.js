@@ -2,8 +2,8 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
-import Comp from '../../util/Comp';
-import {Dir, SIZE} from '../../util/Const';
+import Comp from '../Comp';
+import {SIZE} from '../../util/Const';
 import Model from '../../util/Model';
 import Reacts from '../../util/Reacts';
 
@@ -13,78 +13,12 @@ import Reacts from '../../util/Reacts';
  */
 export default class AntdComp extends Comp {
   static SK_PROPS = {
-    COL_SPAN: 'colSpan',
-    COL_XS: 'colXs',
-    COL_SM: 'colSm',
-    COL_MD: 'colMd',
-    COL_LG: 'colLg',
-    COL_XL: 'colXl',
-    FORM_LABEL_COL: 'formLabelCol',
-    FORM_LAYOUT: 'formLayout',
-    FORM_WRAPPER_COL: 'formWrapperCol',
-    GRID_GUTTER: 'gridGutter',
-    IN_FROM_ITEM: 'inFormItem',
-    IN_FROM_ROW: 'inFormRow',
     SIZE: 'size'
   };
   static defaultProps = SK.assign({}, Comp.defaultProps, {});
   static propTypes = SK.assign({}, Comp.propTypes, {
-    colSpan: PropTypes.number,
-    skColSpan: PropTypes.number,
-    colXs: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object
-    ]),
-    skColXs: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object
-    ]),
-    colSm: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object
-    ]),
-    skColSm: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object
-    ]),
-    colMd: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object
-    ]),
-    skColMd: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object
-    ]),
-    colLg: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object
-    ]),
-    skColLg: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object
-    ]),
-    colXl: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object
-    ]),
-    skColXl: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object
-    ]),
-    formLayout: PropTypes.oneOf([Dir.Horizontal, Dir.Vertical, Dir.Inline]),
-    skFormLayout: PropTypes.oneOf([Dir.Horizontal, Dir.Vertical, Dir.Inline]),//Const.Dir
-    formLabelCol: PropTypes.object,
-    skFormLabelCol: PropTypes.object,
-    formWrapperCol: PropTypes.object,
-    skFormWrapperCol: PropTypes.object,
-    gridGutter: PropTypes.number,
-    skGridGutter: PropTypes.number,
-    inFormItem: PropTypes.bool,
-    skInFormItem: PropTypes.bool,
-    inFormRow: PropTypes.bool,
-    skInFormRow: PropTypes.bool,
-    size: PropTypes.oneOf([SIZE.Large, SIZE.Default, SIZE.Small]),
-    skSize: PropTypes.oneOf([SIZE.Large, SIZE.Default, SIZE.Small])
+    size: PropTypes.oneOf(),
+    skSize: PropTypes.oneOf(Object.values(SIZE))
   });
 
   constructor(...args) {

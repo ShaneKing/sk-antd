@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import {SK} from 'sk-js';
-import Comp from '../../util/Comp';
+import Comp from '../Comp';
 import REACT from '../../util/REACT';
 
 export default class SKA extends Comp {

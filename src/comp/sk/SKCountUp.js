@@ -4,7 +4,7 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
-import Comp from '../../util/Comp';
+import Comp from '../Comp';
 import REACT from '../../util/REACT';
 
 export default class SKCountUp extends Comp {
@@ -63,7 +63,7 @@ export default class SKCountUp extends Comp {
   shouldComponentUpdate(nextProps, nextState) {
     return this.props.duration !== nextProps.duration ||
       this.props.end !== nextProps.end ||
-      $(this.refs.countupDomRef).text() != this.skVal().skCurrencyFmt(nextProps.decimals) ||
+      $(this.refs.countupDomRef).text() !== this.skVal().skCurrencyFmt(nextProps.decimals) ||
       this.props.start !== nextProps.start;
   }
 

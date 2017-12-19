@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
@@ -6,8 +7,17 @@ import SKCol from '../col/SKCol';
 import SKFormItem from './SKFormItem';
 
 export default class FormComp extends AntdComp {
+  static SK_PROPS = {
+    IN_FROM_ITEM: 'inFormItem',
+    IN_FROM_ROW: 'inFormRow'
+  };
   static defaultProps = SK.assign({}, AntdComp.defaultProps, SKCol.defaultProps, SKFormItem.defaultProps, {});
-  static propTypes = SK.assign({}, AntdComp.propTypes, SKCol.propTypes, SKFormItem.propTypes, {});
+  static propTypes = SK.assign({}, AntdComp.propTypes, SKCol.propTypes, SKFormItem.propTypes, {
+    inFormItem: PropTypes.bool,
+    skInFormItem: PropTypes.bool,
+    inFormRow: PropTypes.bool,
+    skInFormRow: PropTypes.bool
+  });
 
   constructor(...args) {
     super(...args);
@@ -15,8 +25,8 @@ export default class FormComp extends AntdComp {
   }
 
   render() {
-    let inFormItem = this.skProp(AntdComp.SK_PROPS.IN_FROM_ITEM);
-    let inFormRow = this.skProp(AntdComp.SK_PROPS.IN_FROM_ROW);
+    let inFormItem = this.skProp(FormComp.SK_PROPS.IN_FROM_ITEM);
+    let inFormRow = this.skProp(FormComp.SK_PROPS.IN_FROM_ROW);
 
     let errorObj = this.getErrors();
     let help = _.isEmpty(errorObj) ? SK.EMPTY : _.join(errorObj.skVals(), SK.CHAR_VERTICAL);

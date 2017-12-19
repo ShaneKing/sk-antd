@@ -9,6 +9,11 @@ export default class Model {
   static PROP_SYS = 'skSysModel';
 
   /**
+   * freeObject = {
+   *  m:{"xxx":"most form"},
+   *  v:{"yyy":"most table/tree"},
+   *  c:{"zzz":"button state"}
+   * }
    *
    * @param freeObject plain object
    * @param validator

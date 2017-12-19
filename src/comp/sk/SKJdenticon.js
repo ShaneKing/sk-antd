@@ -4,7 +4,7 @@ import md5 from 'js-md5';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
-import Comp from '../../util/Comp';
+import Comp from '../Comp';
 import REACT from '../../util/REACT';
 
 export default class SKJdenticon extends Comp {

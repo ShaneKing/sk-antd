@@ -3,7 +3,6 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
-import OriginMenu from './OriginMenu';
 import SKMenuItem from './SKMenuItem';
 import SKSubMenu from './SKSubMenu';
 import AntdComp from '../AntdComp';
@@ -12,43 +11,40 @@ import SKLink from '../../react/SKLink';
 import {Dir} from '../../../util/Const';
 
 export default class SKMenu extends AntdComp {
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, SKMenuItem.defaultProps, SKSubMenu.defaultProps, OriginMenu.defaultProps, {
+  static defaultProps = SK.assign({}, AntdComp.defaultProps, {
     compTag: Menu,
     dataId: undefined,
     displayItem: (itemInfo) => {
       return true
     }
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, SKMenuItem.propTypes, SKSubMenu.propTypes, OriginMenu.propTypes, {
+  static propTypes = SK.assign({}, AntdComp.propTypes, {
     dataId: PropTypes.string,
     displayItem: PropTypes.func
   });
 
-
   constructor(...args) {
     super(...args);
     this.compName = 'SKMenu';
-  }
-
-  handleOpenChange(openKeys) {
-    if (this.props.onOpenChange && _.isFunction(this.props.onOpenChange)) {
-      this.props.onOpenChange(openKeys);
-    } else {
-      let newVal = _.clone(this.skVal());
-      newVal.openKeys = openKeys.slice(0);
-      this.skVal(newVal);
-    }
-  }
-
-  handleClick(clickInfo) {
-    if (this.props.onClick && _.isFunction(this.props.onClick)) {
-      this.props.onClick(clickInfo);
-    } else {
-      let newVal = _.clone(this.skVal());
-      // newVal.openKeys = this.skVal().openKeys;
-      newVal.selectedKeys = [clickInfo.key];
-      this.skVal(newVal);
-    }
+    this.handleClick = (clickInfo) => {
+      if (this.props.onClick && _.isFunction(this.props.onClick)) {
+        this.props.onClick(clickInfo);
+      } else {
+        let newVal = _.clone(this.skVal());
+        // newVal.openKeys = this.skVal().openKeys;
+        newVal.selectedKeys = [clickInfo.key];
+        this.skVal(newVal);
+      }
+    };
+    this.handleOpenChange = (openKeys) => {
+      if (this.props.onOpenChange && _.isFunction(this.props.onOpenChange)) {
+        this.props.onOpenChange(openKeys);
+      } else {
+        let newVal = _.clone(this.skVal());
+        newVal.openKeys = openKeys.slice(0);
+        this.skVal(newVal);
+      }
+    };
   }
 
   menuMap(itemInfo) {
@@ -86,8 +82,8 @@ export default class SKMenu extends AntdComp {
     return (
       <CompTag {...this.skTransProps2Self(CompTag)}
                mode={mode}
-               onClick={this.handleClick.bind(this)}
-               onOpenChange={this.handleOpenChange.bind(this)}
+               onClick={this.handleClick}
+               onOpenChange={this.handleOpenChange}
                openKeys={this.skVal().openKeys}
                selectedKeys={this.skVal().selectedKeys}
                theme={theme}>

@@ -2,13 +2,12 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {SK} from 'sk-js';
-import DEFAULT from './DEFAULT';
-import HTML from './HTML';
-import Model from './Model';
-import REACT from './REACT';
+import DEFAULT from '../util/DEFAULT';
+import Model from '../util/Model';
+import REACT from '../util/REACT';
 
 /**
- * props:compTag,model(skModel),modelId,labelDir(skLabelDir),labelWidth(skLabelWidth)
+ * props:compTag,model(skModel),modelId
  * bfo  ,active(skActive),disabled(skDisabled)
  * func ,m2eConvertor,e2mConvertor,m2vConvertor,v2mConvertor
  * html ,className,role,style
@@ -28,7 +27,7 @@ export default class Comp extends Component {
     DISABLED: 'disabled',
     HIDDEN: 'hidden',
     PREVIEW: 'preview',
-    READONLY: 'readOnly',
+    READ_ONLY: 'readOnly',
     REQUIRED: 'required',//just paint required icon
     //component monitor list, can be string[reg], string array or object
     MONITOR: 'monitor'
@@ -39,16 +38,16 @@ export default class Comp extends Component {
       PropTypes.element,
       PropTypes.func,
       PropTypes.string
-    ]),//React component or Brad Component
-    model: Comp.IS_PROP_TYPES_MODEL,//Business Model(part of page), PlainObject or Brad.Model
-    skModel: Comp.IS_PROP_TYPES_MODEL,//Business Model(page), PlainObject or Brad.Model
-    skSysModel: Comp.IS_PROP_TYPES_MODEL,//System Model(whole of page), PlainObject or Brad.Model
+    ]),
+    skModel: Comp.IS_PROP_TYPES_MODEL,//Business Model(page), PlainObject
+    skSysModel: Comp.IS_PROP_TYPES_MODEL,//System Model(whole of page), PlainObject
+    model: Comp.IS_PROP_TYPES_MODEL,//Business Model(part of page), PlainObject
     modelId: PropTypes.string,
     monitor: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.array,
       PropTypes.object
-    ]),//monitor is string[reg], array[string] or object
+    ]),//monitor is string[reg], array[string] or object of modelId
 
     active: PropTypes.oneOfType([
       PropTypes.bool,
@@ -116,14 +115,15 @@ export default class Comp extends Component {
     m2vConvertor: PropTypes.func,//Model 2 View, like Date Comp, moment format to view: YYYY-MM-DDTHH:mm:ss.SSSZ -> YYYY-MM-DD
     v2mConvertor: PropTypes.func//View 2 Model, like Check Comp, true is checked: true -> 1, false -> 0
   };
-  updateUI = (evt) => {
-    this.setState({stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX)});
-  };
+
 
   constructor(...args) {
     super(...args);
     this.compName = 'Comp';
     this.monitors = [];
+    this.updateUI = (evt) => {
+      this.setState({stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX)});
+    };
   }
 
   /**
@@ -327,8 +327,6 @@ export default class Comp extends Component {
   /**
    * Transferring props to children
    *
-   * child + skChildPropsTrans(child) + this.props.skFilter(false, Comp.skPropsFilter) + child.props.skFilter(false, Comp.skPropsFilter)
-   *
    * @param {React.Children} children
    * @returns {React.Children}
    */
@@ -336,7 +334,7 @@ export default class Comp extends Component {
     let skProps = this.props.skFilter(false, Comp.skPropsFilter);
     return React.Children.map(children ? children : this.props.children, child => {
       if (React.isValidElement(child)) {
-        let tmpProps = (REACT.TAG[child.type] && HTML.PROP[child.type]) ? {} : skProps;
+        let tmpProps = REACT.TAG[child.type] ? {} : skProps;
         return React.cloneElement(child, _.assign({}, this.allowTransProps2Child(child), tmpProps, child.props.skFilter(false, Comp.skPropsFilter)));
       }
       return child;
@@ -351,11 +349,8 @@ export default class Comp extends Component {
    * @returns {object}
    */
   skTransProps2Self(comp = this.props.compTag, prop = this.props) {
-    let tmpProps = REACT.P.skVals();
-    tmpProps = comp.propTypes ? tmpProps.concat(Object.keys(comp.propTypes)) : tmpProps;
-    tmpProps = (comp.type && comp.type.propTypes) ? tmpProps.concat(Object.keys(comp.type.propTypes)) : tmpProps;
-
-    return _.omit(_.pick(prop, tmpProps.concat(this.allowTransProps2Self())), [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID].concat(this.denyTransProps2Self()));
+    let tmpProps = REACT.TAG[comp] ? _.pick(prop, REACT.P.skVals().concat(this.allowTransProps2Self())) : prop;
+    return _.omit(tmpProps, [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID].concat(this.denyTransProps2Self()));
   }
 
   /**
