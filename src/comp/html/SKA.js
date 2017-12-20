@@ -10,16 +10,14 @@ export default class SKA extends Comp {
   });
   static propTypes = SK.assign({}, Comp.propTypes, {});
 
-
   constructor(...args) {
     super(...args);
     this.compName = 'SKA';
-  }
-
-  handleClick(e) {
-    if (this.props.onClick && _.isFunction(this.props.onClick)) {
-      this.props.onClick(e);
-    }
+    this.handleClick = (e) => {
+      if (this.props.onClick && _.isFunction(this.props.onClick)) {
+        this.props.onClick(e);
+      }
+    };
   }
 
   render() {
@@ -27,7 +25,7 @@ export default class SKA extends Comp {
     return (
       <CompTag {...this.skTransProps2Self(CompTag)}
                href={'javascript:void(0);'}
-               onClick={this.handleClick.bind(this)}>
+               onClick={this.handleClick}>
         {this.skTransProps2Child()}
       </CompTag>
     );

@@ -3,6 +3,7 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
+import OriginMenu from './OriginMenu';
 import SKMenuItem from './SKMenuItem';
 import SKSubMenu from './SKSubMenu';
 import AntdComp from '../AntdComp';
@@ -11,14 +12,14 @@ import SKLink from '../../react/SKLink';
 import {Dir} from '../../../util/Const';
 
 export default class SKMenu extends AntdComp {
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, {
+  static defaultProps = SK.assign({}, AntdComp.defaultProps, SKMenuItem.defaultProps, SKSubMenu.defaultProps, OriginMenu.defaultProps, {
     compTag: Menu,
     dataId: undefined,
     displayItem: (itemInfo) => {
       return true
     }
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, {
+  static propTypes = SK.assign({}, AntdComp.propTypes, SKMenuItem.propTypes, SKSubMenu.propTypes, OriginMenu.propTypes, {
     dataId: PropTypes.string,
     displayItem: PropTypes.func
   });

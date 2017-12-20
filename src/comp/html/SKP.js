@@ -7,7 +7,6 @@ export default class SKP extends Comp {
     compTag: REACT.TAG.p
   });
 
-
   constructor(...args) {
     super(...args);
     this.compName = 'SKP';

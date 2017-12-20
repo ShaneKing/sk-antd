@@ -9,7 +9,6 @@ export default class SKLink extends Comp {
   });
   static propTypes = SK.assign({}, Comp.propTypes, Link.propTypes, {});
 
-
   constructor(...args) {
     super(...args);
     this.compName = 'SKLink';

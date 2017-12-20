@@ -17,7 +17,7 @@ export default class AntdComp extends Comp {
   };
   static defaultProps = SK.assign({}, Comp.defaultProps, {});
   static propTypes = SK.assign({}, Comp.propTypes, {
-    size: PropTypes.oneOf(),
+    size: PropTypes.oneOf(Object.values(SIZE)),
     skSize: PropTypes.oneOf(Object.values(SIZE))
   });
 

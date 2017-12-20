@@ -7,7 +7,6 @@ export default class SKDiv extends Comp {
     compTag: REACT.TAG.div
   });
 
-
   constructor(...args) {
     super(...args);
     this.compName = 'SKDiv';

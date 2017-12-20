@@ -7,7 +7,6 @@ export default class SKSpan extends Comp {
     compTag: REACT.TAG.span
   });
 
-
   constructor(...args) {
     super(...args);
     this.compName = 'SKSpan';

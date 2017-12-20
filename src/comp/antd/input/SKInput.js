@@ -1,14 +1,15 @@
 import {Input} from 'antd';
 import React from 'react';
 import {SK} from 'sk-js';
+import OriginInput from './OriginInput';
 import AntdComp from '../AntdComp';
 
 //origin exist, use origin
 export default class SKInput extends AntdComp {
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, {
+  static defaultProps = SK.assign({}, AntdComp.defaultProps, OriginInput.defaultProps, {
     compTag: Input
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, {});
+  static propTypes = SK.assign({}, AntdComp.propTypes, OriginInput.propTypes, {});
 
   constructor(...args) {
     super(...args);

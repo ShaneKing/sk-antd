@@ -2,7 +2,7 @@ import {SK} from 'sk-js';
 import FormComp from './FormComp';
 import SKDatePicker from '../date-picker/SKDatePicker';
 
-export default class FormDatePicker extends FormComp {
+export default class SKFormDatePicker extends FormComp {
   static defaultProps = SK.assign({}, FormComp.defaultProps, SKDatePicker.defaultProps, {
     compTag: SKDatePicker
   });
@@ -10,6 +10,6 @@ export default class FormDatePicker extends FormComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'FormDatePicker';
+    this.compName = 'SKFormDatePicker';
   }
 }

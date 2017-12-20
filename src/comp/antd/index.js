@@ -7,6 +7,7 @@ export * from './checkbox';
 export * from './col';
 export * from './date-picker';
 export * from './form';
+export * from './form-comp';
 export * from './icon';
 export * from './input';
 export * from './layout';

@@ -7,7 +7,6 @@ export default class SKBr extends Comp {
     compTag: REACT.TAG.br
   });
 
-
   constructor(...args) {
     super(...args);
     this.compName = 'SKBr';

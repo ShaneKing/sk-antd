@@ -7,7 +7,6 @@ export default class SKH1 extends Comp {
     compTag: REACT.TAG.h1
   });
 
-
   constructor(...args) {
     super(...args);
     this.compName = 'SKH1';

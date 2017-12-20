@@ -349,8 +349,15 @@ export default class Comp extends Component {
    * @returns {object}
    */
   skTransProps2Self(comp = this.props.compTag, prop = this.props) {
-    let tmpProps = REACT.TAG[comp] ? _.pick(prop, REACT.P.skVals().concat(this.allowTransProps2Self())) : prop;
-    return _.omit(tmpProps, [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID].concat(this.denyTransProps2Self()));
+    let tmpProps = REACT.P.skVals();
+    if (comp.name && _.startsWith(SK.s4s(comp.name), Comp.SK_PROPS_PREFIX.toUpperCase())) {
+      //SK COMP
+      tmpProps = Object.keys(prop);
+    } else if (comp.propTypes) {
+      //AntD or rc-*
+      tmpProps = tmpProps.concat(Object.keys(comp.propTypes));
+    }
+    return _.omit(_.pick(prop, tmpProps.concat(this.allowTransProps2Self())), [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID].concat(this.denyTransProps2Self()));
   }
 
   /**

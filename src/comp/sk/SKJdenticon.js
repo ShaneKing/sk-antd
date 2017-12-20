@@ -16,7 +16,6 @@ export default class SKJdenticon extends Comp {
     size: PropTypes.number
   });
 
-
   constructor(...props) {
     super(...props);
     this.compName = 'SKJdenticon';

@@ -7,7 +7,6 @@ export default class SKCanvas extends Comp {
     compTag: REACT.TAG.canvas
   });
 
-
   constructor(...args) {
     super(...args);
     this.compName = 'SKCanvas';

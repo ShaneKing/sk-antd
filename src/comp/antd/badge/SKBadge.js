@@ -1,13 +1,32 @@
 import {Badge} from 'antd';
+import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
+import {STATUS} from '../../../util/Const';
+
+Badge.defaultProps = SK.assign({}, {
+  dot: false,
+  overflowCount: 99,
+  showZero: false
+}, Badge.defaultProps, {});
+
+Badge.propTypes = SK.assign({}, {
+  //https://ant.design/components/badge-cn/#API
+  count: PropTypes.number,
+  dot: PropTypes.bool,
+  overflowCount: PropTypes.number,
+  showZero: PropTypes.bool,
+  status: PropTypes.oneOf(Object.values(STATUS)),
+  text: PropTypes.string,
+  offset: PropTypes.any
+}, Badge.propTypes, {});
 
 export default class SKBadge extends AntdComp {
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, {
+  static defaultProps = SK.assign({}, AntdComp.defaultProps, Badge.defaultProps, {
     compTag: Badge
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, {});
+  static propTypes = SK.assign({}, AntdComp.propTypes, Badge.propTypes, {});
 
   constructor(...args) {
     super(...args);

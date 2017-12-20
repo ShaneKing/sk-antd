@@ -4,15 +4,55 @@ import React from 'react';
 import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
+Col.defaultProps = SK.assign({}, {
+  offset: 0,
+  order: 0,
+  pull: 0,
+  push: 0
+}, Col.defaultProps, {});
+
+Col.propTypes = SK.assign({}, {
+  //https://ant.design/components/grid-cn/#Col
+  offset: PropTypes.number,
+  order: PropTypes.number,
+  pull: PropTypes.number,
+  push: PropTypes.number,
+  span: PropTypes.number,
+  xs: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.object
+  ]),
+  sm: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.object
+  ]),
+  md: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.object
+  ]),
+  lg: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.object
+  ]),
+  xl: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.object
+  ]),
+  xxl: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.object
+  ])
+}, Col.propTypes, {});
+
 export default class SKCol extends AntdComp {
   static SK_PROPS = {
     COL_SPAN: 'colSpan',
     GRID_GUTTER: 'gridGutter'
   };
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, {
+  static defaultProps = SK.assign({}, AntdComp.defaultProps, Col.defaultProps, {
     compTag: Col
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, {
+  static propTypes = SK.assign({}, AntdComp.propTypes, Col.propTypes, {
     colSpan: PropTypes.number,
     skColSpan: PropTypes.number,
     gridGutter: PropTypes.number,
@@ -41,5 +81,9 @@ export default class SKCol extends AntdComp {
         {this.skTransProps2Child()}
       </CompTag>
     );
+  }
+
+  allowTransProps2Child(child) {
+    return {style: {}};
   }
 }

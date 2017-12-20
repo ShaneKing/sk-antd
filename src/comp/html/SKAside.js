@@ -7,7 +7,6 @@ export default class SKAside extends Comp {
     compTag: REACT.TAG.aside
   });
 
-
   constructor(...args) {
     super(...args);
     this.compName = 'SKAside';

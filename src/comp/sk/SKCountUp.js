@@ -44,7 +44,6 @@ export default class SKCountUp extends Comp {
     useGrouping: PropTypes.bool
   });
 
-
   constructor(...args) {
     super(...args);
     this.compName = 'SKCountUp';

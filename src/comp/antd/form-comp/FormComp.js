@@ -4,7 +4,7 @@ import React from 'react';
 import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import SKCol from '../col/SKCol';
-import SKFormItem from './SKFormItem';
+import SKFormItem from '../form/SKFormItem';
 
 export default class FormComp extends AntdComp {
   static SK_PROPS = {

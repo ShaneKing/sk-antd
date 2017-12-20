@@ -1,4 +1,4 @@
-import {Dir, SIZE} from './Const';
+import {SIZE} from './Const';
 
 let DEFAULT = {
   //AntD Default
