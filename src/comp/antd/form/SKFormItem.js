@@ -34,8 +34,8 @@ Form.Item.propTypes = SK.assign({}, {
 
 export default class SKFormItem extends AntdComp {
   static SK_PROPS = {
-    FORM_LABEL_COL: 'formLabelCol',
-    FORM_WRAPPER_COL: 'formWrapperCol'
+    LABEL_COL: 'labelCol',
+    WRAPPER_COL: 'wrapperCol'
   };
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Form.Item.defaultProps, {
     compTag: Form.Item
@@ -53,9 +53,9 @@ export default class SKFormItem extends AntdComp {
   }
 
   render() {
-    let {compTag: CompTag, labelCol, wrapperCol} = this.props;
-    labelCol = labelCol || this.skProp(SKFormItem.SK_PROPS.FORM_LABEL_COL);
-    wrapperCol = wrapperCol || this.skProp(SKFormItem.SK_PROPS.FORM_WRAPPER_COL);
+    let {compTag: CompTag} = this.props;
+    let labelCol = this.skProp(SKFormItem.SK_PROPS.LABEL_COL);
+    let wrapperCol = this.skProp(SKFormItem.SK_PROPS.WRAPPER_COL);
 
     return (
       <CompTag {...this.skTransProps2Self(CompTag)}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
+import SKRow from '../row/SKRow';
 
 Col.defaultProps = SK.assign({}, {
   offset: 0,
@@ -46,18 +47,12 @@ Col.propTypes = SK.assign({}, {
 
 export default class SKCol extends AntdComp {
   static SK_PROPS = {
-    COL_SPAN: 'colSpan',
-    GRID_GUTTER: 'gridGutter'
+    SPAN: 'span'
   };
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Col.defaultProps, {
     compTag: Col
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Col.propTypes, {
-    colSpan: PropTypes.number,
-    skColSpan: PropTypes.number,
-    gridGutter: PropTypes.number,
-    skGridGutter: PropTypes.number
-  });
+  static propTypes = SK.assign({}, AntdComp.propTypes, Col.propTypes, {});
 
   constructor(...args) {
     super(...args);
@@ -65,11 +60,11 @@ export default class SKCol extends AntdComp {
   }
 
   render() {
-    let {compTag: CompTag, span, gutter, style} = this.props;
-    span = span || this.skProp(SKCol.SK_PROPS.COL_SPAN);
+    let {compTag: CompTag, style} = this.props;
+    let span = this.skProp(SKCol.SK_PROPS.SPAN);
+    let gutter = this.skProp(SKRow.SK_PROPS.GUTTER);
 
     style = style || {};
-    gutter = gutter || this.skProp(SKCol.SK_PROPS.GRID_GUTTER);
     if (gutter > 0) {
       style.paddingLeft = gutter / 2;
       style.paddingRight = gutter / 2;
@@ -77,7 +72,8 @@ export default class SKCol extends AntdComp {
 
     return (
       <CompTag {...this.skTransProps2Self(CompTag)}
-               span={span}>
+               span={span}
+               style={style}>
         {this.skTransProps2Child()}
       </CompTag>
     );

@@ -2,7 +2,6 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {SK} from 'sk-js';
-import DEFAULT from '../util/DEFAULT';
 import Model from '../util/Model';
 import REACT from '../util/REACT';
 
@@ -316,11 +315,11 @@ export default class Comp extends Component {
     if (rtn === undefined) {
       rtn = this.props[Comp.SK_PROPS_PREFIX + SK.upperWordsFirstChar(Comp.SK_PROPS_SYS) + SK.upperWordsFirstChar(prop)]
     }
-    if (rtn === undefined) {
-      rtn = DEFAULT[SK.upperWordsFirstChar(prop).replace(/[A-Z]/g, ($1) => {
-        return SK.CHAR_UNDERLINE + $1;
-      }).toUpperCase().slice(1)]
-    }
+    // if (rtn === undefined) {
+    //   rtn = DEFAULT[SK.upperWordsFirstChar(prop).replace(/[A-Z]/g, ($1) => {
+    //     return SK.CHAR_UNDERLINE + $1;
+    //   }).toUpperCase().slice(1)]
+    // }
     return rtn === undefined ? defaultValue : rtn;
   }
 

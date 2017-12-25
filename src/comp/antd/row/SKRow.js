@@ -24,15 +24,12 @@ Row.propTypes = SK.assign({}, {
 
 export default class SKRow extends AntdComp {
   static SK_PROPS = {
-    GRID_GUTTER: 'gridGutter',
+    GUTTER: 'gutter',
   };
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Row.defaultProps, {
     compTag: Row
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Row.propTypes, {
-    gridGutter: PropTypes.number,
-    skGridGutter: PropTypes.number
-  });
+  static propTypes = SK.assign({}, AntdComp.propTypes, Row.propTypes, {});
 
   constructor(...args) {
     super(...args);
@@ -40,8 +37,8 @@ export default class SKRow extends AntdComp {
   }
 
   render() {
-    let {compTag: CompTag, gutter} = this.props;
-    gutter = gutter || this.skProp(SKRow.SK_PROPS.GRID_GUTTER);
+    let {compTag: CompTag} = this.props;
+    let gutter = this.skProp(SKRow.SK_PROPS.GUTTER);
 
     return (
       <CompTag {...this.skTransProps2Self(CompTag)}
