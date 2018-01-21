@@ -15,10 +15,6 @@ export const Dir = {
   Inline: 'inline',
   Vertical: 'vertical'
 };
-export const EvtType = {
-  Changed: 'Changed',
-  Errored: 'Errored'
-};
 export const INPUT_TYPE = {
   Text: 'text'
 };

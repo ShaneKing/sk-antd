@@ -1,2 +1,2 @@
-export * from './comp';
-export * from './util';
+export {ALIGN, BREAKPOINT, Dir, INPUT_TYPE, JUSTIFY, MENU_MODE, PLACEMENT, SELECT_MODE, SIZE, STATUS, THEME, TRIGGER} from './Const';
+export Reacts from './Reacts';

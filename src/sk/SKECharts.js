@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
 import SKSpin from '../antd/spin/SKSpin';
-import Comp from '../Comp';
-import {SIZE} from '../../util/Const';
+import Comp from '../comp/Comp';
+import {SIZE} from '../util/Const';
 import REACT from '../../util/REACT';
 
 export default class SKECharts extends Comp {

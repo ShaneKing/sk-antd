@@ -32,7 +32,7 @@ export default class Reacts {
    */
   static createChainedFunction(...funcs) {
     return funcs
-      .filter(f => f != null)
+      .filter(f => f !== null)
       .reduce((acc, f) => {
         if (!_.isFunction(f)) {
           throw new Error('Invalid Argument Type, must only provide functions, undefined, or null.');
