@@ -1,7 +1,7 @@
 import {Form} from 'antd';
 import PropTypes from 'prop-types';
 import {SK} from 'sk-js';
-import {Dir} from '../../../util/Const';
+import {Dir} from '../../Const';
 
 export default class OriginForm {
   static defaultProps = SK.assign({}, {

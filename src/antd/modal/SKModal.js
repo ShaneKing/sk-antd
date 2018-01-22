@@ -1,18 +1,17 @@
 import {Modal} from 'antd';
 import PropTypes from 'prop-types';
-import {SK} from 'sk-js';
-import {I18N} from 'sk-l10n';
+import {SK, Mesgs} from 'sk-js';
 import AntdComp from '../AntdComp';
 import SKButton from '../button/SKButton';
 
 Modal.defaultProps = SK.assign({}, {
   bodyStyle: {},
-  cancelText: I18N.get('Cancel'),
+  cancelText: Mesgs.get('Cancel'),
   closable: true,
   mask: true,
   maskClosable: true,
   maskStyle: {},
-  okText: I18N.get('Ok'),
+  okText: Mesgs.get('Ok'),
   okType: SKButton.TYPE.Primary,
   width: 520,
   zIndex: 1000

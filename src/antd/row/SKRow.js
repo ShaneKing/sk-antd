@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import {ALIGN, JUSTIFY} from '../../../util/Const';
+import {ALIGN, JUSTIFY} from '../../Const';
 
 Row.defaultProps = SK.assign({}, {
   align: ALIGN.Top,

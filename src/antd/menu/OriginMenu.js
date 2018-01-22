@@ -1,7 +1,7 @@
 import {Menu} from 'antd';
 import PropTypes from 'prop-types';
 import {SK} from 'sk-js';
-import {MENU_MODE, THEME} from '../../../util/Const';
+import {MENU_MODE, THEME} from '../../Const';
 
 export default class OriginMenu {
   static defaultProps = SK.assign({}, {

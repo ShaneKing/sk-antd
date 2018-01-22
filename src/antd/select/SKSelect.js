@@ -2,10 +2,9 @@ import {Select} from 'antd';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
-import {I18N} from 'sk-l10n';
+import {SK, Mesgs} from 'sk-js';
 import AntdComp from '../AntdComp';
-import {SELECT_MODE, SIZE} from '../../../util/Const';
+import {SELECT_MODE, SIZE} from '../../Const';
 
 Select.defaultProps = SK.assign({}, {
   allowClear: false,
@@ -17,7 +16,7 @@ Select.defaultProps = SK.assign({}, {
   filterOption: true,
   labelInValue: false,
   // multiple: false,
-  notFoundContent: I18N.get('Not_Found'),
+  notFoundContent: Mesgs.get('Not_Found'),
   // optionFilterProp:'value',
   showSearch: false,
   size: SIZE.Default,

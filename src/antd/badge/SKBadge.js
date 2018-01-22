@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import {STATUS} from '../../../util/Const';
+import {STATUS} from '../../Const';
 
 Badge.defaultProps = SK.assign({}, {
   dot: false,

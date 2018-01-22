@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import {SIZE} from '../../../util/Const';
+import {SIZE} from '../../Const';
 
 Table.defaultProps = SK.assign({}, {
   bordered: false,

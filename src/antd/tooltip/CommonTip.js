@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import {SK} from 'sk-js';
-import {PLACEMENT, TRIGGER} from '../../../util/Const';
+import {PLACEMENT, TRIGGER} from '../../Const';
 
 export default class CommonTip {
   static defaultProps = SK.assign({}, {

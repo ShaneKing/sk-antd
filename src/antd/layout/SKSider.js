@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import {BREAKPOINT} from '../../../util/Const';
+import {BREAKPOINT} from '../../Const';
 import OriginLayout from './OriginLayout';
 
 Layout.Sider.defaultProps = SK.assign({}, {

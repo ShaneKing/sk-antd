@@ -1,9 +1,9 @@
 import {Button} from 'antd';
 import PropTypes from 'prop-types';
 import {SK} from 'sk-js';
+import {REACT} from 'sk-react';
 import AntdComp from '../AntdComp';
-import {SIZE} from '../../../util/Const';
-import REACT from '../../../util/REACT';
+import {SIZE} from '../../Const';
 
 Button.defaultProps = SK.assign({}, {
   ghost: false,

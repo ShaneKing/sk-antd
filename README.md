@@ -6,20 +6,7 @@ wrap ant-design implements mvc(Model-Validator-Component)
 
 ## Directory conventions
 - [x] **src**: 
-  - [x] **comps**: 
-    - [x] **antd**: wrap ant-design components
-    - [x] **html**: wrap html element
-    - [x] **react**: wrap react components
-    - [x] **sk**: wrap third-party components
-  - [x] **utils**: base class
-    - [x] **Ajax**: add/rmv/mod/get,one,lst(bgn,len)/uld(upload),dld(download)
-    - [x] **Comp**: component
-    - [x] **Const**: const
-    - [x] **DEFAULT**: default prop or value
-    - [x] **HTML**: HTML elements
-    - [x] **Model**: Model
-    - [x] **REACT**: REACT nodes
-    - [x] **Reacts**: react util
-    - [x] **Resp**: response message
-    - [x] **Validator**: validator
+  - [x] **antd**: wrap ant-design components
+  - [x] **sk**: wrap third-party components
+  - [x] **Const**: const
     

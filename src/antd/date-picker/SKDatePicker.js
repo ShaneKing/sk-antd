@@ -2,8 +2,7 @@ import {DatePicker} from 'antd';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
-import {I18N} from 'sk-l10n';
+import {SK, Mesgs} from 'sk-js';
 import CommonPicker from './CommonPicker';
 import AntdComp from '../AntdComp';
 
@@ -53,7 +52,7 @@ export default class SKDatePicker extends AntdComp {
     return (
       <CompTag {...this.skTransProps2Self(CompTag)}
                onChange={this.handleChange}
-               placeholder={I18N.get('Please_select_date')}
+               placeholder={Mesgs.get('Please_select_date')}
                size={this.skProp(AntdComp.SK_PROPS.SIZE)}
                value={this.skVal() ? moment(this.skVal(), SK.DEFAULT_MOMENT_DATE) : undefined}>
         {this.skTransProps2Child()}

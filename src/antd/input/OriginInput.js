@@ -1,7 +1,7 @@
 import {Input} from 'antd';
 import PropTypes from 'prop-types';
 import {SK} from 'sk-js';
-import {INPUT_TYPE, SIZE} from '../../../util/Const';
+import {INPUT_TYPE, SIZE} from '../../Const';
 
 export default class OriginInput {
   static defaultProps = SK.assign({}, {
