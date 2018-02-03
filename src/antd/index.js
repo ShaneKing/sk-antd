@@ -11,6 +11,7 @@ export * from './form-comp';
 export * from './icon';
 export * from './input';
 export * from './layout';
+export * from './locale-provider';
 export * from './menu';
 export * from './modal';
 export * from './popover';

@@ -24,7 +24,6 @@
   ],
   "files": [
     "lib",
-    "src",
     "LICENSE"
   ],
   "main": "lib/index.js",
@@ -40,7 +39,7 @@
     "test": "istanbul cover mocha && codecov"
   },
   "dependencies": {
-    "antd": "^3.0.1",
+    "antd": "^3.1.4",
     "classnames": "^2.2.5",
     "history": "^4.7.2",
     "jquery": "^3.3.1",
