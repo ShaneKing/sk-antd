@@ -1,13 +1,13 @@
 import {Button} from 'antd';
 import PropTypes from 'prop-types';
 import {SK} from 'sk-js';
-import {REACT} from 'sk-react';
 import AntdComp from '../AntdComp';
 import {SIZE} from '../../Const';
+import Reacts from '../../Reacts';
 
 Button.defaultProps = SK.assign({}, {
   ghost: false,
-  htmlType: REACT.TAG.button,
+  htmlType: Reacts.TAG.button,
   loading: false,
   size: SIZE.Default,
 }, Button.defaultProps, {});

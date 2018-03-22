@@ -2,8 +2,9 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {SK, Model} from 'sk-js';
-import {Comp, Reacts} from 'sk-react';
+import {Comp} from '../Comp';
 import {SIZE} from '../Const';
+import Reacts from '../Reacts';
 
 /**
  * 1.The defaultProps and propTypes of AntD just can be use in wrapper Comp or non-Comp
