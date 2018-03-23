@@ -1,35 +1,35 @@
 export const ALIGN = {
   Top: 'top',
   Middle: 'middle',
-  Bottom: 'bottom'
+  Bottom: 'bottom',
 };
 export const BREAKPOINT = {
   Xs: 'xs',
   Sm: 'sm',
   Md: 'md',
   Lg: 'lg',
-  Xl: 'xl'
+  Xl: 'xl',
 };
 export const Dir = {
   Horizontal: 'horizontal',
   Inline: 'inline',
-  Vertical: 'vertical'
+  Vertical: 'vertical',
 };
 export const INPUT_TYPE = {
-  Text: 'text'
+  Text: 'text',
 };
 export const JUSTIFY = {
   Start: 'start',
   End: 'end',
   Center: 'center',
   SpaceAround: 'space-around',
-  SpaceBetween: 'space-between'
+  SpaceBetween: 'space-between',
 };
 export const MENU_MODE = {
   Vertical: 'vertical',
   VerticalRight: 'vertical-right',
   Horizontal: 'horizontal',
-  Inline: 'inline'
+  Inline: 'inline',
 };
 export const PLACEMENT = {
   Top: 'top',
@@ -43,32 +43,32 @@ export const PLACEMENT = {
   LeftTop: 'leftTop',
   LeftBottom: 'leftBottom',
   RightTop: 'rightTop',
-  RightBottom: 'rightBottom'
+  RightBottom: 'rightBottom',
 };
 export const SELECT_MODE = {
   Multiple: 'multiple',
   Tags: 'tags',
-  Combobox: 'combobox'
+  Combobox: 'combobox',
 };
 export const SIZE = {
   Large: 'large',
   Default: 'default',
-  Small: 'small'
+  Small: 'small',
 };
 export const STATUS = {
   Success: 'success',
   Processing: 'processing',
   Default: 'default',
   Error: 'error',
-  Warning: 'warning'
+  Warning: 'warning',
 };
 export const THEME = {
   Light: 'light',
-  Dark: 'dark'
+  Dark: 'dark',
 };
 export const TRIGGER = {
   Hover: 'hover',
   Focus: 'focus',
-  Click: 'click'
+  Click: 'click',
 };
 

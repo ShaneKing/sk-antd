@@ -1,8 +1,8 @@
-import {Button} from 'antd';
+import { Button } from 'antd';
 import PropTypes from 'prop-types';
-import {SK} from 'sk-js';
+import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
-import {SIZE} from '../../Const';
+import { SIZE } from '../../Const';
 import Reacts from '../../Reacts';
 
 Button.defaultProps = SK.assign({}, {
@@ -19,24 +19,24 @@ Button.propTypes = SK.assign({}, {
   icon: PropTypes.string,
   loading: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.object
+    PropTypes.object,
   ]),
   shape: PropTypes.string,
   size: PropTypes.string,
   type: PropTypes.string,
   onClick: PropTypes.func,
   href: PropTypes.string,
-  target: PropTypes.string
+  target: PropTypes.string,
 }, Button.propTypes, {});
 
 export default class SKButton extends AntdComp {
   static TYPE = {
     Primary: 'primary',
     Dashed: 'dashed',
-    Danger: 'danger'
+    Danger: 'danger',
   };
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Button.defaultProps, {
-    compTag: Button
+    compTag: Button,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, Button.propTypes, {});
 

@@ -1,14 +1,14 @@
-import {Badge} from 'antd';
+import { Badge } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
-import {STATUS} from '../../Const';
+import { STATUS } from '../../Const';
 
 Badge.defaultProps = SK.assign({}, {
   dot: false,
   overflowCount: 99,
-  showZero: false
+  showZero: false,
 }, Badge.defaultProps, {});
 
 Badge.propTypes = SK.assign({}, {
@@ -19,12 +19,12 @@ Badge.propTypes = SK.assign({}, {
   showZero: PropTypes.bool,
   status: PropTypes.oneOf(Object.values(STATUS)),
   text: PropTypes.string,
-  offset: PropTypes.any
+  offset: PropTypes.any,
 }, Badge.propTypes, {});
 
 export default class SKBadge extends AntdComp {
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Badge.defaultProps, {
-    compTag: Badge
+    compTag: Badge,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, Badge.propTypes, {});
 
@@ -34,7 +34,7 @@ export default class SKBadge extends AntdComp {
   }
 
   render() {
-    let {compTag: CompTag} = this.props;
+    const { compTag: CompTag } = this.props;
 
     return (
       <CompTag {...this.skTransProps2Self(CompTag)} count={this.skVal()}>

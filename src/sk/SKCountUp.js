@@ -3,9 +3,12 @@ import $ from 'jquery';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import { SK } from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
+
+/*eslint no-unused-vars: "off"*/
+/*eslint react/no-string-refs: "off"*/
 
 export default class SKCountUp extends Comp {
   static defaultProps = SK.assign({}, Comp.defaultProps, {
@@ -25,7 +28,7 @@ export default class SKCountUp extends Comp {
     redraw: false,
     style: undefined,
     useEasing: true,
-    useGrouping: true
+    useGrouping: true,
   });
   static propTypes = SK.assign({}, Comp.propTypes, {
     decimal: PropTypes.string,
@@ -41,7 +44,7 @@ export default class SKCountUp extends Comp {
     start: PropTypes.number,
     suffix: PropTypes.string,
     useEasing: PropTypes.bool,
-    useGrouping: PropTypes.bool
+    useGrouping: PropTypes.bool,
   });
 
   constructor(...args) {
@@ -68,12 +71,11 @@ export default class SKCountUp extends Comp {
 
   startAnimation(comp) {
     if (comp && comp.refs.countupDomRef) {
-      let {
+      const {
         decimal,
         decimals,
         duration,
         easingFn,
-        end,
         formattingFn,
         onComplete,
         onStart,
@@ -82,7 +84,11 @@ export default class SKCountUp extends Comp {
         start,
         suffix,
         useEasing,
-        useGrouping
+        useGrouping,
+      } = comp.props;
+
+      let {
+        end,
       } = comp.props;
 
       end = this.skVal();
@@ -101,7 +107,7 @@ export default class SKCountUp extends Comp {
           prefix,
           suffix,
           useEasing,
-          useGrouping
+          useGrouping,
         },
       );
 
@@ -118,10 +124,10 @@ export default class SKCountUp extends Comp {
   }
 
   render() {
-    let {compTag: CompTag, start} = this.props;
+    const { compTag: CompTag, start } = this.props;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)} ref='countupDomRef'>
+      <CompTag {...this.skTransProps2Self(CompTag)} ref="countupDomRef">
         {start}
       </CompTag>
     );

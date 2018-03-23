@@ -1,14 +1,14 @@
-import {Layout} from 'antd';
+import { Layout } from 'antd';
 import classNames from 'classnames/dedupe';
 import React from 'react';
-import {SK} from 'sk-js';
+import { SK } from 'sk-js';
 import OriginLayout from './OriginLayout';
 import AntdComp from '../AntdComp';
 
 
 export default class SKLayout extends AntdComp {
   static defaultProps = SK.assign({}, AntdComp.defaultProps, OriginLayout.defaultProps, {
-    compTag: Layout
+    compTag: Layout,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, OriginLayout.propTypes, {});
 
@@ -18,9 +18,9 @@ export default class SKLayout extends AntdComp {
   }
 
   render() {
-    let {compTag: CompTag, className} = this.props;
+    const { compTag: CompTag, className } = this.props;
 
-    let classes = {};
+    const classes = {};
     classes['ant-layout-has-sider'] = this.hasSpecialChild('SKSider');
 
     return (

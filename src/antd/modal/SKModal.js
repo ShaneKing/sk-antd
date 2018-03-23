@@ -1,8 +1,10 @@
-import {Modal} from 'antd';
+import { Modal } from 'antd';
 import PropTypes from 'prop-types';
-import {SK, Mesgs} from 'sk-js';
+import { SK, Mesgs } from 'sk-js';
 import AntdComp from '../AntdComp';
 import SKButton from '../button/SKButton';
+
+/*eslint no-unused-vars: "off"*/
 
 Modal.defaultProps = SK.assign({}, {
   bodyStyle: {},
@@ -14,7 +16,7 @@ Modal.defaultProps = SK.assign({}, {
   okText: Mesgs.get('Ok'),
   okType: SKButton.TYPE.Primary,
   width: 520,
-  zIndex: 1000
+  zIndex: 1000,
 }, Modal.defaultProps, {});
 
 Modal.propTypes = SK.assign({}, {
@@ -26,7 +28,7 @@ Modal.propTypes = SK.assign({}, {
   confirmLoading: PropTypes.bool,
   footer: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.node
+    PropTypes.node,
   ]),
   getContainer: PropTypes.func,
   mask: PropTypes.bool,
@@ -37,22 +39,22 @@ Modal.propTypes = SK.assign({}, {
   style: PropTypes.object,
   title: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.node
+    PropTypes.node,
   ]),
   visible: PropTypes.bool,
   width: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.number
+    PropTypes.number,
   ]),
   wrapClassName: PropTypes.string,
   zIndex: PropTypes.number,
   onCancel: PropTypes.func,
-  onOk: PropTypes.func
+  onOk: PropTypes.func,
 }, Modal.propTypes, {});
 
 export default class SKModal extends AntdComp {
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Modal.defaultProps, {
-    compTag: Modal
+    compTag: Modal,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, Modal.propTypes, {});
 
@@ -61,16 +63,18 @@ export default class SKModal extends AntdComp {
     this.compName = 'SKModal';
     this.handleCancel = (domEvent) => {
       this.skVal(false);
-    }
+    };
   }
 
   render() {
-    let {compTag: CompTag} = this.props;
+    const { compTag: CompTag } = this.props;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)}
-               onCancel={this.handleCancel}
-               visible={this.skVal()}>
+      <CompTag
+        {...this.skTransProps2Self(CompTag)}
+        onCancel={this.handleCancel}
+        visible={this.skVal()}
+      >
         {this.skTransProps2Child()}
       </CompTag>
     );

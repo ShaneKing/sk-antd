@@ -1,13 +1,13 @@
-import {Input} from 'antd';
+import { Input } from 'antd';
 import React from 'react';
-import {SK} from 'sk-js';
+import { SK } from 'sk-js';
 import OriginInput from './OriginInput';
 import AntdComp from '../AntdComp';
 
 //origin exist, use origin
 export default class SKInput extends AntdComp {
   static defaultProps = SK.assign({}, AntdComp.defaultProps, OriginInput.defaultProps, {
-    compTag: Input
+    compTag: Input,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, OriginInput.propTypes, {});
 
@@ -20,13 +20,15 @@ export default class SKInput extends AntdComp {
   }
 
   render() {
-    let {compTag: CompTag} = this.props;
+    const { compTag: CompTag } = this.props;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)}
-               onChange={this.handleChange}
-               size={this.skProp(AntdComp.SK_PROPS.SIZE)}
-               value={this.skVal()}>
+      <CompTag
+        {...this.skTransProps2Self(CompTag)}
+        onChange={this.handleChange}
+        size={this.skProp(AntdComp.SK_PROPS.SIZE)}
+        value={this.skVal()}
+      >
         {this.skTransProps2Child()}
       </CompTag>
     );

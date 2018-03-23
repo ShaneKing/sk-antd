@@ -3,17 +3,19 @@ import jdenticon from 'jdenticon';
 import md5 from 'js-md5';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import { SK } from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
+/*eslint react/no-string-refs: "off"*/
+
 export default class SKJdenticon extends Comp {
   static defaultProps = SK.assign({}, Comp.defaultProps, {
-    compTag: Reacts.TAG.canvas
+    compTag: Reacts.TAG.canvas,
 
   });
   static propTypes = SK.assign({}, Comp.propTypes, {
-    size: PropTypes.number
+    size: PropTypes.number,
   });
 
   constructor(...props) {
@@ -32,10 +34,10 @@ export default class SKJdenticon extends Comp {
   }
 
   render() {
-    let {compTag: CompTag, size} = this.props;
+    const { compTag: CompTag, size } = this.props;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)} height={size} width={size} ref='jdenticonDomRef'/>
+      <CompTag {...this.skTransProps2Self(CompTag)} height={size} width={size} ref="jdenticonDomRef" />
     );
   }
 }

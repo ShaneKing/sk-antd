@@ -1,14 +1,16 @@
-import {DatePicker} from 'antd';
+import { DatePicker } from 'antd';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK, Mesgs} from 'sk-js';
+import { SK, Mesgs } from 'sk-js';
 import CommonPicker from './CommonPicker';
 import AntdComp from '../AntdComp';
 
+/*eslint no-unused-vars: "off"*/
+
 DatePicker.defaultProps = SK.assign({}, {
   format: SK.DEFAULT_MOMENT_DATE,
-  showToday: true
+  showToday: true,
 }, CommonPicker.defaultProps, DatePicker.defaultProps, {});
 
 DatePicker.propTypes = SK.assign({}, {
@@ -19,18 +21,18 @@ DatePicker.propTypes = SK.assign({}, {
   renderExtraFooter: PropTypes.func,
   showTime: PropTypes.oneOfType([
     PropTypes.object,
-    PropTypes.bool
+    PropTypes.bool,
   ]),
   //showTime.defaultValue:PropTypes.instanceOf(moment),
   showToday: PropTypes.bool,
   value: PropTypes.instanceOf(moment),
   onChange: PropTypes.func,
-  onOk: PropTypes.func
+  onOk: PropTypes.func,
 }, CommonPicker.propTypes, DatePicker.propTypes, {});
 
 export default class SKDatePicker extends AntdComp {
   static defaultProps = SK.assign({}, AntdComp.defaultProps, DatePicker.defaultProps, {
-    compTag: DatePicker
+    compTag: DatePicker,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, DatePicker.propTypes, {});
 
@@ -47,14 +49,16 @@ export default class SKDatePicker extends AntdComp {
   }
 
   render() {
-    let {compTag: CompTag} = this.props;
+    const { compTag: CompTag } = this.props;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)}
-               onChange={this.handleChange}
-               placeholder={Mesgs.get('Please_select_date')}
-               size={this.skProp(AntdComp.SK_PROPS.SIZE)}
-               value={this.skVal() ? moment(this.skVal(), SK.DEFAULT_MOMENT_DATE) : undefined}>
+      <CompTag
+        {...this.skTransProps2Self(CompTag)}
+        onChange={this.handleChange}
+        placeholder={Mesgs.get('Please_select_date')}
+        size={this.skProp(AntdComp.SK_PROPS.SIZE)}
+        value={this.skVal() ? moment(this.skVal(), SK.DEFAULT_MOMENT_DATE) : undefined}
+      >
         {this.skTransProps2Child()}
       </CompTag>
     );

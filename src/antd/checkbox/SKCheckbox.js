@@ -1,14 +1,14 @@
-import {Checkbox} from 'antd';
+import { Checkbox } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 
 Checkbox.defaultProps = SK.assign({}, {
   autoFocus: false,
   checked: false,
   defaultChecked: false,
-  indeterminate: false
+  indeterminate: false,
 }, Checkbox.defaultProps, {});
 
 Checkbox.propTypes = SK.assign({}, {
@@ -17,12 +17,12 @@ Checkbox.propTypes = SK.assign({}, {
   checked: PropTypes.bool,
   defaultChecked: PropTypes.bool,
   indeterminate: PropTypes.bool,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 }, Checkbox.propTypes, {});
 
 export default class SKCheckbox extends AntdComp {
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Checkbox.defaultProps, {
-    compTag: Checkbox
+    compTag: Checkbox,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, Checkbox.propTypes, {});
 
@@ -35,12 +35,14 @@ export default class SKCheckbox extends AntdComp {
   }
 
   render() {
-    let {compTag: CompTag} = this.props;
+    const { compTag: CompTag } = this.props;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)}
-               checked={this.skVal()}
-               onChange={this.handleChange}>
+      <CompTag
+        {...this.skTransProps2Self(CompTag)}
+        checked={this.skVal()}
+        onChange={this.handleChange}
+      >
         {this.skTransProps2Child()}
       </CompTag>
     );

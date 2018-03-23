@@ -1,9 +1,8 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import React from 'react';
-import {SK, Model} from 'sk-js';
-import {Comp} from '../Comp';
-import {SIZE} from '../Const';
+import { SK, Model } from 'sk-js';
+import { Comp } from '../Comp';
+import { SIZE } from '../Const';
 import Reacts from '../Reacts';
 
 /**
@@ -12,12 +11,12 @@ import Reacts from '../Reacts';
  */
 export default class AntdComp extends Comp {
   static SK_PROPS = {
-    SIZE: 'size'
+    SIZE: 'size',
   };
   static defaultProps = SK.assign({}, Comp.defaultProps, {});
   static propTypes = SK.assign({}, Comp.propTypes, {
     size: PropTypes.oneOf(Object.values(SIZE)),
-    skSize: PropTypes.oneOf(Object.values(SIZE))
+    skSize: PropTypes.oneOf(Object.values(SIZE)),
   });
 
   constructor(...args) {
@@ -73,7 +72,7 @@ export default class AntdComp extends Comp {
     if (_.isRegExp(idOrReg)) {
       this.skModel().addRegErroredListener(idOrReg, this.updateUI);
     } else {
-      this.skModel().addIdErroredListener(idOrReg, this.updateUI)
+      this.skModel().addIdErroredListener(idOrReg, this.updateUI);
     }
   }
 
@@ -87,15 +86,14 @@ export default class AntdComp extends Comp {
     if (_.isRegExp(idOrReg)) {
       this.skModel().rmvRegErroredListener(idOrReg, this.updateUI);
     } else {
-      this.skModel().rmvIdErroredListener(idOrReg, this.updateUI)
+      this.skModel().rmvIdErroredListener(idOrReg, this.updateUI);
     }
     this.monitors.skRmv(idOrReg);
   }
 
   hasSpecialChild(specialChildName) {
-    return Reacts.some(this.props.children, (child, idx) => {
-      return child.type && child.type.name === specialChildName
+    return Reacts.some(this.props.children, (child) => {
+      return child.type && child.type.name === specialChildName;
     }, this);
   }
-
 }

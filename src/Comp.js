@@ -1,8 +1,13 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK, Model} from 'sk-js';
+import { SK, Model } from 'sk-js';
 import Reacts from './Reacts';
+
+/*eslint react/require-default-props: "off"*/
+/*eslint react/sort-comp: "off"*/
+/*eslint no-unused-vars: "off"*/
+/*eslint react/no-unused-state: "off"*/
 
 /**
  * props:compTag,model(skModel),modelId
@@ -26,92 +31,92 @@ export default class Comp extends React.Component {
     HIDDEN: 'hidden',
     PREVIEW: 'preview',
     READ_ONLY: 'readOnly',
-    REQUIRED: 'required',//just paint required icon
+    REQUIRED: 'required', //just paint required icon
     //component monitor list, can be string[reg], string array or object
-    MONITOR: 'monitor'
+    MONITOR: 'monitor',
   };
   static defaultProps = {};
   static propTypes = {
     compTag: PropTypes.oneOfType([
       PropTypes.element,
       PropTypes.func,
-      PropTypes.string
+      PropTypes.string,
     ]),
-    skModel: Comp.IS_PROP_TYPES_MODEL,//Business Model(page), PlainObject
-    skSysModel: Comp.IS_PROP_TYPES_MODEL,//System Model(whole of page), PlainObject
-    model: Comp.IS_PROP_TYPES_MODEL,//Business Model(part of page), PlainObject
+    skModel: Comp.IS_PROP_TYPES_MODEL, //Business Model(page), PlainObject
+    skSysModel: Comp.IS_PROP_TYPES_MODEL, //System Model(whole of page), PlainObject
+    model: Comp.IS_PROP_TYPES_MODEL, //Business Model(part of page), PlainObject
     modelId: PropTypes.string,
     monitor: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.array,
-      PropTypes.object
-    ]),//monitor is string[reg], array[string] or object of modelId
+      PropTypes.object,
+    ]), //monitor is string[reg], array[string] or object of modelId
 
     active: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.func,
-      PropTypes.object
+      PropTypes.object,
     ]),
     skActive: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.func,
-      PropTypes.object
+      PropTypes.object,
     ]),
     disabled: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.func,
-      PropTypes.object
+      PropTypes.object,
     ]),
     skDisabled: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.func,
-      PropTypes.object
+      PropTypes.object,
     ]),
     hidden: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.func,
-      PropTypes.object
+      PropTypes.object,
     ]),
     skHidden: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.func,
-      PropTypes.object
+      PropTypes.object,
     ]),
     preview: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.func,
-      PropTypes.object
+      PropTypes.object,
     ]),
     skPreview: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.func,
-      PropTypes.object
+      PropTypes.object,
     ]),
     readOnly: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.func,
-      PropTypes.object
+      PropTypes.object,
     ]),
     skReadOnly: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.func,
-      PropTypes.object
+      PropTypes.object,
     ]),
     required: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.func,
-      PropTypes.object
+      PropTypes.object,
     ]),
     skRequired: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.func,
-      PropTypes.object
+      PropTypes.object,
     ]),
 
-    m2eConvertor: PropTypes.func,//Model 2 Editing
-    e2mConvertor: PropTypes.func,//Editing 2 Model
-    m2vConvertor: PropTypes.func,//Model 2 View, like Date Comp, moment format to view: YYYY-MM-DDTHH:mm:ss.SSSZ -> YYYY-MM-DD
-    v2mConvertor: PropTypes.func//View 2 Model, like Check Comp, true is checked: true -> 1, false -> 0
+    m2eConvertor: PropTypes.func, //Model 2 Editing
+    e2mConvertor: PropTypes.func, //Editing 2 Model
+    m2vConvertor: PropTypes.func, //Model 2 View, like Date Comp, moment format to view: YYYY-MM-DDTHH:mm:ss.SSSZ -> YYYY-MM-DD
+    v2mConvertor: PropTypes.func, //View 2 Model, like Check Comp, true is checked: true -> 1, false -> 0
   };
 
 
@@ -120,7 +125,7 @@ export default class Comp extends React.Component {
     this.compName = 'Comp';
     this.monitors = [];
     this.updateUI = (evt) => {
-      this.setState({stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX)});
+      this.setState({ stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX) });
     };
   }
 
@@ -134,7 +139,7 @@ export default class Comp extends React.Component {
    */
   static IS_PROP_TYPES_MODEL(props, propName, componentName) {
     if (props[propName] && !(props[propName] instanceof Model)) {
-      return new Error('The [' + componentName + ']\'s [' + propName + '] is not a model!');
+      return new Error(`The [${componentName}]'s [${propName}] is not a model!`);
     }
   }
 
@@ -214,7 +219,7 @@ export default class Comp extends React.Component {
     if (_.isRegExp(idOrReg)) {
       this.skModel().rmvRegChangedListener(idOrReg, this.updateUI);
     } else {
-      this.skModel().rmvIdChangedListener(idOrReg, this.updateUI)
+      this.skModel().rmvIdChangedListener(idOrReg, this.updateUI);
     }
     this.monitors.skRmv(idOrReg);
   }
@@ -278,7 +283,7 @@ export default class Comp extends React.Component {
   }
 
   render() {
-    let {compTag: CompTag} = this.props;
+    const { compTag: CompTag } = this.props;
 
     return (
       <CompTag {...this.skTransProps2Self(CompTag)}>
@@ -291,7 +296,7 @@ export default class Comp extends React.Component {
    * @see Comp.execBfo
    */
   skBfo(prop, defaultValue = false) {
-    return this.execBfo(this.skProp(prop, defaultValue))
+    return this.execBfo(this.skProp(prop, defaultValue));
   }
 
   /**
@@ -313,10 +318,10 @@ export default class Comp extends React.Component {
   skProp(prop, defaultValue = undefined) {
     let rtn = this.props[prop];
     if (rtn === undefined) {
-      rtn = this.props[Comp.SK_PROPS_PREFIX + SK.upperWordsFirstChar(prop)]
+      rtn = this.props[Comp.SK_PROPS_PREFIX + SK.upperWordsFirstChar(prop)];
     }
     if (rtn === undefined) {
-      rtn = this.props[Comp.SK_PROPS_PREFIX + SK.upperWordsFirstChar(Comp.SK_PROPS_SYS) + SK.upperWordsFirstChar(prop)]
+      rtn = this.props[Comp.SK_PROPS_PREFIX + SK.upperWordsFirstChar(Comp.SK_PROPS_SYS) + SK.upperWordsFirstChar(prop)];
     }
     // if (rtn === undefined) {
     //   rtn = DEFAULT[SK.upperWordsFirstChar(prop).replace(/[A-Z]/g, ($1) => {
@@ -333,24 +338,24 @@ export default class Comp extends React.Component {
    * @returns {React.Children}
    */
   skTransProps2Child(children = undefined) {
-    let skProps = Object.keys(this.props).skFilter(false, Comp.skPropsFilter);
-    return React.Children.map(children ? children : this.props.children, child => {
+    const skProps = Object.keys(this.props).skFilter(false, Comp.skPropsFilter);
+    return React.Children.map(children || this.props.children, child => {
       if (React.isValidElement(child)) {
         let allowProps = skProps;
-        if(Reacts.TAG[child.type]){
+        if (Reacts.TAG[child.type]) {
           allowProps = [];
-        }else if(child.type.name && _.startsWith(SK.s4s(child.type.name), Comp.SK_PROPS_PREFIX.toUpperCase())){
+        } else if (child.type.name && _.startsWith(SK.s4s(child.type.name), Comp.SK_PROPS_PREFIX.toUpperCase())) {
           allowProps = Object.keys(this.props);
-        }else if(child.type.propTypes){
+        } else if (child.type.propTypes) {
           allowProps = allowProps.concat(Object.keys(child.type.propTypes));
         }
         allowProps = allowProps.concat(this.allowTransProps2Child(child));
 
         let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID, 'children'];
-        if(child.type.defaultProps){
+        if (child.type.defaultProps) {
           denyProps = denyProps.concat(Object.keys(child.type.defaultProps));
         }
-        if(child.props){
+        if (child.props) {
           denyProps = denyProps.concat(Object.keys(child.props));
         }
         denyProps = denyProps.concat(this.denyTransProps2Child(child));
@@ -358,7 +363,7 @@ export default class Comp extends React.Component {
         return React.cloneElement(child, _.omit(_.pick(this.props, allowProps), denyProps));
       }
       return child;
-    })
+    });
   }
 
   /**
@@ -381,7 +386,7 @@ export default class Comp extends React.Component {
     allowProps = allowProps.concat(this.allowTransProps2Self(comp, prop));
 
     let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID];
-    if(comp.defaultProps){
+    if (comp.defaultProps) {
       denyProps = denyProps.concat(Object.keys(comp.defaultProps));
     }
     denyProps = denyProps.concat(this.denyTransProps2Self(comp, prop));

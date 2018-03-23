@@ -1,7 +1,7 @@
-import {Popover} from 'antd';
+import { Popover } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 import CommonTip from '../tooltip/CommonTip';
 
@@ -10,17 +10,17 @@ Popover.propTypes = SK.assign({}, {
   //https://ant.design/components/popover-cn/#API
   content: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.node
+    PropTypes.node,
   ]),
   title: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.node
-  ])
+    PropTypes.node,
+  ]),
 }, CommonTip.propTypes, Popover.propTypes, {});
 
 export default class SKPopover extends AntdComp {
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Popover.defaultProps, {
-    compTag: Popover
+    compTag: Popover,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, Popover.propTypes, {});
 
@@ -33,12 +33,14 @@ export default class SKPopover extends AntdComp {
   }
 
   render() {
-    let {compTag: CompTag} = this.props;
+    const { compTag: CompTag } = this.props;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)}
-               onVisibleChange={this.handleVisibleChange}
-               visible={this.skVal()}>
+      <CompTag
+        {...this.skTransProps2Self(CompTag)}
+        onVisibleChange={this.handleVisibleChange}
+        visible={this.skVal()}
+      >
         {this.skTransProps2Child()}
       </CompTag>
     );

@@ -1,9 +1,8 @@
-import {Layout} from 'antd';
+import { Layout } from 'antd';
 import PropTypes from 'prop-types';
-import React from 'react';
-import {SK} from 'sk-js';
+import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
-import {BREAKPOINT} from '../../Const';
+import { BREAKPOINT } from '../../Const';
 import OriginLayout from './OriginLayout';
 
 Layout.Sider.defaultProps = SK.assign({}, {
@@ -11,7 +10,7 @@ Layout.Sider.defaultProps = SK.assign({}, {
   collapsible: false,
   defaultCollapsed: false,
   reverseArrow: false,
-  width: 200
+  width: 200,
 }, OriginLayout.defaultProps, Layout.Sider.defaultProps, {});
 
 Layout.Sider.propTypes = SK.assign({}, {
@@ -26,15 +25,15 @@ Layout.Sider.propTypes = SK.assign({}, {
   style: PropTypes.object,
   trigger: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.node
+    PropTypes.node,
   ]),
   width: PropTypes.number,
-  onCollapse: PropTypes.func
+  onCollapse: PropTypes.func,
 }, OriginLayout.propTypes, Layout.Sider.propTypes, {});
 
 export default class SKSider extends AntdComp {
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Layout.Sider.defaultProps, {
-    compTag: Layout.Sider
+    compTag: Layout.Sider,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, Layout.Sider.propTypes, {});
 

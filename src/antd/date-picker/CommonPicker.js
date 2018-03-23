@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {SK} from 'sk-js';
+import { SK } from 'sk-js';
 
 export default class CommonPicker {
   static defaultProps = SK.assign({}, {
@@ -8,7 +8,7 @@ export default class CommonPicker {
     className: SK.EMPTY,
     disabled: false,
     popupStyle: {},
-    style: {}
+    style: {},
   }, {});
   static propTypes = SK.assign({}, {
     //https://ant.design/components/date-picker-cn/#%E5%85%B1%E5%90%8C%E7%9A%84-API
@@ -23,11 +23,11 @@ export default class CommonPicker {
     open: PropTypes.bool,
     placeholder: PropTypes.oneOfType([
       PropTypes.string,
-      PropTypes.array
+      PropTypes.array,
     ]),
     popupStyle: PropTypes.object,
     size: PropTypes.string,
     style: PropTypes.object,
-    onOpenChange: PropTypes.func
+    onOpenChange: PropTypes.func,
   }, {});
 }

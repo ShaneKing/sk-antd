@@ -1,11 +1,11 @@
-import {Breadcrumb} from 'antd';
+import { Breadcrumb } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 
 Breadcrumb.defaultProps = SK.assign({}, {
-  separator: SK.CHAR_SLASH
+  separator: SK.CHAR_SLASH,
 }, Breadcrumb.defaultProps, {});
 
 Breadcrumb.propTypes = SK.assign({}, {
@@ -15,13 +15,13 @@ Breadcrumb.propTypes = SK.assign({}, {
   routes: PropTypes.array,
   separator: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.node
-  ])
+    PropTypes.node,
+  ]),
 }, Breadcrumb.propTypes, {});
 
 export default class SKBreadcrumb extends AntdComp {
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Breadcrumb.defaultProps, {
-    compTag: Breadcrumb
+    compTag: Breadcrumb,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, Breadcrumb.propTypes, {});
 
@@ -31,12 +31,14 @@ export default class SKBreadcrumb extends AntdComp {
   }
 
   render() {
-    let {compTag: CompTag, routes, params} = this.props;
+    const { compTag: CompTag, routes, params } = this.props;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)}
-               params={params}
-               routes={routes}>
+      <CompTag
+        {...this.skTransProps2Self(CompTag)}
+        params={params}
+        routes={routes}
+      >
         {this.skTransProps2Child()}
       </CompTag>
     );

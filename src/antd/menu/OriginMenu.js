@@ -1,7 +1,7 @@
-import {Menu} from 'antd';
+import { Menu } from 'antd';
 import PropTypes from 'prop-types';
-import {SK} from 'sk-js';
-import {MENU_MODE, THEME} from '../../Const';
+import { SK } from 'sk-js';
+import { MENU_MODE, THEME } from '../../Const';
 
 export default class OriginMenu {
   static defaultProps = SK.assign({}, {
@@ -13,13 +13,13 @@ export default class OriginMenu {
     // onOpenChange: noop,
     subMenuOpenDelay: 0,
     subMenuCloseDelay: 0.1,
-    forceSubMenuRender: false
+    forceSubMenuRender: false,
   }, Menu.defaultProps, {});
   static propTypes = SK.assign({
     level: PropTypes.number,
     parentMenu: PropTypes.object,
     prefixCls: PropTypes.string,
-    rootPrefixCls: PropTypes.string
+    rootPrefixCls: PropTypes.string,
   }, {
     //https://ant.design/components/menu-cn/#Menu
     defaultOpenKeys: PropTypes.any,
@@ -46,9 +46,9 @@ export default class OriginMenu {
     triggerSubMenuAction: PropTypes.string,
     openAnimation: PropTypes.oneOfType([
       PropTypes.object,
-      PropTypes.string
+      PropTypes.string,
     ]),
     openTransition: PropTypes.string,
-    getPopupContainer: PropTypes.func
+    getPopupContainer: PropTypes.func,
   }, Menu.propTypes, {});
 }

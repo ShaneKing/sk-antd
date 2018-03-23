@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import {SK} from 'sk-js';
-import {PLACEMENT, TRIGGER} from '../../Const';
+import { SK } from 'sk-js';
+import { PLACEMENT, TRIGGER } from '../../Const';
 
 export default class CommonTip {
   static defaultProps = SK.assign({}, {
@@ -11,7 +11,7 @@ export default class CommonTip {
     placement: PLACEMENT.Top,
     trigger: TRIGGER.Hover,
     defaultVisible: false,
-    visible: false
+    visible: false,
   }, {});
   static propTypes = SK.assign({}, {
     //https://ant.design/components/tooltip-cn/#%E5%85%B1%E5%90%8C%E7%9A%84-API
@@ -31,6 +31,6 @@ export default class CommonTip {
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
     onFocus: PropTypes.func,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
   }, {});
 }

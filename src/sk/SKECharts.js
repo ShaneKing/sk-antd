@@ -4,9 +4,14 @@ import echarts from 'echarts';
 import elementResizeEvent from 'element-resize-event';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import { SK } from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
+
+/*eslint react/no-string-refs: "off"*/
+/*eslint valid-typeof: "off"*/
+/*eslint no-prototype-builtins: "off"*/
+/*eslint no-continue: "off"*/
 
 export default class SKECharts extends Comp {
   static defaultProps = SK.assign({}, Comp.defaultProps, {
@@ -19,7 +24,7 @@ export default class SKECharts extends Comp {
     onChartReady: (chart) => {
       chart.hideLoading();
     },
-    onEvents: {}
+    onEvents: {},
   });
   static propTypes = SK.assign({}, Comp.propTypes, {
     lazyUpdate: PropTypes.bool,
@@ -29,7 +34,7 @@ export default class SKECharts extends Comp {
     // option: PropTypes.object,
     optionUpdate: PropTypes.func,
     style: PropTypes.object,
-    theme: PropTypes.string
+    theme: PropTypes.string,
   });
 
   constructor(...props) {
@@ -40,7 +45,7 @@ export default class SKECharts extends Comp {
   componentDidMount() {
     super.componentDidMount();
 
-    let echartsIns = this.renderEChartDom();
+    const echartsIns = this.renderEChartDom();
     this.bindEvents(echartsIns, this.props.onEvents);
     // on chart ready
     if (_.isFunction(this.props.onChartReady)) {
@@ -61,7 +66,7 @@ export default class SKECharts extends Comp {
 
   componentDidUpdate() {
     super.componentDidUpdate();
-    let echartsIns = this.renderEChartDom();
+    const echartsIns = this.renderEChartDom();
     this.bindEvents(echartsIns, this.props.onEvents);
   }
 
@@ -74,22 +79,21 @@ export default class SKECharts extends Comp {
   }
 
   bindEvents(instance, events) {
-    let _loop = function _loop(eventName) {
+    const _loop = function _loop(eventName) {
       // ignore the event config which not satisfy
       if (_.isString(eventName) && _.isFunction(events[eventName])) {
         // binding event
         instance.off(eventName);
-        instance.on(eventName, function (param) {
+        instance.on(eventName, (param) => {
           events[eventName](param, instance);
         });
       }
     };
 
-    for (let eventName in events) {
-      if(!events.hasOwnProperty(eventName)) continue;
+    for (const eventName in events) {
+      if (!events.hasOwnProperty(eventName)) continue;
       _loop(eventName);
     }
-
   }
 
   getEChartsInstance() {
@@ -103,7 +107,7 @@ export default class SKECharts extends Comp {
 
   renderEChartDom() {
     // init the echarts instance
-    let echartsIns = this.getEChartsInstance();
+    const echartsIns = this.getEChartsInstance();
     // set the echarts option
     // echartsIns.setOption(this.handleOptionUpdate(this.props.option), this.props.notMerge, this.props.lazyUpdate);
     echartsIns.setOption(this.handleOptionUpdate(this.skVal()), this.props.notMerge, this.props.lazyUpdate);
@@ -117,12 +121,14 @@ export default class SKECharts extends Comp {
   }
 
   render() {
-    let {compTag: CompTag, style} = this.props;
+    const { compTag: CompTag, style } = this.props;
 
     return (
-        <CompTag {...this.skTransProps2Self(CompTag)}
-                 style={_.isEmpty(style) ? {height: '300px', width: '100%'} : style}
-                 ref='echartsDomRef'/>
+      <CompTag
+        {...this.skTransProps2Self(CompTag)}
+        style={_.isEmpty(style) ? { height: '300px', width: '100%' } : style}
+        ref="echartsDomRef"
+      />
     );
   }
 }

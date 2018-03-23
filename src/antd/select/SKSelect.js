@@ -1,10 +1,12 @@
-import {Select} from 'antd';
+import { Select } from 'antd';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK, Mesgs} from 'sk-js';
+import { SK, Mesgs } from 'sk-js';
 import AntdComp from '../AntdComp';
-import {SELECT_MODE, SIZE} from '../../Const';
+import { SELECT_MODE, SIZE } from '../../Const';
+
+/*eslint no-unused-vars: "off"*/
 
 Select.defaultProps = SK.assign({}, {
   allowClear: false,
@@ -20,7 +22,7 @@ Select.defaultProps = SK.assign({}, {
   // optionFilterProp:'value',
   showSearch: false,
   size: SIZE.Default,
-  tags: false
+  tags: false,
 }, Select.defaultProps, {});
 
 Select.propTypes = SK.assign({}, {
@@ -31,7 +33,7 @@ Select.propTypes = SK.assign({}, {
   defaultActiveFirstOption: PropTypes.bool,
   defaultValue: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.array
+    PropTypes.array,
   ]),
   disabled: PropTypes.bool,
   dropdownClassName: PropTypes.string,
@@ -39,18 +41,18 @@ Select.propTypes = SK.assign({}, {
   dropdownStyle: PropTypes.object,
   filterOption: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.func
+    PropTypes.func,
   ]),
   firstActiveValue: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.array
+    PropTypes.array,
   ]),
   getPopupContainer: PropTypes.func,
   labelInValue: PropTypes.bool,
   maxTagCount: PropTypes.number,
   maxTagPlaceholder: PropTypes.oneOfType([
     PropTypes.node,
-    PropTypes.func
+    PropTypes.func,
   ]),
   mode: PropTypes.oneOf(Object.values(SELECT_MODE)),
   multiple: PropTypes.bool,
@@ -64,7 +66,7 @@ Select.propTypes = SK.assign({}, {
   tokenSeparators: PropTypes.array,
   value: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.array
+    PropTypes.array,
   ]),
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
@@ -74,16 +76,16 @@ Select.propTypes = SK.assign({}, {
   onMouseLeave: PropTypes.func,
   onPopupScroll: PropTypes.func,
   onSearch: PropTypes.func,
-  onSelect: PropTypes.func
+  onSelect: PropTypes.func,
 }, Select.propTypes, {});
 
 export default class SKSelect extends AntdComp {
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Select.Option.defaultProps, Select.defaultProps, {
     compTag: Select,
-    dataId: undefined
+    dataId: undefined,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, Select.Option.propTypes, Select.propTypes, {
-    dataId: PropTypes.string
+    dataId: PropTypes.string,
   });
 
   constructor(...args) {
@@ -103,12 +105,14 @@ export default class SKSelect extends AntdComp {
   }
 
   render() {
-    let {compTag: CompTag, dataId} = this.props;
+    const { compTag: CompTag, dataId } = this.props;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)}
-               onSelect={this.handleSelect}
-               value={this.skVal()}>
+      <CompTag
+        {...this.skTransProps2Self(CompTag)}
+        onSelect={this.handleSelect}
+        value={this.skVal()}
+      >
         {dataId ? this.skModel().skVal(dataId).map((selectOption) => {
           return SKSelect.optionMap(selectOption);
         }) : this.skTransProps2Child()}
