@@ -36,13 +36,19 @@
     "lib": "lib/"
   },
   "scripts": {
+    "lint": "eslint --fix --ext .js src",
     "test": "istanbul cover mocha && codecov"
   },
   "dependencies": {
     "antd": "^3.3.1",
     "classnames": "^2.2.5",
+    "countup.js": "^1.9.3",
+    "echarts": "^4.0.2",
+    "element-resize-event": "^2.0.9",
     "history": "^4.7.2",
+    "jdenticon": "^2.0.0",
     "jquery": "^3.3.1",
+    "js-md5": "^0.7.2",
     "lodash": "^4.17.5",
     "moment": "^2.21.0",
     "nprogress": "^0.2.0",
@@ -53,21 +59,27 @@
     "sk-js": "^0.2.1"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-import": "^1.6.3",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.23.0",
-    "babel-preset-stage-0": "^6.22.0",
-    "babel-preset-stage-1": "^6.22.0",
-    "babel-preset-stage-2": "^6.22.0",
-    "babel-preset-stage-3": "^6.22.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.26.0",
     "codecov": "^3.0.0",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
     "gulp": "^3.9.1",
-    "gulp-babel": "^7.0.0",
+    "gulp-babel": "^7.0.1",
     "gulp-clean": "^0.4.0",
     "istanbul": "^0.4.5",
-    "mocha": "^5.0.0"
+    "mocha": "^5.0.1"
   }
 }
