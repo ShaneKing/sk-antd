@@ -4,6 +4,6 @@ export { ALIGN, BREAKPOINT, Dir, INPUT_TYPE, JUSTIFY, MENU_MODE, PLACEMENT, SELE
 export Reacts from './Reacts';
 export * from './antd';
 export * from './html';
-export * from './react';
+export * from './react0';
 export * from './sk';
 
