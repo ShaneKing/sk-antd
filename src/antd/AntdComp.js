@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { SK, Model } from 'sk-js';
-import { Comp } from '../Comp';
+import Comp from '../Comp';
 import { SIZE } from '../Const';
 import Reacts from '../Reacts';
 
