@@ -7,6 +7,7 @@ import Reacts from '../Reacts';
 /*eslint no-script-url: "off"*/
 
 export default class SKA extends Comp {
+  static SK_COMP_NAME = 'SKA';
   static defaultProps = SK.assign({}, Comp.defaultProps, {
     compTag: Reacts.TAG.a,
   });
@@ -27,7 +28,7 @@ export default class SKA extends Comp {
     return (
       <CompTag
         {...this.skTransProps2Self(CompTag)}
-        href="javascript:void(0);"
+        href='javascript:void(0);'
         onClick={this.handleClick}
       >
         {this.skTransProps2Child()}

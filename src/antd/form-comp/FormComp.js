@@ -7,6 +7,7 @@ import SKCol from '../col/SKCol';
 import SKFormItem from '../form/SKFormItem';
 
 export default class FormComp extends AntdComp {
+  static SK_COMP_NAME = 'FormComp';
   static SK_PROPS = {
     IN_FROM_ITEM: 'inFormItem',
     IN_FROM_ROW: 'inFormRow',

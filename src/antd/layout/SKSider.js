@@ -2,7 +2,7 @@ import { Layout } from 'antd';
 import PropTypes from 'prop-types';
 import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
-import { BREAKPOINT } from '../../Const';
+import { BREAKPOINT } from '../AntdConst';
 import OriginLayout from './OriginLayout';
 
 Layout.Sider.defaultProps = SK.assign({}, {
@@ -32,6 +32,7 @@ Layout.Sider.propTypes = SK.assign({}, {
 }, OriginLayout.propTypes, Layout.Sider.propTypes, {});
 
 export default class SKSider extends AntdComp {
+  static SK_COMP_NAME = 'SKSider';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Layout.Sider.defaultProps, {
     compTag: Layout.Sider,
   });

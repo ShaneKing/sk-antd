@@ -3,6 +3,7 @@ import Comp from '../Comp';
 import Reacts from '../Reacts';
 
 export default class SKAside extends Comp {
+  static SK_COMP_NAME = 'SKAside';
   static defaultProps = SK.assign({}, Comp.defaultProps, {
     compTag: Reacts.TAG.aside,
   });

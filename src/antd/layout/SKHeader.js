@@ -7,6 +7,7 @@ Layout.Header.defaultProps = SK.assign({}, {}, OriginLayout.defaultProps, Layout
 Layout.Header.propTypes = SK.assign({}, {}, OriginLayout.propTypes, Layout.Header.propTypes, {});
 
 export default class SKHeader extends AntdComp {
+  static SK_COMP_NAME = 'SKHeader';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Layout.Header.defaultProps, {
     compTag: Layout.Header,
   });

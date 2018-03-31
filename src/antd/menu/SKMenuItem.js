@@ -20,6 +20,7 @@ Menu.Item.propTypes = SK.assign({
 }, OriginMenu.propTypes, Menu.Item.propTypes, {});
 
 export default class SKMenuItem extends AntdComp {
+  static SK_COMP_NAME = 'SKMenuItem';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Menu.Item.defaultProps, {
     compTag: Menu.Item,
   });

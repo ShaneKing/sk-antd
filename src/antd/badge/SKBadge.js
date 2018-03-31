@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
-import { STATUS } from '../../Const';
+import { STATUS } from '../AntdConst';
 
 Badge.defaultProps = SK.assign({}, {
   dot: false,
@@ -23,6 +23,7 @@ Badge.propTypes = SK.assign({}, {
 }, Badge.propTypes, {});
 
 export default class SKBadge extends AntdComp {
+  static SK_COMP_NAME = 'SKBadge';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Badge.defaultProps, {
     compTag: Badge,
   });

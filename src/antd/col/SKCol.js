@@ -48,6 +48,7 @@ Col.propTypes = SK.assign({}, {
 }, Col.propTypes, {});
 
 export default class SKCol extends AntdComp {
+  static SK_COMP_NAME = 'SKCol';
   static SK_PROPS = {
     SPAN: 'span',
   };
@@ -81,9 +82,5 @@ export default class SKCol extends AntdComp {
         {this.skTransProps2Child()}
       </CompTag>
     );
-  }
-
-  allowTransProps2Child(child) {
-    return { style: {} };
   }
 }

@@ -12,6 +12,7 @@ LocaleProvider.propTypes = SK.assign({}, {
 }, LocaleProvider.propTypes, {});
 
 export default class SKLocaleProvider extends AntdComp {
+  static SK_COMP_NAME = 'SKLocaleProvider';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, LocaleProvider.defaultProps, {
     compTag: LocaleProvider,
   });

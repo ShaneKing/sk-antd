@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
-import { ALIGN, JUSTIFY } from '../../Const';
+import { ALIGN, JUSTIFY } from '../AntdConst';
 
 Row.defaultProps = SK.assign({}, {
   align: ALIGN.Top,
@@ -23,6 +23,7 @@ Row.propTypes = SK.assign({}, {
 }, Row.propTypes, {});
 
 export default class SKRow extends AntdComp {
+  static SK_COMP_NAME = 'SKRow';
   static SK_PROPS = {
     GUTTER: 'gutter',
   };

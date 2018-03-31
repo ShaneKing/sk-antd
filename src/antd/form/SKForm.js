@@ -5,6 +5,7 @@ import AntdComp from '../AntdComp';
 
 //origin exist, use origin
 export default class SKForm extends AntdComp {
+  static SK_COMP_NAME = 'SKForm';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, OriginForm.defaultProps, {
     compTag: Form,
   });

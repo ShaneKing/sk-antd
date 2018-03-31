@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK, Model } from 'sk-js';
+import {Model, SK} from 'sk-js';
 import Reacts from './Reacts';
 
 /*eslint react/require-default-props: "off"*/
@@ -16,6 +16,7 @@ import Reacts from './Reacts';
  * html ,className,role,style
  */
 export default class Comp extends React.Component {
+  static SK_COMP_NAME = 'Comp';
   static SK_COMP_STATE_ID_PREFIX = 'skCompStateUid';
   static SK_PROPS_PREFIX = 'sk';
   static SK_PROPS_SYS = 'sys';
@@ -119,13 +120,12 @@ export default class Comp extends React.Component {
     v2mConvertor: PropTypes.func, //View 2 Model, like Check Comp, true is checked: true -> 1, false -> 0
   };
 
-
   constructor(...args) {
     super(...args);
     this.compName = 'Comp';
     this.monitors = [];
     this.updateUI = (evt) => {
-      this.setState({ stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX) });
+      this.setState({stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX)});
     };
   }
 
@@ -283,7 +283,7 @@ export default class Comp extends React.Component {
   }
 
   render() {
-    const { compTag: CompTag } = this.props;
+    const {compTag: CompTag} = this.props;
 
     return (
       <CompTag {...this.skTransProps2Self(CompTag)}>
@@ -338,23 +338,23 @@ export default class Comp extends React.Component {
    * @returns {React.Children}
    */
   skTransProps2Child(children = undefined) {
-    const skProps = Object.keys(this.props).skFilter(false, Comp.skPropsFilter);
+    const skProps = Object.keys(this.props.skFilter(false, Comp.skPropsFilter));
     return React.Children.map(children || this.props.children, child => {
       if (React.isValidElement(child)) {
         let allowProps = skProps;
         if (Reacts.TAG[child.type]) {
           allowProps = [];
-        } else if (child.type.name && _.startsWith(SK.s4s(child.type.name), Comp.SK_PROPS_PREFIX.toUpperCase())) {
-          allowProps = Object.keys(this.props);
+          //} else if (child.type.name && _.startsWith(SK.s4s(child.type.name), Comp.SK_PROPS_PREFIX.toUpperCase())) {
+          //  allowProps = Object.keys(this.props);
         } else if (child.type.propTypes) {
           allowProps = allowProps.concat(Object.keys(child.type.propTypes));
         }
         allowProps = allowProps.concat(this.allowTransProps2Child(child));
 
-        let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID, 'children'];
-        if (child.type.defaultProps) {
-          denyProps = denyProps.concat(Object.keys(child.type.defaultProps));
-        }
+        let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID, 'children', 'className'];
+        // if (child.type.defaultProps) {
+        //   denyProps = denyProps.concat(Object.keys(child.type.defaultProps));
+        // }
         if (child.props) {
           denyProps = denyProps.concat(Object.keys(child.props));
         }
@@ -375,20 +375,29 @@ export default class Comp extends React.Component {
    */
   skTransProps2Self(comp = this.props.compTag, prop = this.props) {
     let allowProps = Reacts.P.skVals();
-    if (comp.name && _.startsWith(SK.s4s(comp.name), Comp.SK_PROPS_PREFIX.toUpperCase())) {
-      //SK COMP
-      allowProps = Object.keys(prop);
-    } else if (comp.propTypes) {
-      //AntD or rc-* ...
+    // if (comp.name && _.startsWith(SK.s4s(comp.name), Comp.SK_PROPS_PREFIX.toUpperCase())) {
+    //   //SK COMP
+    //   allowProps = Object.keys(prop);
+    // }
+    if (comp.name && this.compName && (Comp.SK_PROPS_PREFIX.toUpperCase() + comp.name) === this.compName) {
+      //SK COMP to AntD
       allowProps = allowProps.concat(Object.keys(comp.propTypes));
-      allowProps = allowProps.concat(Object.keys(prop).skFilter(false, Comp.skPropsFilter));
+    }
+    if (comp.name && this.compName && _.startsWith(SK.s4s(comp.name), Comp.SK_PROPS_PREFIX.toUpperCase()) && _.startsWith(SK.s4s(this.compName), Comp.SK_PROPS_PREFIX.toUpperCase()) && ('Form' + comp.name.substring(2)) === this.compName.substring(2)) {
+      //SKFormInput to SKInput
+      allowProps = allowProps.concat(Object.keys(comp.propTypes));
+    }
+    //if (comp.propTypes && comp.name && _.startsWith(SK.s4s(comp.name), Comp.SK_PROPS_PREFIX.toUpperCase())) {
+    if (comp.propTypes) {
+      //AntD or rc-* ...
+      allowProps = allowProps.concat(Object.keys(prop.skFilter(false, Comp.skPropsFilter)));
     }
     allowProps = allowProps.concat(this.allowTransProps2Self(comp, prop));
 
     let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID];
-    if (comp.defaultProps) {
-      denyProps = denyProps.concat(Object.keys(comp.defaultProps));
-    }
+    // if (comp.defaultProps) {
+    //   denyProps = denyProps.concat(Object.keys(comp.defaultProps));
+    // }
     denyProps = denyProps.concat(this.denyTransProps2Self(comp, prop));
 
     return _.omit(_.pick(prop, allowProps), denyProps);

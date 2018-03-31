@@ -2,7 +2,7 @@ import { Modal } from 'antd';
 import PropTypes from 'prop-types';
 import { SK, Mesgs } from 'sk-js';
 import AntdComp from '../AntdComp';
-import SKButton from '../button/SKButton';
+import {BUTTON_TYPE} from '../AntdConst';
 
 /*eslint no-unused-vars: "off"*/
 
@@ -14,7 +14,7 @@ Modal.defaultProps = SK.assign({}, {
   maskClosable: true,
   maskStyle: {},
   okText: Mesgs.get('Ok'),
-  okType: SKButton.TYPE.Primary,
+  okType: BUTTON_TYPE.Primary,
   width: 520,
   zIndex: 1000,
 }, Modal.defaultProps, {});
@@ -53,6 +53,7 @@ Modal.propTypes = SK.assign({}, {
 }, Modal.propTypes, {});
 
 export default class SKModal extends AntdComp {
+  static SK_COMP_NAME = 'SKModal';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Modal.defaultProps, {
     compTag: Modal,
   });

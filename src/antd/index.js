@@ -1,4 +1,5 @@
 export AntdComp from './AntdComp';
+export * as AntdConst from './AntdConst';
 export * from './badge';
 export * from './breadcrumb';
 export * from './button';

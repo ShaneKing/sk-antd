@@ -7,6 +7,7 @@ import AntdComp from '../AntdComp';
 
 
 export default class SKLayout extends AntdComp {
+  static SK_COMP_NAME = 'SKLayout';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, OriginLayout.defaultProps, {
     compTag: Layout,
   });

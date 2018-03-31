@@ -2,7 +2,7 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { SK, Model } from 'sk-js';
 import Comp from '../Comp';
-import { SIZE } from '../Const';
+import { SIZE } from './AntdConst';
 import Reacts from '../Reacts';
 
 /**
@@ -10,6 +10,7 @@ import Reacts from '../Reacts';
  * 2.if origin exist, must be use origin
  */
 export default class AntdComp extends Comp {
+  static SK_COMP_NAME = 'AntdComp';
   static SK_PROPS = {
     SIZE: 'size',
   };

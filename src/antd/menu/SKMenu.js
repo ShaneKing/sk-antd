@@ -8,13 +8,14 @@ import SKMenuItem from './SKMenuItem';
 import SKSubMenu from './SKSubMenu';
 import AntdComp from '../AntdComp';
 import SKIcon from '../icon/SKIcon';
-import { Dir } from '../../Const';
+import { Dir } from '../AntdConst';
 import SKLink from '../../react0/SKLink';
 
 /*eslint no-unused-vars: "off"*/
 /*eslint react/jsx-closing-tag-location: "off"*/
 
 export default class SKMenu extends AntdComp {
+  static SK_COMP_NAME = 'SKMenu';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, SKMenuItem.defaultProps, SKSubMenu.defaultProps, OriginMenu.defaultProps, {
     compTag: Menu,
     dataId: undefined,

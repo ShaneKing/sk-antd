@@ -14,6 +14,7 @@ import Reacts from '../Reacts';
 /*eslint no-continue: "off"*/
 
 export default class SKECharts extends Comp {
+  static SK_COMP_NAME = 'SKECharts';
   static defaultProps = SK.assign({}, Comp.defaultProps, {
     compTag: Reacts.TAG.div,
 

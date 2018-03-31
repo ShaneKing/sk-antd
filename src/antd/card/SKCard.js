@@ -31,6 +31,7 @@ Card.propTypes = SK.assign({}, {
 }, Card.propTypes, {});
 
 export default class SKCard extends AntdComp {
+  static SK_COMP_NAME = 'SKCard';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Card.defaultProps, {
     compTag: Card,
   });

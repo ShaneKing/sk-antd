@@ -20,6 +20,7 @@ Breadcrumb.propTypes = SK.assign({}, {
 }, Breadcrumb.propTypes, {});
 
 export default class SKBreadcrumb extends AntdComp {
+  static SK_COMP_NAME = 'SKBreadcrumb';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Breadcrumb.defaultProps, {
     compTag: Breadcrumb,
   });

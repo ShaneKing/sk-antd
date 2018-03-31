@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SIZE } from '../../Const';
+import { SIZE } from '../AntdConst';
 
 Switch.defaultProps = SK.assign({}, {
   allowClear: false,
@@ -32,6 +32,7 @@ Switch.propTypes = SK.assign({}, {
 }, Switch.propTypes, {});
 
 export default class SKSwitch extends AntdComp {
+  static SK_COMP_NAME = 'SKSwitch';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Switch.defaultProps, {
     compTag: Switch,
   });

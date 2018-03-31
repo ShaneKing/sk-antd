@@ -3,6 +3,11 @@ export const ALIGN = {
   Middle: 'middle',
   Bottom: 'bottom',
 };
+export const BUTTON_TYPE = {
+  Primary: 'primary',
+  Dashed: 'dashed',
+  Danger: 'danger',
+};
 export const BREAKPOINT = {
   Xs: 'xs',
   Sm: 'sm',
@@ -15,7 +20,12 @@ export const Dir = {
   Inline: 'inline',
   Vertical: 'vertical',
 };
+export const ICON_TYPE = {
+  User:'user',
+  Lock:'lock',
+};
 export const INPUT_TYPE = {
+  Password: 'password',
   Text: 'text',
 };
 export const JUSTIFY = {

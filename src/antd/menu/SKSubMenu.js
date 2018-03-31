@@ -29,6 +29,7 @@ Menu.SubMenu.propTypes = SK.assign({
 }, OriginMenu.propTypes, Menu.SubMenu.propTypes, {});
 
 export default class SKSubMenu extends AntdComp {
+  static SK_COMP_NAME = 'SKSubMenu';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Menu.SubMenu.defaultProps, {
     compTag: Menu.SubMenu,
   });

@@ -7,6 +7,7 @@ Layout.Footer.defaultProps = SK.assign({}, {}, OriginLayout.defaultProps, Layout
 Layout.Footer.propTypes = SK.assign({}, {}, OriginLayout.propTypes, Layout.Footer.propTypes, {});
 
 export default class SKFooter extends AntdComp {
+  static SK_COMP_NAME = 'SKFooter';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Layout.Footer.defaultProps, {
     compTag: Layout.Footer,
   });

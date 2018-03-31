@@ -19,6 +19,7 @@ Popover.propTypes = SK.assign({}, {
 }, CommonTip.propTypes, Popover.propTypes, {});
 
 export default class SKPopover extends AntdComp {
+  static SK_COMP_NAME = 'SKPopover';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Popover.defaultProps, {
     compTag: Popover,
   });

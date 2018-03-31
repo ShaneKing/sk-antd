@@ -3,6 +3,7 @@ import Comp from '../Comp';
 import Reacts from '../Reacts';
 
 export default class SKBr extends Comp {
+  static SK_COMP_NAME = 'SKBr';
   static defaultProps = SK.assign({}, Comp.defaultProps, {
     compTag: Reacts.TAG.br,
   });

@@ -3,6 +3,7 @@ import FormComp from './FormComp';
 import SKInput from '../input/SKInput';
 
 export default class SKFormInput extends FormComp {
+  static SK_COMP_NAME = 'SKFormInput';
   static defaultProps = SK.assign({}, FormComp.defaultProps, SKInput.defaultProps, {
     compTag: SKInput,
   });

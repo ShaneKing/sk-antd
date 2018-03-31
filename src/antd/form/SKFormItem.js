@@ -33,6 +33,7 @@ Form.Item.propTypes = SK.assign({}, {
 }, OriginForm.propTypes, Form.Item.propTypes, {});
 
 export default class SKFormItem extends AntdComp {
+  static SK_COMP_NAME = 'SKFormItem';
   static SK_PROPS = {
     LABEL_COL: 'labelCol',
     WRAPPER_COL: 'wrapperCol',

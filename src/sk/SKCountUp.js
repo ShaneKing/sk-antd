@@ -11,6 +11,7 @@ import Reacts from '../Reacts';
 /*eslint react/no-string-refs: "off"*/
 
 export default class SKCountUp extends Comp {
+  static SK_COMP_NAME = 'SKCountUp';
   static defaultProps = SK.assign({}, Comp.defaultProps, {
     compTag: Reacts.TAG.span,
     decimal: SK.CHAR_DOT,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SIZE } from '../../Const';
+import { SIZE } from '../AntdConst';
 
 Spin.defaultProps = SK.assign({}, {
   size: SIZE.Default,
@@ -21,6 +21,7 @@ Spin.propTypes = SK.assign({}, {
 }, Spin.propTypes, {});
 
 export default class SKSpin extends AntdComp {
+  static SK_COMP_NAME = 'SKSpin';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Spin.defaultProps, {
     compTag: Spin,
     size: SIZE.Large,

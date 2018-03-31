@@ -21,6 +21,7 @@ Checkbox.propTypes = SK.assign({}, {
 }, Checkbox.propTypes, {});
 
 export default class SKCheckbox extends AntdComp {
+  static SK_COMP_NAME = 'SKCheckbox';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Checkbox.defaultProps, {
     compTag: Checkbox,
   });

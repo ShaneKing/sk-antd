@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SIZE } from '../../Const';
+import { SIZE } from '../AntdConst';
 
 Table.defaultProps = SK.assign({}, {
   bordered: false,
@@ -50,6 +50,7 @@ Table.propTypes = SK.assign({}, {
 }, Table.propTypes, {});
 
 export default class SKTable extends AntdComp {
+  static SK_COMP_NAME = 'SKTable';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Table.defaultProps, {
     compTag: Table,
     bordered: true,

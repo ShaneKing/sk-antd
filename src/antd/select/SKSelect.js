@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { SK, Mesgs } from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SELECT_MODE, SIZE } from '../../Const';
+import { SELECT_MODE, SIZE } from '../AntdConst';
 
 /*eslint no-unused-vars: "off"*/
 
@@ -80,6 +80,7 @@ Select.propTypes = SK.assign({}, {
 }, Select.propTypes, {});
 
 export default class SKSelect extends AntdComp {
+  static SK_COMP_NAME = 'SKSelect';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Select.Option.defaultProps, Select.defaultProps, {
     compTag: Select,
     dataId: undefined,

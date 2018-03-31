@@ -7,6 +7,7 @@ Layout.Content.defaultProps = SK.assign({}, {}, OriginLayout.defaultProps, Layou
 Layout.Content.propTypes = SK.assign({}, {}, OriginLayout.propTypes, Layout.Content.propTypes, {});
 
 export default class SKContent extends AntdComp {
+  static SK_COMP_NAME = 'SKContent';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Layout.Content.defaultProps, {
     compTag: Layout.Content,
   });

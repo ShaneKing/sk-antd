@@ -2,7 +2,7 @@ import { Button } from 'antd';
 import PropTypes from 'prop-types';
 import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SIZE } from '../../Const';
+import { SIZE } from '../AntdConst';
 import Reacts from '../../Reacts';
 
 Button.defaultProps = SK.assign({}, {
@@ -30,11 +30,7 @@ Button.propTypes = SK.assign({}, {
 }, Button.propTypes, {});
 
 export default class SKButton extends AntdComp {
-  static TYPE = {
-    Primary: 'primary',
-    Dashed: 'dashed',
-    Danger: 'danger',
-  };
+  static SK_COMP_NAME = 'SKButton';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Button.defaultProps, {
     compTag: Button,
   });

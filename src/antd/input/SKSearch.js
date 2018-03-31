@@ -18,6 +18,7 @@ Input.Search.propTypes = SK.assign({}, {
 }, OriginInput.propTypes, Input.Search.propTypes, {});
 
 export default class SKSearch extends SKInput {
+  static SK_COMP_NAME = 'SKSearch';
   static defaultProps = SK.assign({}, SKInput.defaultProps, Input.Search.defaultProps, {
     compTag: Input.Search,
   });

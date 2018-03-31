@@ -11,6 +11,7 @@ Tooltip.propTypes = SK.assign({}, {
 }, CommonTip.propTypes, Tooltip.propTypes, {});
 
 export default class SKTooltip extends AntdComp {
+  static SK_COMP_NAME = 'SKTooltip';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Tooltip.defaultProps, {
     compTag: Tooltip,
   });
