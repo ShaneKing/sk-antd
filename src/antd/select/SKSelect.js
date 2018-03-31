@@ -91,7 +91,7 @@ export default class SKSelect extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKSelect';
+    this.SK_COMP_NAME = SKSelect.SK_COMP_NAME;
     this.handleSelect = (value, option) => {
       if (this.props.onSelect && _.isFunction(this.props.onSelect)) {
         this.props.onSelect(value);

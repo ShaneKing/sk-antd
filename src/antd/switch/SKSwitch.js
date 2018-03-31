@@ -40,7 +40,7 @@ export default class SKSwitch extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKSwitch';
+    this.SK_COMP_NAME = SKSwitch.SK_COMP_NAME;
     this.handleChange = (checked) => {
       this.skVal(checked);
     };

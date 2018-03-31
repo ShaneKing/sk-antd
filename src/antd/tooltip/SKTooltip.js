@@ -19,6 +19,6 @@ export default class SKTooltip extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKTooltip';
+    this.SK_COMP_NAME = SKTooltip.SK_COMP_NAME;
   }
 }

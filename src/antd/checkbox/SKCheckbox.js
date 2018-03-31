@@ -29,7 +29,7 @@ export default class SKCheckbox extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKCheckbox';
+    this.SK_COMP_NAME = SKCheckbox.SK_COMP_NAME;
     this.handleChange = (domEvent) => {
       this.skVal(domEvent.target.checked);
     };

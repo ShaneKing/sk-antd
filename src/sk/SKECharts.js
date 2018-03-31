@@ -38,9 +38,9 @@ export default class SKECharts extends Comp {
     theme: PropTypes.string,
   });
 
-  constructor(...props) {
-    super(...props);
-    this.compName = 'SKECharts';
+  constructor(...args) {
+    super(...args);
+    this.SK_COMP_NAME = SKECharts.SK_COMP_NAME;
   }
 
   componentDidMount() {

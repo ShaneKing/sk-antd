@@ -20,7 +20,7 @@ export default class SKLocaleProvider extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKLocaleProvider';
+    this.SK_COMP_NAME = SKLocaleProvider.SK_COMP_NAME;
   }
 
   render() {

@@ -27,7 +27,7 @@ export default class SKPopover extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKPopover';
+    this.SK_COMP_NAME = SKPopover.SK_COMP_NAME;
     this.handleVisibleChange = (visible) => {
       this.skVal(visible);
     };

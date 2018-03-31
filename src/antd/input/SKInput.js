@@ -14,7 +14,7 @@ export default class SKInput extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKInput';
+    this.SK_COMP_NAME = SKInput.SK_COMP_NAME;
     this.handleChange = (domEvent) => {
       this.skVal(domEvent.target.value);
     };

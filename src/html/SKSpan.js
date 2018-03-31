@@ -10,6 +10,6 @@ export default class SKSpan extends Comp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKSpan';
+    this.SK_COMP_NAME = SKSpan.SK_COMP_NAME;
   }
 }

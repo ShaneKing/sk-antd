@@ -10,6 +10,6 @@ export default class SKP extends Comp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKP';
+    this.SK_COMP_NAME = SKP.SK_COMP_NAME;
   }
 }

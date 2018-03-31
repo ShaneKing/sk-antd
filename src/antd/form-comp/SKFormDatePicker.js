@@ -11,6 +11,6 @@ export default class SKFormDatePicker extends FormComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKFormDatePicker';
+    this.SK_COMP_NAME = SKFormDatePicker.SK_COMP_NAME;
   }
 }

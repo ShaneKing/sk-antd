@@ -11,6 +11,6 @@ export default class SKFormInput extends FormComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKFormInput';
+    this.SK_COMP_NAME = SKFormInput.SK_COMP_NAME;
   }
 }

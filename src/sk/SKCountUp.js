@@ -50,7 +50,7 @@ export default class SKCountUp extends Comp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKCountUp';
+    this.SK_COMP_NAME = SKCountUp.SK_COMP_NAME;
   }
 
   componentDidMount() {

@@ -15,7 +15,7 @@ export default class SKA extends Comp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKA';
+    this.SK_COMP_NAME = SKA.SK_COMP_NAME;
     this.handleClick = (e) => {
       if (this.props.onClick && _.isFunction(this.props.onClick)) {
         this.props.onClick(e);

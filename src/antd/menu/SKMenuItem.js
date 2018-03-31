@@ -28,6 +28,6 @@ export default class SKMenuItem extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKMenuItem';
+    this.SK_COMP_NAME = SKMenuItem.SK_COMP_NAME;
   }
 }

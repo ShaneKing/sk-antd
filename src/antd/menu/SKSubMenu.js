@@ -37,6 +37,6 @@ export default class SKSubMenu extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKSubMenu';
+    this.SK_COMP_NAME = SKSubMenu.SK_COMP_NAME;
   }
 }

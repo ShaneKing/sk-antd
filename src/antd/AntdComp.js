@@ -11,9 +11,9 @@ import Reacts from '../Reacts';
  */
 export default class AntdComp extends Comp {
   static SK_COMP_NAME = 'AntdComp';
-  static SK_PROPS = {
+  static SK_PROPS = SK.assign({}, Comp.SK_PROPS, {
     SIZE: 'size',
-  };
+  });
   static defaultProps = SK.assign({}, Comp.defaultProps, {});
   static propTypes = SK.assign({}, Comp.propTypes, {
     size: PropTypes.oneOf(Object.values(SIZE)),
@@ -22,7 +22,7 @@ export default class AntdComp extends Comp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'AntdComp';
+    this.SK_COMP_NAME = AntdComp.SK_COMP_NAME;
   }
 
   componentDidMount() {

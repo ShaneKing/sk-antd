@@ -15,7 +15,7 @@ export default class SKLayout extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKLayout';
+    this.SK_COMP_NAME = SKLayout.SK_COMP_NAME;
   }
 
   render() {

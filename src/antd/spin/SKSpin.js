@@ -30,7 +30,7 @@ export default class SKSpin extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKSpin';
+    this.SK_COMP_NAME = SKSpin.SK_COMP_NAME;
   }
 
   render() {

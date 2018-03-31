@@ -39,7 +39,7 @@ export default class SKDatePicker extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKDatePicker';
+    this.SK_COMP_NAME = SKDatePicker.SK_COMP_NAME;
     this.handleChange = (dateMoment, dateString) => {
       if (dateMoment) {
         this.skVal(dateMoment.format(SK.DEFAULT_MOMENT_DATE));

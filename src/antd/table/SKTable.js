@@ -64,7 +64,7 @@ export default class SKTable extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKTable';
+    this.SK_COMP_NAME = SKTable.SK_COMP_NAME;
   }
 
   addExtendChangedMonitor() {

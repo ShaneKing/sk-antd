@@ -15,6 +15,6 @@ export default class SKContent extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKContent';
+    this.SK_COMP_NAME = SKContent.SK_COMP_NAME;
   }
 }

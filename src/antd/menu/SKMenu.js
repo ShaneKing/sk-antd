@@ -30,7 +30,7 @@ export default class SKMenu extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKMenu';
+    this.SK_COMP_NAME = SKMenu.SK_COMP_NAME;
     this.handleClick = (clickInfo) => {
       if (this.props.onClick && _.isFunction(this.props.onClick)) {
         this.props.onClick(clickInfo);

@@ -10,6 +10,6 @@ export default class SKBr extends Comp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKBr';
+    this.SK_COMP_NAME = SKBr.SK_COMP_NAME;
   }
 }

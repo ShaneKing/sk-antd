@@ -15,6 +15,6 @@ export default class SKFooter extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKFooter';
+    this.SK_COMP_NAME = SKFooter.SK_COMP_NAME;
   }
 }

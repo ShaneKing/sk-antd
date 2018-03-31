@@ -38,6 +38,6 @@ export default class SKButton extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKButton';
+    this.SK_COMP_NAME = SKButton.SK_COMP_NAME;
   }
 }

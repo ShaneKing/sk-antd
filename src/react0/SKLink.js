@@ -11,6 +11,6 @@ export default class SKLink extends Comp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKLink';
+    this.SK_COMP_NAME = SKLink.SK_COMP_NAME;
   }
 }

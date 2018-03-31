@@ -40,6 +40,6 @@ export default class SKSider extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKSider';
+    this.SK_COMP_NAME = SKSider.SK_COMP_NAME;
   }
 }

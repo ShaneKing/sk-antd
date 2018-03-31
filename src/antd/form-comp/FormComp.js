@@ -8,10 +8,10 @@ import SKFormItem from '../form/SKFormItem';
 
 export default class FormComp extends AntdComp {
   static SK_COMP_NAME = 'FormComp';
-  static SK_PROPS = {
+  static SK_PROPS = SK.assign({}, AntdComp.SK_PROPS, {
     IN_FROM_ITEM: 'inFormItem',
     IN_FROM_ROW: 'inFormRow',
-  };
+  });
   static defaultProps = SK.assign({}, AntdComp.defaultProps, SKCol.defaultProps, SKFormItem.defaultProps, {});
   static propTypes = SK.assign({}, AntdComp.propTypes, SKCol.propTypes, SKFormItem.propTypes, {
     inFormItem: PropTypes.bool,
@@ -22,7 +22,7 @@ export default class FormComp extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'FormComp';
+    this.SK_COMP_NAME = FormComp.SK_COMP_NAME;
   }
 
   render() {

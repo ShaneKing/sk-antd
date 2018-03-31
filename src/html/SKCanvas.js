@@ -10,6 +10,6 @@ export default class SKCanvas extends Comp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKCanvas';
+    this.SK_COMP_NAME = SKCanvas.SK_COMP_NAME;
   }
 }

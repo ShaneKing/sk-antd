@@ -13,6 +13,6 @@ export default class SKForm extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKForm';
+    this.SK_COMP_NAME = SKForm.SK_COMP_NAME;
   }
 }

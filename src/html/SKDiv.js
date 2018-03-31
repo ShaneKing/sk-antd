@@ -10,6 +10,6 @@ export default class SKDiv extends Comp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKDiv';
+    this.SK_COMP_NAME = SKDiv.SK_COMP_NAME;
   }
 }

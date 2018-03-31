@@ -15,6 +15,6 @@ export default class SKHeader extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKHeader';
+    this.SK_COMP_NAME = SKHeader.SK_COMP_NAME;
   }
 }

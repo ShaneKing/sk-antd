@@ -39,6 +39,6 @@ export default class SKCard extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKCard';
+    this.SK_COMP_NAME = SKCard.SK_COMP_NAME;
   }
 }

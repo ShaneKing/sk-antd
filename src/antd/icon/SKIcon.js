@@ -23,6 +23,6 @@ export default class SKIcon extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKIcon';
+    this.SK_COMP_NAME = SKIcon.SK_COMP_NAME;
   }
 }

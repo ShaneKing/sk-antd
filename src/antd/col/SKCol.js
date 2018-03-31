@@ -49,9 +49,9 @@ Col.propTypes = SK.assign({}, {
 
 export default class SKCol extends AntdComp {
   static SK_COMP_NAME = 'SKCol';
-  static SK_PROPS = {
+  static SK_PROPS = SK.assign({}, AntdComp.SK_PROPS, {
     SPAN: 'span',
-  };
+  });
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Col.defaultProps, {
     compTag: Col,
   });
@@ -59,7 +59,7 @@ export default class SKCol extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKCol';
+    this.SK_COMP_NAME = SKCol.SK_COMP_NAME;
   }
 
   render() {

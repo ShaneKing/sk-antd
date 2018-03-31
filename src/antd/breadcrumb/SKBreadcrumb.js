@@ -28,7 +28,7 @@ export default class SKBreadcrumb extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKBreadcrumb';
+    this.SK_COMP_NAME = SKBreadcrumb.SK_COMP_NAME;
   }
 
   render() {

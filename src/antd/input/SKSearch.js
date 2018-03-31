@@ -26,6 +26,6 @@ export default class SKSearch extends SKInput {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKSearch';
+    this.SK_COMP_NAME = SKSearch.SK_COMP_NAME;
   }
 }

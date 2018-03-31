@@ -122,7 +122,7 @@ export default class Comp extends React.Component {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'Comp';
+    this.SK_COMP_NAME = Comp.SK_COMP_NAME;
     this.monitors = [];
     this.updateUI = (evt) => {
       this.setState({stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX)});
@@ -323,11 +323,6 @@ export default class Comp extends React.Component {
     if (rtn === undefined) {
       rtn = this.props[Comp.SK_PROPS_PREFIX + SK.upperWordsFirstChar(Comp.SK_PROPS_SYS) + SK.upperWordsFirstChar(prop)];
     }
-    // if (rtn === undefined) {
-    //   rtn = DEFAULT[SK.upperWordsFirstChar(prop).replace(/[A-Z]/g, ($1) => {
-    //     return SK.CHAR_UNDERLINE + $1;
-    //   }).toUpperCase().slice(1)]
-    // }
     return rtn === undefined ? defaultValue : rtn;
   }
 
@@ -342,22 +337,11 @@ export default class Comp extends React.Component {
     return React.Children.map(children || this.props.children, child => {
       if (React.isValidElement(child)) {
         let allowProps = skProps;
-        if (Reacts.TAG[child.type]) {
-          allowProps = [];
-          //} else if (child.type.name && _.startsWith(SK.s4s(child.type.name), Comp.SK_PROPS_PREFIX.toUpperCase())) {
-          //  allowProps = Object.keys(this.props);
-        } else if (child.type.propTypes) {
-          allowProps = allowProps.concat(Object.keys(child.type.propTypes));
-        }
+        allowProps = Reacts.TAG[child.type] ? [] : allowProps;
         allowProps = allowProps.concat(this.allowTransProps2Child(child));
 
         let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID, 'children', 'className'];
-        // if (child.type.defaultProps) {
-        //   denyProps = denyProps.concat(Object.keys(child.type.defaultProps));
-        // }
-        if (child.props) {
-          denyProps = denyProps.concat(Object.keys(child.props));
-        }
+        denyProps = child.props ? denyProps.concat(Object.keys(child.props)) : denyProps;
         denyProps = denyProps.concat(this.denyTransProps2Child(child));
 
         return React.cloneElement(child, _.omit(_.pick(this.props, allowProps), denyProps));
@@ -375,29 +359,18 @@ export default class Comp extends React.Component {
    */
   skTransProps2Self(comp = this.props.compTag, prop = this.props) {
     let allowProps = Reacts.P.skVals();
-    // if (comp.name && _.startsWith(SK.s4s(comp.name), Comp.SK_PROPS_PREFIX.toUpperCase())) {
-    //   //SK COMP
-    //   allowProps = Object.keys(prop);
-    // }
-    if (comp.name && this.compName && (Comp.SK_PROPS_PREFIX.toUpperCase() + comp.name) === this.compName) {
+    if (comp.name && this.SK_COMP_NAME && (Comp.SK_PROPS_PREFIX.toUpperCase() + comp.name) === this.SK_COMP_NAME) {
       //SK COMP to AntD
       allowProps = allowProps.concat(Object.keys(comp.propTypes));
     }
-    if (comp.name && this.compName && _.startsWith(SK.s4s(comp.name), Comp.SK_PROPS_PREFIX.toUpperCase()) && _.startsWith(SK.s4s(this.compName), Comp.SK_PROPS_PREFIX.toUpperCase()) && ('Form' + comp.name.substring(2)) === this.compName.substring(2)) {
+    if (comp.name && this.SK_COMP_NAME && _.startsWith(SK.s4s(comp.name), Comp.SK_PROPS_PREFIX.toUpperCase()) && _.startsWith(SK.s4s(this.SK_COMP_NAME), Comp.SK_PROPS_PREFIX.toUpperCase()) && ('Form' + comp.name.substring(2)) === this.SK_COMP_NAME.substring(2)) {
       //SKFormInput to SKInput
       allowProps = allowProps.concat(Object.keys(comp.propTypes));
     }
-    //if (comp.propTypes && comp.name && _.startsWith(SK.s4s(comp.name), Comp.SK_PROPS_PREFIX.toUpperCase())) {
-    if (comp.propTypes) {
-      //AntD or rc-* ...
-      allowProps = allowProps.concat(Object.keys(prop.skFilter(false, Comp.skPropsFilter)));
-    }
+    allowProps = comp.SK_COMP_NAME ? allowProps.concat(Object.keys(prop.skFilter(false, Comp.skPropsFilter))) : allowProps;
     allowProps = allowProps.concat(this.allowTransProps2Self(comp, prop));
 
     let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID];
-    // if (comp.defaultProps) {
-    //   denyProps = denyProps.concat(Object.keys(comp.defaultProps));
-    // }
     denyProps = denyProps.concat(this.denyTransProps2Self(comp, prop));
 
     return _.omit(_.pick(prop, allowProps), denyProps);

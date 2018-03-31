@@ -31,7 +31,7 @@ export default class SKBadge extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKBadge';
+    this.SK_COMP_NAME = SKBadge.SK_COMP_NAME;
   }
 
   render() {

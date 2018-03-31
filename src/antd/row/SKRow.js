@@ -24,9 +24,9 @@ Row.propTypes = SK.assign({}, {
 
 export default class SKRow extends AntdComp {
   static SK_COMP_NAME = 'SKRow';
-  static SK_PROPS = {
+  static SK_PROPS = SK.assign({}, AntdComp.SK_PROPS, {
     GUTTER: 'gutter',
-  };
+  });
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Row.defaultProps, {
     compTag: Row,
   });
@@ -34,7 +34,7 @@ export default class SKRow extends AntdComp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKRow';
+    this.SK_COMP_NAME = SKRow.SK_COMP_NAME;
   }
 
   render() {

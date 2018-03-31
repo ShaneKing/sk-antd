@@ -10,6 +10,6 @@ export default class SKAside extends Comp {
 
   constructor(...args) {
     super(...args);
-    this.compName = 'SKAside';
+    this.SK_COMP_NAME = SKAside.SK_COMP_NAME;
   }
 }
