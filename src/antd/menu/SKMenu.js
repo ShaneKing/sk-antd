@@ -1,19 +1,19 @@
-import { Menu } from 'antd';
+import {Menu} from 'antd';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import OriginMenu from './OriginMenu';
 import SKMenuItem from './SKMenuItem';
 import SKSubMenu from './SKSubMenu';
 import AntdComp from '../AntdComp';
 import SKIcon from '../icon/SKIcon';
 import { Dir } from '../AntdConst';
-import SKLink from '../../react0/SKLink';
 
 /*eslint no-unused-vars: "off"*/
 /*eslint react/jsx-closing-tag-location: "off"*/
 
+//modelId is selectedKeysId
 export default class SKMenu extends AntdComp {
   static SK_COMP_NAME = 'SKMenu';
   static defaultProps = SK.assign({}, AntdComp.defaultProps, SKMenuItem.defaultProps, SKSubMenu.defaultProps, OriginMenu.defaultProps, {
@@ -22,38 +22,47 @@ export default class SKMenu extends AntdComp {
     displayItem: (itemInfo) => {
       return true;
     },
+    openKeysId: undefined,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, SKMenuItem.propTypes, SKSubMenu.propTypes, OriginMenu.propTypes, {
     dataId: PropTypes.string,
     displayItem: PropTypes.func,
+    openKeysId: PropTypes.string,
   });
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKMenu.SK_COMP_NAME;
-    this.handleClick = (clickInfo) => {
-      if (this.props.onClick && _.isFunction(this.props.onClick)) {
-        this.props.onClick(clickInfo);
-      } else {
-        const newVal = _.clone(this.skVal());
-        // newVal.openKeys = this.skVal().openKeys;
-        newVal.selectedKeys = [clickInfo.key];
-        this.skVal(newVal);
-      }
-    };
-    this.handleOpenChange = (openKeys) => {
-      if (this.props.onOpenChange && _.isFunction(this.props.onOpenChange)) {
-        this.props.onOpenChange(openKeys);
-      } else {
-        const newVal = _.clone(this.skVal());
-        newVal.openKeys = openKeys.slice(0);
-        this.skVal(newVal);
-      }
-    };
   }
 
+  addExtendChangedMonitor() {
+    super.addExtendChangedMonitor();
+    this.skModel().addIdChangedListener(this.openKeysId, this.updateUI);
+  }
+
+  rmvExtendChangedMonitor() {
+    super.rmvExtendChangedMonitor();
+    this.skModel().rmvIdChangedListener(this.openKeysId, this.updateUI);
+  }
+
+  handleClick = (clickInfo) => {
+    if (this.props.onClick && _.isFunction(this.props.onClick)) {
+      this.props.onClick(clickInfo);
+    } else {
+      this.skVal([clickInfo.key]);
+    }
+  };
+
+  handleOpenChange = (openKeys) => {
+    if (this.props.onOpenChange && _.isFunction(this.props.onOpenChange)) {
+      this.props.onOpenChange(openKeys);
+    } else {
+      this.skModel().skVal(this.openKeysId, openKeys);
+    }
+  };
+
   menuMap(itemInfo) {
-    const { displayItem, dataId, mode } = this.props;
+    const {displayItem, dataId, mode} = this.props;
     const menuCfgs = this.skModel().skVal(dataId);
 
     const displayTitle = ((mode === Dir.Inline) || menuCfgs.indexOf(itemInfo) === -1);
@@ -62,28 +71,26 @@ export default class SKMenu extends AntdComp {
     if (itemInfo.children && !_.isEmpty(itemInfo.children)) {
       rtnCfgs.push(<SKSubMenu
         {...this.skTransProps2Self(SKSubMenu)}
+        eventKey={itemInfo.router}
         key={itemInfo.router}
-        parentMenu={this}
         title={<span>
-          <SKIcon type={itemInfo.icon} />
+          <SKIcon type={itemInfo.icon}/>
           <span>{displayTitle && itemInfo.title}</span>
         </span>}
       >
         {itemInfo.children.map(this.menuMap.bind(this))}
       </SKSubMenu>);
     } else if (displayItem && displayItem(itemInfo)) {
-      rtnCfgs.push(<SKMenuItem {...this.skTransProps2Self(SKMenuItem)} key={itemInfo.router} parentMenu={this}>
-        <SKLink {...this.skTransProps2Self(SKLink)} to={itemInfo.router}>
-          {itemInfo.icon && <SKIcon {...this.skTransProps2Self(SKIcon)} type={itemInfo.icon} />}
-          {displayTitle && itemInfo.title}
-        </SKLink>
+      rtnCfgs.push(<SKMenuItem {...this.skTransProps2Self(SKMenuItem)} eventKey={itemInfo.router} key={itemInfo.router}>
+        {itemInfo.icon && <SKIcon {...this.skTransProps2Self(SKIcon)} type={itemInfo.icon}/>}
+        {displayTitle && itemInfo.title}
       </SKMenuItem>);
     }
     return rtnCfgs;
   }
 
   render() {
-    const { compTag: CompTag, dataId, mode, theme } = this.props;
+    const {compTag: CompTag, dataId, mode, theme} = this.props;
 
     return (
       <CompTag

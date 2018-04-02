@@ -14,7 +14,9 @@ Menu.Item.propTypes = SK.assign({
 }, {
   //https://ant.design/components/menu-cn/#Menu.Item
   disabled: PropTypes.bool,
+  //key: PropTypes.string,//Warning: SKMenuItem: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://fb.me/react-special-props)
   //https://github.com/react-component/menu#menuitem-props
+  eventKey: PropTypes.string,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
 }, OriginMenu.propTypes, Menu.Item.propTypes, {});

@@ -15,13 +15,14 @@ Menu.SubMenu.propTypes = SK.assign({
   //https://ant.design/components/menu-cn/#Menu.SubMenu
   // children: PropTypes.array,
   disabled: PropTypes.bool,
-  // key: PropTypes.string,
+  //key: PropTypes.string,//Warning: SKMenuItem: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://fb.me/react-special-props)
   title: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
   ]),
   onTitleClick: PropTypes.func,
   //https://github.com/react-component/menu#menusubmenu-props
+  eventKey: PropTypes.string,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
   onTitleMouseEnter: PropTypes.func,
