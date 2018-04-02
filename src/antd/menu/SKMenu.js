@@ -8,7 +8,7 @@ import SKMenuItem from './SKMenuItem';
 import SKSubMenu from './SKSubMenu';
 import AntdComp from '../AntdComp';
 import SKIcon from '../icon/SKIcon';
-import { Dir } from '../AntdConst';
+import {Dir} from '../AntdConst';
 
 /*eslint no-unused-vars: "off"*/
 /*eslint react/jsx-closing-tag-location: "off"*/
@@ -37,12 +37,12 @@ export default class SKMenu extends AntdComp {
 
   addExtendChangedMonitor() {
     super.addExtendChangedMonitor();
-    this.skModel().addIdChangedListener(this.openKeysId, this.updateUI);
+    this.skModel().addIdChangedListener(this.props.openKeysId, this.updateUI);
   }
 
   rmvExtendChangedMonitor() {
     super.rmvExtendChangedMonitor();
-    this.skModel().rmvIdChangedListener(this.openKeysId, this.updateUI);
+    this.skModel().rmvIdChangedListener(this.props.openKeysId, this.updateUI);
   }
 
   handleClick = (clickInfo) => {
@@ -57,7 +57,7 @@ export default class SKMenu extends AntdComp {
     if (this.props.onOpenChange && _.isFunction(this.props.onOpenChange)) {
       this.props.onOpenChange(openKeys);
     } else {
-      this.skModel().skVal(this.openKeysId, openKeys);
+      this.skModel().skVal(this.props.openKeysId, openKeys);
     }
   };
 
@@ -90,7 +90,7 @@ export default class SKMenu extends AntdComp {
   }
 
   render() {
-    const {compTag: CompTag, dataId, mode, theme} = this.props;
+    const {compTag: CompTag, dataId, mode, openKeysId, theme} = this.props;
 
     return (
       <CompTag
@@ -98,8 +98,8 @@ export default class SKMenu extends AntdComp {
         mode={mode}
         onClick={this.handleClick}
         onOpenChange={this.handleOpenChange}
-        openKeys={this.skVal().openKeys}
-        selectedKeys={this.skVal().selectedKeys}
+        openKeys={this.skModel().skVal(openKeysId)}
+        selectedKeys={this.skVal()}
         theme={theme}
       >
         {dataId ? this.skModel().skVal(dataId).map(($itemInfo) => {
