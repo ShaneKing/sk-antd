@@ -21,6 +21,8 @@ export const Dir = {
   Vertical: 'vertical',
 };
 export const ICON_TYPE = {
+  Down:'down',
+  Up:'up',
   User:'user',
   Lock:'lock',
 };
@@ -54,6 +56,9 @@ export const PLACEMENT = {
   LeftBottom: 'leftBottom',
   RightTop: 'rightTop',
   RightBottom: 'rightBottom',
+};
+export const ROW_TYPE = {
+  Flex: 'flex'
 };
 export const SELECT_MODE = {
   Multiple: 'multiple',
