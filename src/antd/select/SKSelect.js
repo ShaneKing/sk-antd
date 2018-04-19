@@ -110,7 +110,7 @@ export default class SKSelect extends AntdComp {
 
   handleChange = (value, option) => {
     if (this.props.modes === SELECT_MODES.Remote && this.props.textId && option) {
-      this.skModel().skVal(this.props.textId, option.props.children);
+      this.skTmpVal(this.props.textId, option.props.children);
     }
     if (this.props.onChange && _.isFunction(this.props.onChange)) {
       this.props.onChange(value, option);
@@ -122,9 +122,17 @@ export default class SKSelect extends AntdComp {
     }
   };
 
+  handleBlur = () => {
+    if (this.props.modes === SELECT_MODES.Remote && this.props.textId) {
+      this.skTmpVal(this.props.textId, this.skModel().skVal(this.props.textId));
+      this.updateUI();
+    }
+  };
+
   handleSelect = (value, option) => {
     if (this.props.modes === SELECT_MODES.Remote && this.props.textId) {
       this.skModel().skVal(this.props.textId, option.props.children);
+      this.skTmpVal(this.props.textId, option.props.children);
     }
     if (this.props.onSelect && _.isFunction(this.props.onSelect)) {
       this.props.onSelect(value, option);
@@ -161,9 +169,10 @@ export default class SKSelect extends AntdComp {
       <CompTag
         {...defaultProps}
         {...this.skTransProps2Self(CompTag)}
+        onBlur={this.handleBlur}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
-        value={(modes === SELECT_MODES.Remote && textId) ? this.skModel().skVal(textId) : this.skVal()}
+        value={(modes === SELECT_MODES.Remote && textId) ? this.skTmpVal(textId) : this.skVal()}
         getPopupContainer={triggerNode => triggerNode.parentNode}
       >
         {dataId ? this.skModel().skVal(dataId).map((selectOption) => {

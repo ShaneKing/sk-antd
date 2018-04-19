@@ -308,6 +308,10 @@ export default class Comp extends React.Component {
     return this.skProp(Comp.SK_PROPS.MODEL);
   }
 
+  skTmpVal(id = this.getModelId(), value){
+    return arguments.length > 1 ? this.skModel().skVal('tmp.'+id, value) : this.skModel().skVal('tmp.'+id);
+  }
+
   /**
    * Get prop value: prop -> skProp -> DEFAULT.PROP
    *
