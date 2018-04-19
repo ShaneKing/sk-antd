@@ -65,6 +65,10 @@ export const SELECT_MODE = {
   Tags: 'tags',
   Combobox: 'combobox',
 };
+export const SELECT_MODES = {
+  Local: 'local',
+  Remote: 'remote'
+};
 export const SIZE = {
   Large: 'large',
   Default: 'default',

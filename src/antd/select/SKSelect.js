@@ -1,28 +1,28 @@
-import { Select } from 'antd';
+import {Select} from 'antd';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK, Mesgs } from 'sk-js';
+import {Mesgs, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SELECT_MODE, SIZE } from '../AntdConst';
+import {SELECT_MODE, SELECT_MODES, SIZE} from '../AntdConst';
 
 /*eslint no-unused-vars: "off"*/
 
 Select.defaultProps = SK.assign({}, {
-  allowClear: false,
-  autoFocus: false,
-  combobox: false,
-  defaultActiveFirstOption: true,
-  disabled: false,
-  dropdownMatchSelectWidth: true,
-  filterOption: true,
-  labelInValue: false,
+  //allowClear: false,
+  //autoFocus: false,
+  //combobox: false,
+  //defaultActiveFirstOption: true,
+  //disabled: false,
+  //dropdownMatchSelectWidth: true,
+  //filterOption: true,
+  //labelInValue: false,
   // multiple: false,
   notFoundContent: Mesgs.get('Not_Found'),
   // optionFilterProp:'value',
-  showSearch: false,
+  //showSearch: false,
   size: SIZE.Default,
-  tags: false,
+  //tags: false,
 }, Select.defaultProps, {});
 
 Select.propTypes = SK.assign({}, {
@@ -84,35 +84,87 @@ export default class SKSelect extends AntdComp {
   static defaultProps = SK.assign({}, AntdComp.defaultProps, Select.Option.defaultProps, Select.defaultProps, {
     compTag: Select,
     dataId: undefined,
+    modes: SELECT_MODES.Local,
+    textId: undefined,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, Select.Option.propTypes, Select.propTypes, {
     dataId: PropTypes.string,
+    modes: PropTypes.oneOf(Object.values(SELECT_MODES)),
+    textId: PropTypes.string,
   });
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKSelect.SK_COMP_NAME;
-    this.handleSelect = (value, option) => {
-      if (this.props.onSelect && _.isFunction(this.props.onSelect)) {
-        this.props.onSelect(value);
-      } else {
-        this.skVal(value);
-      }
-    };
   }
+
+  addExtendChangedMonitor() {
+    super.addExtendChangedMonitor();
+    this.skModel().addIdChangedListener(this.props.dataId, this.updateUI);
+  }
+
+  rmvExtendChangedMonitor() {
+    super.rmvExtendChangedMonitor();
+    this.skModel().rmvIdChangedListener(this.props.dataId, this.updateUI);
+  }
+
+  handleChange = (value, option) => {
+    if (this.props.modes === SELECT_MODES.Remote && this.props.textId && option) {
+      this.skModel().skVal(this.props.textId, option.props.children);
+    }
+    if (this.props.onChange && _.isFunction(this.props.onChange)) {
+      this.props.onChange(value, option);
+    } else {
+      if (!option || !option.key) {
+        //if clear, reset value of modelId
+        this.skVal(undefined);
+      }
+    }
+  };
+
+  handleSelect = (value, option) => {
+    if (this.props.modes === SELECT_MODES.Remote && this.props.textId) {
+      this.skModel().skVal(this.props.textId, option.props.children);
+    }
+    if (this.props.onSelect && _.isFunction(this.props.onSelect)) {
+      this.props.onSelect(value, option);
+    } else {
+      this.skVal(option.key);
+    }
+  };
 
   static optionMap(selectOption) {
     return (<Select.Option key={selectOption.id}>{selectOption.text}</Select.Option>);
   }
 
   render() {
-    const { compTag: CompTag, dataId } = this.props;
+    const {compTag: CompTag, dataId, modes, textId} = this.props;
+
+    let defaultProps = {};
+    if (modes === SELECT_MODES.Local) {
+      defaultProps = {
+        filterOption: (input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+        , optionFilterProp: 'children'
+        , showSearch: true
+      };
+    } else if (modes === SELECT_MODES.Remote) {
+      defaultProps = {
+        defaultActiveFirstOption: false
+        , mode: SELECT_MODE.Combobox
+        , filterOption: false
+        , optionLabelProp: 'children'
+        , showArrow: false
+      };
+    }
 
     return (
       <CompTag
+        {...defaultProps}
         {...this.skTransProps2Self(CompTag)}
+        onChange={this.handleChange}
         onSelect={this.handleSelect}
-        value={this.skVal()}
+        value={(modes === SELECT_MODES.Remote && textId) ? this.skModel().skVal(textId) : this.skVal()}
+        getPopupContainer={triggerNode => triggerNode.parentNode}
       >
         {dataId ? this.skModel().skVal(dataId).map((selectOption) => {
           return SKSelect.optionMap(selectOption);
