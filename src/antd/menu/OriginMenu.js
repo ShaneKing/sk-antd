@@ -1,7 +1,7 @@
-import {Menu} from 'antd';
+import { Menu } from 'antd';
 import PropTypes from 'prop-types';
-import {SK} from 'sk-js';
-import {MENU_MODE, THEME} from '../AntdConst';
+import { SK } from 'sk-js';
+import { MENU_MODE, THEME } from '../AntdConst';
 
 Menu.defaultProps = SK.assign({}, {
   inlineIndent: 24,

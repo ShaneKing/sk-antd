@@ -114,11 +114,9 @@ export default class SKSelect extends AntdComp {
     }
     if (this.props.onChange && _.isFunction(this.props.onChange)) {
       this.props.onChange(value, option);
-    } else {
-      if (!option || !option.key) {
-        //if clear, reset value of modelId
-        this.skVal(undefined);
-      }
+    } else if (!option || !option.key) {
+      //if clear, reset value of modelId
+      this.skVal(undefined);
     }
   };
 
@@ -151,17 +149,17 @@ export default class SKSelect extends AntdComp {
     let defaultProps = {};
     if (modes === SELECT_MODES.Local) {
       defaultProps = {
-        filterOption: (input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-        , optionFilterProp: 'children'
-        , showSearch: true
+        filterOption: (input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
+        optionFilterProp: 'children',
+        showSearch: true,
       };
     } else if (modes === SELECT_MODES.Remote) {
       defaultProps = {
-        defaultActiveFirstOption: false
-        , mode: SELECT_MODE.Combobox
-        , filterOption: false
-        , optionLabelProp: 'children'
-        , showArrow: false
+        defaultActiveFirstOption: false,
+        mode: SELECT_MODE.Combobox,
+        filterOption: false,
+        optionLabelProp: 'children',
+        showArrow: false,
       };
     }
 

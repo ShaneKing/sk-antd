@@ -21,10 +21,10 @@ export const Dir = {
   Vertical: 'vertical',
 };
 export const ICON_TYPE = {
-  Down:'down',
-  Up:'up',
-  User:'user',
-  Lock:'lock',
+  Down: 'down',
+  Up: 'up',
+  User: 'user',
+  Lock: 'lock',
 };
 export const INPUT_TYPE = {
   Password: 'password',
@@ -58,7 +58,7 @@ export const PLACEMENT = {
   RightBottom: 'rightBottom',
 };
 export const ROW_TYPE = {
-  Flex: 'flex'
+  Flex: 'flex',
 };
 export const SELECT_MODE = {
   Multiple: 'multiple',
@@ -67,7 +67,7 @@ export const SELECT_MODE = {
 };
 export const SELECT_MODES = {
   Local: 'local',
-  Remote: 'remote'
+  Remote: 'remote',
 };
 export const SIZE = {
   Large: 'large',

@@ -13,5 +13,4 @@ export default class SKFormSelect extends FormComp {
     super(...args);
     this.SK_COMP_NAME = SKFormSelect.SK_COMP_NAME;
   }
-
 }

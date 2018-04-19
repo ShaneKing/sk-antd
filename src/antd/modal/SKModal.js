@@ -2,7 +2,7 @@ import { Modal } from 'antd';
 import PropTypes from 'prop-types';
 import { SK, Mesgs } from 'sk-js';
 import AntdComp from '../AntdComp';
-import {BUTTON_TYPE} from '../AntdConst';
+import { BUTTON_TYPE } from '../AntdConst';
 
 /*eslint no-unused-vars: "off"*/
 

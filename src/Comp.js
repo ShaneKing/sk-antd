@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Model, SK} from 'sk-js';
+import { Model, SK } from 'sk-js';
 import Reacts from './Reacts';
 
 /*eslint react/require-default-props: "off"*/
@@ -125,7 +125,7 @@ export default class Comp extends React.Component {
     this.SK_COMP_NAME = Comp.SK_COMP_NAME;
     this.monitors = [];
     this.updateUI = (evt) => {
-      this.setState({stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX)});
+      this.setState({ stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX) });
     };
   }
 
@@ -283,7 +283,7 @@ export default class Comp extends React.Component {
   }
 
   render() {
-    const {compTag: CompTag} = this.props;
+    const { compTag: CompTag } = this.props;
 
     return (
       <CompTag {...this.skTransProps2Self(CompTag)}>
@@ -308,8 +308,8 @@ export default class Comp extends React.Component {
     return this.skProp(Comp.SK_PROPS.MODEL);
   }
 
-  skTmpVal(id = this.getModelId(), value){
-    return arguments.length > 1 ? this.skModel().skVal('tmp.'+id, value) : this.skModel().skVal('tmp.'+id);
+  skTmpVal(id = this.getModelId(), value) {
+    return arguments.length > 1 ? this.skModel().skVal(`tmp.${id}`, value) : this.skModel().skVal(`tmp.${id}`);
   }
 
   /**
@@ -368,7 +368,7 @@ export default class Comp extends React.Component {
       //SK COMP to AntD
       allowProps = allowProps.concat(Object.keys(comp.propTypes));
     }
-    if (comp.name && this.SK_COMP_NAME && _.startsWith(SK.s4s(comp.name), Comp.SK_PROPS_PREFIX.toUpperCase()) && _.startsWith(SK.s4s(this.SK_COMP_NAME), Comp.SK_PROPS_PREFIX.toUpperCase()) && ('Form' + comp.name.substring(2)) === this.SK_COMP_NAME.substring(2)) {
+    if (comp.name && this.SK_COMP_NAME && _.startsWith(SK.s4s(comp.name), Comp.SK_PROPS_PREFIX.toUpperCase()) && _.startsWith(SK.s4s(this.SK_COMP_NAME), Comp.SK_PROPS_PREFIX.toUpperCase()) && (`Form${comp.name.substring(2)}`) === this.SK_COMP_NAME.substring(2)) {
       //SKFormInput to SKInput
       allowProps = allowProps.concat(Object.keys(comp.propTypes));
     }

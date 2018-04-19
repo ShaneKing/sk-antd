@@ -1,14 +1,14 @@
-import {Menu} from 'antd';
+import { Menu } from 'antd';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import { SK } from 'sk-js';
 import OriginMenu from './OriginMenu';
 import SKMenuItem from './SKMenuItem';
 import SKSubMenu from './SKSubMenu';
 import AntdComp from '../AntdComp';
 import SKIcon from '../icon/SKIcon';
-import {Dir} from '../AntdConst';
+import { Dir } from '../AntdConst';
 
 /*eslint no-unused-vars: "off"*/
 /*eslint react/jsx-closing-tag-location: "off"*/
@@ -62,7 +62,7 @@ export default class SKMenu extends AntdComp {
   };
 
   menuMap(itemInfo) {
-    const {displayItem, dataId, mode} = this.props;
+    const { displayItem, dataId, mode } = this.props;
     const menuCfgs = this.skModel().skVal(dataId);
 
     const displayTitle = ((mode === Dir.Inline) || menuCfgs.indexOf(itemInfo) === -1);
@@ -74,7 +74,7 @@ export default class SKMenu extends AntdComp {
         eventKey={itemInfo.router}
         key={itemInfo.router}
         title={<span>
-          <SKIcon type={itemInfo.icon}/>
+          <SKIcon type={itemInfo.icon} />
           <span>{displayTitle && itemInfo.title}</span>
         </span>}
       >
@@ -82,7 +82,7 @@ export default class SKMenu extends AntdComp {
       </SKSubMenu>);
     } else if (displayItem && displayItem(itemInfo)) {
       rtnCfgs.push(<SKMenuItem {...this.skTransProps2Self(SKMenuItem)} eventKey={itemInfo.router} key={itemInfo.router}>
-        {itemInfo.icon && <SKIcon {...this.skTransProps2Self(SKIcon)} type={itemInfo.icon}/>}
+        {itemInfo.icon && <SKIcon {...this.skTransProps2Self(SKIcon)} type={itemInfo.icon} />}
         {displayTitle && itemInfo.title}
       </SKMenuItem>);
     }
@@ -90,7 +90,7 @@ export default class SKMenu extends AntdComp {
   }
 
   render() {
-    const {compTag: CompTag, dataId, mode, openKeysId, theme} = this.props;
+    const { compTag: CompTag, dataId, mode, openKeysId, theme } = this.props;
 
     return (
       <CompTag

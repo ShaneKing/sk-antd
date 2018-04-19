@@ -28,7 +28,7 @@ export default class SKA extends Comp {
     return (
       <CompTag
         {...this.skTransProps2Self(CompTag)}
-        href='javascript:void(0);'
+        href="javascript:void(0);"
         onClick={this.handleClick}
       >
         {this.skTransProps2Child()}
