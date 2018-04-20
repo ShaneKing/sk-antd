@@ -88,7 +88,7 @@ export default class SKSelect extends AntdComp {
     textId: undefined,
   });
   static propTypes = SK.assign({}, AntdComp.propTypes, Select.Option.propTypes, Select.propTypes, {
-    dataId: PropTypes.string,
+    dataId: PropTypes.string.isRequired,
     modes: PropTypes.oneOf(Object.values(SELECT_MODES)),
     textId: PropTypes.string,
   });
@@ -100,17 +100,21 @@ export default class SKSelect extends AntdComp {
 
   addExtendChangedMonitor() {
     super.addExtendChangedMonitor();
-    this.skModel().addIdChangedListener(this.props.dataId, this.updateUI);
+    this.addChangedMonitor(this.props.dataId);
   }
 
   rmvExtendChangedMonitor() {
     super.rmvExtendChangedMonitor();
-    this.skModel().rmvIdChangedListener(this.props.dataId, this.updateUI);
+    this.rmvChangedMonitor(this.props.dataId);
   }
 
   handleChange = (value, option) => {
     if (this.props.modes === SELECT_MODES.Remote && this.props.textId && option) {
       this.skTmpVal(this.props.textId, option.props.children);
+      if(!option.props.children){
+        this.skModel().skVal(this.props.textId, option.props.children);
+        this.skVal(option.props.children);
+      }
     }
     if (this.props.onChange && _.isFunction(this.props.onChange)) {
       this.props.onChange(value, option);
