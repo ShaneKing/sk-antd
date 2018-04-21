@@ -1,18 +1,18 @@
-import { Menu } from 'antd';
+import {Menu} from 'antd';
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
-import { MENU_MODE, THEME } from '../AntdConst';
+import {SK} from 'sk-js';
+import {MENU_MODE, THEME} from '../AntdConst';
 
 Menu.defaultProps = SK.assign({}, {
-  inlineIndent: 24,
-  mode: MENU_MODE.Vertical,
-  multiple: false,
-  selectable: true,
-  theme: THEME.Light,
-  // onOpenChange: noop,
-  subMenuOpenDelay: 0,
-  subMenuCloseDelay: 0.1,
-  forceSubMenuRender: false,
+  //inlineIndent: 24,
+  //mode: MENU_MODE.Vertical,
+  //multiple: false,
+  //selectable: true,
+  //theme: THEME.Light,
+  //onOpenChange: noop,
+  //subMenuOpenDelay: 0,
+  //subMenuCloseDelay: 0.1,
+  //forceSubMenuRender: false,
 }, Menu.defaultProps, {});
 Menu.propTypes = SK.assign({
   level: PropTypes.number,

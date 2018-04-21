@@ -336,9 +336,10 @@ export default class Comp extends React.Component {
    * @param {React.Children} children
    * @returns {React.Children}
    */
-  skTransProps2Child(children = undefined) {
+  skTransProps2Child(children = this.props.children) {
     const skProps = Object.keys(this.props.skFilter(false, Comp.skPropsFilter));
-    return React.Children.map(children || this.props.children, child => {
+
+    let rtn = React.Children.map(children, child => {
       if (React.isValidElement(child)) {
         let allowProps = skProps;
         allowProps = Reacts.TAG[child.type] ? [] : allowProps;
@@ -352,6 +353,11 @@ export default class Comp extends React.Component {
       }
       return child;
     });
+
+    if(!_.isArray(children) && _.isArray(rtn)){
+      rtn = rtn[0];
+    }
+    return rtn;
   }
 
   /**

@@ -7,7 +7,7 @@ import AntdComp from '../AntdComp';
 Tooltip.defaultProps = SK.assign({}, {}, CommonTip.defaultProps, Tooltip.defaultProps, {});
 Tooltip.propTypes = SK.assign({}, {
   //https://ant.design/components/tooltip-cn/#API
-  title: PropTypes.string,
+  //title: PropTypes.string,
 }, CommonTip.propTypes, Tooltip.propTypes, {});
 
 export default class SKTooltip extends AntdComp {
