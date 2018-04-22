@@ -111,7 +111,7 @@ export default class SKSelect extends AntdComp {
   handleChange = (value, option) => {
     if (this.props.modes === SELECT_MODES.Remote && this.props.textId && option) {
       this.skTmpVal(this.props.textId, option.props.children);
-      if(!option.props.children){
+      if (!option.props.children) {
         this.skModel().skVal(this.props.textId, option.props.children);
         this.skVal(option.props.children);
       }
@@ -128,6 +128,19 @@ export default class SKSelect extends AntdComp {
     if (this.props.modes === SELECT_MODES.Remote && this.props.textId) {
       this.skTmpVal(this.props.textId, this.skModel().skVal(this.props.textId));
       this.updateUI();
+    }
+    if (this.props.onBlur && _.isFunction(this.props.onBlur)) {
+      this.props.onBlur();
+    }
+  };
+
+  handleFocus = () => {
+    if (this.props.modes === SELECT_MODES.Remote && this.props.textId) {
+      const tmpVal = this.skTmpVal(this.props.textId);
+      this.handleChange(tmpVal, {key: tmpVal, props: {children: tmpVal}});
+    }
+    if (this.props.onFocus && _.isFunction(this.props.onFocus)) {
+      this.props.onFocus();
     }
   };
 
@@ -172,6 +185,7 @@ export default class SKSelect extends AntdComp {
         {...defaultProps}
         {...this.skTransProps2Self(CompTag)}
         onBlur={this.handleBlur}
+        onFocus={this.handleFocus}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
         value={(modes === SELECT_MODES.Remote && textId) ? this.skTmpVal(textId) : this.skVal()}

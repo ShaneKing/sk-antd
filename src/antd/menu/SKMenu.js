@@ -79,10 +79,14 @@ export default class SKMenu extends AntdComp {
         {itemInfo.children.map(this.menuMap)}
       </SKSubMenu>);
     } else if (displayItem && displayItem(itemInfo)) {
-      rtnMenu = (<SKMenuItem {...this.skTransProps2Self(SKMenuItem)} eventKey={itemInfo.router} key={itemInfo.router}>
-        {itemInfo.icon && <SKIcon type={itemInfo.icon}/>}
-        <span>{itemInfo.title}</span>
-      </SKMenuItem>);
+      if(itemInfo.divider){
+        rtnMenu = (<Menu.Divider key={itemInfo.router} />);
+      }else{
+        rtnMenu = (<SKMenuItem {...this.skTransProps2Self(SKMenuItem)} eventKey={itemInfo.router} key={itemInfo.router}>
+          {itemInfo.icon && <SKIcon type={itemInfo.icon}/>}
+          <span>{itemInfo.title}</span>
+        </SKMenuItem>);
+      }
     }
 
     return rtnMenu;

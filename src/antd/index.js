@@ -7,6 +7,7 @@ export * from './card';
 export * from './checkbox';
 export * from './col';
 export * from './date-picker';
+export * from './dropdown';
 export * from './form';
 export * from './form-comp';
 export * from './icon';
