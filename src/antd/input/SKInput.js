@@ -1,6 +1,6 @@
 import { Input } from 'antd';
 import React from 'react';
-import { SK } from 'sk-js';
+import { Mesgs, SK } from 'sk-js';
 import OriginInput from './OriginInput';
 import AntdComp from '../AntdComp';
 
@@ -27,6 +27,7 @@ export default class SKInput extends AntdComp {
       <CompTag
         {...this.skTransProps2Self(CompTag)}
         onChange={this.handleChange}
+        placeholder={Mesgs.get('Please_input')}
         size={this.skProp(AntdComp.SK_PROPS.SIZE)}
         value={this.skVal()}
       >

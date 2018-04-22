@@ -188,6 +188,7 @@ export default class SKSelect extends AntdComp {
         onFocus={this.handleFocus}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
+        placeholder={Mesgs.get('Please_select')}
         value={(modes === SELECT_MODES.Remote && textId) ? this.skTmpVal(textId) : this.skVal()}
         getPopupContainer={triggerNode => triggerNode.parentNode}
       >

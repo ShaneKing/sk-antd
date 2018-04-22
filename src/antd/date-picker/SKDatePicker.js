@@ -56,7 +56,7 @@ export default class SKDatePicker extends AntdComp {
       <CompTag
         {...this.skTransProps2Self(CompTag)}
         onChange={this.handleChange}
-        placeholder={Mesgs.get('Please_select_date')}
+        placeholder={Mesgs.get('Please_select')}
         size={this.skProp(AntdComp.SK_PROPS.SIZE)}
         value={this.skVal() ? moment(this.skVal(), SK.DEFAULT_MOMENT_DATE) : undefined}
       >

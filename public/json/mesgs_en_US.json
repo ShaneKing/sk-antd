@@ -3,6 +3,7 @@
   "Cancel":"Cancel",
   "Not_Found":"Not Found",
   "Ok":"Ok",
-  "Please_select_date": "Please select date",
+  "Please_input": "Please input",
+  "Please_select": "Please select",
   "Return": "Return"
 }
