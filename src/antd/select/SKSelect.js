@@ -161,7 +161,7 @@ export default class SKSelect extends AntdComp {
   }
 
   render() {
-    const {compTag: CompTag, dataId, modes, textId} = this.props;
+    const {compTag: CompTag, dataId, modes, placeholder, textId} = this.props;
 
     let defaultProps = {};
     if (modes === SELECT_MODES.Local) {
@@ -188,7 +188,7 @@ export default class SKSelect extends AntdComp {
         onFocus={this.handleFocus}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
-        placeholder={Mesgs.get('Please_select')}
+        placeholder={placeholder || Mesgs.get('Please_select')}
         value={(modes === SELECT_MODES.Remote && textId) ? this.skTmpVal(textId) : this.skVal()}
         getPopupContainer={triggerNode => triggerNode.parentNode}
       >

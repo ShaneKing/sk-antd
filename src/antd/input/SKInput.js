@@ -21,13 +21,13 @@ export default class SKInput extends AntdComp {
   }
 
   render() {
-    const { compTag: CompTag } = this.props;
+    const { compTag: CompTag, placeholder } = this.props;
 
     return (
       <CompTag
         {...this.skTransProps2Self(CompTag)}
         onChange={this.handleChange}
-        placeholder={Mesgs.get('Please_input')}
+        placeholder={placeholder || Mesgs.get('Please_input')}
         size={this.skProp(AntdComp.SK_PROPS.SIZE)}
         value={this.skVal()}
       >
