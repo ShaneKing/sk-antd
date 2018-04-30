@@ -110,7 +110,11 @@ export default class SKSelect extends AntdComp {
 
   handleChange = (value, option) => {
     if (this.props.mode === SELECT_MODE.Multiple) {
-      this.skVal(value);
+      if (this.props.onChange && _.isFunction(this.props.onChange)) {
+        this.props.onChange(value, option);
+      } else {
+        this.skVal(value);
+      }
     } else {
       if (this.props.modes === SELECT_MODES.Remote && this.props.textId && option) {
         this.skTmpVal(this.props.textId, option.props.children);
@@ -119,14 +123,13 @@ export default class SKSelect extends AntdComp {
           this.skVal(option.props.children);
         }
       }
-      if (!option || !option.key) {
+
+      if (this.props.onChange && _.isFunction(this.props.onChange)) {
+        this.props.onChange(value, option);
+      } else if (!option || !option.key) {
         //if clear, reset value of modelId
         this.skVal(undefined);
       }
-    }
-
-    if (this.props.onChange && _.isFunction(this.props.onChange)) {
-      this.props.onChange(value, option);
     }
   };
 
@@ -152,19 +155,21 @@ export default class SKSelect extends AntdComp {
 
   handleSelect = (value, option) => {
     if (this.props.mode === SELECT_MODE.Multiple) {
-
-    }else{
+      if (this.props.onSelect && _.isFunction(this.props.onSelect)) {
+        this.props.onSelect(value, option);
+      }
+    } else {
       if (this.props.modes === SELECT_MODES.Remote && this.props.textId) {
         this.skModel().skVal(this.props.textId, option.props.children);
         this.skTmpVal(this.props.textId, option.props.children);
       }
-      this.skVal(option.key);
-    }
 
-    if (this.props.onSelect && _.isFunction(this.props.onSelect)) {
-      this.props.onSelect(value, option);
+      if (this.props.onSelect && _.isFunction(this.props.onSelect)) {
+        this.props.onSelect(value, option);
+      } else {
+        this.skVal(option.key);
+      }
     }
-
   };
 
   static optionMap(selectOption) {
