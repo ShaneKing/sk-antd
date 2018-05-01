@@ -343,7 +343,7 @@ export default class Comp extends React.Component {
       if (React.isValidElement(child)) {
         let allowProps = skProps;
         allowProps = Reacts.TAG[child.type] ? [] : allowProps;
-        allowProps = allowProps.concat(this.allowTransProps2Child(child)).concat(['location']);
+        allowProps = allowProps.concat(this.allowTransProps2Child(child));
 
         let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID, 'children', 'className'];
         denyProps = child.props ? denyProps.concat(Object.keys(child.props)) : denyProps;
@@ -379,7 +379,7 @@ export default class Comp extends React.Component {
       allowProps = allowProps.concat(Object.keys(comp.propTypes));
     }
     allowProps = comp.SK_COMP_NAME ? allowProps.concat(Object.keys(prop.skFilter(false, Comp.skPropsFilter))) : allowProps;
-    allowProps = allowProps.concat(this.allowTransProps2Self(comp, prop)).concat(['location']);
+    allowProps = allowProps.concat(this.allowTransProps2Self(comp, prop));
 
     let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID];
     denyProps = denyProps.concat(this.denyTransProps2Self(comp, prop));
