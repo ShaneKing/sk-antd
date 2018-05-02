@@ -5,7 +5,7 @@ import { INPUT_TYPE, SIZE } from '../AntdConst';
 
 Input.defaultProps = SK.assign({}, {
   disabled: false,
-  size: SIZE.Default,
+  //size: SIZE.Default,//invalid function this.skProp(AntdComp.SK_PROPS.SIZE)
   type: INPUT_TYPE.Text,
 }, Input.defaultProps, {});
 Input.propTypes = SK.assign({}, {
