@@ -52,7 +52,7 @@ export default class SKDatePicker extends AntdComp {
   }
 
   renderPreview() {
-    return (<SKDiv>{this.skVal() ? moment(this.skVal(), this.props.format) : undefined}</SKDiv>);
+    return (<SKDiv>{this.skVal()}</SKDiv>);
   }
 
   render() {

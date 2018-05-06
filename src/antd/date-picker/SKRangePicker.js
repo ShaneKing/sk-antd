@@ -55,7 +55,7 @@ export default class SKRangePicker extends AntdComp {
   }
 
   renderPreview() {
-    return (<SKDiv>{this.skVal() ? `${moment(this.skVal()[0], this.props.format)}~${moment(this.skVal()[1], this.props.format)}` : undefined}</SKDiv>);
+    return (<SKDiv>{this.skVal() ? `${this.skVal()[0]}~${this.skVal()[1]}` : undefined}</SKDiv>);
   }
 
   render() {
