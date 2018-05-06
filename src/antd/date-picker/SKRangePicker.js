@@ -5,13 +5,14 @@ import React from 'react';
 import {Mesgs, SK} from 'sk-js';
 import CommonPicker from './CommonPicker';
 import AntdComp from '../AntdComp';
+import SKDiv from '../../html/SKDiv';
 
 /*eslint no-unused-vars: "off"*/
 let {RangePicker} = DatePicker;
 
-RangePicker.defaultProps = SK.extend(true, {}, {
-  format: SK.DEFAULT_MOMENT_DATE,
-}, CommonPicker.defaultProps, RangePicker.defaultProps, {});
+RangePicker.defaultProps = SK.extend(true, {}, {}, CommonPicker.defaultProps, RangePicker.defaultProps, {
+  format: SK.DEFAULT_MOMENT_DATETIME,
+});
 
 RangePicker.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/date-picker-cn/#RangePicker
@@ -46,26 +47,34 @@ export default class SKRangePicker extends AntdComp {
     this.SK_COMP_NAME = SKRangePicker.SK_COMP_NAME;
     this.handleChange = (dateMoment, dateString) => {
       if (dateMoment && dateMoment.length === 2) {
-        this.skVal([dateMoment[0].format(SK.DEFAULT_MOMENT_DATE), dateMoment[1].format(SK.DEFAULT_MOMENT_DATE)]);
+        this.skVal([dateMoment[0].format(this.props.format), dateMoment[1].format(this.props.format)]);
       } else {
         this.skVal(undefined);
       }
     };
   }
 
-  render() {
-    const {compTag: CompTag} = this.props;
+  renderPreview() {
+    return (<SKDiv>{this.skVal() ? `${moment(this.skVal()[0], this.props.format)}~${moment(this.skVal()[1], this.props.format)}` : undefined}</SKDiv>);
+  }
 
-    return (
-      <CompTag
-        {...this.skTransProps2Self(CompTag)}
-        onChange={this.handleChange}
-        placeholder={[Mesgs.get('Please_select'), Mesgs.get('Please_select')]}
-        size={this.skProp(AntdComp.SK_PROPS.SIZE)}
-        value={this.skVal() ? [moment(this.skVal()[0], SK.DEFAULT_MOMENT_DATE), moment(this.skVal()[1], SK.DEFAULT_MOMENT_DATE)] : undefined}
-      >
-        {this.skTransProps2Child()}
-      </CompTag>
-    );
+  render() {
+    const {compTag: CompTag, format} = this.props;
+
+    if (this.skProp(AntdComp.SK_PROPS.PREVIEW)) {
+      return this.renderPreview();
+    } else {
+      return (
+        <CompTag
+          {...this.skTransProps2Self(CompTag)}
+          onChange={this.handleChange}
+          placeholder={[Mesgs.get('Please_select'), Mesgs.get('Please_select')]}
+          size={this.skProp(AntdComp.SK_PROPS.SIZE)}
+          value={this.skVal() ? [moment(this.skVal()[0], format), moment(this.skVal()[1], format)] : undefined}
+        >
+          {this.skTransProps2Child()}
+        </CompTag>
+      );
+    }
   }
 }

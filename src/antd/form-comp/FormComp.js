@@ -36,7 +36,7 @@ export default class FormComp extends AntdComp {
     if (inFormRow && inFormItem) {
       return (
         <SKCol {...this.skTransProps2Self(SKCol, this.props, false)} span={this.skProp(SKCol.SK_PROPS.SPAN)}>
-          <SKFormItem {...this.skTransProps2Self(SKFormItem)} validateStatus={validateStatus} help={help}>
+          <SKFormItem {...this.skTransProps2Self(SKFormItem)} help={help} required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
             {this.renderFormComp()}
           </SKFormItem>
         </SKCol>
@@ -49,7 +49,7 @@ export default class FormComp extends AntdComp {
       );
     } else if (!inFormRow && inFormItem) {
       return (
-        <SKFormItem {...this.skTransProps2Self(SKFormItem)} validateStatus={validateStatus} help={help}>
+        <SKFormItem {...this.skTransProps2Self(SKFormItem)} help={help} required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
           {this.renderFormComp()}
         </SKFormItem>
       );

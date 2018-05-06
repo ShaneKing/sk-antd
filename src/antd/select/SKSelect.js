@@ -5,6 +5,7 @@ import React from 'react';
 import {Mesgs, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import {SELECT_MODE, SELECT_MODES, SIZE} from '../AntdConst';
+import SKDiv from '../../html/SKDiv';
 
 /*eslint no-unused-vars: "off"*/
 
@@ -176,6 +177,17 @@ export default class SKSelect extends AntdComp {
     return selectOption.label ? <Select.OptGroup key={selectOption.id} label={selectOption.label}/> : <Select.Option key={selectOption.id}>{selectOption.text}</Select.Option>;
   }
 
+  renderPreview() {
+    const {dataId, modes, textId} = this.props;
+    let tmpPreview = {};
+    this.skModel().skVal(dataId).forEach(($item) => {
+      if($item.id === this.skVal()){
+        tmpPreview = $item;
+      }
+    });
+    return (<SKDiv>{(modes === SELECT_MODES.Remote && textId) ? this.skModel().skVal(textId) : tmpPreview.text}</SKDiv>);
+  }
+
   render() {
     const {compTag: CompTag, dataId, modes, placeholder, textId} = this.props;
 
@@ -196,22 +208,26 @@ export default class SKSelect extends AntdComp {
       };
     }
 
-    return (
-      <CompTag
-        {...defaultProps}
-        {...this.skTransProps2Self(CompTag)}
-        onBlur={this.handleBlur}
-        onFocus={this.handleFocus}
-        onChange={this.handleChange}
-        onSelect={this.handleSelect}
-        placeholder={placeholder || Mesgs.get('Please_select')}
-        value={(modes === SELECT_MODES.Remote && textId) ? this.skTmpVal(textId) : this.skVal()}
-        getPopupContainer={triggerNode => triggerNode.parentNode}
-      >
-        {dataId ? this.skModel().skVal(dataId).map((selectOption) => {
-          return SKSelect.optionMap(selectOption);
-        }) : this.skTransProps2Child()}
-      </CompTag>
-    );
+    if (this.skProp(AntdComp.SK_PROPS.PREVIEW)) {
+      return this.renderPreview();
+    } else {
+      return (
+        <CompTag
+          {...defaultProps}
+          {...this.skTransProps2Self(CompTag)}
+          onBlur={this.handleBlur}
+          onFocus={this.handleFocus}
+          onChange={this.handleChange}
+          onSelect={this.handleSelect}
+          placeholder={placeholder || Mesgs.get('Please_select')}
+          value={(modes === SELECT_MODES.Remote && textId) ? this.skTmpVal(textId) : this.skVal()}
+          getPopupContainer={triggerNode => triggerNode.parentNode}
+        >
+          {dataId ? this.skModel().skVal(dataId).map((selectOption) => {
+            return SKSelect.optionMap(selectOption);
+          }) : this.skTransProps2Child()}
+        </CompTag>
+      );
+    }
   }
 }
