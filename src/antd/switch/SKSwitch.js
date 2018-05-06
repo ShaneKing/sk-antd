@@ -5,7 +5,7 @@ import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 import { SIZE } from '../AntdConst';
 
-Switch.defaultProps = SK.assign({}, {
+Switch.defaultProps = SK.extend(true, {}, {
   allowClear: false,
   checked: false,
   defaultChecked: false,
@@ -13,7 +13,7 @@ Switch.defaultProps = SK.assign({}, {
   loading: false,
 }, Switch.defaultProps, {});
 
-Switch.propTypes = SK.assign({}, {
+Switch.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/switch-cn/#API
   allowClear: PropTypes.bool,
   checked: PropTypes.bool,
@@ -33,10 +33,10 @@ Switch.propTypes = SK.assign({}, {
 
 export default class SKSwitch extends AntdComp {
   static SK_COMP_NAME = 'SKSwitch';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Switch.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Switch.defaultProps, {
     compTag: Switch,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Switch.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Switch.propTypes, {});
 
   constructor(...args) {
     super(...args);

@@ -4,19 +4,19 @@ import React from 'react';
 import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 
-LocaleProvider.defaultProps = SK.assign({}, {}, LocaleProvider.defaultProps, {});
+LocaleProvider.defaultProps = SK.extend(true, {}, {}, LocaleProvider.defaultProps, {});
 
-LocaleProvider.propTypes = SK.assign({}, {
+LocaleProvider.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/grid-cn/#LocaleProvider\
   locale: PropTypes.object,
 }, LocaleProvider.propTypes, {});
 
 export default class SKLocaleProvider extends AntdComp {
   static SK_COMP_NAME = 'SKLocaleProvider';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, LocaleProvider.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, LocaleProvider.defaultProps, {
     compTag: LocaleProvider,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, LocaleProvider.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, LocaleProvider.propTypes, {});
 
   constructor(...args) {
     super(...args);

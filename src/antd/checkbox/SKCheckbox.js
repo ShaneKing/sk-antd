@@ -4,14 +4,14 @@ import React from 'react';
 import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 
-Checkbox.defaultProps = SK.assign({}, {
+Checkbox.defaultProps = SK.extend(true, {}, {
   autoFocus: false,
   checked: false,
   defaultChecked: false,
   indeterminate: false,
 }, Checkbox.defaultProps, {});
 
-Checkbox.propTypes = SK.assign({}, {
+Checkbox.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/checkbox-cn/#Checkbox
   autoFocus: PropTypes.bool,
   checked: PropTypes.bool,
@@ -22,10 +22,10 @@ Checkbox.propTypes = SK.assign({}, {
 
 export default class SKCheckbox extends AntdComp {
   static SK_COMP_NAME = 'SKCheckbox';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Checkbox.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Checkbox.defaultProps, {
     compTag: Checkbox,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Checkbox.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Checkbox.propTypes, {});
 
   constructor(...args) {
     super(...args);

@@ -8,7 +8,7 @@ import {SELECT_MODE, SELECT_MODES, SIZE} from '../AntdConst';
 
 /*eslint no-unused-vars: "off"*/
 
-Select.defaultProps = SK.assign({}, {
+Select.defaultProps = SK.extend(true, {}, {
   //allowClear: false,
   //autoFocus: false,
   //combobox: false,
@@ -25,7 +25,7 @@ Select.defaultProps = SK.assign({}, {
   //tags: false,
 }, Select.defaultProps, {});
 
-Select.propTypes = SK.assign({}, {
+Select.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/select-cn/#API
   allowClear: PropTypes.bool,
   autoFocus: PropTypes.bool,
@@ -81,13 +81,13 @@ Select.propTypes = SK.assign({}, {
 
 export default class SKSelect extends AntdComp {
   static SK_COMP_NAME = 'SKSelect';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Select.OptGroup.defaultProps, Select.Option.defaultProps, Select.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Select.OptGroup.defaultProps, Select.Option.defaultProps, Select.defaultProps, {
     compTag: Select,
     dataId: undefined,
     modes: SELECT_MODES.Local,
     textId: undefined,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Select.OptGroup.propTypes, Select.Option.propTypes, Select.propTypes, {
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Select.OptGroup.propTypes, Select.Option.propTypes, Select.propTypes, {
     dataId: PropTypes.string.isRequired,
     modes: PropTypes.oneOf(Object.values(SELECT_MODES)),
     textId: PropTypes.string,

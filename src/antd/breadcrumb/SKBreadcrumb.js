@@ -4,11 +4,11 @@ import React from 'react';
 import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 
-Breadcrumb.defaultProps = SK.assign({}, {
+Breadcrumb.defaultProps = SK.extend(true, {}, {
   separator: SK.CHAR_SLASH,
 }, Breadcrumb.defaultProps, {});
 
-Breadcrumb.propTypes = SK.assign({}, {
+Breadcrumb.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/breadcrumb-cn/#API
   itemRender: PropTypes.func,
   params: PropTypes.object,
@@ -21,10 +21,10 @@ Breadcrumb.propTypes = SK.assign({}, {
 
 export default class SKBreadcrumb extends AntdComp {
   static SK_COMP_NAME = 'SKBreadcrumb';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Breadcrumb.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Breadcrumb.defaultProps, {
     compTag: Breadcrumb,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Breadcrumb.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Breadcrumb.propTypes, {});
 
   constructor(...args) {
     super(...args);

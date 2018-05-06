@@ -5,7 +5,7 @@ import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 import { SIZE } from '../AntdConst';
 
-Table.defaultProps = SK.assign({}, {
+Table.defaultProps = SK.extend(true, {}, {
   bordered: false,
   defaultExpandAllRows: false,
   expandRowByClick: false,
@@ -16,7 +16,7 @@ Table.defaultProps = SK.assign({}, {
   size: SIZE.Default,
 }, Table.defaultProps, {});
 
-Table.propTypes = SK.assign({}, {
+Table.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/table-cn/#Table
   bordered: PropTypes.bool,
   columns: PropTypes.array,
@@ -51,13 +51,13 @@ Table.propTypes = SK.assign({}, {
 
 export default class SKTable extends AntdComp {
   static SK_COMP_NAME = 'SKTable';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Table.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Table.defaultProps, {
     compTag: Table,
     bordered: true,
     loadingId: undefined,
     paginationId: undefined,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Table.propTypes, {
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Table.propTypes, {
     loadingId: PropTypes.string.isRequired,
     paginationId: PropTypes.string.isRequired,
   });

@@ -11,11 +11,11 @@ import Reacts from '../Reacts';
 
 export default class SKJdenticon extends Comp {
   static SK_COMP_NAME = 'SKJdenticon';
-  static defaultProps = SK.assign({}, Comp.defaultProps, {
+  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {
     compTag: Reacts.TAG.canvas,
 
   });
-  static propTypes = SK.assign({}, Comp.propTypes, {
+  static propTypes = SK.extend(true, {}, Comp.propTypes, {
     size: PropTypes.number,
   });
 

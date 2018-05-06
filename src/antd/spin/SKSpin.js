@@ -5,12 +5,12 @@ import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 import { SIZE } from '../AntdConst';
 
-Spin.defaultProps = SK.assign({}, {
+Spin.defaultProps = SK.extend(true, {}, {
   size: SIZE.Default,
   spinning: true,
 }, Spin.defaultProps, {});
 
-Spin.propTypes = SK.assign({}, {
+Spin.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/spin-cn/#API
   delay: PropTypes.number,
   indicator: PropTypes.node,
@@ -22,11 +22,11 @@ Spin.propTypes = SK.assign({}, {
 
 export default class SKSpin extends AntdComp {
   static SK_COMP_NAME = 'SKSpin';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Spin.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Spin.defaultProps, {
     compTag: Spin,
     size: SIZE.Large,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Spin.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Spin.propTypes, {});
 
   constructor(...args) {
     super(...args);

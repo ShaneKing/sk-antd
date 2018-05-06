@@ -4,7 +4,7 @@ import Reacts from '../Reacts';
 
 export default class SKCanvas extends Comp {
   static SK_COMP_NAME = 'SKCanvas';
-  static defaultProps = SK.assign({}, Comp.defaultProps, {
+  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {
     compTag: Reacts.TAG.canvas,
   });
 

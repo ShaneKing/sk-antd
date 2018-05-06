@@ -5,8 +5,8 @@ import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 import CommonTip from '../tooltip/CommonTip';
 
-Popover.defaultProps = SK.assign({}, {}, CommonTip.defaultProps, Popover.defaultProps, {});
-Popover.propTypes = SK.assign({}, {
+Popover.defaultProps = SK.extend(true, {}, {}, CommonTip.defaultProps, Popover.defaultProps, {});
+Popover.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/popover-cn/#API
   content: PropTypes.oneOfType([
     PropTypes.string,
@@ -20,10 +20,10 @@ Popover.propTypes = SK.assign({}, {
 
 export default class SKPopover extends AntdComp {
   static SK_COMP_NAME = 'SKPopover';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Popover.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Popover.defaultProps, {
     compTag: Popover,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Popover.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Popover.propTypes, {});
 
   constructor(...args) {
     super(...args);

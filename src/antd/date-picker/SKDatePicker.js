@@ -8,12 +8,12 @@ import AntdComp from '../AntdComp';
 
 /*eslint no-unused-vars: "off"*/
 
-DatePicker.defaultProps = SK.assign({}, {
+DatePicker.defaultProps = SK.extend(true, {}, {
   format: SK.DEFAULT_MOMENT_DATE,
   showToday: true,
 }, CommonPicker.defaultProps, DatePicker.defaultProps, {});
 
-DatePicker.propTypes = SK.assign({}, {
+DatePicker.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/date-picker-cn/#DatePicker
   defaultValue: PropTypes.instanceOf(moment),
   disabledTime: PropTypes.func,
@@ -32,10 +32,10 @@ DatePicker.propTypes = SK.assign({}, {
 
 export default class SKDatePicker extends AntdComp {
   static SK_COMP_NAME = 'SKDatePicker';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, DatePicker.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, DatePicker.defaultProps, {
     compTag: DatePicker,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, DatePicker.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, DatePicker.propTypes, {});
 
   constructor(...args) {
     super(...args);

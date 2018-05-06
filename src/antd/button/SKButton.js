@@ -5,14 +5,14 @@ import AntdComp from '../AntdComp';
 import { SIZE } from '../AntdConst';
 import Reacts from '../../Reacts';
 
-Button.defaultProps = SK.assign({}, {
+Button.defaultProps = SK.extend(true, {}, {
   ghost: false,
   htmlType: Reacts.TAG.button,
   loading: false,
   size: SIZE.Default,
 }, Button.defaultProps, {});
 
-Button.propTypes = SK.assign({}, {
+Button.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/button-cn/#API
   ghost: PropTypes.bool,
   htmlType: PropTypes.string,
@@ -31,10 +31,10 @@ Button.propTypes = SK.assign({}, {
 
 export default class SKButton extends AntdComp {
   static SK_COMP_NAME = 'SKButton';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Button.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Button.defaultProps, {
     compTag: Button,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Button.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Button.propTypes, {});
 
   constructor(...args) {
     super(...args);

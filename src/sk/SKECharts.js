@@ -15,7 +15,7 @@ import Reacts from '../Reacts';
 
 export default class SKECharts extends Comp {
   static SK_COMP_NAME = 'SKECharts';
-  static defaultProps = SK.assign({}, Comp.defaultProps, {
+  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {
     compTag: Reacts.TAG.div,
 
     lazyUpdate: true,
@@ -27,7 +27,7 @@ export default class SKECharts extends Comp {
     },
     onEvents: {},
   });
-  static propTypes = SK.assign({}, Comp.propTypes, {
+  static propTypes = SK.extend(true, {}, Comp.propTypes, {
     lazyUpdate: PropTypes.bool,
     notMerge: PropTypes.bool,
     onChartReady: PropTypes.func,

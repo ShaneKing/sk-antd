@@ -3,15 +3,17 @@ import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 import OriginLayout from './OriginLayout';
 
-Layout.Footer.defaultProps = SK.assign({}, {}, OriginLayout.defaultProps, Layout.Footer.defaultProps, {});
-Layout.Footer.propTypes = SK.assign({}, {}, OriginLayout.propTypes, Layout.Footer.propTypes, {});
+const {Footer} = Layout;
+
+Footer.defaultProps = SK.extend(true, {}, {}, OriginLayout.defaultProps, Footer.defaultProps, {});
+Footer.propTypes = SK.extend(true, {}, {}, OriginLayout.propTypes, Footer.propTypes, {});
 
 export default class SKFooter extends AntdComp {
   static SK_COMP_NAME = 'SKFooter';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Layout.Footer.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Footer.defaultProps, {
     compTag: Layout.Footer,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Layout.Footer.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Footer.propTypes, {});
 
   constructor(...args) {
     super(...args);

@@ -3,15 +3,17 @@ import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 import OriginLayout from './OriginLayout';
 
-Layout.Content.defaultProps = SK.assign({}, {}, OriginLayout.defaultProps, Layout.Content.defaultProps, {});
-Layout.Content.propTypes = SK.assign({}, {}, OriginLayout.propTypes, Layout.Content.propTypes, {});
+const {Content} = Layout;
+
+Content.defaultProps = SK.extend(true, {}, {}, OriginLayout.defaultProps, Content.defaultProps, {});
+Content.propTypes = SK.extend(true, {}, {}, OriginLayout.propTypes, Content.propTypes, {});
 
 export default class SKContent extends AntdComp {
   static SK_COMP_NAME = 'SKContent';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Layout.Content.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Content.defaultProps, {
     compTag: Layout.Content,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Layout.Content.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Content.propTypes, {});
 
   constructor(...args) {
     super(...args);

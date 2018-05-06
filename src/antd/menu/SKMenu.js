@@ -16,13 +16,13 @@ import {Dir} from '../AntdConst';
 //modelId is selectedKeysId
 export default class SKMenu extends AntdComp {
   static SK_COMP_NAME = 'SKMenu';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, SKMenuItem.defaultProps, SKSubMenu.defaultProps, OriginMenu.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, SKMenuItem.defaultProps, SKSubMenu.defaultProps, OriginMenu.defaultProps, {
     compTag: Menu,
     displayItem: (itemInfo) => {
       return true;
     }
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, SKMenuItem.propTypes, SKSubMenu.propTypes, OriginMenu.propTypes, {
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, SKMenuItem.propTypes, SKSubMenu.propTypes, OriginMenu.propTypes, {
     dataId: PropTypes.string.isRequired,
     displayItem: PropTypes.func,
     openKeysId: PropTypes.string.isRequired,

@@ -9,11 +9,11 @@ import AntdComp from '../AntdComp';
 /*eslint no-unused-vars: "off"*/
 let {RangePicker} = DatePicker;
 
-RangePicker.defaultProps = SK.assign({}, {
+RangePicker.defaultProps = SK.extend(true, {}, {
   format: SK.DEFAULT_MOMENT_DATE,
 }, CommonPicker.defaultProps, RangePicker.defaultProps, {});
 
-RangePicker.propTypes = SK.assign({}, {
+RangePicker.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/date-picker-cn/#RangePicker
   defaultValue: PropTypes.array,
   disabledTime: PropTypes.func,
@@ -36,16 +36,16 @@ RangePicker.propTypes = SK.assign({}, {
 
 export default class SKRangePicker extends AntdComp {
   static SK_COMP_NAME = 'SKRangePicker';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, RangePicker.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, RangePicker.defaultProps, {
     compTag: RangePicker,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, RangePicker.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, RangePicker.propTypes, {});
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKRangePicker.SK_COMP_NAME;
     this.handleChange = (dateMoment, dateString) => {
-      if (dateMoment) {
+      if (dateMoment && dateMoment.length === 2) {
         this.skVal([dateMoment[0].format(SK.DEFAULT_MOMENT_DATE), dateMoment[1].format(SK.DEFAULT_MOMENT_DATE)]);
       } else {
         this.skVal(undefined);

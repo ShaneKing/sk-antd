@@ -11,11 +11,11 @@ import Reacts from '../Reacts';
  */
 export default class AntdComp extends Comp {
   static SK_COMP_NAME = 'AntdComp';
-  static SK_PROPS = SK.assign({}, Comp.SK_PROPS, {
+  static SK_PROPS = SK.extend(true, {}, Comp.SK_PROPS, {
     SIZE: 'size',
   });
-  static defaultProps = SK.assign({}, Comp.defaultProps, {});
-  static propTypes = SK.assign({}, Comp.propTypes, {
+  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {});
+  static propTypes = SK.extend(true, {}, Comp.propTypes, {
     size: PropTypes.oneOf(Object.values(SIZE)),
     skSize: PropTypes.oneOf(Object.values(SIZE)),
   });

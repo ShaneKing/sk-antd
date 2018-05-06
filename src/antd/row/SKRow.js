@@ -5,13 +5,13 @@ import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 import { ALIGN, JUSTIFY } from '../AntdConst';
 
-Row.defaultProps = SK.assign({}, {
+Row.defaultProps = SK.extend(true, {}, {
   align: ALIGN.Top,
   gutter: 0,
   justify: JUSTIFY.Start,
 }, Row.defaultProps, {});
 
-Row.propTypes = SK.assign({}, {
+Row.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/grid-cn/#Row
   align: PropTypes.oneOf(Object.values(ALIGN)),
   gutter: PropTypes.oneOfType([
@@ -24,13 +24,13 @@ Row.propTypes = SK.assign({}, {
 
 export default class SKRow extends AntdComp {
   static SK_COMP_NAME = 'SKRow';
-  static SK_PROPS = SK.assign({}, AntdComp.SK_PROPS, {
+  static SK_PROPS = SK.extend(true, {}, AntdComp.SK_PROPS, {
     GUTTER: 'gutter',
   });
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Row.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Row.defaultProps, {
     compTag: Row,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Row.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Row.propTypes, {});
 
   constructor(...args) {
     super(...args);

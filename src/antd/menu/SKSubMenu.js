@@ -4,11 +4,13 @@ import { SK } from 'sk-js';
 import OriginMenu from './OriginMenu';
 import AntdComp from '../AntdComp';
 
-Menu.SubMenu.defaultProps = SK.assign({}, {
-  disabled: false,
-}, OriginMenu.defaultProps, Menu.SubMenu.defaultProps, {});
+const {SubMenu} = Menu;
 
-Menu.SubMenu.propTypes = SK.assign({
+SubMenu.defaultProps = SK.extend(true, {}, {
+  disabled: false,
+}, OriginMenu.defaultProps, SubMenu.defaultProps, {});
+
+SubMenu.propTypes = SK.extend(true, {
   //https://github.com/react-component/menu/blob/master/src/SubMenu.jsx#L36
   onItemHover: PropTypes.func,
 }, {
@@ -27,14 +29,14 @@ Menu.SubMenu.propTypes = SK.assign({
   onMouseLeave: PropTypes.func,
   onTitleMouseEnter: PropTypes.func,
   onTitleMouseLeave: PropTypes.func,
-}, OriginMenu.propTypes, Menu.SubMenu.propTypes, {});
+}, OriginMenu.propTypes, SubMenu.propTypes, {});
 
 export default class SKSubMenu extends AntdComp {
   static SK_COMP_NAME = 'SKSubMenu';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Menu.SubMenu.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, SubMenu.defaultProps, {
     compTag: Menu.SubMenu,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Menu.SubMenu.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, SubMenu.propTypes, {});
 
   constructor(...args) {
     super(...args);

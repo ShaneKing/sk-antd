@@ -7,14 +7,14 @@ import SKRow from '../row/SKRow';
 
 /*eslint no-unused-vars: "off"*/
 
-Col.defaultProps = SK.assign({}, {
+Col.defaultProps = SK.extend(true, {}, {
   offset: 0,
   order: 0,
   pull: 0,
   push: 0,
 }, Col.defaultProps, {});
 
-Col.propTypes = SK.assign({}, {
+Col.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/grid-cn/#Col
   offset: PropTypes.number,
   order: PropTypes.number,
@@ -49,13 +49,13 @@ Col.propTypes = SK.assign({}, {
 
 export default class SKCol extends AntdComp {
   static SK_COMP_NAME = 'SKCol';
-  static SK_PROPS = SK.assign({}, AntdComp.SK_PROPS, {
+  static SK_PROPS = SK.extend(true, {}, AntdComp.SK_PROPS, {
     SPAN: 'span',
   });
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Col.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Col.defaultProps, {
     compTag: Col,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Col.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Col.propTypes, {});
 
   constructor(...args) {
     super(...args);

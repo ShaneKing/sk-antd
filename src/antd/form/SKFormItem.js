@@ -5,12 +5,14 @@ import { SK } from 'sk-js';
 import OriginForm from './OriginForm';
 import AntdComp from '../AntdComp';
 
-Form.Item.defaultProps = SK.assign({}, {
+const {Item} = Form;
+
+Item.defaultProps = SK.extend(true, {}, {
   colon: true,
   hasFeedback: false,
   required: false,
-}, OriginForm.defaultProps, Form.Item.defaultProps, {});
-Form.Item.propTypes = SK.assign({}, {
+}, OriginForm.defaultProps, Item.defaultProps, {});
+Item.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/form-cn/#Form.Item
   colon: PropTypes.bool,
   extra: PropTypes.oneOfType([
@@ -30,18 +32,18 @@ Form.Item.propTypes = SK.assign({}, {
   required: PropTypes.bool,
   validateStatus: PropTypes.string,
   wrapperCol: PropTypes.object,
-}, OriginForm.propTypes, Form.Item.propTypes, {});
+}, OriginForm.propTypes, Item.propTypes, {});
 
 export default class SKFormItem extends AntdComp {
   static SK_COMP_NAME = 'SKFormItem';
-  static SK_PROPS = SK.assign({}, AntdComp.SK_PROPS, {
+  static SK_PROPS = SK.extend(true, {}, AntdComp.SK_PROPS, {
     LABEL_COL: 'labelCol',
     WRAPPER_COL: 'wrapperCol',
   });
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Form.Item.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Item.defaultProps, {
     compTag: Form.Item,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Form.Item.propTypes, {
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Item.propTypes, {
     formLabelCol: PropTypes.object,
     skFormLabelCol: PropTypes.object,
     formWrapperCol: PropTypes.object,

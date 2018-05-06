@@ -4,10 +4,10 @@ import SKDatePicker from '../date-picker/SKDatePicker';
 
 export default class SKFormDatePicker extends FormComp {
   static SK_COMP_NAME = 'SKFormDatePicker';
-  static defaultProps = SK.assign({}, FormComp.defaultProps, SKDatePicker.defaultProps, {
+  static defaultProps = SK.extend(true, {}, FormComp.defaultProps, SKDatePicker.defaultProps, {
     compTag: SKDatePicker,
   });
-  static propTypes = SK.assign({}, FormComp.propTypes, SKDatePicker.propTypes, {});
+  static propTypes = SK.extend(true, {}, FormComp.propTypes, SKDatePicker.propTypes, {});
 
   constructor(...args) {
     super(...args);

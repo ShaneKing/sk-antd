@@ -4,11 +4,13 @@ import { SK } from 'sk-js';
 import OriginMenu from './OriginMenu';
 import AntdComp from '../AntdComp';
 
-Menu.Item.defaultProps = SK.assign({}, {
-  disabled: false,
-}, OriginMenu.defaultProps, Menu.Item.defaultProps, {});
+const {Item} = Menu;
 
-Menu.Item.propTypes = SK.assign({
+Item.defaultProps = SK.extend(true, {}, {
+  disabled: false,
+}, OriginMenu.defaultProps, Item.defaultProps, {});
+
+Item.propTypes = SK.extend(true, {
   //https://github.com/react-component/menu/blob/master/src/MenuItem.jsx#L21
   onItemHover: PropTypes.func,
 }, {
@@ -19,14 +21,14 @@ Menu.Item.propTypes = SK.assign({
   eventKey: PropTypes.string,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
-}, OriginMenu.propTypes, Menu.Item.propTypes, {});
+}, OriginMenu.propTypes, Item.propTypes, {});
 
 export default class SKMenuItem extends AntdComp {
   static SK_COMP_NAME = 'SKMenuItem';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Menu.Item.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Item.defaultProps, {
     compTag: Menu.Item,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Menu.Item.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Item.propTypes, {});
 
   constructor(...args) {
     super(...args);

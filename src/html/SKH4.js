@@ -4,7 +4,7 @@ import Reacts from '../Reacts';
 
 export default class SKH4 extends Comp {
   static SK_COMP_NAME = 'SKH4';
-  static defaultProps = SK.assign({}, Comp.defaultProps, {
+  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {
     compTag: Reacts.TAG.h4,
   });
 

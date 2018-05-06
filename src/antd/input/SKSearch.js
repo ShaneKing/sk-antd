@@ -4,25 +4,27 @@ import { SK } from 'sk-js';
 import OriginInput from './OriginInput';
 import SKInput from './SKInput';
 
-Input.Search.defaultProps = SK.assign({}, {
-  enterButton: false,
-}, OriginInput.defaultProps, Input.Search.defaultProps, {});
+const {Search} = Input;
 
-Input.Search.propTypes = SK.assign({}, {
+Search.defaultProps = SK.extend(true, {}, {
+  enterButton: false,
+}, OriginInput.defaultProps, Search.defaultProps, {});
+
+Search.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/input-cn/#Input.Search
   enterButton: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
   ]),
   onSearch: PropTypes.func,
-}, OriginInput.propTypes, Input.Search.propTypes, {});
+}, OriginInput.propTypes, Search.propTypes, {});
 
 export default class SKSearch extends SKInput {
   static SK_COMP_NAME = 'SKSearch';
-  static defaultProps = SK.assign({}, SKInput.defaultProps, Input.Search.defaultProps, {
-    compTag: Input.Search,
+  static defaultProps = SK.extend(true, {}, SKInput.defaultProps, Search.defaultProps, {
+    compTag: Search,
   });
-  static propTypes = SK.assign({}, SKInput.propTypes, Input.Search.propTypes, {});
+  static propTypes = SK.extend(true, {}, SKInput.propTypes, Search.propTypes, {});
 
   constructor(...args) {
     super(...args);

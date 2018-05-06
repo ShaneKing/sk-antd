@@ -12,7 +12,7 @@ import Reacts from '../Reacts';
 
 export default class SKCountUp extends Comp {
   static SK_COMP_NAME = 'SKCountUp';
-  static defaultProps = SK.assign({}, Comp.defaultProps, {
+  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {
     compTag: Reacts.TAG.span,
     decimal: SK.CHAR_DOT,
     decimals: 0,
@@ -31,7 +31,7 @@ export default class SKCountUp extends Comp {
     useEasing: true,
     useGrouping: true,
   });
-  static propTypes = SK.assign({}, Comp.propTypes, {
+  static propTypes = SK.extend(true, {}, Comp.propTypes, {
     decimal: PropTypes.string,
     decimals: PropTypes.number,
     duration: PropTypes.number,

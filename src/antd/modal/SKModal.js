@@ -6,7 +6,7 @@ import { BUTTON_TYPE } from '../AntdConst';
 
 /*eslint no-unused-vars: "off"*/
 
-Modal.defaultProps = SK.assign({}, {
+Modal.defaultProps = SK.extend(true, {}, {
   bodyStyle: {},
   cancelText: Mesgs.get('Cancel'),
   closable: true,
@@ -19,7 +19,7 @@ Modal.defaultProps = SK.assign({}, {
   zIndex: 1000,
 }, Modal.defaultProps, {});
 
-Modal.propTypes = SK.assign({}, {
+Modal.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/modal-cn/#API
   afterClose: PropTypes.func,
   bodyStyle: PropTypes.object,
@@ -54,10 +54,10 @@ Modal.propTypes = SK.assign({}, {
 
 export default class SKModal extends AntdComp {
   static SK_COMP_NAME = 'SKModal';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Modal.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Modal.defaultProps, {
     compTag: Modal,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Modal.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Modal.propTypes, {});
 
   constructor(...args) {
     super(...args);

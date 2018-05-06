@@ -7,10 +7,10 @@ import AntdComp from '../AntdComp';
 //origin exist, use origin
 export default class SKInput extends AntdComp {
   static SK_COMP_NAME = 'SKInput';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, OriginInput.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, OriginInput.defaultProps, {
     compTag: Input,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, OriginInput.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, OriginInput.propTypes, {});
 
   constructor(...args) {
     super(...args);

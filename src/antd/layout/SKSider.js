@@ -5,15 +5,17 @@ import AntdComp from '../AntdComp';
 import { BREAKPOINT } from '../AntdConst';
 import OriginLayout from './OriginLayout';
 
-Layout.Sider.defaultProps = SK.assign({}, {
+const { Sider } = Layout;
+
+Sider.defaultProps = SK.extend(true, {}, {
   collapsedWidth: 64,
   collapsible: false,
   defaultCollapsed: false,
   reverseArrow: false,
   width: 200,
-}, OriginLayout.defaultProps, Layout.Sider.defaultProps, {});
+}, OriginLayout.defaultProps, Sider.defaultProps, {});
 
-Layout.Sider.propTypes = SK.assign({}, {
+Sider.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/layout-cn/#Layout.Sider
   breakpoint: PropTypes.oneOf(Object.values(BREAKPOINT)),
   className: PropTypes.string,
@@ -29,14 +31,14 @@ Layout.Sider.propTypes = SK.assign({}, {
   ]),
   width: PropTypes.number,
   onCollapse: PropTypes.func,
-}, OriginLayout.propTypes, Layout.Sider.propTypes, {});
+}, OriginLayout.propTypes, Sider.propTypes, {});
 
 export default class SKSider extends AntdComp {
   static SK_COMP_NAME = 'SKSider';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Layout.Sider.defaultProps, {
-    compTag: Layout.Sider,
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Sider.defaultProps, {
+    compTag: Sider,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Layout.Sider.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Sider.propTypes, {});
 
   constructor(...args) {
     super(...args);

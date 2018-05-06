@@ -5,13 +5,13 @@ import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 import { STATUS } from '../AntdConst';
 
-Badge.defaultProps = SK.assign({}, {
+Badge.defaultProps = SK.extend(true, {}, {
   dot: false,
   overflowCount: 99,
   showZero: false,
 }, Badge.defaultProps, {});
 
-Badge.propTypes = SK.assign({}, {
+Badge.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/badge-cn/#API
   count: PropTypes.number,
   dot: PropTypes.bool,
@@ -24,10 +24,10 @@ Badge.propTypes = SK.assign({}, {
 
 export default class SKBadge extends AntdComp {
   static SK_COMP_NAME = 'SKBadge';
-  static defaultProps = SK.assign({}, AntdComp.defaultProps, Badge.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Badge.defaultProps, {
     compTag: Badge,
   });
-  static propTypes = SK.assign({}, AntdComp.propTypes, Badge.propTypes, {});
+  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Badge.propTypes, {});
 
   constructor(...args) {
     super(...args);

@@ -8,10 +8,10 @@ import Reacts from '../Reacts';
 
 export default class SKA extends Comp {
   static SK_COMP_NAME = 'SKA';
-  static defaultProps = SK.assign({}, Comp.defaultProps, {
+  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {
     compTag: Reacts.TAG.a,
   });
-  static propTypes = SK.assign({}, Comp.propTypes, {});
+  static propTypes = SK.extend(true, {}, Comp.propTypes, {});
 
   constructor(...args) {
     super(...args);
