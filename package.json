@@ -1,7 +1,7 @@
 {
   "name": "sk-antd",
   "description": "ShaneKing for AntD",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "homepage": "https://github.com/ShaneKing/sk-antd",
   "license": "MIT",
   "author": {
@@ -40,7 +40,7 @@
     "test": "istanbul cover mocha && codecov"
   },
   "dependencies": {
-    "antd": "3.4.4",
+    "antd": "3.5.1",
     "classnames": "2.2.5",
     "countup.js": "1.9.3",
     "echarts": "4.1.0",
@@ -54,7 +54,7 @@
     "prop-types": "15.6.1",
     "react": "16.3.2",
     "react-dom": "16.3.2",
-    "sk-js": "0.2.10"
+    "sk-js": "0.2.12"
   },
   "devDependencies": {
     "babel-eslint": "8.2.3",
@@ -68,7 +68,7 @@
     "babel-preset-stage-2": "6.24.1",
     "babel-preset-stage-3": "6.24.1",
     "babel-register": "6.26.0",
-    "codecov": "3.0.1",
+    "codecov": "3.0.2",
     "eslint": "4.19.1",
     "eslint-config-airbnb": "16.1.0",
     "eslint-plugin-import": "2.11.0",
