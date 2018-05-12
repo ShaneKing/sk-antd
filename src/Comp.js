@@ -269,6 +269,12 @@ export default class Comp extends React.Component {
     return this.skModel().getErrors(this.getModelId());
   }
 
+  clearAllErrors(){
+    if(this.skModel()){
+      this.skModel().setErrors();
+    }
+  }
+
   /**
    * Get modelId: x.xx.xxx
    *
