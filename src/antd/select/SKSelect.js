@@ -179,13 +179,22 @@ export default class SKSelect extends AntdComp {
 
   renderPreview() {
     const {dataId, modes, textId} = this.props;
-    let tmpPreview = {};
-    this.skModel().skVal(dataId).forEach(($item) => {
-      if($item.id === this.skVal()){
-        tmpPreview = $item;
-      }
-    });
-    return (<SKDiv>{(modes === SELECT_MODES.Remote && textId) ? this.skModel().skVal(textId) : tmpPreview.text}</SKDiv>);
+
+    if (this.props.mode === SELECT_MODE.Multiple) {
+      return (<SKDiv>{this.skModel().skVal(dataId).filter(($item) => {
+        return this.skVal().includes($item.id);
+      }).map(($item) => {
+        return $item.text;
+      }).join()}</SKDiv>)
+    } else {
+      let tmpPreview = {};
+      this.skModel().skVal(dataId).forEach(($item) => {
+        if ($item.id === this.skVal()) {
+          tmpPreview = $item;
+        }
+      });
+      return (<SKDiv>{(modes === SELECT_MODES.Remote && textId) ? this.skModel().skVal(textId) : tmpPreview.text}</SKDiv>);
+    }
   }
 
   render() {
