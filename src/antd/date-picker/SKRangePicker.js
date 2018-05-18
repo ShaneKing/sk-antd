@@ -46,35 +46,40 @@ export default class SKRangePicker extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKRangePicker.SK_COMP_NAME;
     this.handleChange = (dateMoment, dateString) => {
-      if (dateMoment && dateMoment.length === 2) {
-        this.skVal([dateMoment[0].format(this.props.format), dateMoment[1].format(this.props.format)]);
-      } else {
-        this.skVal(undefined);
-      }
+      this.e2mConvertor(dateMoment);
     };
   }
 
-  renderPreview() {
-    return (<SKDiv>{this.skVal() ? `${this.skVal()[0]}~${this.skVal()[1]}` : undefined}</SKDiv>);
+  e2mConvertor(dateMoment){
+    if (dateMoment && dateMoment.length === 2) {
+      this.skVal([dateMoment[0].format(this.props.format), dateMoment[1].format(this.props.format)]);
+    } else {
+      this.skVal(undefined);
+    }
+    return this;
   }
 
-  render() {
-    const {compTag: CompTag, format} = this.props;
+  m2eConvertor(){
+    return this.skVal() ? [moment(this.skVal()[0], this.props.format), moment(this.skVal()[1], this.props.format)] : undefined;
+  }
 
-    if (this.skProp(AntdComp.SK_PROPS.PREVIEW)) {
-      return this.renderPreview();
-    } else {
-      return (
-        <CompTag
-          {...this.skTransProps2Self(CompTag)}
-          onChange={this.handleChange}
-          placeholder={[Mesgs.get('Please_select'), Mesgs.get('Please_select')]}
-          size={this.skProp(AntdComp.SK_PROPS.SIZE)}
-          value={this.skVal() ? [moment(this.skVal()[0], format), moment(this.skVal()[1], format)] : undefined}
-        >
-          {this.skTransProps2Child()}
-        </CompTag>
-      );
-    }
+  m2vConvertor(){
+    return this.skVal() ? `${this.skVal()[0]}~${this.skVal()[1]}` : undefined;
+  }
+
+  renderComp() {
+    const {compTag: CompTag} = this.props;
+
+    return (
+      <CompTag
+        {...this.skTransProps2Self(CompTag)}
+        onChange={this.handleChange}
+        placeholder={[Mesgs.get('Please_select'), Mesgs.get('Please_select')]}
+        size={this.skProp(AntdComp.SK_PROPS.SIZE)}
+        value={this.m2eConvertor()}
+      >
+        {this.skTransProps2Child()}
+      </CompTag>
+    );
   }
 }

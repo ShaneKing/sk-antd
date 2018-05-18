@@ -3,7 +3,6 @@ import React from 'react';
 import {Mesgs, SK} from 'sk-js';
 import OriginInput from './OriginInput';
 import AntdComp from '../AntdComp';
-import SKDiv from '../../html/SKDiv';
 
 //origin exist, use origin
 export default class SKInput extends AntdComp {
@@ -17,32 +16,23 @@ export default class SKInput extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKInput.SK_COMP_NAME;
     this.handleChange = (domEvent) => {
-      this.skVal(domEvent.target.value);
+      this.e2mConvertor(domEvent.target.value);
     };
   }
 
-  renderPreview() {
-    return (<SKDiv>{this.skVal()}</SKDiv>);
-  }
-
-  render() {
+  renderComp() {
     const {compTag: CompTag, placeholder} = this.props;
 
-    if (this.skProp(AntdComp.SK_PROPS.PREVIEW)) {
-      return this.renderPreview();
-    } else {
-      return (
-        <CompTag
-          {...this.skTransProps2Self(CompTag)}
-          onChange={this.handleChange}
-          placeholder={placeholder || Mesgs.get('Please_input')}
-          size={this.skProp(AntdComp.SK_PROPS.SIZE)}
-          value={this.skVal()}
-        >
-          {this.skTransProps2Child()}
-        </CompTag>
-      );
-    }
-
+    return (
+      <CompTag
+        {...this.skTransProps2Self(CompTag)}
+        onChange={this.handleChange}
+        placeholder={placeholder || Mesgs.get('Please_input')}
+        size={this.skProp(AntdComp.SK_PROPS.SIZE)}
+        value={this.m2eConvertor()}
+      >
+        {this.skTransProps2Child()}
+      </CompTag>
+    );
   }
 }

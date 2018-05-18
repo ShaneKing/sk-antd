@@ -1,9 +1,11 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { SK, Model } from 'sk-js';
-import Comp from '../Comp';
 import { SIZE } from './AntdConst';
+import Comp from '../Comp';
 import Reacts from '../Reacts';
+import SKDiv from '../html/SKDiv';
 
 /**
  * 1.The defaultProps and propTypes of AntD just can be use in wrapper Comp or non-Comp
@@ -96,5 +98,9 @@ export default class AntdComp extends Comp {
     return Reacts.some(this.props.children, (child) => {
       return child.type && child.type.name === specialChildName;
     }, this);
+  }
+
+  renderPreview() {
+    return (<SKDiv>{this.m2vConvertor()}</SKDiv>);
   }
 }

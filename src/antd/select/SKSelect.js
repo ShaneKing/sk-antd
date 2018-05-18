@@ -94,6 +94,10 @@ export default class SKSelect extends AntdComp {
     textId: PropTypes.string,
   });
 
+  static optionMap(selectOption) {
+    return selectOption.label ? <Select.OptGroup key={selectOption.id} label={selectOption.label}/> : <Select.Option key={selectOption.id}>{selectOption.text}</Select.Option>;
+  }
+
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKSelect.SK_COMP_NAME;
@@ -173,8 +177,9 @@ export default class SKSelect extends AntdComp {
     }
   };
 
-  static optionMap(selectOption) {
-    return selectOption.label ? <Select.OptGroup key={selectOption.id} label={selectOption.label}/> : <Select.Option key={selectOption.id}>{selectOption.text}</Select.Option>;
+  m2eConvertor(){
+    const {modes, textId} = this.props;
+    return (modes === SELECT_MODES.Remote && textId) ? this.skTmpVal(textId) : this.skVal()
   }
 
   renderPreview() {
@@ -197,7 +202,7 @@ export default class SKSelect extends AntdComp {
     }
   }
 
-  render() {
+  renderComp() {
     const {compTag: CompTag, dataId, modes, placeholder, textId} = this.props;
 
     let defaultProps = {};
@@ -217,26 +222,22 @@ export default class SKSelect extends AntdComp {
       };
     }
 
-    if (this.skProp(AntdComp.SK_PROPS.PREVIEW)) {
-      return this.renderPreview();
-    } else {
-      return (
-        <CompTag
-          {...defaultProps}
-          {...this.skTransProps2Self(CompTag)}
-          onBlur={this.handleBlur}
-          onFocus={this.handleFocus}
-          onChange={this.handleChange}
-          onSelect={this.handleSelect}
-          placeholder={placeholder || Mesgs.get('Please_select')}
-          value={(modes === SELECT_MODES.Remote && textId) ? this.skTmpVal(textId) : this.skVal()}
-          getPopupContainer={triggerNode => triggerNode.parentNode}
-        >
-          {dataId ? this.skModel().skVal(dataId).map((selectOption) => {
-            return SKSelect.optionMap(selectOption);
-          }) : this.skTransProps2Child()}
-        </CompTag>
-      );
-    }
+    return (
+      <CompTag
+        {...defaultProps}
+        {...this.skTransProps2Self(CompTag)}
+        onBlur={this.handleBlur}
+        onFocus={this.handleFocus}
+        onChange={this.handleChange}
+        onSelect={this.handleSelect}
+        placeholder={placeholder || Mesgs.get('Please_select')}
+        value={this.m2eConvertor()}
+        getPopupContainer={triggerNode => triggerNode.parentNode}
+      >
+        {dataId ? this.skModel().skVal(dataId).map((selectOption) => {
+          return SKSelect.optionMap(selectOption);
+        }) : this.skTransProps2Child()}
+      </CompTag>
+    );
   }
 }

@@ -1,10 +1,10 @@
 import { SK } from 'sk-js';
-import Comp from '../Comp';
+import HtmlComp from './HtmlComp';
 import Reacts from '../Reacts';
 
-export default class SKH5 extends Comp {
+export default class SKH5 extends HtmlComp {
   static SK_COMP_NAME = 'SKH5';
-  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {
+  static defaultProps = SK.extend(true, {}, HtmlComp.defaultProps, {
     compTag: Reacts.TAG.h5,
   });
 

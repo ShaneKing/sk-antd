@@ -1,3 +1,4 @@
+export HtmlComp from './HtmlComp';
 export SKA from './SKA';
 export SKAside from './SKAside';
 export SKBr from './SKBr';

@@ -43,35 +43,36 @@ export default class SKDatePicker extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKDatePicker.SK_COMP_NAME;
     this.handleChange = (dateMoment, dateString) => {
-      if (dateMoment) {
-        this.skVal(dateMoment.format(this.props.format));
-      } else {
-        this.skVal(undefined);
-      }
+      this.e2mConvertor(dateMoment);
     };
   }
 
-  renderPreview() {
-    return (<SKDiv>{this.skVal()}</SKDiv>);
+  e2mConvertor(dateMoment){
+    if (dateMoment) {
+      this.skVal(dateMoment.format(this.props.format));
+    } else {
+      this.skVal(undefined);
+    }
+    return this;
   }
 
-  render() {
-    const {compTag: CompTag, format} = this.props;
+  m2eConvertor(){
+    return this.skVal() ? moment(this.skVal(), this.props.format) : undefined;
+  }
 
-    if (this.skProp(AntdComp.SK_PROPS.PREVIEW)) {
-      return this.renderPreview();
-    } else {
-      return (
-        <CompTag
-          {...this.skTransProps2Self(CompTag)}
-          onChange={this.handleChange}
-          placeholder={Mesgs.get('Please_select')}
-          size={this.skProp(AntdComp.SK_PROPS.SIZE)}
-          value={this.skVal() ? moment(this.skVal(), format) : undefined}
-        >
-          {this.skTransProps2Child()}
-        </CompTag>
-      );
-    }
+  renderComp() {
+    const {compTag: CompTag} = this.props;
+
+    return (
+      <CompTag
+        {...this.skTransProps2Self(CompTag)}
+        onChange={this.handleChange}
+        placeholder={Mesgs.get('Please_select')}
+        size={this.skProp(AntdComp.SK_PROPS.SIZE)}
+        value={this.m2eConvertor()}
+      >
+        {this.skTransProps2Child()}
+      </CompTag>
+    );
   }
 }

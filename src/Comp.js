@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Model, SK } from 'sk-js';
+import {Model, SK} from 'sk-js';
 import Reacts from './Reacts';
 
 /*eslint react/require-default-props: "off"*/
@@ -117,7 +117,6 @@ export default class Comp extends React.Component {
     m2eConvertor: PropTypes.func, //Model 2 Editing
     e2mConvertor: PropTypes.func, //Editing 2 Model
     m2vConvertor: PropTypes.func, //Model 2 View, like Date Comp, moment format to view: YYYY-MM-DDTHH:mm:ss.SSSZ -> YYYY-MM-DD
-    v2mConvertor: PropTypes.func, //View 2 Model, like Check Comp, true is checked: true -> 1, false -> 0
   };
 
   constructor(...args) {
@@ -125,7 +124,7 @@ export default class Comp extends React.Component {
     this.SK_COMP_NAME = Comp.SK_COMP_NAME;
     this.monitors = [];
     this.updateUI = (evt) => {
-      this.setState({ stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX) });
+      this.setState({stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX)});
     };
   }
 
@@ -238,12 +237,22 @@ export default class Comp extends React.Component {
     return [];
   }
 
+  clearAllErrors() {
+    if (this.skModel()) {
+      this.skModel().setErrors();
+    }
+  }
+
   denyTransProps2Child(child) {
     return [];
   }
 
   denyTransProps2Self(comp = this.props.compTag, prop = this.props) {
     return [];
+  }
+
+  e2mConvertor(val) {
+    return this.skVal(val);
   }
 
   /**
@@ -269,12 +278,6 @@ export default class Comp extends React.Component {
     return this.skModel().getErrors(this.getModelId());
   }
 
-  clearAllErrors(){
-    if(this.skModel()){
-      this.skModel().setErrors();
-    }
-  }
-
   /**
    * Get modelId: x.xx.xxx
    *
@@ -288,14 +291,36 @@ export default class Comp extends React.Component {
     return this.props.skSysModel;
   }
 
+  m2eConvertor() {
+    return this.skVal();
+  }
+
+  m2vConvertor() {
+    return this.skVal();
+  }
+
   render() {
-    const { compTag: CompTag } = this.props;
+    const {compTag: CompTag} = this.props;
+
+    if (this.skProp(Comp.SK_PROPS.PREVIEW)) {
+      return this.renderPreview();
+    } else {
+      return this.renderComp();
+    }
+  }
+
+  renderComp(){
+    const {compTag: CompTag} = this.props;
 
     return (
       <CompTag {...this.skTransProps2Self(CompTag)}>
         {this.skTransProps2Child()}
       </CompTag>
     );
+  }
+
+  renderPreview() {
+    return this.m2vConvertor();
   }
 
   /**
@@ -360,7 +385,7 @@ export default class Comp extends React.Component {
       return child;
     });
 
-    if(!_.isArray(children) && _.isArray(rtn)){
+    if (!_.isArray(children) && _.isArray(rtn)) {
       rtn = rtn[0];
     }
     return rtn;

@@ -1,17 +1,17 @@
 import _ from 'lodash';
 import React from 'react';
 import { SK } from 'sk-js';
-import Comp from '../Comp';
+import HtmlComp from './HtmlComp';
 import Reacts from '../Reacts';
 
 /*eslint no-script-url: "off"*/
 
-export default class SKA extends Comp {
+export default class SKA extends HtmlComp {
   static SK_COMP_NAME = 'SKA';
-  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {
+  static defaultProps = SK.extend(true, {}, HtmlComp.defaultProps, {
     compTag: Reacts.TAG.a,
   });
-  static propTypes = SK.extend(true, {}, Comp.propTypes, {});
+  static propTypes = SK.extend(true, {}, HtmlComp.propTypes, {});
 
   constructor(...args) {
     super(...args);

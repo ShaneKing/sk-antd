@@ -1,10 +1,10 @@
 import { SK } from 'sk-js';
-import Comp from '../Comp';
+import HtmlComp from './HtmlComp';
 import Reacts from '../Reacts';
 
-export default class SKCanvas extends Comp {
+export default class SKCanvas extends HtmlComp {
   static SK_COMP_NAME = 'SKCanvas';
-  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {
+  static defaultProps = SK.extend(true, {}, HtmlComp.defaultProps, {
     compTag: Reacts.TAG.canvas,
   });
 

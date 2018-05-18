@@ -1,10 +1,10 @@
 import { SK } from 'sk-js';
-import Comp from '../Comp';
+import HtmlComp from './HtmlComp';
 import Reacts from '../Reacts';
 
-export default class SKAside extends Comp {
+export default class SKAside extends HtmlComp {
   static SK_COMP_NAME = 'SKAside';
-  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {
+  static defaultProps = SK.extend(true, {}, HtmlComp.defaultProps, {
     compTag: Reacts.TAG.aside,
   });
 
