@@ -16,7 +16,7 @@ export default class SKInput extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKInput.SK_COMP_NAME;
     this.handleChange = (domEvent) => {
-      this.e2mConvertor(domEvent.target.value);
+      this.e2m(domEvent.target.value);
     };
   }
 
@@ -29,7 +29,7 @@ export default class SKInput extends AntdComp {
         onChange={this.handleChange}
         placeholder={placeholder || Mesgs.get('Please_input')}
         size={this.skProp(AntdComp.SK_PROPS.SIZE)}
-        value={this.m2eConvertor()}
+        value={this.m2e()}
       >
         {this.skTransProps2Child()}
       </CompTag>

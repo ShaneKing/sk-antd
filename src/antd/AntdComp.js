@@ -101,6 +101,6 @@ export default class AntdComp extends Comp {
   }
 
   renderPreview() {
-    return (<SKDiv>{this.m2vConvertor()}</SKDiv>);
+    return (<SKDiv>{this.m2v()}</SKDiv>);
   }
 }

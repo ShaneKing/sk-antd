@@ -31,7 +31,7 @@ export default class SKCheckbox extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKCheckbox.SK_COMP_NAME;
     this.handleChange = (domEvent) => {
-      this.e2mConvertor(domEvent.target.checked);
+      this.e2m(domEvent.target.checked);
     };
   }
 
@@ -41,7 +41,7 @@ export default class SKCheckbox extends AntdComp {
     return (
       <CompTag
         {...this.skTransProps2Self(CompTag)}
-        checked={this.m2eConvertor()}
+        checked={this.m2e()}
         onChange={this.handleChange}
       >
         {this.skTransProps2Child()}

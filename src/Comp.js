@@ -251,10 +251,6 @@ export default class Comp extends React.Component {
     return [];
   }
 
-  e2mConvertor(val) {
-    return this.skVal(val);
-  }
-
   /**
    * Returns boolean value of boolean, function or object with skWhen properties
    *
@@ -291,14 +287,6 @@ export default class Comp extends React.Component {
     return this.props.skSysModel;
   }
 
-  m2eConvertor() {
-    return this.skVal();
-  }
-
-  m2vConvertor() {
-    return this.skVal();
-  }
-
   render() {
     const {compTag: CompTag} = this.props;
 
@@ -320,7 +308,7 @@ export default class Comp extends React.Component {
   }
 
   renderPreview() {
-    return this.m2vConvertor();
+    return this.m2v();
   }
 
   /**
@@ -431,5 +419,26 @@ export default class Comp extends React.Component {
     } else {
       return this.skModel().skVal(this.getModelId());
     }
+  }
+
+  e2m(val){
+    return this.skVal(_.isFunction(this.props.e2mConvertor) ? this.props.e2mConvertor(this, this.skModel(), val) : this.e2mConvertor(val));
+  }
+  e2mConvertor(val) {
+    return val;
+  }
+
+  m2e(){
+    return _.isFunction(this.props.m2eConvertor) ? this.props.m2eConvertor(this, this.skModel(), this.skVal()) : this.m2eConvertor();
+  }
+  m2eConvertor() {
+    return this.skVal();
+  }
+
+  m2v(){
+    return _.isFunction(this.props.m2vConvertor) ? this.props.m2vConvertor(this, this.skModel(), this.skVal()) : this.m2vConvertor();
+  }
+  m2vConvertor() {
+    return this.skVal();
   }
 }

@@ -46,17 +46,12 @@ export default class SKRangePicker extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKRangePicker.SK_COMP_NAME;
     this.handleChange = (dateMoment, dateString) => {
-      this.e2mConvertor(dateMoment);
+      this.e2m(dateMoment);
     };
   }
 
   e2mConvertor(dateMoment){
-    if (dateMoment && dateMoment.length === 2) {
-      this.skVal([dateMoment[0].format(this.props.format), dateMoment[1].format(this.props.format)]);
-    } else {
-      this.skVal(undefined);
-    }
-    return this;
+    return dateMoment && dateMoment.length === 2 ? [dateMoment[0].format(this.props.format), dateMoment[1].format(this.props.format)] : undefined;
   }
 
   m2eConvertor(){
@@ -76,7 +71,7 @@ export default class SKRangePicker extends AntdComp {
         onChange={this.handleChange}
         placeholder={[Mesgs.get('Please_select'), Mesgs.get('Please_select')]}
         size={this.skProp(AntdComp.SK_PROPS.SIZE)}
-        value={this.m2eConvertor()}
+        value={this.m2e()}
       >
         {this.skTransProps2Child()}
       </CompTag>

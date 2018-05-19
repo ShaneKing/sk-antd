@@ -179,7 +179,7 @@ export default class SKSelect extends AntdComp {
 
   m2eConvertor(){
     const {modes, textId} = this.props;
-    return (modes === SELECT_MODES.Remote && textId) ? this.skTmpVal(textId) : this.skVal()
+    return (modes === SELECT_MODES.Remote && textId) ? this.skTmpVal(textId) : this.skVal();
   }
 
   renderPreview() {
@@ -231,7 +231,7 @@ export default class SKSelect extends AntdComp {
         onChange={this.handleChange}
         onSelect={this.handleSelect}
         placeholder={placeholder || Mesgs.get('Please_select')}
-        value={this.m2eConvertor()}
+        value={this.m2e()}
         getPopupContainer={triggerNode => triggerNode.parentNode}
       >
         {dataId ? this.skModel().skVal(dataId).map((selectOption) => {
