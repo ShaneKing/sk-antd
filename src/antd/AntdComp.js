@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK, Model } from 'sk-js';
-import { SIZE } from './AntdConst';
+import {Model, SK} from 'sk-js';
+import {SIZE} from './AntdConst';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 import SKDiv from '../html/SKDiv';
@@ -27,6 +27,7 @@ export default class AntdComp extends Comp {
     this.SK_COMP_NAME = AntdComp.SK_COMP_NAME;
   }
 
+  // react
   componentDidMount() {
     super.componentDidMount();
     this.addAllErroredMonitor();
@@ -51,16 +52,10 @@ export default class AntdComp extends Comp {
     super.componentWillUnmount();
   }
 
-  addExtendErroredMonitor() {
-  }
-
-  rmvExtendErroredMonitor() {
-  }
-
-  //monitor begin
+  // monitor
   addAllErroredMonitor() {
-    Model.parseSao(this.props.monitor).forEach(($idOrReg) => {
-      this.addErroredMonitor($idOrReg);
+    Model.parseSao(this.props.monitor).forEach((idOrReg) => {
+      this.addErroredMonitor(idOrReg);
     });
     //Self value monitor
     if (this.getModelId()) {
@@ -79,9 +74,12 @@ export default class AntdComp extends Comp {
     }
   }
 
+  addExtendErroredMonitor() {
+  }
+
   rmvAllErroredMonitor() {
-    this.monitors.forEach(($idOrReg) => {
-      this.rmvErroredMonitor($idOrReg);
+    this.monitors.forEach((idOrReg) => {
+      this.rmvErroredMonitor(idOrReg);
     });
   }
 
@@ -94,10 +92,12 @@ export default class AntdComp extends Comp {
     this.monitors.skRmv(idOrReg);
   }
 
+  rmvExtendErroredMonitor() {
+  }
+
+  // other
   hasSpecialChild(specialChildName) {
-    return Reacts.some(this.props.children, (child) => {
-      return child.type && child.type.name === specialChildName;
-    }, this);
+    return Reacts.some(this.props.children, $child => $child.type && $child.type.name === specialChildName, this);
   }
 
   renderPreview() {

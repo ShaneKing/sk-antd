@@ -101,6 +101,66 @@ export default class SKSelect extends AntdComp {
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKSelect.SK_COMP_NAME;
+    this.handleChange = (value, option) => {
+      if (this.props.mode === SELECT_MODE.Multiple) {
+        if (this.props.onChange && _.isFunction(this.props.onChange)) {
+          this.props.onChange(value, option);
+        } else {
+          this.skVal(value);
+        }
+      } else {
+        if (this.props.modes === SELECT_MODES.Remote && this.props.textId && option) {
+          this.skTmpVal(this.props.textId, option.props.children);
+          if (!option.props.children) {
+            this.skModel().skVal(this.props.textId, option.props.children);
+            this.skVal(option.props.children);
+          }
+        }
+
+        if (this.props.onChange && _.isFunction(this.props.onChange)) {
+          this.props.onChange(value, option);
+        } else if (!option || !option.key) {
+          //if clear, reset value of modelId
+          this.skVal(undefined);
+        }
+      }
+    };
+    this.handleBlur = () => {
+      if (this.props.modes === SELECT_MODES.Remote && this.props.textId) {
+        this.skTmpVal(this.props.textId, this.skModel().skVal(this.props.textId));
+        this.updateUI();
+      }
+      if (this.props.onBlur && _.isFunction(this.props.onBlur)) {
+        this.props.onBlur();
+      }
+    };
+    this.handleFocus = () => {
+      if (this.props.modes === SELECT_MODES.Remote && this.props.textId) {
+        const tmpVal = this.skTmpVal(this.props.textId);
+        this.handleChange(tmpVal, {key: tmpVal, props: {children: tmpVal}});
+      }
+      if (this.props.onFocus && _.isFunction(this.props.onFocus)) {
+        this.props.onFocus();
+      }
+    };
+    this.handleSelect = (value, option) => {
+      if (this.props.mode === SELECT_MODE.Multiple) {
+        if (this.props.onSelect && _.isFunction(this.props.onSelect)) {
+          this.props.onSelect(value, option);
+        }
+      } else {
+        if (this.props.modes === SELECT_MODES.Remote && this.props.textId) {
+          this.skModel().skVal(this.props.textId, option.props.children);
+          this.skTmpVal(this.props.textId, option.props.children);
+        }
+
+        if (this.props.onSelect && _.isFunction(this.props.onSelect)) {
+          this.props.onSelect(value, option);
+        } else {
+          this.skVal(option.key);
+        }
+      }
+    };
   }
 
   addExtendChangedMonitor() {
@@ -113,70 +173,6 @@ export default class SKSelect extends AntdComp {
     this.rmvChangedMonitor(this.props.dataId);
   }
 
-  handleChange = (value, option) => {
-    if (this.props.mode === SELECT_MODE.Multiple) {
-      if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(value, option);
-      } else {
-        this.skVal(value);
-      }
-    } else {
-      if (this.props.modes === SELECT_MODES.Remote && this.props.textId && option) {
-        this.skTmpVal(this.props.textId, option.props.children);
-        if (!option.props.children) {
-          this.skModel().skVal(this.props.textId, option.props.children);
-          this.skVal(option.props.children);
-        }
-      }
-
-      if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(value, option);
-      } else if (!option || !option.key) {
-        //if clear, reset value of modelId
-        this.skVal(undefined);
-      }
-    }
-  };
-
-  handleBlur = () => {
-    if (this.props.modes === SELECT_MODES.Remote && this.props.textId) {
-      this.skTmpVal(this.props.textId, this.skModel().skVal(this.props.textId));
-      this.updateUI();
-    }
-    if (this.props.onBlur && _.isFunction(this.props.onBlur)) {
-      this.props.onBlur();
-    }
-  };
-
-  handleFocus = () => {
-    if (this.props.modes === SELECT_MODES.Remote && this.props.textId) {
-      const tmpVal = this.skTmpVal(this.props.textId);
-      this.handleChange(tmpVal, {key: tmpVal, props: {children: tmpVal}});
-    }
-    if (this.props.onFocus && _.isFunction(this.props.onFocus)) {
-      this.props.onFocus();
-    }
-  };
-
-  handleSelect = (value, option) => {
-    if (this.props.mode === SELECT_MODE.Multiple) {
-      if (this.props.onSelect && _.isFunction(this.props.onSelect)) {
-        this.props.onSelect(value, option);
-      }
-    } else {
-      if (this.props.modes === SELECT_MODES.Remote && this.props.textId) {
-        this.skModel().skVal(this.props.textId, option.props.children);
-        this.skTmpVal(this.props.textId, option.props.children);
-      }
-
-      if (this.props.onSelect && _.isFunction(this.props.onSelect)) {
-        this.props.onSelect(value, option);
-      } else {
-        this.skVal(option.key);
-      }
-    }
-  };
-
   m2eConvertor(){
     const {modes, textId} = this.props;
     return (modes === SELECT_MODES.Remote && textId) ? this.skTmpVal(textId) : this.skVal();
@@ -186,16 +182,16 @@ export default class SKSelect extends AntdComp {
     const {dataId, modes, textId} = this.props;
 
     if (this.props.mode === SELECT_MODE.Multiple) {
-      return (<SKDiv>{this.skModel().skVal(dataId).filter(($item) => {
-        return this.skVal().includes($item.id);
-      }).map(($item) => {
-        return $item.text;
+      return (<SKDiv>{this.skModel().skVal(dataId).filter((item) => {
+        return this.skVal().includes(item.id);
+      }).map((item) => {
+        return item.text;
       }).join()}</SKDiv>)
     } else {
       let tmpPreview = {};
-      this.skModel().skVal(dataId).forEach(($item) => {
-        if ($item.id === this.skVal()) {
-          tmpPreview = $item;
+      this.skModel().skVal(dataId).forEach((item) => {
+        if (item.id === this.skVal()) {
+          tmpPreview = item;
         }
       });
       return (<SKDiv>{(modes === SELECT_MODES.Remote && textId) ? this.skModel().skVal(textId) : tmpPreview.text}</SKDiv>);

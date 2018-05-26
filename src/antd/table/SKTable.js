@@ -81,8 +81,8 @@ export default class SKTable extends AntdComp {
     const { compTag: CompTag, columns, scroll } = this.props;
 
     let tmpScroll = { y: false };
-    tmpScroll.x = columns.reduce(($sum, $item) => {
-      return $sum + $item.width;
+    tmpScroll.x = columns.reduce((sum, item) => {
+      return sum + item.width;
     }, 0);
     tmpScroll = scroll || tmpScroll;
 

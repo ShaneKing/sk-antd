@@ -128,30 +128,17 @@ export default class Comp extends React.Component {
     };
   }
 
-  /**
-   * Assert Model
-   *
-   * @param props
-   * @param propName
-   * @param componentName
-   * @returns {Error}
-   */
   static IS_PROP_TYPES_MODEL(props, propName, componentName) {
     if (props[propName] && !(props[propName] instanceof Model)) {
       return new Error(`The [${componentName}]'s [${propName}] is not a model!`);
     }
   }
 
-  /**
-   * Filter sk props
-   *
-   * @param {string} k key/index
-   * @returns {boolean}
-   */
   static skPropsFilter(k) {
     return _.startsWith(SK.s4s(k), Comp.SK_PROPS_PREFIX);
   }
 
+  // react
   componentDidMount() {
     //super.componentDidMount();
     this.addAllChangedMonitor();
@@ -176,18 +163,20 @@ export default class Comp extends React.Component {
     //super.componentWillUnmount();
   }
 
-  addExtendChangedMonitor() {
+  render() {
+    const {compTag: CompTag} = this.props;
 
+    if (this.skProp(Comp.SK_PROPS.PREVIEW)) {
+      return this.renderPreview();
+    } else {
+      return this.renderComp();
+    }
   }
 
-  rmvExtendChangedMonitor() {
-
-  }
-
-  //monitor begin
+  // monitor
   addAllChangedMonitor() {
-    Model.parseSao(this.props.monitor).forEach(($i) => {
-      this.addChangedMonitor($i);
+    Model.parseSao(this.props.monitor).forEach((item) => {
+      this.addChangedMonitor(item);
     });
     //Self value monitor
     if (this.getModelId()) {
@@ -208,9 +197,13 @@ export default class Comp extends React.Component {
     }
   }
 
+  addExtendChangedMonitor() {
+
+  }
+
   rmvAllChangedMonitor() {
-    this.monitors.forEach(($i) => {
-      this.rmvChangedMonitor($i);
+    this.monitors.forEach((item) => {
+      this.rmvChangedMonitor(item);
     });
   }
 
@@ -223,12 +216,11 @@ export default class Comp extends React.Component {
     this.monitors.skRmv(idOrReg);
   }
 
-  //monitor end
+  rmvExtendChangedMonitor() {
 
-  /**
-   * @param {React.Component} child
-   * @returns {Function}
-   */
+  }
+
+  // other
   allowTransProps2Child(child) {
     return [];
   }
@@ -249,6 +241,14 @@ export default class Comp extends React.Component {
 
   denyTransProps2Self(comp = this.props.compTag, prop = this.props) {
     return [];
+  }
+
+  e2m(val) {
+    return this.skVal(_.isFunction(this.props.e2mConvertor) ? this.props.e2mConvertor(this, this.skModel(), val) : this.e2mConvertor(val));
+  }
+
+  e2mConvertor(val) {
+    return val;
   }
 
   /**
@@ -287,17 +287,23 @@ export default class Comp extends React.Component {
     return this.props.skSysModel;
   }
 
-  render() {
-    const {compTag: CompTag} = this.props;
-
-    if (this.skProp(Comp.SK_PROPS.PREVIEW)) {
-      return this.renderPreview();
-    } else {
-      return this.renderComp();
-    }
+  m2e() {
+    return _.isFunction(this.props.m2eConvertor) ? this.props.m2eConvertor(this, this.skModel(), this.skVal()) : this.m2eConvertor();
   }
 
-  renderComp(){
+  m2eConvertor() {
+    return this.skVal();
+  }
+
+  m2v() {
+    return _.isFunction(this.props.m2vConvertor) ? this.props.m2vConvertor(this, this.skModel(), this.skVal()) : this.m2vConvertor();
+  }
+
+  m2vConvertor() {
+    return this.skVal();
+  }
+
+  renderComp() {
     const {compTag: CompTag} = this.props;
 
     return (
@@ -327,10 +333,6 @@ export default class Comp extends React.Component {
     return this.skProp(Comp.SK_PROPS.MODEL);
   }
 
-  skTmpVal(id = this.getModelId(), value) {
-    return arguments.length > 1 ? this.skModel().skVal(`tmp.${id}`, value) : this.skModel().skVal(`tmp.${id}`);
-  }
-
   /**
    * Get prop value: prop -> skProp -> DEFAULT.PROP
    *
@@ -347,6 +349,10 @@ export default class Comp extends React.Component {
       rtn = this.props[Comp.SK_PROPS_PREFIX + SK.upperWordsFirstChar(Comp.SK_PROPS_SYS) + SK.upperWordsFirstChar(prop)];
     }
     return rtn === undefined ? defaultValue : rtn;
+  }
+
+  skTmpVal(id = this.getModelId(), value) {
+    return arguments.length > 1 ? this.skModel().skVal(`tmp.${id}`, value) : this.skModel().skVal(`tmp.${id}`);
   }
 
   /**
@@ -419,26 +425,5 @@ export default class Comp extends React.Component {
     } else {
       return this.skModel().skVal(this.getModelId());
     }
-  }
-
-  e2m(val){
-    return this.skVal(_.isFunction(this.props.e2mConvertor) ? this.props.e2mConvertor(this, this.skModel(), val) : this.e2mConvertor(val));
-  }
-  e2mConvertor(val) {
-    return val;
-  }
-
-  m2e(){
-    return _.isFunction(this.props.m2eConvertor) ? this.props.m2eConvertor(this, this.skModel(), this.skVal()) : this.m2eConvertor();
-  }
-  m2eConvertor() {
-    return this.skVal();
-  }
-
-  m2v(){
-    return _.isFunction(this.props.m2vConvertor) ? this.props.m2vConvertor(this, this.skModel(), this.skVal()) : this.m2vConvertor();
-  }
-  m2vConvertor() {
-    return this.skVal();
   }
 }
