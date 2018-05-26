@@ -5,7 +5,7 @@ import React from 'react';
 import {Mesgs, SK} from 'sk-js';
 import CommonPicker from './CommonPicker';
 import AntdComp from '../AntdComp';
-import SKDiv from '../../html/SKDiv';
+import SKDiv from '../../h/SKDiv';
 
 /*eslint no-unused-vars: "off"*/
 let {RangePicker} = DatePicker;

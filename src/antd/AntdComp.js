@@ -5,7 +5,7 @@ import {Model, SK} from 'sk-js';
 import {SIZE} from './AntdConst';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
-import SKDiv from '../html/SKDiv';
+import SKDiv from '../h/SKDiv';
 
 /**
  * 1.The defaultProps and propTypes of AntD just can be use in wrapper Comp or non-Comp

@@ -5,7 +5,7 @@ import React from 'react';
 import {Mesgs, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import {SELECT_MODE, SELECT_MODES, SIZE} from '../AntdConst';
-import SKDiv from '../../html/SKDiv';
+import SKDiv from '../../h/SKDiv';
 
 /*eslint no-unused-vars: "off"*/
 
