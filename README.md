@@ -8,7 +8,8 @@ Let write page like java, wrap ant-design implements mvc(Model-Validator-Compone
 ## Directory conventions
 - [x] **src**: 
   - [x] **antd**: wrap ant-design components
-  - [x] **html**: wrap html components
+  - [x] **h**: wrap html components
+  - [x] **r**: wrap react components
   - [x] **sk**: wrap third-party components
   - [x] **Const**: const
     
