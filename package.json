@@ -1,7 +1,7 @@
 {
   "name": "sk-antd",
   "description": "ShaneKing for AntD",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "homepage": "https://github.com/ShaneKing/sk-antd",
   "license": "MIT",
   "author": {
@@ -53,7 +53,7 @@
     "prop-types": "15.6.1",
     "react": "16.4.0",
     "react-dom": "16.4.0",
-    "sk-js": "0.2.13"
+    "sk-js": "^0.2.14"
   },
   "devDependencies": {
     "babel-eslint": "8.2.3",

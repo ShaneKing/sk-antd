@@ -30,7 +30,7 @@ export default class FormComp extends AntdComp {
     const inFormRow = this.skProp(FormComp.SK_PROPS.IN_FROM_ROW);
 
     const errorObj = this.getErrors();
-    const help = _.isEmpty(errorObj) ? SK.EMPTY : _.join(errorObj.skVals(), SK.CHAR_VERTICAL);
+    const help = _.isEmpty(errorObj) ? SK.EMPTY : _.join(errorObj.skVals(), SK.CHAR_BLANK+SK.CHAR_AMPERSAND+SK.CHAR_AMPERSAND+SK.CHAR_BLANK);
     const validateStatus = _.isEmpty(errorObj) ? SK.EMPTY : SK.STR_ERROR;
 
     if (inFormRow && inFormItem) {
