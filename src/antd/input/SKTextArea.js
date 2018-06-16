@@ -21,6 +21,8 @@ TextArea.propTypes = SK.extend(true, {}, {
   onPressEnter: PropTypes.func,
 }, OriginInput.propTypes, TextArea.propTypes, {});
 
+TextArea.NON_SK_COMP_NAME = 'TextArea';
+
 export default class SKTextArea extends SKInput {
   static SK_COMP_NAME = 'SKTextArea';
   static defaultProps = SK.extend(true, {}, SKInput.defaultProps, TextArea.defaultProps, {

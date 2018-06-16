@@ -31,6 +31,8 @@ SubMenu.propTypes = SK.extend(true, {
   onTitleMouseLeave: PropTypes.func,
 }, OriginMenu.propTypes, SubMenu.propTypes, {});
 
+SubMenu.NON_SK_COMP_NAME = 'SubMenu';
+
 export default class SKSubMenu extends AntdComp {
   static SK_COMP_NAME = 'SKSubMenu';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, SubMenu.defaultProps, {

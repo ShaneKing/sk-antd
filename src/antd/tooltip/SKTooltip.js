@@ -10,6 +10,8 @@ Tooltip.propTypes = SK.extend(true, {}, {
   //title: PropTypes.string,
 }, CommonTip.propTypes, Tooltip.propTypes, {});
 
+Tooltip.NON_SK_COMP_NAME = 'Tooltip';
+
 export default class SKTooltip extends AntdComp {
   static SK_COMP_NAME = 'SKTooltip';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Tooltip.defaultProps, {

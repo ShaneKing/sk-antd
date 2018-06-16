@@ -11,6 +11,8 @@ LocaleProvider.propTypes = SK.extend(true, {}, {
   locale: PropTypes.object,
 }, LocaleProvider.propTypes, {});
 
+LocaleProvider.NON_SK_COMP_NAME = 'LocaleProvider';
+
 export default class SKLocaleProvider extends AntdComp {
   static SK_COMP_NAME = 'SKLocaleProvider';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, LocaleProvider.defaultProps, {

@@ -23,6 +23,8 @@ Item.propTypes = SK.extend(true, {
   onMouseLeave: PropTypes.func,
 }, OriginMenu.propTypes, Item.propTypes, {});
 
+Item.NON_SK_COMP_NAME = 'MenuItem';
+
 export default class SKMenuItem extends AntdComp {
   static SK_COMP_NAME = 'SKMenuItem';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Item.defaultProps, {

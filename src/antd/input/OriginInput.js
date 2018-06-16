@@ -35,6 +35,8 @@ Input.propTypes = SK.extend(true, {}, {
   onPressEnter: PropTypes.func,
 }, Input.propTypes, {});
 
+Input.NON_SK_COMP_NAME = 'Input';
+
 export default class OriginInput {
   static defaultProps = SK.extend(true, {}, Input.defaultProps, {});
   static propTypes = SK.extend(true, {}, Input.propTypes, {});

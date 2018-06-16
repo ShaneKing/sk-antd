@@ -8,10 +8,12 @@ const {Header} = Layout;
 Header.defaultProps = SK.extend(true, {}, {}, OriginLayout.defaultProps, Header.defaultProps, {});
 Header.propTypes = SK.extend(true, {}, {}, OriginLayout.propTypes, Header.propTypes, {});
 
+Header.NON_SK_COMP_NAME = 'Header';
+
 export default class SKHeader extends AntdComp {
   static SK_COMP_NAME = 'SKHeader';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Header.defaultProps, {
-    compTag: Layout.Header,
+    compTag: Header,
   });
   static propTypes = SK.extend(true, {}, AntdComp.propTypes, Header.propTypes, {});
 

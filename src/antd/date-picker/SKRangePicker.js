@@ -35,6 +35,8 @@ RangePicker.propTypes = SK.extend(true, {}, {
   onOk: PropTypes.func,
 }, CommonPicker.propTypes, RangePicker.propTypes, {});
 
+RangePicker.NON_SK_COMP_NAME = 'RangePicker';
+
 export default class SKRangePicker extends AntdComp {
   static SK_COMP_NAME = 'SKRangePicker';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, RangePicker.defaultProps, {

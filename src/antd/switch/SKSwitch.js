@@ -31,6 +31,8 @@ Switch.propTypes = SK.extend(true, {}, {
   loading: PropTypes.bool,
 }, Switch.propTypes, {});
 
+Switch.NON_SK_COMP_NAME = 'Switch';
+
 export default class SKSwitch extends AntdComp {
   static SK_COMP_NAME = 'SKSwitch';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Switch.defaultProps, {

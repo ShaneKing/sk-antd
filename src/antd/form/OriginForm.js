@@ -15,6 +15,8 @@ Form.propTypes = SK.extend(true, {}, {
   onSubmit: PropTypes.func,
 }, Form.propTypes, {});
 
+Form.NON_SK_COMP_NAME = 'Form';
+
 export default class OriginForm {
   static defaultProps = SK.extend(true, {}, Form.defaultProps, {});
   static propTypes = SK.extend(true, {}, Form.propTypes, {});

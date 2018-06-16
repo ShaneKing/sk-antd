@@ -19,6 +19,8 @@ Search.propTypes = SK.extend(true, {}, {
   onSearch: PropTypes.func,
 }, OriginInput.propTypes, Search.propTypes, {});
 
+Search.NON_SK_COMP_NAME = 'Search';
+
 export default class SKSearch extends SKInput {
   static SK_COMP_NAME = 'SKSearch';
   static defaultProps = SK.extend(true, {}, SKInput.defaultProps, Search.defaultProps, {

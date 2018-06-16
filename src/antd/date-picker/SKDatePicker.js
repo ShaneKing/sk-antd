@@ -32,6 +32,8 @@ DatePicker.propTypes = SK.extend(true, {}, {
   onOk: PropTypes.func,
 }, CommonPicker.propTypes, DatePicker.propTypes, {});
 
+DatePicker.NON_SK_COMP_NAME = 'DatePicker';
+
 export default class SKDatePicker extends AntdComp {
   static SK_COMP_NAME = 'SKDatePicker';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, DatePicker.defaultProps, {

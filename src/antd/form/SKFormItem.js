@@ -34,6 +34,8 @@ Item.propTypes = SK.extend(true, {}, {
   wrapperCol: PropTypes.object,
 }, OriginForm.propTypes, Item.propTypes, {});
 
+Item.NON_SK_COMP_NAME = 'FormItem';
+
 export default class SKFormItem extends AntdComp {
   static SK_COMP_NAME = 'SKFormItem';
   static SK_PROPS = SK.extend(true, {}, AntdComp.SK_PROPS, {

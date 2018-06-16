@@ -49,6 +49,8 @@ Table.propTypes = SK.extend(true, {}, {
   onRow: PropTypes.func,
 }, Table.propTypes, {});
 
+Table.NON_SK_COMP_NAME = 'Table';
+
 export default class SKTable extends AntdComp {
   static SK_COMP_NAME = 'SKTable';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Table.defaultProps, {

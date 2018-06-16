@@ -30,6 +30,8 @@ Card.propTypes = SK.extend(true, {}, {
   onTabChange: PropTypes.func,
 }, Card.propTypes, {});
 
+Card.NON_SK_COMP_NAME = 'Card';
+
 export default class SKCard extends AntdComp {
   static SK_COMP_NAME = 'SKCard';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Card.defaultProps, {

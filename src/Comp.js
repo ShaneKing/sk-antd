@@ -395,11 +395,11 @@ export default class Comp extends React.Component {
    */
   skTransProps2Self(comp = this.props.compTag, prop = this.props, htmlProps = true) {
     let allowProps = htmlProps ? Reacts.P.skVals() : [];
-    if (comp.name && this.SK_COMP_NAME && (Comp.SK_PROPS_PREFIX.toUpperCase() + comp.name) === this.SK_COMP_NAME) {
+    if (comp.NON_SK_COMP_NAME && this.SK_COMP_NAME && (Comp.SK_PROPS_PREFIX.toUpperCase() + comp.NON_SK_COMP_NAME) === this.SK_COMP_NAME) {
       //SK COMP to AntD
       allowProps = allowProps.concat(Object.keys(comp.propTypes));
     }
-    if (comp.name && this.SK_COMP_NAME && _.startsWith(SK.s4s(comp.name), Comp.SK_PROPS_PREFIX.toUpperCase()) && _.startsWith(SK.s4s(this.SK_COMP_NAME), Comp.SK_PROPS_PREFIX.toUpperCase()) && (`Form${comp.name.substring(2)}`) === this.SK_COMP_NAME.substring(2)) {
+    if (comp.SK_COMP_NAME && this.SK_COMP_NAME && _.startsWith(SK.s4s(comp.SK_COMP_NAME), Comp.SK_PROPS_PREFIX.toUpperCase()) && _.startsWith(SK.s4s(this.SK_COMP_NAME), Comp.SK_PROPS_PREFIX.toUpperCase()) && (`Form${comp.SK_COMP_NAME.substring(2)}`) === this.SK_COMP_NAME.substring(2)) {
       //SKFormInput to SKInput
       allowProps = allowProps.concat(Object.keys(comp.propTypes));
     }

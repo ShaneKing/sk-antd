@@ -51,6 +51,8 @@ Menu.propTypes = SK.extend(true, {
   getPopupContainer: PropTypes.func,
 }, Menu.propTypes, {});
 
+Menu.NON_SK_COMP_NAME = 'Menu';
+
 export default class OriginMenu {
   static defaultProps = SK.extend(true, {}, Menu.defaultProps, {});
   static propTypes = SK.extend(true, {}, Menu.propTypes, {});

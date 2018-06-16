@@ -19,6 +19,8 @@ Breadcrumb.propTypes = SK.extend(true, {}, {
   ]),
 }, Breadcrumb.propTypes, {});
 
+Breadcrumb.NON_SK_COMP_NAME = 'Breadcrumb';
+
 export default class SKBreadcrumb extends AntdComp {
   static SK_COMP_NAME = 'SKBreadcrumb';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Breadcrumb.defaultProps, {

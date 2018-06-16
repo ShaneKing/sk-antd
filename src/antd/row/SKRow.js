@@ -22,6 +22,8 @@ Row.propTypes = SK.extend(true, {}, {
   type: PropTypes.string,
 }, Row.propTypes, {});
 
+Row.NON_SK_COMP_NAME = 'Row';
+
 export default class SKRow extends AntdComp {
   static SK_COMP_NAME = 'SKRow';
   static SK_PROPS = SK.extend(true, {}, AntdComp.SK_PROPS, {

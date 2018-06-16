@@ -14,6 +14,8 @@ Icon.propTypes = SK.extend(true, {}, {
   type: PropTypes.string,
 }, Icon.propTypes, {});
 
+Icon.NON_SK_COMP_NAME = 'Icon';
+
 export default class SKIcon extends AntdComp {
   static SK_COMP_NAME = 'SKIcon';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Icon.defaultProps, {

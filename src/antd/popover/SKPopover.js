@@ -18,6 +18,8 @@ Popover.propTypes = SK.extend(true, {}, {
   ]),
 }, CommonTip.propTypes, Popover.propTypes, {});
 
+Popover.NON_SK_COMP_NAME = 'Popover';
+
 export default class SKPopover extends AntdComp {
   static SK_COMP_NAME = 'SKPopover';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Popover.defaultProps, {

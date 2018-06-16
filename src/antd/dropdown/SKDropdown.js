@@ -17,6 +17,8 @@ Dropdown.propTypes = SK.extend(true, {}, {
   onVisibleChange: PropTypes.func,
 }, Dropdown.propTypes, {});
 
+Dropdown.NON_SK_COMP_NAME = 'Dropdown';
+
 export default class SKDropdown extends AntdComp {
   static SK_COMP_NAME = 'SKDropdown';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Dropdown.defaultProps, {

@@ -33,6 +33,8 @@ Sider.propTypes = SK.extend(true, {}, {
   onCollapse: PropTypes.func,
 }, OriginLayout.propTypes, Sider.propTypes, {});
 
+Sider.NON_SK_COMP_NAME = 'Sider';
+
 export default class SKSider extends AntdComp {
   static SK_COMP_NAME = 'SKSider';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Sider.defaultProps, {

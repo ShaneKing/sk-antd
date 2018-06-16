@@ -47,6 +47,8 @@ Col.propTypes = SK.extend(true, {}, {
   ]),
 }, Col.propTypes, {});
 
+Col.NON_SK_COMP_NAME = 'Col';
+
 export default class SKCol extends AntdComp {
   static SK_COMP_NAME = 'SKCol';
   static SK_PROPS = SK.extend(true, {}, AntdComp.SK_PROPS, {

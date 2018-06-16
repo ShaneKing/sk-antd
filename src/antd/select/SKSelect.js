@@ -80,6 +80,8 @@ Select.propTypes = SK.extend(true, {}, {
   onSelect: PropTypes.func,
 }, Select.propTypes, {});
 
+Select.NON_SK_COMP_NAME = 'Select';
+
 export default class SKSelect extends AntdComp {
   static SK_COMP_NAME = 'SKSelect';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Select.OptGroup.defaultProps, Select.Option.defaultProps, Select.defaultProps, {

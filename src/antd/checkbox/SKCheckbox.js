@@ -20,6 +20,8 @@ Checkbox.propTypes = SK.extend(true, {}, {
   onChange: PropTypes.func,
 }, Checkbox.propTypes, {});
 
+Checkbox.NON_SK_COMP_NAME = 'Checkbox';
+
 export default class SKCheckbox extends AntdComp {
   static SK_COMP_NAME = 'SKCheckbox';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Checkbox.defaultProps, {

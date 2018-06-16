@@ -29,6 +29,8 @@ Button.propTypes = SK.extend(true, {}, {
   target: PropTypes.string,
 }, Button.propTypes, {});
 
+Button.NON_SK_COMP_NAME = 'Button';
+
 export default class SKButton extends AntdComp {
   static SK_COMP_NAME = 'SKButton';
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Button.defaultProps, {
