@@ -1,9 +1,8 @@
-import { Input } from 'antd';
+import {Input} from 'antd';
 import PropTypes from 'prop-types';
-import { Mesgs, SK } from 'sk-js';
+import {SK} from 'sk-js';
 import OriginInput from './OriginInput';
 import SKInput from './SKInput';
-import AntdComp from '../AntdComp';
 
 const {TextArea} = Input;
 
@@ -29,4 +28,9 @@ export default class SKTextArea extends SKInput {
     compTag: TextArea,
   });
   static propTypes = SK.extend(true, {}, SKInput.propTypes, TextArea.propTypes, {});
+
+  constructor(...args) {
+    super(...args);
+    this.SK_COMP_NAME = SKTextArea.SK_COMP_NAME;
+  }
 }
