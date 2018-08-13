@@ -1,5 +1,5 @@
-import { Layout } from 'antd';
-import { SK } from 'sk-js';
+import {Layout} from 'antd';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import OriginLayout from './OriginLayout';
 

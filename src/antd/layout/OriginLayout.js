@@ -1,5 +1,5 @@
-import { Layout } from 'antd';
-import { SK } from 'sk-js';
+import {Layout} from 'antd';
+import {SK} from 'sk-js';
 import CommonLayout from './CommonLayout';
 
 Layout.defaultProps = SK.extend(true, {}, {}, CommonLayout.defaultProps, Layout.defaultProps, {});

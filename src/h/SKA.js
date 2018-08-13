@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import HtmlComp from './HtmlComp';
 import Reacts from '../Reacts';
 
@@ -24,7 +24,7 @@ export default class SKA extends HtmlComp {
   }
 
   render() {
-    const { compTag: CompTag } = this.props;
+    const {compTag: CompTag} = this.props;
     return (
       <CompTag
         {...this.skTransProps2Self(CompTag)}

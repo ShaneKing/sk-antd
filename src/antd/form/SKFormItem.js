@@ -1,7 +1,7 @@
-import { Form } from 'antd';
+import {Form} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import OriginForm from './OriginForm';
 import AntdComp from '../AntdComp';
 
@@ -58,7 +58,7 @@ export default class SKFormItem extends AntdComp {
   }
 
   render() {
-    const { compTag: CompTag } = this.props;
+    const {compTag: CompTag} = this.props;
     const labelCol = this.skProp(SKFormItem.SK_PROPS.LABEL_COL);
     const wrapperCol = this.skProp(SKFormItem.SK_PROPS.WRAPPER_COL);
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import Comp from '../Comp';
 
 export default class HtmlComp extends Comp {
@@ -12,7 +12,7 @@ export default class HtmlComp extends Comp {
     this.SK_COMP_NAME = HtmlComp.SK_COMP_NAME;
   }
 
-  render(){
+  render() {
     const {compTag: CompTag} = this.props;
 
     return (

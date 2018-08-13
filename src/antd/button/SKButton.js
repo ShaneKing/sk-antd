@@ -1,8 +1,8 @@
-import { Button } from 'antd';
+import {Button} from 'antd';
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SIZE } from '../AntdConst';
+import {SIZE} from '../AntdConst';
 import Reacts from '../../Reacts';
 
 Button.defaultProps = SK.extend(true, {}, {

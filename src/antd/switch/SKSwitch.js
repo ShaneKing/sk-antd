@@ -1,9 +1,9 @@
-import { Switch } from 'antd';
+import {Switch} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SIZE } from '../AntdConst';
+import {SIZE} from '../AntdConst';
 
 Switch.defaultProps = SK.extend(true, {}, {
   allowClear: false,
@@ -49,7 +49,7 @@ export default class SKSwitch extends AntdComp {
   }
 
   render() {
-    const { compTag: CompTag, checkedChildren, unCheckedChildren } = this.props;
+    const {compTag: CompTag, checkedChildren, unCheckedChildren} = this.props;
 
     return (
       <CompTag

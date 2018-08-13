@@ -1,6 +1,6 @@
-import { Card } from 'antd';
+import {Card} from 'antd';
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
 Card.defaultProps = SK.extend(true, {}, {

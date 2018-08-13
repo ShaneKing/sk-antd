@@ -1,9 +1,9 @@
-import { Badge } from 'antd';
+import {Badge} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { STATUS } from '../AntdConst';
+import {STATUS} from '../AntdConst';
 
 Badge.defaultProps = SK.extend(true, {}, {
   dot: false,
@@ -37,7 +37,7 @@ export default class SKBadge extends AntdComp {
   }
 
   render() {
-    const { compTag: CompTag } = this.props;
+    const {compTag: CompTag} = this.props;
 
     return (
       <CompTag {...this.skTransProps2Self(CompTag)} count={this.skVal()}>

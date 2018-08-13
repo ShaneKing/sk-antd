@@ -1,5 +1,6 @@
 export AntdComp from './AntdComp';
 export * as AntdConst from './AntdConst';
+export * from './affix';
 export * from './badge';
 export * from './breadcrumb';
 export * from './button';
@@ -7,6 +8,7 @@ export * from './card';
 export * from './checkbox';
 export * from './col';
 export * from './date-picker';
+export * from './drawer';
 export * from './dropdown';
 export * from './form';
 export * from './form-comp';

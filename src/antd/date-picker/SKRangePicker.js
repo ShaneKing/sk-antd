@@ -5,7 +5,6 @@ import React from 'react';
 import {Mesgs, SK} from 'sk-js';
 import CommonPicker from './CommonPicker';
 import AntdComp from '../AntdComp';
-import SKDiv from '../../h/SKDiv';
 
 /*eslint no-unused-vars: "off"*/
 let {RangePicker} = DatePicker;
@@ -52,15 +51,15 @@ export default class SKRangePicker extends AntdComp {
     };
   }
 
-  e2mConvertor(dateMoment){
+  e2mConvertor(dateMoment) {
     return dateMoment && dateMoment.length === 2 ? [dateMoment[0].format(this.props.format), dateMoment[1].format(this.props.format)] : undefined;
   }
 
-  m2eConvertor(){
+  m2eConvertor() {
     return this.skVal() ? [moment(this.skVal()[0], this.props.format), moment(this.skVal()[1], this.props.format)] : undefined;
   }
 
-  m2vConvertor(){
+  m2vConvertor() {
     return this.skVal() ? `${this.skVal()[0]}~${this.skVal()[1]}` : undefined;
   }
 

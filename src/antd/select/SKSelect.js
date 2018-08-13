@@ -96,10 +96,6 @@ export default class SKSelect extends AntdComp {
     textId: PropTypes.string,
   });
 
-  static optionMap(selectOption) {
-    return selectOption.label ? <Select.OptGroup key={selectOption.id} label={selectOption.label}/> : <Select.Option key={selectOption.id}>{selectOption.text}</Select.Option>;
-  }
-
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKSelect.SK_COMP_NAME;
@@ -165,6 +161,10 @@ export default class SKSelect extends AntdComp {
     };
   }
 
+  static optionMap(selectOption) {
+    return selectOption.label ? <Select.OptGroup key={selectOption.id} label={selectOption.label}/> : <Select.Option key={selectOption.id}>{selectOption.text}</Select.Option>;
+  }
+
   addExtendChangedMonitor() {
     super.addExtendChangedMonitor();
     this.addChangedMonitor(this.props.dataId);
@@ -175,7 +175,7 @@ export default class SKSelect extends AntdComp {
     this.rmvChangedMonitor(this.props.dataId);
   }
 
-  m2eConvertor(){
+  m2eConvertor() {
     const {modes, textId} = this.props;
     return (modes === SELECT_MODES.Remote && textId) ? this.skTmpVal(textId) : this.skVal();
   }

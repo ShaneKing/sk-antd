@@ -1,4 +1,4 @@
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import FormComp from './FormComp';
 import SKDatePicker from '../date-picker/SKDatePicker';
 

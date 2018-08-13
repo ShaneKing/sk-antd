@@ -1,7 +1,7 @@
-import { Input } from 'antd';
+import {Input} from 'antd';
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
-import { INPUT_TYPE, SIZE } from '../AntdConst';
+import {SK} from 'sk-js';
+import {INPUT_TYPE} from '../AntdConst';
 
 Input.defaultProps = SK.extend(true, {}, {
   disabled: false,

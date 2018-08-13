@@ -453,6 +453,7 @@ export default class Reacts {
     z: 'z',
     zoomAndPan: 'zoomAndPan',
   };
+  static P = _.assign({}, Reacts.EVENT, Reacts.PROP);
   static TAG = {
     /*HTML*/
     a: 'a',
@@ -589,7 +590,6 @@ export default class Reacts {
     text: 'text',
     tspan: 'tspan',
   };
-  static P = _.assign({}, Reacts.EVENT, Reacts.PROP);
 
   /**
    * Count the number of "valid components" in the Children container.

@@ -1,9 +1,9 @@
-import { Spin } from 'antd';
+import {Spin} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SIZE } from '../AntdConst';
+import {SIZE} from '../AntdConst';
 
 Spin.defaultProps = SK.extend(true, {}, {
   size: SIZE.Default,
@@ -36,7 +36,7 @@ export default class SKSpin extends AntdComp {
   }
 
   render() {
-    const { compTag: CompTag, className } = this.props;
+    const {compTag: CompTag, className} = this.props;
 
     return (
       <CompTag

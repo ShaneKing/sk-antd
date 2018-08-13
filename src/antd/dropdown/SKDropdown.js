@@ -1,10 +1,9 @@
-import { Dropdown } from 'antd';
+import {Dropdown} from 'antd';
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
-Dropdown.defaultProps = SK.extend(true, {}, {
-}, Dropdown.defaultProps, {});
+Dropdown.defaultProps = SK.extend(true, {}, {}, Dropdown.defaultProps, {});
 
 Dropdown.propTypes = SK.extend(true, {}, {
   //http://ant-design.gitee.io/components/dropdown-cn/#API

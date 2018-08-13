@@ -1,7 +1,7 @@
-import { Col } from 'antd';
+import {Col} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import SKRow from '../row/SKRow';
 
@@ -65,7 +65,7 @@ export default class SKCol extends AntdComp {
   }
 
   render() {
-    const { compTag: CompTag } = this.props;
+    const {compTag: CompTag} = this.props;
     const span = this.skProp(SKCol.SK_PROPS.SPAN);
     const gutter = this.skProp(SKRow.SK_PROPS.GUTTER);
 

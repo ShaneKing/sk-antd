@@ -3,7 +3,7 @@ import $ from 'jquery';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
@@ -125,7 +125,7 @@ export default class SKCountUp extends Comp {
   }
 
   render() {
-    const { compTag: CompTag, start } = this.props;
+    const {compTag: CompTag, start} = this.props;
 
     return (
       <CompTag {...this.skTransProps2Self(CompTag)} ref="countupDomRef">

@@ -1,7 +1,7 @@
-import { Popover } from 'antd';
+import {Popover} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import CommonTip from '../tooltip/CommonTip';
 
@@ -36,7 +36,7 @@ export default class SKPopover extends AntdComp {
   }
 
   render() {
-    const { compTag: CompTag } = this.props;
+    const {compTag: CompTag} = this.props;
 
     return (
       <CompTag

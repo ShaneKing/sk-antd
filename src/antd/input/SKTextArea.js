@@ -6,8 +6,7 @@ import SKInput from './SKInput';
 
 const {TextArea} = Input;
 
-TextArea.defaultProps = SK.extend(true, {}, {
-}, OriginInput.defaultProps, TextArea.defaultProps, {});
+TextArea.defaultProps = SK.extend(true, {}, {}, OriginInput.defaultProps, TextArea.defaultProps, {});
 
 TextArea.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/input-cn/#Input.TextArea

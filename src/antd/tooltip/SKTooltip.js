@@ -1,6 +1,5 @@
-import { Tooltip } from 'antd';
-import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
+import {Tooltip} from 'antd';
+import {SK} from 'sk-js';
 import CommonTip from './CommonTip';
 import AntdComp from '../AntdComp';
 

@@ -1,7 +1,7 @@
-import { Breadcrumb } from 'antd';
+import {Breadcrumb} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
 Breadcrumb.defaultProps = SK.extend(true, {}, {
@@ -34,7 +34,7 @@ export default class SKBreadcrumb extends AntdComp {
   }
 
   render() {
-    const { compTag: CompTag, routes, params } = this.props;
+    const {compTag: CompTag, routes, params} = this.props;
 
     return (
       <CompTag

@@ -4,7 +4,7 @@ import echarts from 'echarts';
 import elementResizeEvent from 'element-resize-event';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
@@ -122,12 +122,12 @@ export default class SKECharts extends Comp {
   }
 
   render() {
-    const { compTag: CompTag, style } = this.props;
+    const {compTag: CompTag, style} = this.props;
 
     return (
       <CompTag
         {...this.skTransProps2Self(CompTag)}
-        style={_.isEmpty(style) ? { height: '300px', width: '100%' } : style}
+        style={_.isEmpty(style) ? {height: '300px', width: '100%'} : style}
         ref="echartsDomRef"
       />
     );

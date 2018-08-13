@@ -1,7 +1,7 @@
-import { Checkbox } from 'antd';
+import {Checkbox} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
 Checkbox.defaultProps = SK.extend(true, {}, {
@@ -38,7 +38,7 @@ export default class SKCheckbox extends AntdComp {
   }
 
   render() {
-    const { compTag: CompTag } = this.props;
+    const {compTag: CompTag} = this.props;
 
     return (
       <CompTag

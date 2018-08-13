@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
-import { PLACEMENT, TRIGGER } from '../AntdConst';
+import {SK} from 'sk-js';
+import {PLACEMENT, TRIGGER} from '../AntdConst';
 
 export default class CommonTip {
   static defaultProps = SK.extend(true, {}, {

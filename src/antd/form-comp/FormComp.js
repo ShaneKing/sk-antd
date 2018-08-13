@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import SKCol from '../col/SKCol';
 import SKFormItem from '../form/SKFormItem';
@@ -30,7 +30,7 @@ export default class FormComp extends AntdComp {
     const inFormRow = this.skProp(FormComp.SK_PROPS.IN_FROM_ROW);
 
     const errorObj = this.getErrors();
-    const help = _.isEmpty(errorObj) ? SK.EMPTY : _.join(errorObj.skVals(), SK.CHAR_BLANK+SK.CHAR_AMPERSAND+SK.CHAR_AMPERSAND+SK.CHAR_BLANK);
+    const help = _.isEmpty(errorObj) ? SK.EMPTY : _.join(errorObj.skVals(), SK.CHAR_BLANK + SK.CHAR_AMPERSAND + SK.CHAR_AMPERSAND + SK.CHAR_BLANK);
     const validateStatus = _.isEmpty(errorObj) ? SK.EMPTY : SK.STR_ERROR;
 
     if (inFormRow && inFormItem) {
@@ -59,7 +59,7 @@ export default class FormComp extends AntdComp {
   }
 
   renderFormComp() {
-    const { compTag: CompTag, modelId } = this.props;
+    const {compTag: CompTag, modelId} = this.props;
 
     return (
       <CompTag {...this.skTransProps2Self(CompTag)} modelId={modelId}>

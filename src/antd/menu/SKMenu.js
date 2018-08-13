@@ -8,7 +8,6 @@ import SKMenuItem from './SKMenuItem';
 import SKSubMenu from './SKSubMenu';
 import AntdComp from '../AntdComp';
 import SKIcon from '../icon/SKIcon';
-import {Dir} from '../AntdConst';
 
 /*eslint no-unused-vars: "off"*/
 /*eslint react/jsx-closing-tag-location: "off"*/
@@ -51,8 +50,8 @@ export default class SKMenu extends AntdComp {
       let rtnMenu = undefined;
 
       if (itemInfo.children && !_.isEmpty(itemInfo.children)) {
+        // {...this.skTransProps2Self(SKSubMenu)} // deleted it for fixed horizontal
         rtnMenu = (<SKSubMenu
-          {...this.skTransProps2Self(SKSubMenu)}
           eventKey={itemInfo.router}
           key={itemInfo.router}
           title={<span>
@@ -63,10 +62,11 @@ export default class SKMenu extends AntdComp {
           {itemInfo.children.map(this.menuMap)}
         </SKSubMenu>);
       } else if (displayItem && displayItem(itemInfo)) {
-        if(itemInfo.divider){
-          rtnMenu = (<Menu.Divider key={itemInfo.router} />);
-        }else{
-          rtnMenu = (<SKMenuItem {...this.skTransProps2Self(SKMenuItem)} eventKey={itemInfo.router} key={itemInfo.router}>
+        if (itemInfo.divider) {
+          rtnMenu = (<Menu.Divider key={itemInfo.router}/>);
+        } else {
+          // {...this.skTransProps2Self(SKMenuItem)} // deleted it for fixed horizontal
+          rtnMenu = (<SKMenuItem eventKey={itemInfo.router} key={itemInfo.router}>
             {itemInfo.icon && <SKIcon type={itemInfo.icon}/>}
             <span>{itemInfo.title}</span>
           </SKMenuItem>);

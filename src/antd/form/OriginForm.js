@@ -1,7 +1,7 @@
-import { Form } from 'antd';
+import {Form} from 'antd';
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
-import { Dir } from '../AntdConst';
+import {SK} from 'sk-js';
+import {Dir} from '../AntdConst';
 
 Form.defaultProps = SK.extend(true, {}, {
   hideRequiredMark: false,

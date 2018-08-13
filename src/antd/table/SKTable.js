@@ -1,9 +1,9 @@
-import { Table } from 'antd';
+import {Table} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SIZE } from '../AntdConst';
+import {SIZE} from '../AntdConst';
 
 Table.defaultProps = SK.extend(true, {}, {
   bordered: false,
@@ -80,9 +80,9 @@ export default class SKTable extends AntdComp {
   }
 
   render() {
-    const { compTag: CompTag, columns, scroll } = this.props;
+    const {compTag: CompTag, columns, scroll} = this.props;
 
-    let tmpScroll = { y: false };
+    let tmpScroll = {y: false};
     tmpScroll.x = columns.reduce((sum, item) => {
       return sum + item.width;
     }, 0);

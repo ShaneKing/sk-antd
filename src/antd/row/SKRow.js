@@ -1,9 +1,9 @@
-import { Row } from 'antd';
+import {Row} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { ALIGN, JUSTIFY } from '../AntdConst';
+import {ALIGN, JUSTIFY} from '../AntdConst';
 
 Row.defaultProps = SK.extend(true, {}, {
   align: ALIGN.Top,
@@ -40,7 +40,7 @@ export default class SKRow extends AntdComp {
   }
 
   render() {
-    const { compTag: CompTag } = this.props;
+    const {compTag: CompTag} = this.props;
     const gutter = this.skProp(SKRow.SK_PROPS.GUTTER);
 
     return (

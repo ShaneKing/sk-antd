@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 
 export default class CommonPicker {
   static defaultProps = SK.extend(true, {}, {

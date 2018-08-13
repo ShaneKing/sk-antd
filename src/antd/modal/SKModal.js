@@ -1,8 +1,8 @@
-import { Modal } from 'antd';
+import {Modal} from 'antd';
 import PropTypes from 'prop-types';
-import { SK, Mesgs } from 'sk-js';
+import {Mesgs, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { BUTTON_TYPE } from '../AntdConst';
+import {BUTTON_TYPE} from '../AntdConst';
 
 /*eslint no-unused-vars: "off"*/
 
@@ -70,7 +70,7 @@ export default class SKModal extends AntdComp {
   }
 
   render() {
-    const { compTag: CompTag } = this.props;
+    const {compTag: CompTag} = this.props;
 
     return (
       <CompTag
