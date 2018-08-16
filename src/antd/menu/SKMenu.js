@@ -48,21 +48,20 @@ export default class SKMenu extends AntdComp {
       const {displayItem} = this.props;
 
       let rtnMenu = undefined;
-
-      if (itemInfo.children && !_.isEmpty(itemInfo.children)) {
-        // {...this.skTransProps2Self(SKSubMenu)} // deleted it for fixed horizontal
-        rtnMenu = (<SKSubMenu
-          eventKey={itemInfo.router}
-          key={itemInfo.router}
-          title={<span>
+      if (displayItem && displayItem(itemInfo)) {
+        if (itemInfo.children && !_.isEmpty(itemInfo.children)) {
+          // {...this.skTransProps2Self(SKSubMenu)} // deleted it for fixed horizontal
+          rtnMenu = (<SKSubMenu
+            eventKey={itemInfo.router}
+            key={itemInfo.router}
+            title={<span>
           {itemInfo.icon && <SKIcon type={itemInfo.icon}/>}
-            <span>{itemInfo.title}</span>
+              <span>{itemInfo.title}</span>
         </span>}
-        >
-          {itemInfo.children.map(this.menuMap)}
-        </SKSubMenu>);
-      } else if (displayItem && displayItem(itemInfo)) {
-        if (itemInfo.divider) {
+          >
+            {itemInfo.children.map(this.menuMap)}
+          </SKSubMenu>);
+        } else if (itemInfo.divider) {
           rtnMenu = (<Menu.Divider key={itemInfo.router}/>);
         } else {
           // {...this.skTransProps2Self(SKMenuItem)} // deleted it for fixed horizontal

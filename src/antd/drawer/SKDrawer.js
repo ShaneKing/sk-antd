@@ -1,4 +1,5 @@
 import {Drawer} from 'antd';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
@@ -37,5 +38,22 @@ export default class SKDrawer extends AntdComp {
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKDrawer.SK_COMP_NAME;
+    this.handleClose = () => {
+      if (this.props.onClose && _.isFunction(this.props.onClose)) {
+        this.props.onClose();
+      } else {
+        this.skVal(false);
+      }
+    };
+  }
+
+  render() {
+    const {compTag: CompTag} = this.props;
+
+    return (
+      <CompTag {...this.skTransProps2Self(CompTag)} onClose={this.handleClose} visible={this.skVal()}>
+        {this.skTransProps2Child()}
+      </CompTag>
+    );
   }
 }

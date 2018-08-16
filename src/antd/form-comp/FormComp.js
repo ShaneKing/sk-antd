@@ -9,11 +9,13 @@ import SKFormItem from '../form/SKFormItem';
 export default class FormComp extends AntdComp {
   static SK_COMP_NAME = 'FormComp';
   static SK_PROPS = SK.extend(true, {}, AntdComp.SK_PROPS, {
+    HELP_IN_LABEL: 'helpInLabel',
     IN_FROM_ITEM: 'inFormItem',
     IN_FROM_ROW: 'inFormRow',
   });
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, SKCol.defaultProps, SKFormItem.defaultProps, {});
   static propTypes = SK.extend(true, {}, AntdComp.propTypes, SKCol.propTypes, SKFormItem.propTypes, {
+    helpInLabel: PropTypes.bool,
     inFormItem: PropTypes.bool,
     skInFormItem: PropTypes.bool,
     inFormRow: PropTypes.bool,
@@ -36,7 +38,8 @@ export default class FormComp extends AntdComp {
     if (inFormRow && inFormItem) {
       return (
         <SKCol {...this.skTransProps2Self(SKCol, this.props, false)} span={this.skProp(SKCol.SK_PROPS.SPAN)}>
-          <SKFormItem {...this.skTransProps2Self(SKFormItem)} help={help} required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
+          <SKFormItem {...this.skTransProps2Self(SKFormItem)} help={help} label={this.skProp(FormComp.SK_PROPS.HELP_IN_LABEL) && help ? help : this.props.label}
+                      required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
             {this.renderFormComp()}
           </SKFormItem>
         </SKCol>
@@ -49,7 +52,8 @@ export default class FormComp extends AntdComp {
       );
     } else if (!inFormRow && inFormItem) {
       return (
-        <SKFormItem {...this.skTransProps2Self(SKFormItem)} help={help} required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
+        <SKFormItem {...this.skTransProps2Self(SKFormItem)} help={help} label={this.skProp(FormComp.SK_PROPS.HELP_IN_LABEL) && help ? help : this.props.label}
+                    required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
           {this.renderFormComp()}
         </SKFormItem>
       );
