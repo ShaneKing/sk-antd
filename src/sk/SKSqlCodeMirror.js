@@ -25,7 +25,6 @@ export default class SKSqlCodeMirror extends Comp {
   static SK_COMP_NAME = 'SKSqlCodeMirror';
   static defaultProps = SK.extend(true, {}, Comp.defaultProps, CodeMirror.defaultProps, {
     compTag: CodeMirror,
-    autoFormat: true,
     options: {
       autofocus: true,
       extraKeys: {"Ctrl-Space": "autocomplete"},
@@ -44,7 +43,7 @@ export default class SKSqlCodeMirror extends Comp {
     }
   });
   static propTypes = SK.extend(true, {}, Comp.propTypes, CodeMirror.propTypes, {
-    formatSelectedId: PropTypes.string,
+    formatId: PropTypes.string,
     optionsId: PropTypes.string
   });
 
@@ -54,21 +53,26 @@ export default class SKSqlCodeMirror extends Comp {
     this.handleChange = (value) => {
       this.skVal(value);
     };
-    this.handleFormatSelected = () => {
-      this.refs.codeMirrorDomRef.codeMirror.replaceSelection(sqlFormatter.format(this.refs.codeMirrorDomRef.codeMirror.getSelection()), 'around');
+    this.handleFormat = () => {
+      let selectedCode = this.refs.codeMirrorDomRef.codeMirror.getSelection();
+      if (selectedCode) {
+        this.refs.codeMirrorDomRef.codeMirror.replaceSelection(sqlFormatter.format(selectedCode), 'around');
+      } else {
+        this.skVal(sqlFormatter.format(this.skVal()));
+      }
     };
   }
 
   addExtendChangedMonitor() {
     super.addExtendChangedMonitor();
     this.addChangedMonitor(this.props.optionsId);
-    this.skModel().addIdChangedListener(this.props.formatSelectedId, this.handleFormatSelected);
+    this.skModel().addIdChangedListener(this.props.formatId, this.handleFormat);
   }
 
   rmvExtendChangedMonitor() {
     super.rmvExtendChangedMonitor();
     this.rmvChangedMonitor(this.props.optionsId);
-    this.skModel().rmvIdChangedListener(this.props.formatSelectedId, this.handleFormatSelected);
+    this.skModel().rmvIdChangedListener(this.props.formatId, this.handleFormat);
   }
 
   render() {
