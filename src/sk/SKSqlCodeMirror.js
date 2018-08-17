@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import CodeMirror from 'react-codemirror';
 import {Mesgs, SK} from 'sk-js';
 import sqlFormatter from "sql-formatter";
 import Comp from '../Comp';
+import CodeMirror from '../3/Codemirror';
 
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/addon/display/fullscreen.css';
@@ -44,7 +44,6 @@ export default class SKSqlCodeMirror extends Comp {
     }
   });
   static propTypes = SK.extend(true, {}, Comp.propTypes, CodeMirror.propTypes, {
-    autoFormat: PropTypes.bool,
     formatSelectedId: PropTypes.string,
     optionsId: PropTypes.string
   });
@@ -53,10 +52,10 @@ export default class SKSqlCodeMirror extends Comp {
     super(...args);
     this.SK_COMP_NAME = SKSqlCodeMirror.SK_COMP_NAME;
     this.handleChange = (value) => {
-      this.skVal(this.props.autoFormat ? sqlFormatter.format(value) : value);
+      this.skVal(value);
     };
     this.handleFormatSelected = () => {
-      this.refs.codeMirrorDomRef.replaceSelection(sqlFormatter.format(this.refs.codeMirrorDomRef.getSelection()), 'around');
+      this.refs.codeMirrorDomRef.codeMirror.replaceSelection(sqlFormatter.format(this.refs.codeMirrorDomRef.codeMirror.getSelection()), 'around');
     };
   }
 

@@ -1,7 +1,7 @@
 {
   "name": "sk-antd",
   "description": "ShaneKing for AntD",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "homepage": "https://github.com/ShaneKing/sk-antd",
   "license": "Apache-2.0",
   "author": {
@@ -42,6 +42,7 @@
   "dependencies": {
     "antd": "3.8.1",
     "classnames": "2.2.6",
+    "create-react-class": "15.6.3",
     "codemirror": "5.39.2",
     "countup.js": "1.9.3",
     "echarts": "4.1.0",
@@ -53,7 +54,6 @@
     "moment": "2.22.2",
     "prop-types": "15.6.2",
     "react": "16.4.2",
-    "react-codemirror": "1.0.0",
     "react-dom": "16.4.2",
     "sql-formatter": "2.3.1",
     "sk-js": "0.2.19"
