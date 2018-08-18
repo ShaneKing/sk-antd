@@ -6,14 +6,17 @@ import Comp from '../Comp';
 import CodeMirror from '../3/Codemirror';
 
 import 'codemirror/lib/codemirror.css';
-import 'codemirror/addon/display/fullscreen.css';
-import 'codemirror/addon/display/fullscreen.js';
-import 'codemirror/addon/display/placeholder.js';
-
 import 'codemirror/mode/sql/sql';
+import 'codemirror/addon/comment/comment';
+import 'codemirror/addon/display/autorefresh';
+import 'codemirror/addon/display/fullscreen.css';
+import 'codemirror/addon/display/fullscreen';
+import 'codemirror/addon/display/placeholder';
+import 'codemirror/addon/edit/matchbrackets';
 import 'codemirror/addon/hint/show-hint.css';
-import 'codemirror/addon/hint/show-hint.js';
-import 'codemirror/addon/hint/sql-hint.js';
+import 'codemirror/addon/hint/show-hint';
+import 'codemirror/addon/hint/sql-hint';
+import 'codemirror/keymap/emacs';
 
 CodeMirror.defaultProps = SK.extend(true, {}, {}, CodeMirror.defaultProps, {});
 
@@ -27,7 +30,7 @@ export default class SKSqlCodeMirror extends Comp {
     compTag: CodeMirror,
     options: {
       autofocus: true,
-      extraKeys: {"Ctrl-Space": "autocomplete"},
+      extraKeys: 'emacs',
       hintOptions: {
         tables: {
           Table_Name1: ["Column_Name1", "Column_Name2"],
