@@ -69,6 +69,10 @@ export const SELECT_MODES = {
   Local: 'local',
   Remote: 'remote',
 };
+export const SHAPE = {
+  Circle: 'circle',
+  Square: 'square',
+};
 export const SIZE = {
   Large: 'large',
   Default: 'default',

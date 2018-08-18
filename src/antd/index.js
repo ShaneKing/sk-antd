@@ -1,6 +1,7 @@
 export AntdComp from './AntdComp';
 export * as AntdConst from './AntdConst';
 export * from './affix';
+export * from './avatar';
 export * from './back-top';
 export * from './badge';
 export * from './breadcrumb';
