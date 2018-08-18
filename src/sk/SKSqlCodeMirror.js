@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {Mesgs, SK} from 'sk-js';
-import sqlFormatter from "sql-formatter";
+import sqlFormatter from 'sql-formatter';
 import Comp from '../Comp';
 import CodeMirror from '../3/Codemirror';
 
@@ -16,7 +16,6 @@ import 'codemirror/addon/edit/matchbrackets';
 import 'codemirror/addon/hint/show-hint.css';
 import 'codemirror/addon/hint/show-hint';
 import 'codemirror/addon/hint/sql-hint';
-import 'codemirror/keymap/emacs';
 
 CodeMirror.defaultProps = SK.extend(true, {}, {}, CodeMirror.defaultProps, {});
 
@@ -30,11 +29,14 @@ export default class SKSqlCodeMirror extends Comp {
     compTag: CodeMirror,
     options: {
       autofocus: true,
-      extraKeys: 'emacs',
+      extraKeys: {
+        'Alt-/': 'autocomplete',
+        'Ctrl-/': 'toggleComment',
+      },
       hintOptions: {
         tables: {
-          Table_Name1: ["Column_Name1", "Column_Name2"],
-          Table_Name2: ["Column_Name1", "Column_Name2"],
+          Table_Name1: ['Column_Name11', 'Column_Name12'],
+          Table_Name2: ['Column_Name21', 'Column_Name22'],
         }
       },
       indentWithTabs: true,
@@ -83,7 +85,7 @@ export default class SKSqlCodeMirror extends Comp {
     let options = this.props.optionsId ? this.skModel().skVal(this.props.optionsId) : this.props.options;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)} onChange={this.handleChange} options={options} ref="codeMirrorDomRef" value={this.skVal()}>
+      <CompTag {...this.skTransProps2Self(CompTag)} onChange={this.handleChange} options={options} ref='codeMirrorDomRef' value={this.skVal()}>
         {this.skTransProps2Child()}
       </CompTag>
     );
