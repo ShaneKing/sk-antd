@@ -38,12 +38,7 @@ export default class Comp extends React.Component {
   };
   static defaultProps = {};
   static propTypes = {
-    compTag: PropTypes.oneOfType([
-      PropTypes.element,
-      PropTypes.func,
-      PropTypes.string,
-      PropTypes.instanceOf(React.Fragment),
-    ]),
+    compTag: PropTypes.any,
     skModel: Comp.IS_PROP_TYPES_MODEL, //Business Model(page), PlainObject
     skSysModel: Comp.IS_PROP_TYPES_MODEL, //System Model(whole of page), PlainObject
     model: Comp.IS_PROP_TYPES_MODEL, //Business Model(part of page), PlainObject
