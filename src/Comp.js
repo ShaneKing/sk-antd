@@ -42,6 +42,7 @@ export default class Comp extends React.Component {
       PropTypes.element,
       PropTypes.func,
       PropTypes.string,
+      PropTypes.instanceOf(React.Fragment),
     ]),
     skModel: Comp.IS_PROP_TYPES_MODEL, //Business Model(page), PlainObject
     skSysModel: Comp.IS_PROP_TYPES_MODEL, //System Model(whole of page), PlainObject
