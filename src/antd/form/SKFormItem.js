@@ -66,6 +66,7 @@ export default class SKFormItem extends AntdComp {
       <CompTag
         {...this.skTransProps2Self(CompTag)}
         labelCol={labelCol}
+        required={this.skBfo(AntdComp.SK_PROPS.REQUIRED)}
         wrapperCol={wrapperCol}
       >
         {this.skTransProps2Child()}

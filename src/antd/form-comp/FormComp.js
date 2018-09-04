@@ -10,16 +10,16 @@ export default class FormComp extends AntdComp {
   static SK_COMP_NAME = 'FormComp';
   static SK_PROPS = SK.extend(true, {}, AntdComp.SK_PROPS, {
     HELP_IN_LABEL: 'helpInLabel',
-    IN_FROM_ITEM: 'inFormItem',
     IN_FROM_ROW: 'inFormRow',
+    NEED_FROM_ITEM: 'needFormItem',
   });
   static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, SKCol.defaultProps, SKFormItem.defaultProps, {});
   static propTypes = SK.extend(true, {}, AntdComp.propTypes, SKCol.propTypes, SKFormItem.propTypes, {
     helpInLabel: PropTypes.bool,
-    inFormItem: PropTypes.bool,
-    skInFormItem: PropTypes.bool,
     inFormRow: PropTypes.bool,
     skInFormRow: PropTypes.bool,
+    needFormItem: PropTypes.bool,
+    skNeedFormItem: PropTypes.bool,
   });
 
   constructor(...args) {
@@ -28,32 +28,34 @@ export default class FormComp extends AntdComp {
   }
 
   render() {
-    const inFormItem = this.skProp(FormComp.SK_PROPS.IN_FROM_ITEM);
-    const inFormRow = this.skProp(FormComp.SK_PROPS.IN_FROM_ROW);
+    const inFormRow = this.skBfo(FormComp.SK_PROPS.IN_FROM_ROW);
+    const needFormItem = this.skBfo(FormComp.SK_PROPS.NEED_FROM_ITEM);
 
     const errorObj = this.getErrors();
     const help = _.isEmpty(errorObj) ? SK.EMPTY : _.join(errorObj.skVals(), SK.CHAR_BLANK + SK.CHAR_AMPERSAND + SK.CHAR_AMPERSAND + SK.CHAR_BLANK);
     const validateStatus = _.isEmpty(errorObj) ? SK.EMPTY : SK.STR_ERROR;
 
-    if (inFormRow && inFormItem) {
+    if (inFormRow && needFormItem) {
+      //skTransProps2Self set htmlProps false, because style, the row style can't trans to SKFormItem
       return (
-        <SKCol {...this.skTransProps2Self(SKCol, this.props, false)} span={this.skProp(SKCol.SK_PROPS.SPAN)}>
-          <SKFormItem {...this.skTransProps2Self(SKFormItem)} help={help} label={this.skProp(FormComp.SK_PROPS.HELP_IN_LABEL) && help ? help : this.props.label}
-                      required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
+        <SKCol {...this.skTransProps2Self(SKCol)}>
+          <SKFormItem {...this.skTransProps2Self(SKFormItem, this.props, false)} help={help} label={this.skBfo(FormComp.SK_PROPS.HELP_IN_LABEL) && help ? help : this.props.label}
+                      validateStatus={validateStatus}>
             {this.renderFormComp()}
           </SKFormItem>
         </SKCol>
       );
-    } else if (inFormRow && !inFormItem) {
+    } else if (inFormRow && !needFormItem) {
       return (
-        <SKCol {...this.skTransProps2Self(SKCol, this.props, false)} span={this.skProp(SKCol.SK_PROPS.SPAN)}>
+        <SKCol {...this.skTransProps2Self(SKCol)}>
           {this.renderFormComp()}
         </SKCol>
       );
-    } else if (!inFormRow && inFormItem) {
+    } else if (!inFormRow && needFormItem) {
+      //skTransProps2Self set htmlProps false, because style, the row style can't trans to SKFormItem
       return (
-        <SKFormItem {...this.skTransProps2Self(SKFormItem)} help={help} label={this.skProp(FormComp.SK_PROPS.HELP_IN_LABEL) && help ? help : this.props.label}
-                    required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
+        <SKFormItem {...this.skTransProps2Self(SKFormItem, this.props, false)} help={help} label={this.skBfo(FormComp.SK_PROPS.HELP_IN_LABEL) && help ? help : this.props.label}
+                    validateStatus={validateStatus}>
           {this.renderFormComp()}
         </SKFormItem>
       );

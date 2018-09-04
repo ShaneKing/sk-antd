@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import SKRow from '../row/SKRow';
 
 /*eslint no-unused-vars: "off"*/
 
@@ -66,20 +65,18 @@ export default class SKCol extends AntdComp {
 
   render() {
     const {compTag: CompTag} = this.props;
-    const span = this.skProp(SKCol.SK_PROPS.SPAN);
-    const gutter = this.skProp(SKRow.SK_PROPS.GUTTER);
+    // const gutter = this.skProp(SKRow.SK_PROPS.GUTTER);
 
-    const style = this.props.style || {};
-    if (gutter > 0) {
-      style.paddingLeft = gutter / 2;
-      style.paddingRight = gutter / 2;
-    }
+    // const style = this.props.style || {};
+    // if (gutter > 0) {
+    //   style.paddingLeft = gutter / 2;
+    //   style.paddingRight = gutter / 2;
+    // }
 
     return (
       <CompTag
         {...this.skTransProps2Self(CompTag)}
-        span={span}
-        style={style}
+        span={this.skProp(SKCol.SK_PROPS.SPAN)}
       >
         {this.skTransProps2Child()}
       </CompTag>

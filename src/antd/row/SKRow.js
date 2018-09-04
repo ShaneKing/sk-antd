@@ -5,11 +5,12 @@ import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import {ALIGN, JUSTIFY} from '../AntdConst';
 
-Row.defaultProps = SK.extend(true, {}, {
-  align: ALIGN.Top,
-  gutter: 0,
-  justify: JUSTIFY.Start,
-}, Row.defaultProps, {});
+//comments because has skGutter
+// Row.defaultProps = SK.extend(true, {}, {
+//   align: ALIGN.Top,
+//   //gutter: 0, //comments because has skGutter
+//   justify: JUSTIFY.Start,
+// }, Row.defaultProps, {});
 
 Row.propTypes = SK.extend(true, {}, {
   //https://ant.design/components/grid-cn/#Row
@@ -29,7 +30,7 @@ export default class SKRow extends AntdComp {
   static SK_PROPS = SK.extend(true, {}, AntdComp.SK_PROPS, {
     GUTTER: 'gutter',
   });
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Row.defaultProps, {
+  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, {}, {
     compTag: Row,
   });
   static propTypes = SK.extend(true, {}, AntdComp.propTypes, Row.propTypes, {});
@@ -41,12 +42,11 @@ export default class SKRow extends AntdComp {
 
   render() {
     const {compTag: CompTag} = this.props;
-    const gutter = this.skProp(SKRow.SK_PROPS.GUTTER);
 
     return (
       <CompTag
         {...this.skTransProps2Self(CompTag)}
-        gutter={gutter}
+        gutter={this.skProp(SKRow.SK_PROPS.GUTTER)}
       >
         {this.skTransProps2Child()}
       </CompTag>

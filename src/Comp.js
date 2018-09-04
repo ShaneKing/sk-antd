@@ -9,12 +9,6 @@ import Reacts from './Reacts';
 /*eslint no-unused-vars: "off"*/
 /*eslint react/no-unused-state: "off"*/
 
-/**
- * props:compTag,model(skModel),modelId
- * bfo  ,active(skActive),disabled(skDisabled)
- * func ,m2eConvertor,e2mConvertor,m2vConvertor,v2mConvertor
- * html ,className,role,style
- */
 export default class Comp extends React.Component {
   static SK_COMP_NAME = 'Comp';
   static SK_COMP_STATE_ID_PREFIX = 'skCompStateUid';
@@ -24,7 +18,7 @@ export default class Comp extends React.Component {
     //sk
     COMP_TAG: 'compTag',
     MODEL: 'model',
-    MODEL_ID: 'modelId',
+    MODEL_ID: 'modelId',//a.b.c or property in array like a.b[2].c
     //ui state, are bfo (boolean, function, object{deps:,func:})
     //deps to monitor
     ACTIVE: 'active',
@@ -162,7 +156,7 @@ export default class Comp extends React.Component {
   render() {
     const {compTag: CompTag} = this.props;
 
-    if (this.skProp(Comp.SK_PROPS.PREVIEW)) {
+    if (this.skBfo(Comp.SK_PROPS.PREVIEW)) {
       return this.renderPreview();
     } else {
       return this.renderComp();
@@ -386,7 +380,7 @@ export default class Comp extends React.Component {
    *
    * @param {Comp|string} comp
    * @param {object} prop
-   * @param {boolean} htmlProps
+   * @param {boolean} htmlProps @Deprecated at antd 3.8.1 used in FormComp.render at antd 3.5.4
    * @returns {object}
    */
   skTransProps2Self(comp = this.props.compTag, prop = this.props, htmlProps = true) {
