@@ -40,7 +40,7 @@ export default class FormComp extends AntdComp {
       return (
         <SKCol {...this.skTransProps2Self(SKCol)}>
           <SKFormItem {...this.skTransProps2Self(SKFormItem, this.props, false)} help={help} label={this.skBfo(FormComp.SK_PROPS.HELP_IN_LABEL) && help ? help : this.props.label}
-                      validateStatus={validateStatus}>
+                      required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
             {this.renderFormComp()}
           </SKFormItem>
         </SKCol>
@@ -55,7 +55,7 @@ export default class FormComp extends AntdComp {
       //skTransProps2Self set htmlProps false, because style, the row style can't trans to SKFormItem
       return (
         <SKFormItem {...this.skTransProps2Self(SKFormItem, this.props, false)} help={help} label={this.skBfo(FormComp.SK_PROPS.HELP_IN_LABEL) && help ? help : this.props.label}
-                    validateStatus={validateStatus}>
+                    required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
           {this.renderFormComp()}
         </SKFormItem>
       );
