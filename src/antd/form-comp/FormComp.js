@@ -32,8 +32,8 @@ export default class FormComp extends AntdComp {
     const needFormItem = this.skBfo(FormComp.SK_PROPS.NEED_FROM_ITEM);
 
     const errorObj = this.getErrors();
-    const help = _.isEmpty(errorObj) ? SK.EMPTY : _.join(errorObj.skVals(), SK.CHAR_BLANK + SK.CHAR_AMPERSAND + SK.CHAR_AMPERSAND + SK.CHAR_BLANK);
-    const validateStatus = _.isEmpty(errorObj) ? SK.EMPTY : SK.STR_ERROR;
+    const help = _.isEmpty(errorObj) ? SK.CHAR_EMPTY : _.join(errorObj.skVals(), SK.CHAR_BLANK + SK.CHAR_AMPERSAND + SK.CHAR_AMPERSAND + SK.CHAR_BLANK);
+    const validateStatus = _.isEmpty(errorObj) ? SK.CHAR_EMPTY : SK.STR_ERROR;
 
     if (inFormRow && needFormItem) {
       //skTransProps2Self set htmlProps false, because style, the row style can't trans to SKFormItem

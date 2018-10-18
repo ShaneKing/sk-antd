@@ -5,7 +5,7 @@ export default class CommonPicker {
   static defaultProps = SK.extend(true, {}, {
     allowClear: true,
     autoFocus: false,
-    className: SK.EMPTY,
+    className: SK.CHAR_EMPTY,
     disabled: false,
     popupStyle: {},
     // style: {},
