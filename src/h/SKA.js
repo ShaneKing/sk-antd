@@ -4,8 +4,6 @@ import {SK} from 'sk-js';
 import HtmlComp from './HtmlComp';
 import Reacts from '../Reacts';
 
-/*eslint no-script-url: "off"*/
-
 export default class SKA extends HtmlComp {
   static SK_COMP_NAME = 'SKA';
   static defaultProps = SK.extend(true, {}, HtmlComp.defaultProps, {

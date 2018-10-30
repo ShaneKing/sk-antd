@@ -8,11 +8,6 @@ import {SK} from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
-/*eslint react/no-string-refs: "off"*/
-/*eslint valid-typeof: "off"*/
-/*eslint no-prototype-builtins: "off"*/
-/*eslint no-continue: "off"*/
-
 export default class SKECharts extends Comp {
   static SK_COMP_NAME = 'SKECharts';
   static defaultProps = SK.extend(true, {}, Comp.defaultProps, {

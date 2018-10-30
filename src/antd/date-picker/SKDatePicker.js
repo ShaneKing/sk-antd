@@ -6,8 +6,6 @@ import {Mesgs, SK} from 'sk-js';
 import CommonPicker from './CommonPicker';
 import AntdComp from '../AntdComp';
 
-/*eslint no-unused-vars: "off"*/
-
 DatePicker.defaultProps = SK.extend(true, {}, {
   showToday: true,
 }, CommonPicker.defaultProps, DatePicker.defaultProps, {

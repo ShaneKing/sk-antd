@@ -7,8 +7,6 @@ import {SK} from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
-/*eslint react/no-string-refs: "off"*/
-
 export default class SKJdenticon extends Comp {
   static SK_COMP_NAME = 'SKJdenticon';
   static defaultProps = SK.extend(true, {}, Comp.defaultProps, {

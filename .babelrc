@@ -1,29 +1,29 @@
 {
   "presets": [
-    "es2015",
-    "stage-0",
-    "stage-1",
-    "stage-2",
-    "stage-3",
-    "react"
+    "@babel/preset-env",
+    "@babel/preset-react"
   ],
   "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-export-default-from",
+    "@babel/plugin-proposal-export-namespace-from",
+    "add-module-exports",
     [
-      "add-module-exports"
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "lib",
+        "style": true
+      },
+      "ant"
     ],
     [
       "import",
-      [
-        {
-          "libraryName": "antd",
-          "libraryDirectory": "lib",
-          "style": true
-        },
-        {
-          "libraryName": "antd-mobile",
-          "libraryDirectory": "component"
-        }
-      ]
+      {
+        "libraryName": "ant-mobile",
+        "libraryDirectory": "lib"
+      },
+      "ant-mobile"
     ]
   ],
   "sourceMaps": "both"

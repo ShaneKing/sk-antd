@@ -6,7 +6,6 @@ import {Mesgs, SK} from 'sk-js';
 import CommonPicker from './CommonPicker';
 import AntdComp from '../AntdComp';
 
-/*eslint no-unused-vars: "off"*/
 let {RangePicker} = DatePicker;
 
 RangePicker.defaultProps = SK.extend(true, {}, {}, CommonPicker.defaultProps, RangePicker.defaultProps, {

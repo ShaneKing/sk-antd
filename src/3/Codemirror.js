@@ -14,6 +14,7 @@ function normalizeLineEndings(str) {
 }
 
 const CodeMirror = createReactClass({
+  NON_SK_COMP_NAME: 'CodeMirror',
   propTypes: {
     autoFocus: PropTypes.bool,
     className: PropTypes.any,

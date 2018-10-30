@@ -9,9 +9,6 @@ import SKSubMenu from './SKSubMenu';
 import AntdComp from '../AntdComp';
 import SKIcon from '../icon/SKIcon';
 
-/*eslint no-unused-vars: "off"*/
-/*eslint react/jsx-closing-tag-location: "off"*/
-
 //modelId is selectedKeysId
 export default class SKMenu extends AntdComp {
   static SK_COMP_NAME = 'SKMenu';

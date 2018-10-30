@@ -4,8 +4,6 @@ import {Mesgs, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import {BUTTON_TYPE} from '../AntdConst';
 
-/*eslint no-unused-vars: "off"*/
-
 Modal.defaultProps = SK.extend(true, {}, {
   bodyStyle: {},
   cancelText: Mesgs.get('Cancel'),

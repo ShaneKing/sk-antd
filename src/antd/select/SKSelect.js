@@ -7,8 +7,6 @@ import AntdComp from '../AntdComp';
 import {SELECT_MODE, SELECT_MODES, SIZE} from '../AntdConst';
 import SKDiv from '../../h/SKDiv';
 
-/*eslint no-unused-vars: "off"*/
-
 Select.defaultProps = SK.extend(true, {}, {
   //allowClear: false,
   //autoFocus: false,

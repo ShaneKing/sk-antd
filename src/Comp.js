@@ -4,15 +4,11 @@ import React from 'react';
 import {Model, SK} from 'sk-js';
 import Reacts from './Reacts';
 
-/*eslint react/require-default-props: "off"*/
-/*eslint react/sort-comp: "off"*/
-/*eslint no-unused-vars: "off"*/
-/*eslint react/no-unused-state: "off"*/
-
 export default class Comp extends React.Component {
+  static KS_PROPS_PREFIX = 'ks';//applay for all sub specify element
   static SK_COMP_NAME = 'Comp';
   static SK_COMP_STATE_ID_PREFIX = 'skCompStateUid';
-  static SK_PROPS_PREFIX = 'sk';
+  static SK_PROPS_PREFIX = 'sk';//applay for all sub element
   static SK_PROPS_SYS = 'sys';
   static SK_PROPS = {
     //sk
@@ -122,6 +118,10 @@ export default class Comp extends React.Component {
     if (props[propName] && !(props[propName] instanceof Model)) {
       return new Error(`The [${componentName}]'s [${propName}] is not a model!`);
     }
+  }
+
+  static ksPropsFilter(k) {
+    return _.startsWith(SK.s4s(k), Comp.KS_PROPS_PREFIX);
   }
 
   static skPropsFilter(k) {
@@ -277,6 +277,21 @@ export default class Comp extends React.Component {
     return this.props.skSysModel;
   }
 
+  /**
+   * Get prop value: prop -> skProp -> skSysProp
+   *
+   * @param {string}prop
+   * @param {*} defaultValue
+   * @returns {*} Maybe undefined
+   */
+  ksProp(prop, defaultValue = undefined) {
+    let rtn = this.props[prop];
+    if (rtn === undefined) {
+      rtn = this.props[Comp.SK_PROPS_PREFIX + this.SK_COMP_NAME + prop];
+    }
+    return rtn === undefined ? defaultValue : rtn;
+  }
+
   m2e() {
     return _.isFunction(this.props.m2eConvertor) ? this.props.m2eConvertor(this, this.skModel(), this.skVal()) : this.m2eConvertor();
   }
@@ -324,7 +339,7 @@ export default class Comp extends React.Component {
   }
 
   /**
-   * Get prop value: prop -> skProp -> DEFAULT.PROP
+   * Get prop value: prop -> skProp -> skSysProp
    *
    * @param {string}prop
    * @param {*} defaultValue
@@ -332,6 +347,9 @@ export default class Comp extends React.Component {
    */
   skProp(prop, defaultValue = undefined) {
     let rtn = this.props[prop];
+    if (rtn === undefined) {
+      rtn = this.ksProp(prop);
+    }
     if (rtn === undefined) {
       rtn = this.props[Comp.SK_PROPS_PREFIX + SK.upperWordsFirstChar(prop)];
     }
@@ -345,22 +363,17 @@ export default class Comp extends React.Component {
     return arguments.length > 1 ? this.skModel().skVal(`tmp.${id}`, value) : this.skModel().skVal(`tmp.${id}`);
   }
 
-  /**
-   * Transferring props to children
-   *
-   * @param {React.Children} children
-   * @returns {React.Children}
-   */
   skTransProps2Child(children = this.props.children) {
     const skProps = Object.keys(this.props.skFilter(false, Comp.skPropsFilter));
+    const ksProps = Object.keys(this.props.skFilter(false, Comp.ksPropsFilter));
 
     let rtn = React.Children.map(children, child => {
       if (React.isValidElement(child)) {
         let allowProps = skProps;
-        allowProps = Reacts.TAG[child.type] ? [] : allowProps;
+        allowProps = Reacts.TAG[child.type] ? [] : allowProps.concat(ksProps);//if html node, nothing to do
         allowProps = allowProps.concat(this.allowTransProps2Child(child));
 
-        let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID, 'children', 'className'];
+        let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID, 'children', 'className'];//force ignore props
         denyProps = child.props ? denyProps.concat(Object.keys(child.props)) : denyProps;
         denyProps = denyProps.concat(this.denyTransProps2Child(child));
 
@@ -378,25 +391,21 @@ export default class Comp extends React.Component {
   /**
    * Valid props for this comp
    *
-   * @param {Comp|string} comp
+   * @param {Comp|string} comp not div, just have 'div' and Div or React Component etc...
    * @param {object} prop
    * @param {boolean} htmlProps @Deprecated at antd 3.8.1 used in FormComp.render at antd 3.5.4
    * @returns {object}
    */
-  skTransProps2Self(comp = this.props.compTag, prop = this.props, htmlProps = true) {
-    let allowProps = htmlProps ? Reacts.P.skVals() : [];
-    if (comp.NON_SK_COMP_NAME && this.SK_COMP_NAME && (Comp.SK_PROPS_PREFIX.toUpperCase() + comp.NON_SK_COMP_NAME) === this.SK_COMP_NAME) {
-      //SK COMP to AntD
-      allowProps = allowProps.concat(Object.keys(comp.propTypes));
-    }
-    if (comp.SK_COMP_NAME && this.SK_COMP_NAME && _.startsWith(SK.s4s(comp.SK_COMP_NAME), Comp.SK_PROPS_PREFIX.toUpperCase()) && _.startsWith(SK.s4s(this.SK_COMP_NAME), Comp.SK_PROPS_PREFIX.toUpperCase()) && (`Form${comp.SK_COMP_NAME.substring(2)}`) === this.SK_COMP_NAME.substring(2)) {
-      //SKFormInput to SKInput
-      allowProps = allowProps.concat(Object.keys(comp.propTypes));
-    }
-    allowProps = comp.SK_COMP_NAME ? allowProps.concat(Object.keys(prop.skFilter(false, Comp.skPropsFilter))) : allowProps;
+  skTransProps2Self(comp = this.props.compTag, prop = this.props) {
+    const skProps = Object.keys(prop.skFilter(false, Comp.skPropsFilter));
+    const ksProps = Object.keys(prop.skFilter(false, Comp.ksPropsFilter));
+
+    let allowProps = skProps;
+    allowProps = Reacts.TAG[comp] ? SK.s4a(Reacts.TP[comp]) : allowProps.concat(ksProps);//if html node, nothing to do
+    allowProps = comp.propTypes ? allowProps.concat(Object.keys(comp.propTypes)) : allowProps;
     allowProps = allowProps.concat(this.allowTransProps2Self(comp, prop));
 
-    let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID];
+    let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID];//force ignore props
     denyProps = denyProps.concat(this.denyTransProps2Self(comp, prop));
 
     return _.omit(_.pick(prop, allowProps), denyProps);

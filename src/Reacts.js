@@ -1,8 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
 
-/*eslint no-return-assign: "off"*/
-
 export default class Reacts {
   static EVENT = {
     /*Clipboard*/
@@ -589,6 +587,21 @@ export default class Reacts {
     svg: 'svg',
     text: 'text',
     tspan: 'tspan',
+  };
+  static TP = {
+    "a": [],
+    "aside": [],
+    "br": [],
+    "canvas": [],
+    "div": [],
+    "h1": [],
+    "h2": [],
+    "h3": [],
+    "h4": [],
+    "h5": [],
+    "h6": [],
+    "p": [],
+    "span": [],
   };
 
   /**

@@ -7,9 +7,6 @@ import {SK} from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
-/*eslint no-unused-vars: "off"*/
-/*eslint react/no-string-refs: "off"*/
-
 export default class SKCountUp extends Comp {
   static SK_COMP_NAME = 'SKCountUp';
   static defaultProps = SK.extend(true, {}, Comp.defaultProps, {

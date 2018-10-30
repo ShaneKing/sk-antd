@@ -4,8 +4,6 @@ import React from 'react';
 import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
-/*eslint no-unused-vars: "off"*/
-
 Col.defaultProps = SK.extend(true, {}, {
   offset: 0,
   order: 0,
