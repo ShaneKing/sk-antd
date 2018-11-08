@@ -67,7 +67,7 @@ export default class FormComp extends AntdComp {
   renderFormItem(help, validateStatus) {
     return (
       <SKFormItem {...this.skTransProps2Self(SKFormItem, this.props)} help={help} label={this.skBfo(FormComp.SK_PROPS.HELP_IN_LABEL) && help ? help : this.props.label}
-                  required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
+                  required={this.skBfo(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
         {this.renderFormComp()}
       </SKFormItem>
     );

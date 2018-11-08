@@ -7,6 +7,7 @@ Let write page like java, wrap ant-design implements mvc(Model-Validator-Compone
 
 ## Directory conventions
 - **src**: 
+  - **3**: overwrite third-party components
   - **antd**: wrap ant-design components
   - **h**: wrap html components
   - **r**: wrap react components
