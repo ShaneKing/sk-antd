@@ -396,11 +396,21 @@ export default class Comp extends React.Component {
    * @param {boolean} htmlProps @Deprecated at antd 3.8.1 used in FormComp.render at antd 3.5.4
    * @returns {object}
    */
-  skTransProps2Self(comp = this.props.compTag, prop = this.props) {
+  skTransProps2Self(comp = this.props.compTag, prop = this.props, allProps) {
     const skProps = Object.keys(prop.skFilter(false, Comp.skPropsFilter));
     const ksProps = Object.keys(prop.skFilter(false, Comp.ksPropsFilter));
 
     let allowProps = skProps;
+    if (this.SK_COMP_NAME) {
+      if (comp.NON_SK_COMP_NAME && (Comp.SK_PROPS_PREFIX.toUpperCase() + comp.NON_SK_COMP_NAME) === this.SK_COMP_NAME) {
+        //SK COMP to AntD
+        allowProps = allowProps.concat(Reacts.P.skVals());
+      }
+      if (this.SK_EXTEND_COMP_NAME && comp.SK_COMP_NAME === this.SK_COMP_NAME) {
+        //SKFormInput to SKInput
+        allowProps = allowProps.concat(Reacts.P.skVals());
+      }
+    }
     allowProps = Reacts.TAG[comp] ? SK.s4a(Reacts.TP[comp]) : allowProps.concat(ksProps);//if html node, nothing to do
     allowProps = comp.propTypes ? allowProps.concat(Object.keys(comp.propTypes)) : allowProps;
     allowProps = allowProps.concat(this.allowTransProps2Self(comp, prop));
