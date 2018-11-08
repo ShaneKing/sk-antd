@@ -36,13 +36,9 @@ export default class FormComp extends AntdComp {
     const validateStatus = _.isEmpty(errorObj) ? SK.CHAR_EMPTY : SK.STR_ERROR;
 
     if (inFormRow && needFormItem) {
-      //skTransProps2Self set htmlProps false, because style, the row style can't trans to SKFormItem
       return (
         <SKCol {...this.skTransProps2Self(SKCol)}>
-          <SKFormItem {...this.skTransProps2Self(SKFormItem, this.props, false)} help={help} label={this.skBfo(FormComp.SK_PROPS.HELP_IN_LABEL) && help ? help : this.props.label}
-                      required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
-            {this.renderFormComp()}
-          </SKFormItem>
+          {this.renderFormItem(help, validateStatus)}
         </SKCol>
       );
     } else if (inFormRow && !needFormItem) {
@@ -52,13 +48,7 @@ export default class FormComp extends AntdComp {
         </SKCol>
       );
     } else if (!inFormRow && needFormItem) {
-      //skTransProps2Self set htmlProps false, because style, the row style can't trans to SKFormItem
-      return (
-        <SKFormItem {...this.skTransProps2Self(SKFormItem, this.props, false)} help={help} label={this.skBfo(FormComp.SK_PROPS.HELP_IN_LABEL) && help ? help : this.props.label}
-                    required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
-          {this.renderFormComp()}
-        </SKFormItem>
-      );
+      return this.renderFormItem(help, validateStatus);
     } else {
       return this.renderFormComp();
     }
@@ -71,6 +61,15 @@ export default class FormComp extends AntdComp {
       <CompTag {...this.skTransProps2Self(CompTag)} modelId={modelId}>
         {this.skTransProps2Child()}
       </CompTag>
+    );
+  }
+
+  renderFormItem(help, validateStatus) {
+    return (
+      <SKFormItem {...this.skTransProps2Self(SKFormItem, this.props)} help={help} label={this.skBfo(FormComp.SK_PROPS.HELP_IN_LABEL) && help ? help : this.props.label}
+                  required={this.skProp(AntdComp.SK_PROPS.REQUIRED)} validateStatus={validateStatus}>
+        {this.renderFormComp()}
+      </SKFormItem>
     );
   }
 }

@@ -396,7 +396,7 @@ export default class Comp extends React.Component {
    * @param {boolean} htmlProps @Deprecated at antd 3.8.1 used in FormComp.render at antd 3.5.4
    * @returns {object}
    */
-  skTransProps2Self(comp = this.props.compTag, prop = this.props, allProps) {
+  skTransProps2Self(comp = this.props.compTag, prop = this.props) {
     const skProps = Object.keys(prop.skFilter(false, Comp.skPropsFilter));
     const ksProps = Object.keys(prop.skFilter(false, Comp.ksPropsFilter));
 
