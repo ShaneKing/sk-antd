@@ -589,19 +589,19 @@ export default class Reacts {
     tspan: 'tspan',
   };
   static TP = {
-    "a": [],
-    "aside": [],
-    "br": [],
-    "canvas": [],
-    "div": [],
-    "h1": [],
-    "h2": [],
-    "h3": [],
-    "h4": [],
-    "h5": [],
-    "h6": [],
-    "p": [],
-    "span": [],
+    'a': ['className', 'style', 'title'],
+    'aside': ['className', 'style', 'title'],
+    'br': ['className', 'style', 'title'],
+    'canvas': ['className', 'style', 'title'],
+    'div': ['className', 'style', 'title'],
+    'h1': ['className', 'style', 'title'],
+    'h2': ['className', 'style', 'title'],
+    'h3': ['className', 'style', 'title'],
+    'h4': ['className', 'style', 'title'],
+    'h5': ['className', 'style', 'title'],
+    'h6': ['className', 'style', 'title'],
+    'p': ['className', 'style', 'title'],
+    'span': ['className', 'style', 'title'],
   };
 
   /**
