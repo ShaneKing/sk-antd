@@ -47,10 +47,12 @@ export default class SKRemoteSelect extends AntdComp {
 
   addExtendChangedMonitor() {
     super.addExtendChangedMonitor();
+    this.addChangedMonitor(this.props.dataId);
   }
 
   rmvExtendChangedMonitor() {
     super.rmvExtendChangedMonitor();
+    this.rmvChangedMonitor(this.props.dataId);
   }
 
   renderPreview() {
