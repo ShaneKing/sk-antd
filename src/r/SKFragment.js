@@ -4,7 +4,7 @@ import ReactComp from './ReactComp';
 
 export default class SKFragment extends ReactComp {
   static SK_COMP_NAME = 'SKFragment';
-  static defaultProps = SK.extend(true, {}, ReactComp.defaultProps, {
+  static defaultProps = SK.extends(true, {}, ReactComp.defaultProps, {
     compTag: React.Fragment,
   });
 

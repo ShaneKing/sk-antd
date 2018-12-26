@@ -10,7 +10,7 @@ import Reacts from '../Reacts';
 
 export default class SKECharts extends Comp {
   static SK_COMP_NAME = 'SKECharts';
-  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {
+  static defaultProps = SK.extends(true, {}, Comp.defaultProps, {
     compTag: Reacts.TAG.div,
 
     lazyUpdate: true,
@@ -22,7 +22,7 @@ export default class SKECharts extends Comp {
     },
     onEvents: {},
   });
-  static propTypes = SK.extend(true, {}, Comp.propTypes, {
+  static propTypes = SK.extends(true, {}, Comp.propTypes, {
     lazyUpdate: PropTypes.bool,
     notMerge: PropTypes.bool,
     onChartReady: PropTypes.func,
@@ -49,14 +49,14 @@ export default class SKECharts extends Comp {
     }
 
     // on resize
-    elementResizeEvent(this.refs.echartsDomRef, () => {
+    elementResizeEvent(this.echartsDomRef, () => {
       echartsIns.resize();
     });
   }
 
   //!important
   // componentWillUpdate(){
-  //   echarts.dispose(this.refs.echartsDomRef);
+  //   echarts.dispose(this.echartsDomRef);
   //   super.componentWillUpdate();
   // }
 
@@ -68,9 +68,9 @@ export default class SKECharts extends Comp {
 
   componentWillUnmount() {
     if (typeof elementResizeEvent.unbind === SK.JS_KEYWORD_FUNCTION) {
-      elementResizeEvent.unbind(this.refs.echartsDomRef);
+      elementResizeEvent.unbind(this.echartsDomRef);
     }
-    echarts.dispose(this.refs.echartsDomRef);
+    echarts.dispose(this.echartsDomRef);
     super.componentWillUnmount();
   }
 
@@ -94,11 +94,11 @@ export default class SKECharts extends Comp {
 
   getEChartsInstance() {
     // return the echarts object
-    return echarts.getInstanceByDom(this.refs.echartsDomRef) || echarts.init(this.refs.echartsDomRef, this.props.theme);
+    return echarts.getInstanceByDom(this.echartsDomRef) || echarts.init(this.echartsDomRef, this.props.theme);
   }
 
   handleOptionUpdate(option) {
-    return this.props.optionUpdate ? this.props.optionUpdate.call(this, option) : option;
+    return this.props.optionUpdate ? this.props.optionUpdate(this, option) : option;
   }
 
   renderEChartDom() {
@@ -118,12 +118,13 @@ export default class SKECharts extends Comp {
 
   render() {
     const {compTag: CompTag, style} = this.props;
+    let styled = _.isEmpty(style) ? {height: '300px', width: '100%'} : style;
 
     return (
       <CompTag
         {...this.skTransProps2Self(CompTag)}
-        style={_.isEmpty(style) ? {height: '300px', width: '100%'} : style}
-        ref="echartsDomRef"
+        style={styled}
+        ref={refNode => this.echartsDomRef = refNode}
       />
     );
   }

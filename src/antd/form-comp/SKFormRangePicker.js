@@ -5,10 +5,10 @@ import SKRangePicker from '../date-picker/SKRangePicker';
 export default class SKFormRangePicker extends FormComp {
   static SK_COMP_NAME = 'SKRangePicker';
   static SK_EXTEND_COMP_NAME = 'SKFormRangePicker';
-  static defaultProps = SK.extend(true, {}, FormComp.defaultProps, SKRangePicker.defaultProps, {
+  static defaultProps = SK.extends(true, {}, FormComp.defaultProps, SKRangePicker.defaultProps, {
     compTag: SKRangePicker,
   });
-  static propTypes = SK.extend(true, {}, FormComp.propTypes, SKRangePicker.propTypes, {});
+  static propTypes = SK.extends(true, {}, FormComp.propTypes, SKRangePicker.propTypes, {});
 
   constructor(...args) {
     super(...args);

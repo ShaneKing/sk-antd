@@ -5,7 +5,6 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const PropTypes = require('prop-types');
 const className = require('classnames');
-const debounce = require('lodash.debounce');
 const createReactClass = require('create-react-class');
 
 function normalizeLineEndings(str) {
@@ -26,7 +25,6 @@ const CodeMirror = createReactClass({
     onFocusChange: PropTypes.func,
     onScroll: PropTypes.func,
     options: PropTypes.object,
-    path: PropTypes.string,
     value: PropTypes.string,
     preserveScrollPosition: PropTypes.bool,
   },
@@ -44,14 +42,11 @@ const CodeMirror = createReactClass({
     };
   },
   componentWillMount() {
-    this.componentWillReceiveProps = debounce(this.componentWillReceiveProps, 0);
-    if (this.props.path) {
-      console.error('Warning: react-codemirror: the `path` prop has been changed to `name`');
-    }
+    this.componentWillReceiveProps = _.debounce(this.componentWillReceiveProps, 0);
   },
   componentDidMount() {
     const codeMirrorInstance = this.getCodeMirrorInstance();
-    this.codeMirror = codeMirrorInstance.fromTextArea(this.textareaNode, this.props.options);
+    this.codeMirror = codeMirrorInstance.fromTextArea(this.textareaDomRef, this.props.options);
     this.codeMirror.on('change', this.codemirrorValueChanged);
     this.codeMirror.on('cursorActivity', this.cursorActivity);
     this.codeMirror.on('focus', this.focusChanged.bind(this, true));
@@ -124,10 +119,10 @@ const CodeMirror = createReactClass({
     return (
       <div className={editorClassName}>
 				<textarea
-          ref={ref => this.textareaNode = ref}
-          name={this.props.name || this.props.path}
+          ref={refNode => this.textareaDomRef = refNode}
+          name={this.props.name}
           defaultValue={this.props.value}
-          autoComplete="off"
+          autoComplete='off'
           autoFocus={this.props.autoFocus}
         />
       </div>

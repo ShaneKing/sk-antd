@@ -4,8 +4,8 @@ import Comp from '../Comp';
 
 export default class ReactComp extends Comp {
   static SK_COMP_NAME = 'ReactComp';
-  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {});
-  static propTypes = SK.extend(true, {}, Comp.propTypes, {});
+  static defaultProps = SK.extends(true, {}, Comp.defaultProps, {});
+  static propTypes = SK.extends(true, {}, Comp.propTypes, {});
 
   constructor(...args) {
     super(...args);

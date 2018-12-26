@@ -3,7 +3,7 @@ import {SK} from 'sk-js';
 import {PLACEMENT, TRIGGER} from '../AntdConst';
 
 export default class CommonTip {
-  static defaultProps = SK.extend(true, {}, {
+  static defaultProps = SK.extends(true, {}, {
     arrowPointAtCenter: false,
     autoAdjustOverflow: true,
     mouseEnterDelay: 0,
@@ -13,7 +13,7 @@ export default class CommonTip {
     defaultVisible: false,
     visible: false,
   }, {});
-  static propTypes = SK.extend(true, {}, {
+  static propTypes = SK.extends(true, {}, {
     //https://ant.design/components/tooltip-cn/#%E5%85%B1%E5%90%8C%E7%9A%84-API
     arrowPointAtCenter: PropTypes.bool,
     autoAdjustOverflow: PropTypes.bool,

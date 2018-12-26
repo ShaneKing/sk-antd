@@ -5,13 +5,13 @@ import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import {STATUS} from '../AntdConst';
 
-Badge.defaultProps = SK.extend(true, {}, {
+Badge.defaultProps = SK.extends(true, {}, {
   dot: false,
   overflowCount: 99,
   showZero: false,
 }, Badge.defaultProps, {});
 
-Badge.propTypes = SK.extend(true, {}, {
+Badge.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/badge-cn/#API
   count: PropTypes.number,
   dot: PropTypes.bool,
@@ -26,10 +26,10 @@ Badge.NON_SK_COMP_NAME = 'Badge';
 
 export default class SKBadge extends AntdComp {
   static SK_COMP_NAME = 'SKBadge';
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Badge.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Badge.defaultProps, {
     compTag: Badge,
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Badge.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Badge.propTypes, {});
 
   constructor(...args) {
     super(...args);
@@ -40,7 +40,7 @@ export default class SKBadge extends AntdComp {
     const {compTag: CompTag} = this.props;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)} count={this.skVal()}>
+      <CompTag {...this.skTransProps2Self(CompTag)} count={this.m2n()}>
         {this.skTransProps2Child()}
       </CompTag>
     );

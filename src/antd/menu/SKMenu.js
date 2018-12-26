@@ -12,13 +12,13 @@ import SKIcon from '../icon/SKIcon';
 //modelId is selectedKeysId
 export default class SKMenu extends AntdComp {
   static SK_COMP_NAME = 'SKMenu';
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, SKMenuItem.defaultProps, SKSubMenu.defaultProps, OriginMenu.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, SKMenuItem.defaultProps, SKSubMenu.defaultProps, OriginMenu.defaultProps, {
     compTag: Menu,
     displayItem: (itemInfo) => {
       return true;
     }
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, SKMenuItem.propTypes, SKSubMenu.propTypes, OriginMenu.propTypes, {
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, SKMenuItem.propTypes, SKSubMenu.propTypes, OriginMenu.propTypes, {
     dataId: PropTypes.string.isRequired,
     displayItem: PropTypes.func,
     openKeysId: PropTypes.string.isRequired,
@@ -29,14 +29,14 @@ export default class SKMenu extends AntdComp {
     this.SK_COMP_NAME = SKMenu.SK_COMP_NAME;
     this.handleClick = (clickInfo) => {
       if (this.props.onClick && _.isFunction(this.props.onClick)) {
-        this.props.onClick(clickInfo);
+        this.props.onClick(this, clickInfo);
       } else {
-        this.skVal([clickInfo.key]);
+        this.n2m([clickInfo.key]);
       }
     };
     this.handleOpenChange = (openKeys) => {
       if (this.props.onOpenChange && _.isFunction(this.props.onOpenChange)) {
-        this.props.onOpenChange(openKeys);
+        this.props.onOpenChange(this, openKeys);
       } else {
         this.skModel().skVal(this.props.openKeysId, openKeys);
       }
@@ -94,7 +94,7 @@ export default class SKMenu extends AntdComp {
         onClick={this.handleClick}
         onOpenChange={this.handleOpenChange}
         openKeys={this.skModel().skVal(openKeysId)}
-        selectedKeys={this.skVal()}
+        selectedKeys={this.m2n()}
         theme={theme}
       >
         {dataId ? this.skModel().skVal(dataId).map((itemInfo) => {

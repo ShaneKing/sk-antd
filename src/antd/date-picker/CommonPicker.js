@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import {SK} from 'sk-js';
 
 export default class CommonPicker {
-  static defaultProps = SK.extend(true, {}, {
+  static defaultProps = SK.extends(true, {}, {
     allowClear: true,
     autoFocus: false,
     className: SK.CHAR_EMPTY,
@@ -10,7 +10,7 @@ export default class CommonPicker {
     popupStyle: {},
     // style: {},
   }, {});
-  static propTypes = SK.extend(true, {}, {
+  static propTypes = SK.extends(true, {}, {
     //https://ant.design/components/date-picker-cn/#%E5%85%B1%E5%90%8C%E7%9A%84-API
     allowClear: PropTypes.bool,
     autoFocus: PropTypes.bool,

@@ -5,10 +5,10 @@ import SKTextArea from '../input/SKTextArea';
 export default class SKFormTextArea extends FormComp {
   static SK_COMP_NAME = 'SKTextArea';
   static SK_EXTEND_COMP_NAME = 'SKFormTextArea';
-  static defaultProps = SK.extend(true, {}, FormComp.defaultProps, SKTextArea.defaultProps, {
+  static defaultProps = SK.extends(true, {}, FormComp.defaultProps, SKTextArea.defaultProps, {
     compTag: SKTextArea,
   });
-  static propTypes = SK.extend(true, {}, FormComp.propTypes, SKTextArea.propTypes, {});
+  static propTypes = SK.extends(true, {}, FormComp.propTypes, SKTextArea.propTypes, {});
 
   constructor(...args) {
     super(...args);

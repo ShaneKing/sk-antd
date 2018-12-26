@@ -27,3 +27,4 @@ export * from './spin';
 export * from './switch';
 export * from './table';
 export * from './tooltip';
+export * from './upload';

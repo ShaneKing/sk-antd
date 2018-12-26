@@ -4,11 +4,11 @@ import React from 'react';
 import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
-BackTop.defaultProps = SK.extend(true, {}, {}, BackTop.defaultProps, {
+BackTop.defaultProps = SK.extends(true, {}, {}, BackTop.defaultProps, {
   visibilityHeight: 400,
 });
 
-BackTop.propTypes = SK.extend(true, {}, {
+BackTop.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/back-top-cn/#API
   target: PropTypes.func,
   visibilityHeight: PropTypes.number,
@@ -19,10 +19,10 @@ BackTop.NON_SK_COMP_NAME = 'BackTop';
 
 export default class SKBackTop extends AntdComp {
   static SK_COMP_NAME = 'SKBackTop';
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, BackTop.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, BackTop.defaultProps, {
     compTag: BackTop,
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, BackTop.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, BackTop.propTypes, {});
 
   constructor(...args) {
     super(...args);

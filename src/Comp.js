@@ -100,8 +100,8 @@ export default class Comp extends React.Component {
       PropTypes.object,
     ]),
 
-    m2eConvertor: PropTypes.func, //Model 2 Editing
-    e2mConvertor: PropTypes.func, //Editing 2 Model
+    m2nConvertor: PropTypes.func, //Model 2 Node
+    n2mConvertor: PropTypes.func, //Node 2 Model
     m2vConvertor: PropTypes.func, //Model 2 View, like Date Comp, moment format to view: YYYY-MM-DDTHH:mm:ss.SSSZ -> YYYY-MM-DD
   };
 
@@ -233,11 +233,11 @@ export default class Comp extends React.Component {
     return [];
   }
 
-  e2m(val) {
-    return this.skVal(_.isFunction(this.props.e2mConvertor) ? this.props.e2mConvertor(this, this.skModel(), val) : this.e2mConvertor(val));
+  n2m(val) {
+    return this.skVal(_.isFunction(this.props.n2mConvertor) ? this.props.n2mConvertor(this, this.skModel(), val) : this.n2mConvertor(val));
   }
 
-  e2mConvertor(val) {
+  n2mConvertor(val) {
     return val;
   }
 
@@ -292,14 +292,16 @@ export default class Comp extends React.Component {
     return rtn === undefined ? defaultValue : rtn;
   }
 
-  m2e() {
-    return _.isFunction(this.props.m2eConvertor) ? this.props.m2eConvertor(this, this.skModel(), this.skVal()) : this.m2eConvertor();
+  //model 2 node(DOM Element Node/React Component Node)
+  m2n() {
+    return _.isFunction(this.props.m2nConvertor) ? this.props.m2nConvertor(this, this.skModel(), this.skVal()) : this.m2nConvertor();
   }
 
-  m2eConvertor() {
+  m2nConvertor() {
     return this.skVal();
   }
 
+  //model 2 view(readonly/preview/pdf/print)
   m2v() {
     return _.isFunction(this.props.m2vConvertor) ? this.props.m2vConvertor(this, this.skModel(), this.skVal()) : this.m2vConvertor();
   }
@@ -359,6 +361,7 @@ export default class Comp extends React.Component {
     return rtn === undefined ? defaultValue : rtn;
   }
 
+  //@Deprecated
   skTmpVal(id = this.getModelId(), value) {
     return arguments.length > 1 ? this.skModel().skVal(`tmp.${id}`, value) : this.skModel().skVal(`tmp.${id}`);
   }
@@ -390,7 +393,7 @@ export default class Comp extends React.Component {
 
   /**
    * 1. trans prop start with sk
-   * 2. trans all prop to "self"(like SKInput for Input, SKFormInput to SKInput)
+   * 2. trans all prop to 'self'(like SKInput for Input, SKFormInput to SKInput)
    */
   skTransProps2Self(comp = this.props.compTag, prop = this.props) {
     const skProps = Object.keys(prop.skFilter(false, Comp.skPropsFilter));

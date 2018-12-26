@@ -4,7 +4,7 @@ import Reacts from '../Reacts';
 
 export default class SKDiv extends HtmlComp {
   static SK_COMP_NAME = 'SKDiv';
-  static defaultProps = SK.extend(true, {}, HtmlComp.defaultProps, {
+  static defaultProps = SK.extends(true, {}, HtmlComp.defaultProps, {
     compTag: Reacts.TAG.div,
   });
 

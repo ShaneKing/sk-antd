@@ -8,10 +8,10 @@ import AntdComp from '../AntdComp';
 
 export default class SKLayout extends AntdComp {
   static SK_COMP_NAME = 'SKLayout';
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, OriginLayout.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, OriginLayout.defaultProps, {
     compTag: Layout,
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, OriginLayout.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, OriginLayout.propTypes, {});
 
   constructor(...args) {
     super(...args);

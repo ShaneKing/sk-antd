@@ -9,7 +9,7 @@ import Reacts from '../Reacts';
 
 export default class SKCountUp extends Comp {
   static SK_COMP_NAME = 'SKCountUp';
-  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {
+  static defaultProps = SK.extends(true, {}, Comp.defaultProps, {
     compTag: Reacts.TAG.span,
     decimal: SK.CHAR_DOT,
     decimals: 0,
@@ -28,7 +28,7 @@ export default class SKCountUp extends Comp {
     useEasing: true,
     useGrouping: true,
   });
-  static propTypes = SK.extend(true, {}, Comp.propTypes, {
+  static propTypes = SK.extends(true, {}, Comp.propTypes, {
     decimal: PropTypes.string,
     decimals: PropTypes.number,
     duration: PropTypes.number,
@@ -63,12 +63,12 @@ export default class SKCountUp extends Comp {
   shouldComponentUpdate(nextProps, nextState) {
     return this.props.duration !== nextProps.duration ||
       this.props.end !== nextProps.end ||
-      $(this.refs.countupDomRef).text() !== this.skVal().skCurrencyFmt(nextProps.decimals) ||
+      $(this.countupDomRef).text() !== this.skVal().skCurrencyFmt(nextProps.decimals) ||
       this.props.start !== nextProps.start;
   }
 
   startAnimation(comp) {
-    if (comp && comp.refs.countupDomRef) {
+    if (comp && this.countupDomRef) {
       const {
         decimal,
         decimals,
@@ -92,7 +92,7 @@ export default class SKCountUp extends Comp {
       end = this.skVal();
 
       const countupInstance = new CountUp(
-        comp.refs.countupDomRef,
+        this.countupDomRef,
         start,
         end,
         decimals,
@@ -125,7 +125,7 @@ export default class SKCountUp extends Comp {
     const {compTag: CompTag, start} = this.props;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)} ref="countupDomRef">
+      <CompTag {...this.skTransProps2Self(CompTag)} ref={refNode => this.countupDomRef = refNode}>
         {start}
       </CompTag>
     );

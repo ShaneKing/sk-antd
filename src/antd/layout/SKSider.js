@@ -7,7 +7,7 @@ import OriginLayout from './OriginLayout';
 
 const {Sider} = Layout;
 
-Sider.defaultProps = SK.extend(true, {}, {
+Sider.defaultProps = SK.extends(true, {}, {
   collapsedWidth: 64,
   collapsible: false,
   defaultCollapsed: false,
@@ -15,7 +15,7 @@ Sider.defaultProps = SK.extend(true, {}, {
   width: 200,
 }, OriginLayout.defaultProps, Sider.defaultProps, {});
 
-Sider.propTypes = SK.extend(true, {}, {
+Sider.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/layout-cn/#Layout.Sider
   breakpoint: PropTypes.oneOf(Object.values(BREAKPOINT)),
   className: PropTypes.string,
@@ -37,10 +37,10 @@ Sider.NON_SK_COMP_NAME = 'Sider';
 
 export default class SKSider extends AntdComp {
   static SK_COMP_NAME = 'SKSider';
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Sider.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Sider.defaultProps, {
     compTag: Sider,
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Sider.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Sider.propTypes, {});
 
   constructor(...args) {
     super(...args);

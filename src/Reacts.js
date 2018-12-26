@@ -589,23 +589,23 @@ export default class Reacts {
     tspan: 'tspan',
   };
   static TP = {
-    'a': ['className', 'style', 'title'],
+    'a': ['className', 'onClick', 'style', 'title'],
     'aside': ['className', 'style', 'title'],
     'br': ['className', 'style', 'title'],
     'canvas': ['className', 'style', 'title'],
-    'div': ['className', 'style', 'title'],
+    'div': ['className', 'onClick', 'style', 'title'],
     'h1': ['className', 'style', 'title'],
     'h2': ['className', 'style', 'title'],
     'h3': ['className', 'style', 'title'],
     'h4': ['className', 'style', 'title'],
     'h5': ['className', 'style', 'title'],
     'h6': ['className', 'style', 'title'],
-    'p': ['className', 'style', 'title'],
-    'span': ['className', 'style', 'title'],
+    'p': ['className', 'onClick', 'style', 'title'],
+    'span': ['className', 'onClick', 'style', 'title'],
   };
 
   /**
-   * Count the number of "valid components" in the Children container.
+   * Count the number of 'valid components' in the Children container.
    *
    * @param {?*} children Children tree container.
    * @returns {number}
@@ -671,10 +671,10 @@ export default class Reacts {
 
   /**
    * Finds children that are typically specified as `props.children`,
-   * but only iterates over children that are "valid components".
+   * but only iterates over children that are 'valid components'.
    *
    * The provided forEachFunc(child, index) will be called for each
-   * leaf child with the index reflecting the position relative to "valid components".
+   * leaf child with the index reflecting the position relative to 'valid components'.
    *
    * @param {?*} children Children tree container.
    * @param {function(*, int)} func.
@@ -719,10 +719,10 @@ export default class Reacts {
   }
 
   /**
-   * Iterates through children that are "valid components".
+   * Iterates through children that are 'valid components'.
    *
    * The provided forEachFunc(child, index) will be called for each
-   * leaf child with the index reflecting the position relative to "valid components".
+   * leaf child with the index reflecting the position relative to 'valid components'.
    *
    * @param {?*} children Children tree container.
    * @param {function(*, int)} func.
@@ -742,7 +742,7 @@ export default class Reacts {
 
   /**
    * Iterates through children that are typically specified as `props.children`,
-   * but only maps over children that are "valid components".
+   * but only maps over children that are 'valid components'.
    *
    * The mapFunction provided index will be normalised to the components mapped,
    * so an invalid component would not increase the index.

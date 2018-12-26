@@ -13,11 +13,11 @@ import SKDiv from '../h/SKDiv';
  */
 export default class AntdComp extends Comp {
   static SK_COMP_NAME = 'AntdComp';
-  static SK_PROPS = SK.extend(true, {}, Comp.SK_PROPS, {
+  static SK_PROPS = SK.extends(true, {}, Comp.SK_PROPS, {
     SIZE: 'size',
   });
-  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {});
-  static propTypes = SK.extend(true, {}, Comp.propTypes, {
+  static defaultProps = SK.extends(true, {}, Comp.defaultProps, {});
+  static propTypes = SK.extends(true, {}, Comp.propTypes, {
     size: PropTypes.oneOf(Object.values(SIZE)),
     skSize: PropTypes.oneOf(Object.values(SIZE)),
   });

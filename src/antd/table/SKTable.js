@@ -5,7 +5,7 @@ import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import {SIZE} from '../AntdConst';
 
-Table.defaultProps = SK.extend(true, {}, {
+Table.defaultProps = SK.extends(true, {}, {
   bordered: false,
   defaultExpandAllRows: false,
   expandRowByClick: false,
@@ -16,7 +16,7 @@ Table.defaultProps = SK.extend(true, {}, {
   size: SIZE.Default,
 }, Table.defaultProps, {});
 
-Table.propTypes = SK.extend(true, {}, {
+Table.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/table-cn/#Table
   bordered: PropTypes.bool,
   columns: PropTypes.array,
@@ -53,13 +53,13 @@ Table.NON_SK_COMP_NAME = 'Table';
 
 export default class SKTable extends AntdComp {
   static SK_COMP_NAME = 'SKTable';
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Table.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Table.defaultProps, {
     compTag: Table,
     bordered: true,
     loadingId: undefined,
     paginationId: undefined,
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Table.propTypes, {
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Table.propTypes, {
     loadingId: PropTypes.string.isRequired,
     paginationId: PropTypes.string.isRequired,
   });
@@ -91,7 +91,7 @@ export default class SKTable extends AntdComp {
     return (
       <CompTag
         {...this.skTransProps2Self(CompTag)}
-        dataSource={this.skVal()}
+        dataSource={this.m2n()}
         loading={this.skModel().skVal(this.props.loadingId)}
         pagination={this.skModel().skVal(this.props.paginationId)}
         scroll={tmpScroll}

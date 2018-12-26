@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import {SK} from 'sk-js';
 import {INPUT_TYPE} from '../AntdConst';
 
-Input.defaultProps = SK.extend(true, {}, {
+Input.defaultProps = SK.extends(true, {}, {
   disabled: false,
   //size: SIZE.Default,//invalid function this.skProp(AntdComp.SK_PROPS.SIZE)
   type: INPUT_TYPE.Text,
 }, Input.defaultProps, {});
-Input.propTypes = SK.extend(true, {}, {
+Input.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/input-cn/#Input
   addonAfter: PropTypes.oneOfType([
     PropTypes.string,
@@ -38,6 +38,6 @@ Input.propTypes = SK.extend(true, {}, {
 Input.NON_SK_COMP_NAME = 'Input';
 
 export default class OriginInput {
-  static defaultProps = SK.extend(true, {}, Input.defaultProps, {});
-  static propTypes = SK.extend(true, {}, Input.propTypes, {});
+  static defaultProps = SK.extends(true, {}, Input.defaultProps, {});
+  static propTypes = SK.extends(true, {}, Input.propTypes, {});
 }

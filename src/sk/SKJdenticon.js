@@ -9,11 +9,11 @@ import Reacts from '../Reacts';
 
 export default class SKJdenticon extends Comp {
   static SK_COMP_NAME = 'SKJdenticon';
-  static defaultProps = SK.extend(true, {}, Comp.defaultProps, {
+  static defaultProps = SK.extends(true, {}, Comp.defaultProps, {
     compTag: Reacts.TAG.canvas,
 
   });
-  static propTypes = SK.extend(true, {}, Comp.propTypes, {
+  static propTypes = SK.extends(true, {}, Comp.propTypes, {
     size: PropTypes.number,
   });
 
@@ -24,19 +24,19 @@ export default class SKJdenticon extends Comp {
 
   componentDidMount() {
     super.componentDidMount();
-    jdenticon.update(this.refs.jdenticonDomRef, md5(this.skVal()));
+    jdenticon.update(this.jdenticonDomRef, md5(this.skVal()));
   }
 
   componentDidUpdate() {
     super.componentDidUpdate();
-    jdenticon.update(this.refs.jdenticonDomRef, md5(this.skVal()));
+    jdenticon.update(this.jdenticonDomRef, md5(this.skVal()));
   }
 
   render() {
     const {compTag: CompTag, size} = this.props;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)} height={size} width={size} ref="jdenticonDomRef"/>
+      <CompTag {...this.skTransProps2Self(CompTag)} height={size} width={size} ref={refNode => this.jdenticonDomRef = refNode}/>
     );
   }
 }

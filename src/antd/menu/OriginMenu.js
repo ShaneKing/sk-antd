@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {SK} from 'sk-js';
 import {MENU_MODE, THEME} from '../AntdConst';
 
-Menu.defaultProps = SK.extend(true, {}, {
+Menu.defaultProps = SK.extends(true, {}, {
   //inlineIndent: 24,
   //mode: MENU_MODE.Vertical,
   //multiple: false,
@@ -14,7 +14,7 @@ Menu.defaultProps = SK.extend(true, {}, {
   //subMenuCloseDelay: 0.1,
   //forceSubMenuRender: false,
 }, Menu.defaultProps, {});
-Menu.propTypes = SK.extend(true, {
+Menu.propTypes = SK.extends(true, {
   level: PropTypes.number,
   parentMenu: PropTypes.object,
   prefixCls: PropTypes.string,
@@ -54,6 +54,6 @@ Menu.propTypes = SK.extend(true, {
 Menu.NON_SK_COMP_NAME = 'Menu';
 
 export default class OriginMenu {
-  static defaultProps = SK.extend(true, {}, Menu.defaultProps, {});
-  static propTypes = SK.extend(true, {}, Menu.propTypes, {});
+  static defaultProps = SK.extends(true, {}, Menu.defaultProps, {});
+  static propTypes = SK.extends(true, {}, Menu.propTypes, {});
 }

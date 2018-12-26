@@ -8,13 +8,13 @@ import SKFormItem from '../form/SKFormItem';
 
 export default class FormComp extends AntdComp {
   static SK_COMP_NAME = 'FormComp';
-  static SK_PROPS = SK.extend(true, {}, AntdComp.SK_PROPS, {
+  static SK_PROPS = SK.extends(true, {}, AntdComp.SK_PROPS, {
     HELP_IN_LABEL: 'helpInLabel',
     IN_FROM_ROW: 'inFormRow',
     NEED_FROM_ITEM: 'needFormItem',
   });
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, SKCol.defaultProps, SKFormItem.defaultProps, {});
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, SKCol.propTypes, SKFormItem.propTypes, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, SKCol.defaultProps, SKFormItem.defaultProps, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, SKCol.propTypes, SKFormItem.propTypes, {
     helpInLabel: PropTypes.bool,
     inFormRow: PropTypes.bool,
     skInFormRow: PropTypes.bool,

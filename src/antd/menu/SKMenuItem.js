@@ -6,11 +6,11 @@ import AntdComp from '../AntdComp';
 
 const {Item} = Menu;
 
-Item.defaultProps = SK.extend(true, {}, {
+Item.defaultProps = SK.extends(true, {}, {
   disabled: false,
 }, OriginMenu.defaultProps, Item.defaultProps, {});
 
-Item.propTypes = SK.extend(true, {
+Item.propTypes = SK.extends(true, {
   //https://github.com/react-component/menu/blob/master/src/MenuItem.jsx#L21
   onItemHover: PropTypes.func,
 }, {
@@ -27,10 +27,10 @@ Item.NON_SK_COMP_NAME = 'MenuItem';
 
 export default class SKMenuItem extends AntdComp {
   static SK_COMP_NAME = 'SKMenuItem';
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Item.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Item.defaultProps, {
     compTag: Menu.Item,
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Item.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Item.propTypes, {});
 
   constructor(...args) {
     super(...args);

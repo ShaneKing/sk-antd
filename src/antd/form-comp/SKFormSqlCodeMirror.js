@@ -5,10 +5,10 @@ import SKSqlCodeMirror from '../../sk/SKSqlCodeMirror';
 export default class SKFormCodeMirror extends FormComp {
   static SK_COMP_NAME = 'SKSqlCodeMirror';
   static SK_EXTEND_COMP_NAME = 'SKFormSqlCodeMirror';
-  static defaultProps = SK.extend(true, {}, FormComp.defaultProps, SKSqlCodeMirror.defaultProps, {
+  static defaultProps = SK.extends(true, {}, FormComp.defaultProps, SKSqlCodeMirror.defaultProps, {
     compTag: SKSqlCodeMirror,
   });
-  static propTypes = SK.extend(true, {}, FormComp.propTypes, SKSqlCodeMirror.propTypes, {});
+  static propTypes = SK.extends(true, {}, FormComp.propTypes, SKSqlCodeMirror.propTypes, {});
 
   constructor(...args) {
     super(...args);

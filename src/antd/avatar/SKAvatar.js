@@ -5,12 +5,12 @@ import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import {SHAPE, SIZE} from '../AntdConst';
 
-Avatar.defaultProps = SK.extend(true, {}, {
+Avatar.defaultProps = SK.extends(true, {}, {
   shape: SHAPE.Circle,
   size: SIZE.Default,
 }, Avatar.defaultProps, {});
 
-Avatar.propTypes = SK.extend(true, {}, {
+Avatar.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/avatar-cn/#API
   alt: PropTypes.string,
   icon: PropTypes.string,
@@ -25,10 +25,10 @@ Avatar.NON_SK_COMP_NAME = 'Avatar';
 
 export default class SKAvatar extends AntdComp {
   static SK_COMP_NAME = 'SKAvatar';
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Avatar.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Avatar.defaultProps, {
     compTag: Avatar,
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Avatar.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Avatar.propTypes, {});
 
   constructor(...args) {
     super(...args);
@@ -39,7 +39,7 @@ export default class SKAvatar extends AntdComp {
     const {compTag: CompTag} = this.props;
 
     return (
-      <CompTag {...this.skTransProps2Self(CompTag)} alt={this.skVal()}>
+      <CompTag {...this.skTransProps2Self(CompTag)} alt={this.m2n()}>
         {this.skTransProps2Child()}
       </CompTag>
     );

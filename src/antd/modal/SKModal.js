@@ -1,10 +1,11 @@
 import {Modal} from 'antd';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import {Mesgs, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import {BUTTON_TYPE} from '../AntdConst';
 
-Modal.defaultProps = SK.extend(true, {}, {
+Modal.defaultProps = SK.extends(true, {}, {
   bodyStyle: {},
   cancelText: Mesgs.get('Cancel'),
   closable: true,
@@ -17,7 +18,7 @@ Modal.defaultProps = SK.extend(true, {}, {
   zIndex: 1000,
 }, Modal.defaultProps, {});
 
-Modal.propTypes = SK.extend(true, {}, {
+Modal.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/modal-cn/#API
   afterClose: PropTypes.func,
   bodyStyle: PropTypes.object,
@@ -54,16 +55,20 @@ Modal.NON_SK_COMP_NAME = 'Modal';
 
 export default class SKModal extends AntdComp {
   static SK_COMP_NAME = 'SKModal';
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Modal.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Modal.defaultProps, {
     compTag: Modal,
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Modal.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Modal.propTypes, {});
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKModal.SK_COMP_NAME;
     this.handleCancel = (domEvent) => {
-      this.skVal(false);
+      if (this.props.onCancel && _.isFunction(this.props.onCancel)) {
+        this.props.onCancel(this, domEvent);
+      } else {
+        this.n2m(false);
+      }
     };
   }
 
@@ -74,7 +79,7 @@ export default class SKModal extends AntdComp {
       <CompTag
         {...this.skTransProps2Self(CompTag)}
         onCancel={this.handleCancel}
-        visible={this.skVal()}
+        visible={this.m2n()}
       >
         {this.skTransProps2Child()}
       </CompTag>

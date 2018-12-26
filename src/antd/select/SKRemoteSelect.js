@@ -8,26 +8,27 @@ import AntdComp from '../AntdComp';
 import {SELECT_MODE} from '../AntdConst';
 import SKDiv from '../../h/SKDiv';
 
-//default: implement Select with search field local, SKRemoteSelect support remote
-export default class SKSelect extends AntdComp {
+export default class SKRemoteSelect extends AntdComp {
   static SK_COMP_NAME = 'SKSelect';
+  static SK_EXTEND_COMP_NAME = 'SKRemoteSelect';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Select.OptGroup.defaultProps, Select.Option.defaultProps, OriginSelect.defaultProps, {
     compTag: Select,
     dataId: undefined,
     allowClear: true,
     defaultActiveFirstOption: false,
-    filterOption: (input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
+    filterOption: false,
     optionFilterProp: 'children',
     showArrow: false,
     showSearch: true,
   });
   static propTypes = SK.extends(true, {}, AntdComp.propTypes, Select.OptGroup.propTypes, Select.Option.propTypes, OriginSelect.propTypes, {
-    dataId: PropTypes.string.isRequired
+    dataId: PropTypes.string.isRequired,
   });
 
   constructor(...args) {
     super(...args);
-    this.SK_COMP_NAME = SKSelect.SK_COMP_NAME;
+    this.SK_COMP_NAME = SKRemoteSelect.SK_COMP_NAME;
+    this.SK_EXTEND_COMP_NAME = SKRemoteSelect.SK_EXTEND_COMP_NAME;
     this.handleChange = (value, option) => {
       if (this.props.onChange && _.isFunction(this.props.onChange)) {
         this.props.onChange(this, value, option);
@@ -37,16 +38,19 @@ export default class SKSelect extends AntdComp {
         this.n2m((option && _.isArray(option)) ? option.map(item => item.key) : undefined);
       }
     };
+    this.handleSearch = (value) => {
+      if (this.props.onSearch && _.isFunction(this.props.onSearch)) {
+        this.props.onSearch(this, value);
+      }
+    };
   }
 
   addExtendChangedMonitor() {
     super.addExtendChangedMonitor();
-    this.addChangedMonitor(this.props.dataId);
   }
 
   rmvExtendChangedMonitor() {
     super.rmvExtendChangedMonitor();
-    this.rmvChangedMonitor(this.props.dataId);
   }
 
   renderPreview() {

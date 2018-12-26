@@ -1,4 +1,5 @@
 import {DatePicker} from 'antd';
+import _ from 'lodash';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -6,13 +7,13 @@ import {Mesgs, SK} from 'sk-js';
 import CommonPicker from './CommonPicker';
 import AntdComp from '../AntdComp';
 
-DatePicker.defaultProps = SK.extend(true, {}, {
+DatePicker.defaultProps = SK.extends(true, {}, {
   showToday: true,
 }, CommonPicker.defaultProps, DatePicker.defaultProps, {
   format: SK.DEFAULT_MOMENT_DATETIME,
 });
 
-DatePicker.propTypes = SK.extend(true, {}, {
+DatePicker.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/date-picker-cn/#DatePicker
   defaultValue: PropTypes.instanceOf(moment),
   disabledTime: PropTypes.func,
@@ -33,24 +34,28 @@ DatePicker.NON_SK_COMP_NAME = 'DatePicker';
 
 export default class SKDatePicker extends AntdComp {
   static SK_COMP_NAME = 'SKDatePicker';
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, DatePicker.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, DatePicker.defaultProps, {
     compTag: DatePicker,
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, DatePicker.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, DatePicker.propTypes, {});
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKDatePicker.SK_COMP_NAME;
     this.handleChange = (dateMoment, dateString) => {
-      this.e2m(dateMoment);
+      if (this.props.onChange && _.isFunction(this.props.onChange)) {
+        this.props.onChange(this, dateMoment, dateString);
+      } else {
+        this.n2m(dateMoment);
+      }
     };
   }
 
-  e2mConvertor(dateMoment) {
+  n2mConvertor(dateMoment) {
     return dateMoment ? dateMoment.format(this.props.format) : undefined;
   }
 
-  m2eConvertor() {
+  m2nConvertor() {
     return this.skVal() ? moment(this.skVal(), this.props.format) : undefined;
   }
 
@@ -63,7 +68,7 @@ export default class SKDatePicker extends AntdComp {
         onChange={this.handleChange}
         placeholder={Mesgs.get('Please_select')}
         size={this.skProp(AntdComp.SK_PROPS.SIZE)}
-        value={this.m2e()}
+        value={this.m2n()}
       >
         {this.skTransProps2Child()}
       </CompTag>

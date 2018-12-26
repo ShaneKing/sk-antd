@@ -7,12 +7,12 @@ import AntdComp from '../AntdComp';
 
 const {Item} = Form;
 
-Item.defaultProps = SK.extend(true, {}, {
+Item.defaultProps = SK.extends(true, {}, {
   colon: true,
   hasFeedback: false,
   required: false,
 }, OriginForm.defaultProps, Item.defaultProps, {});
-Item.propTypes = SK.extend(true, {}, {
+Item.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/form-cn/#Form.Item
   colon: PropTypes.bool,
   extra: PropTypes.oneOfType([
@@ -38,14 +38,14 @@ Item.NON_SK_COMP_NAME = 'FormItem';
 
 export default class SKFormItem extends AntdComp {
   static SK_COMP_NAME = 'SKFormItem';
-  static SK_PROPS = SK.extend(true, {}, AntdComp.SK_PROPS, {
+  static SK_PROPS = SK.extends(true, {}, AntdComp.SK_PROPS, {
     LABEL_COL: 'labelCol',
     WRAPPER_COL: 'wrapperCol',
   });
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, Item.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Item.defaultProps, {
     compTag: Form.Item,
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, Item.propTypes, {
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Item.propTypes, {
     formLabelCol: PropTypes.object,
     skFormLabelCol: PropTypes.object,
     formWrapperCol: PropTypes.object,

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import {SK} from 'sk-js';
 import {Dir} from '../AntdConst';
 
-Form.defaultProps = SK.extend(true, {}, {
+Form.defaultProps = SK.extends(true, {}, {
   hideRequiredMark: false,
   layout: Dir.Horizontal,
 }, Form.defaultProps, {});
-Form.propTypes = SK.extend(true, {}, {
+Form.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/form-cn/#Form
   form: PropTypes.object,
   hideRequiredMark: PropTypes.bool,
@@ -18,6 +18,6 @@ Form.propTypes = SK.extend(true, {}, {
 Form.NON_SK_COMP_NAME = 'Form';
 
 export default class OriginForm {
-  static defaultProps = SK.extend(true, {}, Form.defaultProps, {});
-  static propTypes = SK.extend(true, {}, Form.propTypes, {});
+  static defaultProps = SK.extends(true, {}, Form.defaultProps, {});
+  static propTypes = SK.extends(true, {}, Form.propTypes, {});
 }

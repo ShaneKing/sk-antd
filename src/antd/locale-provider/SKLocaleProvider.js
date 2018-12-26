@@ -4,9 +4,9 @@ import React from 'react';
 import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
-LocaleProvider.defaultProps = SK.extend(true, {}, {}, LocaleProvider.defaultProps, {});
+LocaleProvider.defaultProps = SK.extends(true, {}, {}, LocaleProvider.defaultProps, {});
 
-LocaleProvider.propTypes = SK.extend(true, {}, {
+LocaleProvider.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/grid-cn/#LocaleProvider\
   locale: PropTypes.object,
 }, LocaleProvider.propTypes, {});
@@ -15,10 +15,10 @@ LocaleProvider.NON_SK_COMP_NAME = 'LocaleProvider';
 
 export default class SKLocaleProvider extends AntdComp {
   static SK_COMP_NAME = 'SKLocaleProvider';
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, LocaleProvider.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, LocaleProvider.defaultProps, {
     compTag: LocaleProvider,
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, LocaleProvider.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, LocaleProvider.propTypes, {});
 
   constructor(...args) {
     super(...args);
@@ -31,7 +31,7 @@ export default class SKLocaleProvider extends AntdComp {
     return (
       <CompTag
         {...this.skTransProps2Self(CompTag)}
-        locale={this.skVal()}
+        locale={this.m2n()}
       >
         {this.skTransProps2Child()}
       </CompTag>

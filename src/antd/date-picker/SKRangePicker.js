@@ -1,4 +1,5 @@
 import {DatePicker} from 'antd';
+import _ from 'lodash';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -8,11 +9,11 @@ import AntdComp from '../AntdComp';
 
 let {RangePicker} = DatePicker;
 
-RangePicker.defaultProps = SK.extend(true, {}, {}, CommonPicker.defaultProps, RangePicker.defaultProps, {
+RangePicker.defaultProps = SK.extends(true, {}, {}, CommonPicker.defaultProps, RangePicker.defaultProps, {
   format: SK.DEFAULT_MOMENT_DATETIME,
 });
 
-RangePicker.propTypes = SK.extend(true, {}, {
+RangePicker.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/date-picker-cn/#RangePicker
   defaultValue: PropTypes.array,
   disabledTime: PropTypes.func,
@@ -37,24 +38,28 @@ RangePicker.NON_SK_COMP_NAME = 'RangePicker';
 
 export default class SKRangePicker extends AntdComp {
   static SK_COMP_NAME = 'SKRangePicker';
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, RangePicker.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, RangePicker.defaultProps, {
     compTag: RangePicker,
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, RangePicker.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, RangePicker.propTypes, {});
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKRangePicker.SK_COMP_NAME;
     this.handleChange = (dateMoment, dateString) => {
-      this.e2m(dateMoment);
+      if (this.props.onChange && _.isFunction(this.props.onChange)) {
+        this.props.onChange(this, dateMoment, dateString);
+      } else {
+        this.n2m(dateMoment);
+      }
     };
   }
 
-  e2mConvertor(dateMoment) {
+  n2mConvertor(dateMoment) {
     return dateMoment && dateMoment.length === 2 ? [dateMoment[0].format(this.props.format), dateMoment[1].format(this.props.format)] : undefined;
   }
 
-  m2eConvertor() {
+  m2nConvertor() {
     return this.skVal() ? [moment(this.skVal()[0], this.props.format), moment(this.skVal()[1], this.props.format)] : undefined;
   }
 
@@ -71,7 +76,7 @@ export default class SKRangePicker extends AntdComp {
         onChange={this.handleChange}
         placeholder={[Mesgs.get('Please_select'), Mesgs.get('Please_select')]}
         size={this.skProp(AntdComp.SK_PROPS.SIZE)}
-        value={this.m2e()}
+        value={this.m2n()}
       >
         {this.skTransProps2Child()}
       </CompTag>

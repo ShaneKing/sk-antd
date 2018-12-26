@@ -1,4 +1,5 @@
 import {Input} from 'antd';
+import _ from 'lodash';
 import React from 'react';
 import {Mesgs, SK} from 'sk-js';
 import OriginInput from './OriginInput';
@@ -7,16 +8,20 @@ import AntdComp from '../AntdComp';
 //origin exist, use origin
 export default class SKInput extends AntdComp {
   static SK_COMP_NAME = 'SKInput';
-  static defaultProps = SK.extend(true, {}, AntdComp.defaultProps, OriginInput.defaultProps, {
+  static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, OriginInput.defaultProps, {
     compTag: Input,
   });
-  static propTypes = SK.extend(true, {}, AntdComp.propTypes, OriginInput.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, OriginInput.propTypes, {});
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKInput.SK_COMP_NAME;
     this.handleChange = (domEvent) => {
-      this.e2m(domEvent.target.value);
+      if (this.props.onChange && _.isFunction(this.props.onChange)) {
+        this.props.onChange(this, domEvent);
+      } else {
+        this.n2m(domEvent.target.value);
+      }
     };
   }
 
@@ -29,7 +34,7 @@ export default class SKInput extends AntdComp {
         onChange={this.handleChange}
         placeholder={placeholder || Mesgs.get('Please_input')}
         size={this.skProp(AntdComp.SK_PROPS.SIZE)}
-        value={this.m2e()}
+        value={this.m2n()}
       >
         {this.skTransProps2Child()}
       </CompTag>
