@@ -402,8 +402,11 @@ export default class Comp extends React.Component {
     let allowProps = skProps;
     allowProps = Reacts.TAG[comp] ? SK.s4a(Reacts.TP[comp]) : allowProps.concat(ksProps);//if html node, nothing to do
     if (this.SK_COMP_NAME
-      && ((comp.NON_SK_COMP_NAME && (Comp.SK_PROPS_PREFIX.toUpperCase() + comp.NON_SK_COMP_NAME) === this.SK_COMP_NAME)
-        || (this.SK_EXTEND_COMP_NAME && comp.SK_COMP_NAME === this.SK_COMP_NAME))) {
+      && ((comp.NON_SK_COMP_NAME && (Comp.SK_PROPS_PREFIX.toUpperCase() + comp.NON_SK_COMP_NAME) === this.SK_COMP_NAME) //Select -> SKSelect, Select -> SKRemoteSelect
+        || (this.SK_EXTEND_COMP_NAME && (comp.SK_COMP_NAME === this.SK_COMP_NAME //SKSelect -> SKFormSelect
+          || (comp.SK_EXTEND_COMP_NAME && comp.SK_EXTEND_COMP_NAME === this.SK_COMP_NAME))) //SKRemoteSelect -> SKFormRemoteSelect
+      )
+    ) {
       allowProps = allowProps.concat(Reacts.P.skVals());
       allowProps = comp.propTypes ? allowProps.concat(Object.keys(comp.propTypes)) : allowProps;
     }
