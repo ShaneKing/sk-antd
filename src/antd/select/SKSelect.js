@@ -34,7 +34,7 @@ export default class SKSelect extends AntdComp {
       } else {
         //option default object, clear is undefined
         //multiple will array, clear is empty array
-        this.n2m((option && _.isArray(option)) ? option.map(item => item.key) : undefined);
+        this.n2m(option ? (_.isArray(option) ? option.map(item => item.key) : option.key) : undefined);
       }
     };
   }
