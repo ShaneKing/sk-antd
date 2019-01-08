@@ -33,7 +33,7 @@ export default class SKPopover extends AntdComp {
     this.SK_COMP_NAME = SKPopover.SK_COMP_NAME;
     this.handleVisibleChange = (visible) => {
       if (this.props.onVisibleChange && _.isFunction(this.props.onVisibleChange)) {
-        this.props.onVisibleChange(this, visible);
+        this.props.onVisibleChange(visible);
       } else {
         this.n2m(visible);
       }

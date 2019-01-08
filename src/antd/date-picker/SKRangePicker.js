@@ -48,7 +48,7 @@ export default class SKRangePicker extends AntdComp {
     this.SK_COMP_NAME = SKRangePicker.SK_COMP_NAME;
     this.handleChange = (dateMoment, dateString) => {
       if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(this, dateMoment, dateString);
+        this.props.onChange(dateMoment, dateString);
       } else {
         this.n2m(dateMoment);
       }

@@ -16,7 +16,7 @@ export default class SKA extends HtmlComp {
     this.SK_COMP_NAME = SKA.SK_COMP_NAME;
     this.handleClick = (domEvent) => {
       if (this.props.onClick && _.isFunction(this.props.onClick)) {
-        this.props.onClick(this, domEvent);
+        this.props.onClick(domEvent);
       }
     };
   }

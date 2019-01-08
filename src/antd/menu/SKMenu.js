@@ -29,14 +29,14 @@ export default class SKMenu extends AntdComp {
     this.SK_COMP_NAME = SKMenu.SK_COMP_NAME;
     this.handleClick = (clickInfo) => {
       if (this.props.onClick && _.isFunction(this.props.onClick)) {
-        this.props.onClick(this, clickInfo);
+        this.props.onClick(clickInfo);
       } else {
         this.n2m([clickInfo.key]);
       }
     };
     this.handleOpenChange = (openKeys) => {
       if (this.props.onOpenChange && _.isFunction(this.props.onOpenChange)) {
-        this.props.onOpenChange(this, openKeys);
+        this.props.onOpenChange(openKeys);
       } else {
         this.skModel().skVal(this.props.openKeysId, openKeys);
       }

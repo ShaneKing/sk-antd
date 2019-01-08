@@ -46,7 +46,7 @@ export default class SKSwitch extends AntdComp {
     this.SK_COMP_NAME = SKSwitch.SK_COMP_NAME;
     this.handleChange = (checked) => {
       if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(this, checked);
+        this.props.onChange(checked);
       } else {
         this.n2m(checked);
       }

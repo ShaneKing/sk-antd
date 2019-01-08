@@ -57,7 +57,7 @@ export default class SKSqlCodeMirror extends Comp {
     this.SK_COMP_NAME = SKSqlCodeMirror.SK_COMP_NAME;
     this.handleChange = (value) => {
       if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(this, value);
+        this.props.onChange(value);
       } else {
         this.n2m(value);
       }
@@ -87,7 +87,7 @@ export default class SKSqlCodeMirror extends Comp {
   render() {
     const {compTag: CompTag} = this.props;
     let options = this.props.optionsId ? this.skModel().skVal(this.props.optionsId) : this.props.options;
-    options = SK.extendss(true, {}, SKSqlCodeMirror.defaultProps.options, options);
+    options = SK.extends(true, {}, SKSqlCodeMirror.defaultProps.options, options);
 
     return (
       <CompTag {...this.skTransProps2Self(CompTag)} onChange={this.handleChange} options={options} ref={refNode => this.codeMirrorDomRef = refNode} value={this.skVal()}>

@@ -30,7 +30,7 @@ export default class SKSelect extends AntdComp {
     this.SK_COMP_NAME = SKSelect.SK_COMP_NAME;
     this.handleChange = (value, option) => {
       if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(this, value, option);
+        this.props.onChange(value, option);
       } else {
         //option default object, clear is undefined
         //multiple will array, clear is empty array

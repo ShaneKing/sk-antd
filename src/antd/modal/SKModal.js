@@ -65,7 +65,7 @@ export default class SKModal extends AntdComp {
     this.SK_COMP_NAME = SKModal.SK_COMP_NAME;
     this.handleCancel = (domEvent) => {
       if (this.props.onCancel && _.isFunction(this.props.onCancel)) {
-        this.props.onCancel(this, domEvent);
+        this.props.onCancel(domEvent);
       } else {
         this.n2m(false);
       }

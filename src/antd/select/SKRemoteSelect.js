@@ -31,7 +31,7 @@ export default class SKRemoteSelect extends AntdComp {
     this.SK_EXTEND_COMP_NAME = SKRemoteSelect.SK_EXTEND_COMP_NAME;
     this.handleChange = (value, option) => {
       if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(this, value, option);
+        this.props.onChange(value, option);
       } else {
         //option default object, clear is undefined
         //multiple will array, clear is empty array
@@ -40,7 +40,7 @@ export default class SKRemoteSelect extends AntdComp {
     };
     this.handleSearch = (value) => {
       if (this.props.onSearch && _.isFunction(this.props.onSearch)) {
-        this.props.onSearch(this, value);
+        this.props.onSearch(value);
       }
     };
   }

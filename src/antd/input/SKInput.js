@@ -18,7 +18,7 @@ export default class SKInput extends AntdComp {
     this.SK_COMP_NAME = SKInput.SK_COMP_NAME;
     this.handleChange = (domEvent) => {
       if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(this, domEvent);
+        this.props.onChange(domEvent);
       } else {
         this.n2m(domEvent.target.value);
       }
