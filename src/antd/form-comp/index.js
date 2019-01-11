@@ -1,6 +1,7 @@
 export FormComp from './FormComp';
 export SKFormDatePicker from './SKFormDatePicker';
 export SKFormInput from './SKFormInput';
+export SKFormInputGroup from './SKFormInputGroup';
 export SKFormRangePicker from './SKFormRangePicker';
 export SKFormRemoteSelect from './SKFormRemoteSelect';
 export SKFormSelect from './SKFormSelect';
