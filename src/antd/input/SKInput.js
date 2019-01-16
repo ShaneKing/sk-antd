@@ -1,4 +1,5 @@
 import {Input} from 'antd';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import React from 'react';
 import {Mesgs, SK} from 'sk-js';
