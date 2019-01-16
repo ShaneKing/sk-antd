@@ -33,14 +33,16 @@ export default class SKDrawer extends AntdComp {
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Drawer.defaultProps, {
     compTag: Drawer,
   });
-  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Drawer.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Drawer.propTypes, {
+    ssClose: PropTypes.func,
+  });
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKDrawer.SK_COMP_NAME;
     this.handleClose = () => {
-      if (this.props.onClose && _.isFunction(this.props.onClose)) {
-        this.props.onClose(this);
+      if (this.props.ssClose && _.isFunction(this.props.ssClose)) {
+        this.props.ssClose(this);
       } else {
         this.n2m(false);
       }

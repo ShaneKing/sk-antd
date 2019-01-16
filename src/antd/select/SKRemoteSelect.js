@@ -23,6 +23,8 @@ export default class SKRemoteSelect extends AntdComp {
   });
   static propTypes = SK.extends(true, {}, AntdComp.propTypes, Select.OptGroup.propTypes, Select.Option.propTypes, OriginSelect.propTypes, {
     dataId: PropTypes.string.isRequired,
+    ssChange: PropTypes.func,
+    ssSearch: PropTypes.func,
   });
 
   constructor(...args) {
@@ -30,8 +32,8 @@ export default class SKRemoteSelect extends AntdComp {
     this.SK_COMP_NAME = SKRemoteSelect.SK_COMP_NAME;
     this.SK_EXTEND_COMP_NAME = SKRemoteSelect.SK_EXTEND_COMP_NAME;
     this.handleChange = (value, option) => {
-      if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(value, option);
+      if (this.props.ssChange && _.isFunction(this.props.ssChange)) {
+        this.props.ssChange(value, option);
       } else {
         //option default object, clear is undefined
         //multiple will array, clear is empty array
@@ -39,8 +41,8 @@ export default class SKRemoteSelect extends AntdComp {
       }
     };
     this.handleSearch = (value) => {
-      if (this.props.onSearch && _.isFunction(this.props.onSearch)) {
-        this.props.onSearch(value);
+      if (this.props.ssSearch && _.isFunction(this.props.ssSearch)) {
+        this.props.ssSearch(value);
       }
     };
   }

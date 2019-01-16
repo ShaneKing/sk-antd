@@ -28,14 +28,16 @@ export default class SKCheckbox extends AntdComp {
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Checkbox.defaultProps, {
     compTag: Checkbox,
   });
-  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Checkbox.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Checkbox.propTypes, {
+    ssChange: PropTypes.func,
+  });
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKCheckbox.SK_COMP_NAME;
     this.handleChange = (domEvent) => {
-      if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(domEvent);
+      if (this.props.ssChange && _.isFunction(this.props.ssChange)) {
+        this.props.ssChange(domEvent);
       } else {
         this.n2m(domEvent.target.checked);
       }

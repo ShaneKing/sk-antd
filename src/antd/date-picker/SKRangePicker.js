@@ -41,14 +41,16 @@ export default class SKRangePicker extends AntdComp {
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, RangePicker.defaultProps, {
     compTag: RangePicker,
   });
-  static propTypes = SK.extends(true, {}, AntdComp.propTypes, RangePicker.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, RangePicker.propTypes, {
+    ssChange: PropTypes.func,
+  });
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKRangePicker.SK_COMP_NAME;
     this.handleChange = (dateMoment, dateString) => {
-      if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(dateMoment, dateString);
+      if (this.props.ssChange && _.isFunction(this.props.ssChange)) {
+        this.props.ssChange(dateMoment, dateString);
       } else {
         this.n2m(dateMoment);
       }

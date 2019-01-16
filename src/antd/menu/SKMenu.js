@@ -22,21 +22,23 @@ export default class SKMenu extends AntdComp {
     dataId: PropTypes.string.isRequired,
     displayItem: PropTypes.func,
     openKeysId: PropTypes.string.isRequired,
+    ssClick: PropTypes.func,
+    ssOpenChange: PropTypes.func,
   });
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKMenu.SK_COMP_NAME;
     this.handleClick = (clickInfo) => {
-      if (this.props.onClick && _.isFunction(this.props.onClick)) {
-        this.props.onClick(clickInfo);
+      if (this.props.ssClick && _.isFunction(this.props.ssClick)) {
+        this.props.ssClick(clickInfo);
       } else {
         this.n2m([clickInfo.key]);
       }
     };
     this.handleOpenChange = (openKeys) => {
-      if (this.props.onOpenChange && _.isFunction(this.props.onOpenChange)) {
-        this.props.onOpenChange(openKeys);
+      if (this.props.ssOpenChange && _.isFunction(this.props.ssOpenChange)) {
+        this.props.ssOpenChange(openKeys);
       } else {
         this.skModel().skVal(this.props.openKeysId, openKeys);
       }

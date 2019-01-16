@@ -58,14 +58,16 @@ export default class SKModal extends AntdComp {
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Modal.defaultProps, {
     compTag: Modal,
   });
-  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Modal.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Modal.propTypes, {
+    ssCancel: PropTypes.func,
+  });
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKModal.SK_COMP_NAME;
     this.handleCancel = (domEvent) => {
-      if (this.props.onCancel && _.isFunction(this.props.onCancel)) {
-        this.props.onCancel(domEvent);
+      if (this.props.ssCancel && _.isFunction(this.props.ssCancel)) {
+        this.props.ssCancel(domEvent);
       } else {
         this.n2m(false);
       }

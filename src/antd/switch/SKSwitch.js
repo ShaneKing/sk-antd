@@ -39,14 +39,16 @@ export default class SKSwitch extends AntdComp {
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Switch.defaultProps, {
     compTag: Switch,
   });
-  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Switch.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Switch.propTypes, {
+    ssChange: PropTypes.func,
+  });
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKSwitch.SK_COMP_NAME;
     this.handleChange = (checked) => {
-      if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(checked);
+      if (this.props.ssChange && _.isFunction(this.props.ssChange)) {
+        this.props.ssChange(checked);
       } else {
         this.n2m(checked);
       }

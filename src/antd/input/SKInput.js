@@ -11,14 +11,16 @@ export default class SKInput extends AntdComp {
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, OriginInput.defaultProps, {
     compTag: Input,
   });
-  static propTypes = SK.extends(true, {}, AntdComp.propTypes, OriginInput.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, OriginInput.propTypes, {
+    ssChange: PropTypes.func,
+  });
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKInput.SK_COMP_NAME;
     this.handleChange = (domEvent) => {
-      if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(domEvent);
+      if (this.props.ssChange && _.isFunction(this.props.ssChange)) {
+        this.props.ssChange(domEvent);
       } else {
         this.n2m(domEvent.target.value);
       }

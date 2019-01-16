@@ -22,15 +22,16 @@ export default class SKSelect extends AntdComp {
     showSearch: true,
   });
   static propTypes = SK.extends(true, {}, AntdComp.propTypes, Select.OptGroup.propTypes, Select.Option.propTypes, OriginSelect.propTypes, {
-    dataId: PropTypes.string.isRequired
+    dataId: PropTypes.string.isRequired,
+    ssChange: PropTypes.func,
   });
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKSelect.SK_COMP_NAME;
     this.handleChange = (value, option) => {
-      if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(value, option);
+      if (this.props.ssChange && _.isFunction(this.props.ssChange)) {
+        this.props.ssChange(value, option);
       } else {
         //option default object, clear is undefined
         //multiple will array, clear is empty array

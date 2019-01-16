@@ -37,14 +37,16 @@ export default class SKDatePicker extends AntdComp {
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, DatePicker.defaultProps, {
     compTag: DatePicker,
   });
-  static propTypes = SK.extends(true, {}, AntdComp.propTypes, DatePicker.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, DatePicker.propTypes, {
+    ssChange: PropTypes.func,
+  });
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKDatePicker.SK_COMP_NAME;
     this.handleChange = (dateMoment, dateString) => {
-      if (this.props.onChange && _.isFunction(this.props.onChange)) {
-        this.props.onChange(dateMoment, dateString);
+      if (this.props.ssChange && _.isFunction(this.props.ssChange)) {
+        this.props.ssChange(dateMoment, dateString);
       } else {
         this.n2m(dateMoment);
       }

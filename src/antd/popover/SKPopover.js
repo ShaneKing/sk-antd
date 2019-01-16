@@ -26,14 +26,16 @@ export default class SKPopover extends AntdComp {
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Popover.defaultProps, {
     compTag: Popover,
   });
-  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Popover.propTypes, {});
+  static propTypes = SK.extends(true, {}, AntdComp.propTypes, Popover.propTypes, {
+    ssVisibleChange: PropTypes.func,
+  });
 
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKPopover.SK_COMP_NAME;
     this.handleVisibleChange = (visible) => {
-      if (this.props.onVisibleChange && _.isFunction(this.props.onVisibleChange)) {
-        this.props.onVisibleChange(visible);
+      if (this.props.ssVisibleChange && _.isFunction(this.props.ssVisibleChange)) {
+        this.props.ssVisibleChange(visible);
       } else {
         this.n2m(visible);
       }
