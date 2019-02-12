@@ -57,7 +57,7 @@
     "lodash": "4.17.11",
     "moment": "2.23.0",
     "prop-types": "15.6.2",
-    "react": "16.7.0",
+    "react": "16.8.1",
     "react-dom": "16.7.0",
     "sql-formatter": "2.3.2",
     "sk-js": "0.3.3"
