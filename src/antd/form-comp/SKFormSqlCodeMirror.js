@@ -2,7 +2,7 @@ import {SK} from 'sk-js';
 import FormComp from './FormComp';
 import SKSqlCodeMirror from '../../sk/SKSqlCodeMirror';
 
-export default class SKFormCodeMirror extends FormComp {
+export default class SKFormSqlCodeMirror extends FormComp {
   static SK_COMP_NAME = 'SKSqlCodeMirror';
   static SK_EXTEND_COMP_NAME = 'SKFormSqlCodeMirror';
   static defaultProps = SK.extends(true, {}, FormComp.defaultProps, SKSqlCodeMirror.defaultProps, {
@@ -12,7 +12,7 @@ export default class SKFormCodeMirror extends FormComp {
 
   constructor(...args) {
     super(...args);
-    this.SK_COMP_NAME = SKFormCodeMirror.SK_COMP_NAME;
-    this.SK_EXTEND_COMP_NAME = SKFormCodeMirror.SK_EXTEND_COMP_NAME;
+    this.SK_COMP_NAME = SKFormSqlCodeMirror.SK_COMP_NAME;
+    this.SK_EXTEND_COMP_NAME = SKFormSqlCodeMirror.SK_EXTEND_COMP_NAME;
   }
 }

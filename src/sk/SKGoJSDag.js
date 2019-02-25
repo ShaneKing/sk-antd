@@ -8,6 +8,8 @@ import Reacts from '../Reacts';
 
 const uuidv4 = require('uuid/v4');
 
+//a.ax = d[u.Da("7eba17a4ca3b1a8346")][u.Da("78a118b7")](d, u.wl, 4, 4);
+//a.ax= function(){return true;};
 export default class SKGoJSDag extends Comp {
   static SK_COMP_NAME = 'SKGoJSDag';
   static defaultProps = SK.extends(true, {}, Comp.defaultProps, {
@@ -33,16 +35,19 @@ export default class SKGoJSDag extends Comp {
         }),
         validCycle: go.Diagram.CycleNotDirected
       });
-    }
+    },
+    keyProp: 'id'
   });
   static propTypes = SK.extends(true, {}, Comp.propTypes, {
     createDiagramFunc: PropTypes.func.isRequired,
     diagramContextMenus: PropTypes.array,
     layoutStyle: PropTypes.object.isRequired,
+    linkDataArrayId: PropTypes.string.isRequired,
     nodeContextMenus: PropTypes.array,
+    nodeDataArrayId: PropTypes.string.isRequired,
     paletteNodeModels: PropTypes.array.isRequired,
     rootDivCls: PropTypes.string,
-    selectedId: PropTypes.string
+    keyProp: PropTypes.string.isRequired
   });
 
   constructor(...args) {
@@ -53,22 +58,22 @@ export default class SKGoJSDag extends Comp {
     this.overviewDomId = `${this.SK_COMP_NAME}_${_uniqueId}_overviewDomId`;
     this.paletteDomId = `${this.SK_COMP_NAME}_${_uniqueId}_paletteDomId`;
     this.nodeSelectionHandler = node => {
-      if (node.data.key) {
+      if (node.data[this.props.keyProp]) {
         // node.data.mouseSelected = SK.s4n(node.data.mouseSelected) + (node.isSelected ? 10 : -10);
         this.diagram.model.commit(m => {
           m.set(node.data, 'mouseSelected', SK.s4n(node.data.mouseSelected) + (node.isSelected ? 10 : -10));
         }, `selectionChanged ${node}`);
 
-        if (this.props.selectedId) {
-          let selectedKeys = this.skModel().skVal(this.props.selectedId);
+        if (this.getModelId()) {
+          let selectedKeys = this.m2n();
           if (node.isSelected) {
-            this.skModel().skVal(this.props.selectedId, [...selectedKeys, node.key]);
+            this.n2m([...selectedKeys, node.key]);
           } else {
             const nodeIndexToRemove = selectedKeys.findIndex(key => key === node.key);
             if (nodeIndexToRemove === -1) {
               return;
             }
-            this.skModel().skVal(this.props.selectedId, [...selectedKeys.slice(0, nodeIndexToRemove), ...selectedKeys.slice(nodeIndexToRemove + 1)]);
+            this.n2m([...selectedKeys.slice(0, nodeIndexToRemove), ...selectedKeys.slice(nodeIndexToRemove + 1)]);
           }
         }
       }
@@ -89,14 +94,14 @@ export default class SKGoJSDag extends Comp {
 
     this.diagram.nodeTemplate = go.GraphObject.make(go.Node, 'Spot', {
         mouseEnter: (e, node) => {
-          if (node.data.key) {
+          if (node.data[this.props.keyProp]) {
             this.diagram.model.commit(m => {
               m.set(node.data, 'mouseSelected', SK.s4n(node.data.mouseSelected) + 1);
             }, `mouseEnter ${node}`);
           }
         },
         mouseLeave: (e, node) => {
-          if (node.data.key) {
+          if (node.data[this.props.keyProp]) {
             this.diagram.model.commit(m => {
               m.set(node.data, 'mouseSelected', SK.s4n(node.data.mouseSelected) - 1);
             }, `mouseLeave ${node}`);
@@ -202,7 +207,7 @@ export default class SKGoJSDag extends Comp {
           )
         )
       ),
-      model: new go.GraphLinksModel(this.props.paletteNodeModels)
+      model: go.GraphObject.make(go.GraphLinksModel, {nodeKeyProperty: this.props.keyProp, nodeDataArray: this.props.paletteNodeModels})
     });
     this.overview = go.GraphObject.make(go.Overview, this.overviewDomId, {
       observed: this.diagram,
@@ -212,11 +217,15 @@ export default class SKGoJSDag extends Comp {
       return (
         this.diagram.toolManager.linkingTool.isValidCycle(fn, tn) &&
         this.diagram.model.linkDataArray.find(ele => {
-          return ele.from === fn.data.key && ele.to === tn.data.key;
+          return ele.from === fn.data[this.props.keyProp] && ele.to === tn.data[this.props.keyProp];
         }) === undefined
       );
     };
-    this.diagram.model = go.GraphObject.make(go.GraphLinksModel, this.m2n());
+    this.diagram.model = go.GraphObject.make(go.GraphLinksModel, {
+      linkDataArray: this.skModel().skVal(this.props.linkDataArrayId),
+      nodeKeyProperty: this.props.keyProp,
+      nodeDataArray: this.skModel().skVal(this.props.nodeDataArrayId)
+    });
     this.diagram.model.copiesKey = false;
     this.diagram.model.makeUniqueKeyFunction = (model, objectData) => {
       return uuidv4();
