@@ -31,7 +31,6 @@ export default class SKGoJSDag extends Comp {
     keyProp: 'id'
   });
   static propTypes = SK.extends(true, {}, Comp.propTypes, {
-    createDiagramFunc: PropTypes.func.isRequired,
     diagramContextMenus: PropTypes.array,
     diagramProps: PropTypes.object.isRequired,
     layoutProps: PropTypes.object.isRequired,
