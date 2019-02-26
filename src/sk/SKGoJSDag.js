@@ -76,7 +76,7 @@ export default class SKGoJSDag extends Comp {
     super.componentDidMount();
     let that = this;
 
-    that.diagram = go.GraphObject.make(go.Diagram, diagramDomId, {...that.props.diagramProps, layout: go.GraphObject.make(go.TreeLayout, that.props.layoutProps)});
+    that.diagram = go.GraphObject.make(go.Diagram, that.diagramDomId, {...that.props.diagramProps, layout: go.GraphObject.make(go.TreeLayout, that.props.layoutProps)});
     if (that.props.diagramContextMenus) {
       that.diagram.contextMenu = go.GraphObject.make('ContextMenu',
         that.props.diagramContextMenus.map((menuCfg) => {
