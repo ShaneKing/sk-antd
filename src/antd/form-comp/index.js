@@ -1,5 +1,6 @@
 export FormComp from './FormComp';
 export SKFormDatePicker from './SKFormDatePicker';
+export SKFormGoJSDag from './SKFormGoJSDag';
 export SKFormInput from './SKFormInput';
 export SKFormInputGroup from './SKFormInputGroup';
 export SKFormRangePicker from './SKFormRangePicker';
