@@ -8,8 +8,8 @@ import Reacts from '../Reacts';
 
 const uuidv4 = require('uuid/v4');
 
-//a.ax = d[u.Da("7eba17a4ca3b1a8346")][u.Da("78a118b7")](d, u.wl, 4, 4);
-//a.ax= function(){return true;};
+//a.$q=b.V[Za("7eba17a4ca3b1a8346")][Za("78a118b7")](b.V,yk,4,4);
+//a.$q=function(){return true;};
 export default class SKGoJSDag extends Comp {
   static SK_COMP_NAME = 'SKGoJSDag';
   static defaultProps = SK.extends(true, {}, Comp.defaultProps, {
@@ -51,12 +51,13 @@ export default class SKGoJSDag extends Comp {
     this.overviewDomId = `${this.SK_COMP_NAME}_${_uniqueId}_overviewDomId`;
     this.paletteDomId = `${this.SK_COMP_NAME}_${_uniqueId}_paletteDomId`;
     this.nodeSelectionHandler = node => {
+      //node.data[this.props.keyProp] always equals node.key
       if (node.data[this.props.keyProp]) {
         this.diagram.model.commit(m => {
           m.set(node.data, 'mouseSelected', SK.s4n(node.data.mouseSelected) + (node.isSelected ? 10 : -10));
         }, `selectionChanged ${node}`);
 
-        if (this.getModelId()) {
+        if (this.getModelId() && node.key > 0) {
           let selectedKeys = this.m2n();
           if (node.isSelected) {
             this.n2m([...selectedKeys, node.key]);
@@ -186,7 +187,7 @@ export default class SKGoJSDag extends Comp {
           )
         )
       ),
-      model: go.GraphObject.make(go.GraphLinksModel, {nodeKeyProperty: that.props.keyProp, nodeDataArray: that.props.paletteNodeModels})
+      model: go.GraphObject.make(go.GraphLinksModel, {copiesKey: false, nodeKeyProperty: that.props.keyProp, nodeDataArray: that.props.paletteNodeModels})
     });
     that.overview = go.GraphObject.make(go.Overview, that.overviewDomId, {
       observed: that.diagram,
