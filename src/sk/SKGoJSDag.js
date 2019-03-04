@@ -335,7 +335,7 @@ export default class SKGoJSDag extends Comp {
 
   render() {
     const {compTag: CompTag, rootDivCls} = this.props;
-    let layoutStyle = SK.extends(true, {}, SKGoJSDag.defaultProps.layoutStyle, that.props.layoutStyle);
+    let layoutStyle = SK.extends(true, {}, SKGoJSDag.defaultProps.layoutStyle, this.props.layoutStyle);
 
     return (
       <CompTag className={rootDivCls} style={{display: 'flex', flexFlow: 'row'}}>

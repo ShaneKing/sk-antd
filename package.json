@@ -1,7 +1,7 @@
 {
   "name": "sk-antd",
   "description": "ShaneKing for AntD",
-  "version": "0.1.65",
+  "version": "0.1.66",
   "homepage": "https://github.com/ShaneKing/sk-antd",
   "license": "Apache-2.0",
   "author": {
@@ -60,7 +60,7 @@
     "prop-types": "15.7.2",
     "react": "16.8.3",
     "react-dom": "16.8.3",
-    "sk-js": "0.3.8",
+    "sk-js": "0.3.9",
     "sql-formatter": "2.3.2"
   },
   "devDependencies": {
