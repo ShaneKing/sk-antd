@@ -6,8 +6,6 @@ import {SK} from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
-const uuidv4 = require('uuid/v4');
-
 //a.$q=b.V[Za("7eba17a4ca3b1a8346")][Za("78a118b7")](b.V,yk,4,4);
 //a.$q=function(){return true;};
 export default class SKGoJSDag extends Comp {
@@ -28,19 +26,20 @@ export default class SKGoJSDag extends Comp {
     layoutProps: {
       angle: 90
     },
+    layoutStyle: {backgroundColor: '#f0f2f5', leftWidth: '128px'},
     keyProp: 'id'
   });
   static propTypes = SK.extends(true, {}, Comp.propTypes, {
     diagramContextMenus: PropTypes.array,
-    diagramProps: PropTypes.object.isRequired,
-    layoutProps: PropTypes.object.isRequired,
-    layoutStyle: PropTypes.object.isRequired,
+    diagramProps: PropTypes.object,
+    layoutProps: PropTypes.object,
+    layoutStyle: PropTypes.object,
     linkDataArrayId: PropTypes.string.isRequired,
     nodeContextMenus: PropTypes.array,
     nodeDataArrayId: PropTypes.string.isRequired,
     paletteNodeModels: PropTypes.array.isRequired,
     rootDivCls: PropTypes.string,
-    keyProp: PropTypes.string.isRequired
+    keyProp: PropTypes.string
   });
 
   constructor(...args) {
@@ -76,8 +75,10 @@ export default class SKGoJSDag extends Comp {
   componentDidMount() {
     super.componentDidMount();
     let that = this;
+    let diagramProps = SK.extends(true, {}, SKGoJSDag.defaultProps.diagramProps, that.props.diagramProps);
+    let layoutProps = SK.extends(true, {}, SKGoJSDag.defaultProps.layoutProps, that.props.layoutProps);
 
-    that.diagram = go.GraphObject.make(go.Diagram, that.diagramDomId, {...that.props.diagramProps, layout: go.GraphObject.make(go.TreeLayout, that.props.layoutProps)});
+    that.diagram = go.GraphObject.make(go.Diagram, that.diagramDomId, {...diagramProps, layout: go.GraphObject.make(go.TreeLayout, ...layoutProps)});
     if (that.props.diagramContextMenus) {
       that.diagram.contextMenu = go.GraphObject.make('ContextMenu',
         that.props.diagramContextMenus.map((menuCfg) => {
@@ -208,7 +209,7 @@ export default class SKGoJSDag extends Comp {
     });
     that.diagram.model.copiesKey = false;
     that.diagram.model.makeUniqueKeyFunction = (model, objectData) => {
-      return uuidv4();
+      return SK.uuidShort();
     };
     //https://gojs.net/latest/intro/legends.html#StaticParts
     //layerName: Grid -> Background -> XXX -> Foreground -> Adornment -> Tool
@@ -333,7 +334,8 @@ export default class SKGoJSDag extends Comp {
   }
 
   render() {
-    const {compTag: CompTag, layoutStyle, rootDivCls} = this.props;
+    const {compTag: CompTag, rootDivCls} = this.props;
+    let layoutStyle = SK.extends(true, {}, SKGoJSDag.defaultProps.layoutStyle, that.props.layoutStyle);
 
     return (
       <CompTag className={rootDivCls} style={{display: 'flex', flexFlow: 'row'}}>

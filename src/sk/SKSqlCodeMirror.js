@@ -49,6 +49,7 @@ export default class SKSqlCodeMirror extends Comp {
   });
   static propTypes = SK.extends(true, {}, Comp.propTypes, CodeMirror.propTypes, {
     formatId: PropTypes.string,
+    hintOptionsId: PropTypes.string,
     optionsId: PropTypes.string
   });
 
@@ -74,20 +75,20 @@ export default class SKSqlCodeMirror extends Comp {
 
   addExtendChangedMonitor() {
     super.addExtendChangedMonitor();
-    this.addChangedMonitor(this.props.optionsId);
+    this.addChangedMonitor(this.props.hintOptionsId);
     this.skModel().addIdChangedListener(this.props.formatId, this.handleFormat);
   }
 
   rmvExtendChangedMonitor() {
     super.rmvExtendChangedMonitor();
-    this.rmvChangedMonitor(this.props.optionsId);
+    this.rmvChangedMonitor(this.props.hintOptionsId);
     this.skModel().rmvIdChangedListener(this.props.formatId, this.handleFormat);
   }
 
   render() {
     const {compTag: CompTag} = this.props;
-    let options = this.props.optionsId ? this.skModel().skVal(this.props.optionsId) : this.props.options;
-    options = SK.extends(true, {}, SKSqlCodeMirror.defaultProps.options, options);
+    let options = SK.extends(true, {}, SKSqlCodeMirror.defaultProps.options, this.props.options);
+    options = this.props.hintOptionsId ? SK.extends(true, {}, options, {hintOptions: this.skModel().skVal(this.props.hintOptionsId)}) : options;
 
     return (
       <CompTag {...this.skTransProps2Self(CompTag)} onChange={this.handleChange} options={options} ref={refNode => this.codeMirrorDomRef = refNode} value={this.skVal()}>
