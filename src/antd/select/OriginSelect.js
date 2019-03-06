@@ -81,6 +81,6 @@ export default class OriginSelect {
   static defaultProps = SK.extends(true, {}, Select.defaultProps, {});
   static propTypes = SK.extends(true, {}, Select.propTypes, {});
   static optionMap = (selectOption) => {
-    return selectOption.label ? <Select.OptGroup key={selectOption.id} label={selectOption.label}/> : <Select.Option key={selectOption.id}>{selectOption.text}</Select.Option>;
+    return selectOption.label ? <Select.OptGroup key={selectOption.id} label={selectOption.label}/> : <Select.Option key={selectOption.id} disabled={selectOption.disabled}>{selectOption.text}</Select.Option>;
   }
 }

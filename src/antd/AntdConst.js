@@ -20,11 +20,10 @@ export const Dir = {
   Inline: 'inline',
   Vertical: 'vertical',
 };
-export const ICON_TYPE = {
-  Down: 'down',
-  Up: 'up',
-  User: 'user',
-  Lock: 'lock',
+export const ICON_THEME = {
+  Filled: 'filled',
+  Outlined: 'outlined',
+  TwoTone: 'twoTone',
 };
 export const INPUT_TYPE = {
   Password: 'password',
@@ -71,6 +70,7 @@ export const SELECT_MODES = {
 };
 export const SHAPE = {
   Circle: 'circle',
+  Round: 'round',
   Square: 'square',
 };
 export const SIZE = {

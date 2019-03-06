@@ -84,6 +84,7 @@ export default class SKRemoteSelect extends AntdComp {
       <CompTag
         {...this.skTransProps2Self(CompTag)}
         onChange={this.handleChange}
+        onSearch={this.handleSearch}
         placeholder={placeholder || Mesgs.get('Please_select')}
         value={this.m2n()}
         getPopupContainer={triggerNode => triggerNode.parentNode}

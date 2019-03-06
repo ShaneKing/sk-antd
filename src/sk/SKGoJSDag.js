@@ -78,7 +78,7 @@ export default class SKGoJSDag extends Comp {
     let diagramProps = SK.extends(true, {}, SKGoJSDag.defaultProps.diagramProps, that.props.diagramProps);
     let layoutProps = SK.extends(true, {}, SKGoJSDag.defaultProps.layoutProps, that.props.layoutProps);
 
-    that.diagram = go.GraphObject.make(go.Diagram, that.diagramDomId, {...diagramProps, layout: go.GraphObject.make(go.TreeLayout, ...layoutProps)});
+    that.diagram = go.GraphObject.make(go.Diagram, that.diagramDomId, {...diagramProps, layout: go.GraphObject.make(go.TreeLayout, layoutProps)});
     if (that.props.diagramContextMenus) {
       that.diagram.contextMenu = go.GraphObject.make('ContextMenu',
         that.props.diagramContextMenus.map((menuCfg) => {
@@ -121,7 +121,7 @@ export default class SKGoJSDag extends Comp {
         go.GraphObject.make(go.Panel, 'Horizontal',
           go.GraphObject.make(go.Picture, {maxSize: new go.Size(16, 16), width: 16},
             new go.Binding('source', 'type', (v, n) => {
-              return `/svg/${v}.svg`;
+              return `/png/${v}.png`;
             })
           ),
           go.GraphObject.make(go.TextBlock, {margin: 6, editable: true},
@@ -129,7 +129,7 @@ export default class SKGoJSDag extends Comp {
           ),
           go.GraphObject.make(go.Picture, {maxSize: new go.Size(16, 16), width: 16},
             new go.Binding('source', 'status', (v, n) => {
-              return `/svg/${v}.svg`;
+              return `/png/${v}.png`;
             })
           )
         )
@@ -174,7 +174,7 @@ export default class SKGoJSDag extends Comp {
           go.GraphObject.make(go.Shape, 'RoundedRectangle', {fill: 'rgba(255, 255, 255, 0.5)', stroke: 'rgba(215, 57, 37, 0.5)', strokeWidth: 1}),
           go.GraphObject.make(go.Panel, 'Horizontal', go.GraphObject.make(go.Picture, {maxSize: new go.Size(16, 16), width: 16},
             new go.Binding('source', 'type', (v, n) => {
-              return `/svg/${v}.svg`;
+              return `/png/${v}.png`;
             })
             ),
             go.GraphObject.make(go.TextBlock, {margin: 6, editable: true},
@@ -182,7 +182,7 @@ export default class SKGoJSDag extends Comp {
             ),
             go.GraphObject.make(go.Picture, {maxSize: new go.Size(16, 16), width: 16},
               new go.Binding('source', 'status', (v, n) => {
-                return `/svg/${v}.svg`;
+                return `/png/${v}.png`;
               })
             )
           )

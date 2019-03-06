@@ -6,6 +6,8 @@ import {SIZE} from '../AntdConst';
 import Reacts from '../../Reacts';
 
 Button.defaultProps = SK.extends(true, {}, {
+  block: false,
+  // disabled: false,//Comp
   ghost: false,
   htmlType: Reacts.TAG.button,
   loading: false,
@@ -14,7 +16,10 @@ Button.defaultProps = SK.extends(true, {}, {
 
 Button.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/button-cn/#API
+  block: PropTypes.bool,
+  // disabled: PropTypes.bool,//Comp
   ghost: PropTypes.bool,
+  href: PropTypes.string,
   htmlType: PropTypes.string,
   icon: PropTypes.string,
   loading: PropTypes.oneOfType([
@@ -23,10 +28,9 @@ Button.propTypes = SK.extends(true, {}, {
   ]),
   shape: PropTypes.string,
   size: PropTypes.string,
+  target: PropTypes.string,
   type: PropTypes.string,
   onClick: PropTypes.func,
-  href: PropTypes.string,
-  target: PropTypes.string,
 }, Button.propTypes, {});
 
 Button.NON_SK_COMP_NAME = 'Button';
