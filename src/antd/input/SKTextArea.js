@@ -1,7 +1,9 @@
 import {Input} from 'antd';
 import PropTypes from 'prop-types';
-import {SK} from 'sk-js';
+import {Mesgs, SK} from 'sk-js';
 import AntdComp from './../AntdComp';
+import _ from 'lodash';
+import React from 'react';
 
 const {TextArea} = Input;
 
@@ -30,5 +32,27 @@ export default class SKTextArea extends AntdComp {
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKTextArea.SK_COMP_NAME;
+    this.handleChange = (domEvent) => {
+      if (this.props.ssChange && _.isFunction(this.props.ssChange)) {
+        this.props.ssChange(domEvent);
+      } else {
+        this.n2m(domEvent.target.value);
+      }
+    };
+  }
+
+  renderComp() {
+    const {compTag: CompTag, placeholder} = this.props;
+
+    return (
+      <CompTag
+        {...this.skTransProps2Self(CompTag)}
+        onChange={this.handleChange}
+        placeholder={placeholder || Mesgs.get('Please_input')}
+        value={this.m2n()}
+      >
+        {this.skTransProps2Child()}
+      </CompTag>
+    );
   }
 }

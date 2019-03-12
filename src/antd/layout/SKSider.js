@@ -25,11 +25,13 @@ Sider.propTypes = SK.extends(true, {}, {
   defaultCollapsed: PropTypes.bool,
   reverseArrow: PropTypes.bool,
   style: PropTypes.object,
+  theme: PropTypes.string,
   trigger: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
   ]),
   width: PropTypes.number,
+  onBreakpoint: PropTypes.func,
   onCollapse: PropTypes.func,
 }, OriginLayout.propTypes, Sider.propTypes, {});
 

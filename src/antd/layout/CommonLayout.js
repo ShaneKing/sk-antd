@@ -6,6 +6,7 @@ export default class CommonLayout {
   static propTypes = SK.extends(true, {}, {
     //https://ant.design/components/layout-cn/#Layout
     className: PropTypes.string,
+    hasSider: PropTypes.bool,
     style: PropTypes.object,
   }, {});
 }
