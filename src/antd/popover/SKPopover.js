@@ -1,8 +1,7 @@
 import {Popover} from 'antd';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import CommonTip from '../tooltip/CommonTip';
 
@@ -34,7 +33,7 @@ export default class SKPopover extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKPopover.SK_COMP_NAME;
     this.handleVisibleChange = (visible) => {
-      if (this.props.ssVisibleChange && _.isFunction(this.props.ssVisibleChange)) {
+      if (this.props.ssVisibleChange && Proxy0._.isFunction(this.props.ssVisibleChange)) {
         this.props.ssVisibleChange(visible);
       } else {
         this.n2m(visible);

@@ -1,5 +1,5 @@
 //https://github.com/JedWatson/react-codemirror/blob/master/src/Codemirror.js
-import _ from 'lodash';
+import {Proxy0} from 'sk-js';
 
 const React = require('react');
 const ReactDOM = require('react-dom');
@@ -42,7 +42,7 @@ const CodeMirror = createReactClass({
     };
   },
   componentWillMount() {
-    this.componentWillReceiveProps = _.debounce(this.componentWillReceiveProps, 0);
+    this.componentWillReceiveProps = Proxy0._.debounce(this.componentWillReceiveProps, 0);
   },
   componentDidMount() {
     const codeMirrorInstance = this.getCodeMirrorInstance();
@@ -81,7 +81,7 @@ const CodeMirror = createReactClass({
   },
   setOptionIfChanged(optionName, newValue) {
     const oldValue = this.codeMirror.getOption(optionName);
-    if (!_.isEqual(oldValue, newValue)) {
+    if (!Proxy0._.isEqual(oldValue, newValue)) {
       this.codeMirror.setOption(optionName, newValue);
     }
   },

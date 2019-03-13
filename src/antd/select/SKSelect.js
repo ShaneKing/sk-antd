@@ -1,8 +1,7 @@
 import {Select} from 'antd';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Mesgs, SK} from 'sk-js';
+import {Mesgs, Proxy0, SK} from 'sk-js';
 import OriginSelect from './OriginSelect';
 import AntdComp from '../AntdComp';
 import {SELECT_MODE} from '../AntdConst';
@@ -30,12 +29,12 @@ export default class SKSelect extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKSelect.SK_COMP_NAME;
     this.handleChange = (value, option) => {
-      if (this.props.ssChange && _.isFunction(this.props.ssChange)) {
+      if (this.props.ssChange && Proxy0._.isFunction(this.props.ssChange)) {
         this.props.ssChange(value, option);
       } else {
         //option default object, clear is undefined
         //multiple will array, clear is empty array
-        this.n2m(option ? (_.isArray(option) ? option.map(item => item.key) : option.key) : undefined);
+        this.n2m(option ? (Proxy0._.isArray(option) ? option.map(item => item.key) : option.key) : undefined);
       }
     };
   }

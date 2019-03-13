@@ -1,7 +1,7 @@
 {
   "name": "sk-antd",
   "description": "ShaneKing for AntD",
-  "version": "0.1.71",
+  "version": "0.1.72",
   "homepage": "https://github.com/ShaneKing/sk-antd",
   "license": "Apache-2.0",
   "author": {
@@ -24,7 +24,11 @@
   ],
   "files": [
     "lib",
-    "LICENSE"
+    "public",
+    "src",
+    ".editorconfig",
+    "LICENSE",
+    "README.md"
   ],
   "main": "lib/index.js",
   "keywords": [
@@ -33,7 +37,8 @@
     "ShaneKing"
   ],
   "directories": {
-    "lib": "lib/"
+    "lib": "./lib",
+    "main": "./lib/index.js"
   },
   "scripts": {
     "build": "rm -rf lib && babel src -d lib",
@@ -53,14 +58,11 @@
     "element-resize-event": "3.0.3",
     "gojs": "2.0.3",
     "jdenticon": "2.1.1",
-    "jquery": "3.3.1",
-    "js-md5": "0.7.3",
-    "lodash": "4.17.11",
     "moment": "2.24.0",
     "prop-types": "15.7.2",
     "react": "16.8.4",
     "react-dom": "16.8.4",
-    "sk-js": "0.3.10",
+    "sk-js": "0.3.12",
     "sql-formatter": "2.3.2"
   },
   "devDependencies": {

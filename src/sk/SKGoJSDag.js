@@ -1,8 +1,7 @@
 import * as go from 'gojs';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
@@ -45,7 +44,7 @@ export default class SKGoJSDag extends Comp {
   constructor(...args) {
     super(...args);
     this.SK_COMP_NAME = SKGoJSDag.SK_COMP_NAME;
-    const _uniqueId = _.uniqueId();
+    const _uniqueId = Proxy0._.uniqueId();
     this.diagramDomId = `${this.SK_COMP_NAME}_${_uniqueId}_diagramDomId`;
     this.overviewDomId = `${this.SK_COMP_NAME}_${_uniqueId}_overviewDomId`;
     this.paletteDomId = `${this.SK_COMP_NAME}_${_uniqueId}_paletteDomId`;

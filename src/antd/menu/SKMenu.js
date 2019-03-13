@@ -1,8 +1,7 @@
 import {Menu} from 'antd';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import OriginMenu from './OriginMenu';
 import SKMenuItem from './SKMenuItem';
 import SKSubMenu from './SKSubMenu';
@@ -30,14 +29,14 @@ export default class SKMenu extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKMenu.SK_COMP_NAME;
     this.handleClick = (clickInfo) => {
-      if (this.props.ssClick && _.isFunction(this.props.ssClick)) {
+      if (this.props.ssClick && Proxy0._.isFunction(this.props.ssClick)) {
         this.props.ssClick(clickInfo);
       } else {
         this.n2m([clickInfo.key]);
       }
     };
     this.handleOpenChange = (openKeys) => {
-      if (this.props.ssOpenChange && _.isFunction(this.props.ssOpenChange)) {
+      if (this.props.ssOpenChange && Proxy0._.isFunction(this.props.ssOpenChange)) {
         this.props.ssOpenChange(openKeys);
       } else {
         this.skModel().skVal(this.props.openKeysId, openKeys);
@@ -48,7 +47,7 @@ export default class SKMenu extends AntdComp {
 
       let rtnMenu = undefined;
       if (displayItem && displayItem(itemInfo)) {
-        if (itemInfo.children && !_.isEmpty(itemInfo.children)) {
+        if (itemInfo.children && !Proxy0._.isEmpty(itemInfo.children)) {
           // {...this.skTransProps2Self(SKSubMenu)} // deleted it for fixed horizontal
           rtnMenu = (<SKSubMenu
             eventKey={itemInfo.router}

@@ -1,9 +1,7 @@
 import CountUp from 'countup.js';
-import $ from 'jquery';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
@@ -63,7 +61,7 @@ export default class SKCountUp extends Comp {
   shouldComponentUpdate(nextProps, nextState) {
     return this.props.duration !== nextProps.duration ||
       this.props.end !== nextProps.end ||
-      $(this.countupDomRef).text() !== this.skVal().skCurrencyFmt(nextProps.decimals) ||
+      Proxy0.$any(this.countupDomRef).text() !== this.skVal().skCurrencyFmt(nextProps.decimals) ||
       this.props.start !== nextProps.start;
   }
 
@@ -109,7 +107,7 @@ export default class SKCountUp extends Comp {
         },
       );
 
-      if (_.isFunction(onStart)) {
+      if (Proxy0._.isFunction(onStart)) {
         onStart();
       }
 

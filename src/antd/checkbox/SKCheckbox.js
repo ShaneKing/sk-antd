@@ -1,8 +1,7 @@
 import {Checkbox} from 'antd';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
 Checkbox.defaultProps = SK.extends(true, {}, {
@@ -36,7 +35,7 @@ export default class SKCheckbox extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKCheckbox.SK_COMP_NAME;
     this.handleChange = (domEvent) => {
-      if (this.props.ssChange && _.isFunction(this.props.ssChange)) {
+      if (this.props.ssChange && Proxy0._.isFunction(this.props.ssChange)) {
         this.props.ssChange(domEvent);
       } else {
         this.n2m(domEvent.target.checked);

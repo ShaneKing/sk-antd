@@ -1,7 +1,6 @@
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Model, SK} from 'sk-js';
+import {Model, Proxy0, SK} from 'sk-js';
 import {SIZE} from './AntdConst';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
@@ -67,7 +66,7 @@ export default class AntdComp extends Comp {
     if (this.monitors.indexOf(idOrReg) < 0) {
       this.monitors.push(idOrReg);
     }
-    if (_.isRegExp(idOrReg)) {
+    if (Proxy0._.isRegExp(idOrReg)) {
       this.skModel().addRegErroredListener(idOrReg, this.updateUI);
     } else {
       this.skModel().addIdErroredListener(idOrReg, this.updateUI);
@@ -84,7 +83,7 @@ export default class AntdComp extends Comp {
   }
 
   rmvErroredMonitor(idOrReg) {
-    if (_.isRegExp(idOrReg)) {
+    if (Proxy0._.isRegExp(idOrReg)) {
       this.skModel().rmvRegErroredListener(idOrReg, this.updateUI);
     } else {
       this.skModel().rmvIdErroredListener(idOrReg, this.updateUI);

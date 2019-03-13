@@ -1,10 +1,9 @@
 //https://github.com/ecomfe/echarts
-import _ from 'lodash';
 import echarts from 'echarts';
 import elementResizeEvent from 'element-resize-event';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
@@ -44,7 +43,7 @@ export default class SKECharts extends Comp {
     const echartsIns = this.renderEChartDom();
     this.bindEvents(echartsIns, this.props.onEvents);
     // on chart ready
-    if (_.isFunction(this.props.onChartReady)) {
+    if (Proxy0._.isFunction(this.props.onChartReady)) {
       this.props.onChartReady(echartsIns);
     }
 
@@ -77,7 +76,7 @@ export default class SKECharts extends Comp {
   bindEvents(instance, events) {
     const _loop = function _loop(eventName) {
       // ignore the event config which not satisfy
-      if (_.isString(eventName) && _.isFunction(events[eventName])) {
+      if (Proxy0._.isString(eventName) && Proxy0._.isFunction(events[eventName])) {
         // binding event
         instance.off(eventName);
         instance.on(eventName, (param) => {
@@ -118,7 +117,7 @@ export default class SKECharts extends Comp {
 
   render() {
     const {compTag: CompTag, style} = this.props;
-    let styled = _.isEmpty(style) ? {height: '300px', width: '100%'} : style;
+    let styled = Proxy0._.isEmpty(style) ? {height: '300px', width: '100%'} : style;
 
     return (
       <CompTag

@@ -1,8 +1,7 @@
 import {Switch} from 'antd';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import {SIZE} from '../AntdConst';
 
@@ -47,7 +46,7 @@ export default class SKSwitch extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKSwitch.SK_COMP_NAME;
     this.handleChange = (checked) => {
-      if (this.props.ssChange && _.isFunction(this.props.ssChange)) {
+      if (this.props.ssChange && Proxy0._.isFunction(this.props.ssChange)) {
         this.props.ssChange(checked);
       } else {
         this.n2m(checked);

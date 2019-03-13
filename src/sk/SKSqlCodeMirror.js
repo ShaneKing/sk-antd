@@ -1,7 +1,6 @@
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Mesgs, SK} from 'sk-js';
+import {Mesgs, Proxy0, SK} from 'sk-js';
 import sqlFormatter from 'sql-formatter';
 import Comp from '../Comp';
 import CodeMirror from '../3/Codemirror';
@@ -57,7 +56,7 @@ export default class SKSqlCodeMirror extends Comp {
     super(...args);
     this.SK_COMP_NAME = SKSqlCodeMirror.SK_COMP_NAME;
     this.handleChange = (value) => {
-      if (this.props.onChange && _.isFunction(this.props.onChange)) {
+      if (this.props.onChange && Proxy0._.isFunction(this.props.onChange)) {
         this.props.onChange(value);
       } else {
         this.n2m(value);

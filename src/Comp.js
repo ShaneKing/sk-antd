@@ -1,7 +1,6 @@
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Model, SK} from 'sk-js';
+import {Model, Proxy0, SK} from 'sk-js';
 import Reacts from './Reacts';
 
 export default class Comp extends React.Component {
@@ -110,7 +109,7 @@ export default class Comp extends React.Component {
     this.SK_COMP_NAME = Comp.SK_COMP_NAME;
     this.monitors = [];
     this.updateUI = (evt) => {
-      this.setState({stateUid: _.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX)});
+      this.setState({stateUid: Proxy0._.uniqueId(Comp.SK_COMP_STATE_ID_PREFIX)});
     };
   }
 
@@ -121,11 +120,11 @@ export default class Comp extends React.Component {
   }
 
   static ksPropsFilter(k) {
-    return _.startsWith(SK.s4s(k), Comp.KS_PROPS_PREFIX);
+    return Proxy0._.startsWith(SK.s4s(k), Comp.KS_PROPS_PREFIX);
   }
 
   static skPropsFilter(k) {
-    return _.startsWith(SK.s4s(k), Comp.SK_PROPS_PREFIX);
+    return Proxy0._.startsWith(SK.s4s(k), Comp.SK_PROPS_PREFIX);
   }
 
   // react
@@ -175,11 +174,11 @@ export default class Comp extends React.Component {
   }
 
   addChangedMonitor(idOrReg) {
-    if (!_.isNil(idOrReg)) {
+    if (!Proxy0._.isNil(idOrReg)) {
       if (this.monitors.indexOf(idOrReg) < 0) {
         this.monitors.push(idOrReg);
       }
-      if (_.isRegExp(idOrReg)) {
+      if (Proxy0._.isRegExp(idOrReg)) {
         this.skModel().addRegChangedListener(idOrReg, this.updateUI);
       } else {
         this.skModel().addIdChangedListener(idOrReg, this.updateUI);
@@ -198,7 +197,7 @@ export default class Comp extends React.Component {
   }
 
   rmvChangedMonitor(idOrReg) {
-    if (_.isRegExp(idOrReg)) {
+    if (Proxy0._.isRegExp(idOrReg)) {
       this.skModel().rmvRegChangedListener(idOrReg, this.updateUI);
     } else {
       this.skModel().rmvIdChangedListener(idOrReg, this.updateUI);
@@ -234,7 +233,7 @@ export default class Comp extends React.Component {
   }
 
   n2m(val) {
-    return this.skVal(_.isFunction(this.props.n2mConvertor) ? this.props.n2mConvertor(this, this.skModel(), val) : this.n2mConvertor(val));
+    return this.skVal(Proxy0._.isFunction(this.props.n2mConvertor) ? this.props.n2mConvertor(this, this.skModel(), val) : this.n2mConvertor(val));
   }
 
   n2mConvertor(val) {
@@ -249,11 +248,11 @@ export default class Comp extends React.Component {
    * @returns {boolean}
    */
   execBfo(bfo, defaultValue = false) {
-    if (_.isBoolean(bfo)) {
+    if (Proxy0._.isBoolean(bfo)) {
       return bfo;
-    } else if (_.isFunction(bfo)) {
+    } else if (Proxy0._.isFunction(bfo)) {
       return bfo.call(this);
-    } else if (_.isObject(bfo) && _.isFunction(bfo.func)) {
+    } else if (Proxy0._.isObject(bfo) && Proxy0._.isFunction(bfo.func)) {
       return bfo.func.call(this);
     } else {
       return defaultValue;
@@ -294,7 +293,7 @@ export default class Comp extends React.Component {
 
   //model 2 node(DOM Element Node/React Component Node)
   m2n() {
-    return _.isFunction(this.props.m2nConvertor) ? this.props.m2nConvertor(this, this.skModel(), this.skVal()) : this.m2nConvertor();
+    return Proxy0._.isFunction(this.props.m2nConvertor) ? this.props.m2nConvertor(this, this.skModel(), this.skVal()) : this.m2nConvertor();
   }
 
   m2nConvertor() {
@@ -303,7 +302,7 @@ export default class Comp extends React.Component {
 
   //model 2 view(readonly/preview/pdf/print)
   m2v() {
-    return _.isFunction(this.props.m2vConvertor) ? this.props.m2vConvertor(this, this.skModel(), this.skVal()) : this.m2vConvertor();
+    return Proxy0._.isFunction(this.props.m2vConvertor) ? this.props.m2vConvertor(this, this.skModel(), this.skVal()) : this.m2vConvertor();
   }
 
   m2vConvertor() {
@@ -380,12 +379,12 @@ export default class Comp extends React.Component {
         denyProps = child.props ? denyProps.concat(Object.keys(child.props)) : denyProps;
         denyProps = denyProps.concat(this.denyTransProps2Child(child));
 
-        return React.cloneElement(child, _.omit(_.pick(this.props, allowProps), denyProps));
+        return React.cloneElement(child, Proxy0._.omit(Proxy0._.pick(this.props, allowProps), denyProps));
       }
       return child;
     });
 
-    if (!_.isArray(children) && _.isArray(rtn)) {
+    if (!Proxy0._.isArray(children) && Proxy0._.isArray(rtn)) {
       rtn = rtn[0];
     }
     return rtn;
@@ -415,7 +414,7 @@ export default class Comp extends React.Component {
     let denyProps = [Comp.SK_PROPS.COMP_TAG, Comp.SK_PROPS.MODEL_ID];//force ignore props
     denyProps = denyProps.concat(this.denyTransProps2Self(comp, prop));
 
-    return _.omit(_.pick(prop, allowProps), denyProps);
+    return Proxy0._.omit(Proxy0._.pick(prop, allowProps), denyProps);
   }
 
   /**

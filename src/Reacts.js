@@ -1,5 +1,5 @@
-import _ from 'lodash';
 import React from 'react';
+import {Proxy0} from 'sk-js';
 
 export default class Reacts {
   static EVENT = {
@@ -451,7 +451,7 @@ export default class Reacts {
     z: 'z',
     zoomAndPan: 'zoomAndPan',
   };
-  static P = _.assign({}, Reacts.EVENT, Reacts.PROP);
+  static P = Proxy0._.assign({}, Reacts.EVENT, Reacts.PROP);
   static TAG = {
     /*HTML*/
     a: 'a',
@@ -634,7 +634,7 @@ export default class Reacts {
     return funcs
       .filter(f => f !== null)
       .reduce((acc, f) => {
-        if (!_.isFunction(f)) {
+        if (!Proxy0._.isFunction(f)) {
           throw new Error('Invalid Argument Type, must only provide functions, undefined, or null.');
         }
 

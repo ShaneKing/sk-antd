@@ -1,6 +1,5 @@
-import _ from 'lodash';
 import React from 'react';
-import {SK} from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import HtmlComp from './HtmlComp';
 import Reacts from '../Reacts';
 
@@ -15,7 +14,7 @@ export default class SKA extends HtmlComp {
     super(...args);
     this.SK_COMP_NAME = SKA.SK_COMP_NAME;
     this.handleClick = (domEvent) => {
-      if (this.props.onClick && _.isFunction(this.props.onClick)) {
+      if (this.props.onClick && Proxy0._.isFunction(this.props.onClick)) {
         this.props.onClick(domEvent);
       }
     };

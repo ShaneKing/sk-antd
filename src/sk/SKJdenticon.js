@@ -1,9 +1,8 @@
 //<SKJdenticon modelId='user.username' size={32}/>
 import jdenticon from 'jdenticon';
-import md5 from 'js-md5';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
@@ -24,12 +23,12 @@ export default class SKJdenticon extends Comp {
 
   componentDidMount() {
     super.componentDidMount();
-    jdenticon.update(this.jdenticonDomRef, md5(this.skVal()));
+    jdenticon.update(this.jdenticonDomRef, Proxy0.md5.hex(this.skVal()));
   }
 
   componentDidUpdate() {
     super.componentDidUpdate();
-    jdenticon.update(this.jdenticonDomRef, md5(this.skVal()));
+    jdenticon.update(this.jdenticonDomRef, Proxy0.md5.hex(this.skVal()));
   }
 
   render() {

@@ -1,9 +1,8 @@
 import {DatePicker} from 'antd';
-import _ from 'lodash';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Mesgs, SK} from 'sk-js';
+import {Mesgs, Proxy0, SK} from 'sk-js';
 import CommonPicker from './CommonPicker';
 import AntdComp from '../AntdComp';
 
@@ -45,7 +44,7 @@ export default class SKDatePicker extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKDatePicker.SK_COMP_NAME;
     this.handleChange = (dateMoment, dateString) => {
-      if (this.props.ssChange && _.isFunction(this.props.ssChange)) {
+      if (this.props.ssChange && Proxy0._.isFunction(this.props.ssChange)) {
         this.props.ssChange(dateMoment, dateString);
       } else {
         this.n2m(dateMoment);

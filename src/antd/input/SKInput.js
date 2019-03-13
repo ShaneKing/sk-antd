@@ -1,8 +1,7 @@
 import {Input} from 'antd';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import React from 'react';
-import {Mesgs, SK} from 'sk-js';
+import {Mesgs, Proxy0, SK} from 'sk-js';
 import OriginInput from './OriginInput';
 import AntdComp from '../AntdComp';
 
@@ -20,7 +19,7 @@ export default class SKInput extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKInput.SK_COMP_NAME;
     this.handleChange = (domEvent) => {
-      if (this.props.ssChange && _.isFunction(this.props.ssChange)) {
+      if (this.props.ssChange && Proxy0._.isFunction(this.props.ssChange)) {
         this.props.ssChange(domEvent);
       } else {
         this.n2m(domEvent.target.value);

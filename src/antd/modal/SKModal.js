@@ -1,7 +1,6 @@
 import {Modal} from 'antd';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
-import {Mesgs, SK} from 'sk-js';
+import {Mesgs, Proxy0, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import {BUTTON_TYPE} from '../AntdConst';
 
@@ -66,7 +65,7 @@ export default class SKModal extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKModal.SK_COMP_NAME;
     this.handleCancel = (domEvent) => {
-      if (this.props.ssCancel && _.isFunction(this.props.ssCancel)) {
+      if (this.props.ssCancel && Proxy0._.isFunction(this.props.ssCancel)) {
         this.props.ssCancel(domEvent);
       } else {
         this.n2m(false);

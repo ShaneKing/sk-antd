@@ -1,8 +1,7 @@
 import {Drawer} from 'antd';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SK} from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import {PLACEMENT} from '../AntdConst';
 
@@ -41,7 +40,7 @@ export default class SKDrawer extends AntdComp {
     super(...args);
     this.SK_COMP_NAME = SKDrawer.SK_COMP_NAME;
     this.handleClose = () => {
-      if (this.props.ssClose && _.isFunction(this.props.ssClose)) {
+      if (this.props.ssClose && Proxy0._.isFunction(this.props.ssClose)) {
         this.props.ssClose(this);
       } else {
         this.n2m(false);
