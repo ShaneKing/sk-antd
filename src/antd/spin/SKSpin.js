@@ -22,6 +22,9 @@ Spin.propTypes = SK.extends(true, {}, {
 
 Spin.NON_SK_COMP_NAME = 'Spin';
 
+/**
+ * @MustModels
+ */
 export default class SKSpin extends AntdComp {
   static SK_COMP_NAME = 'SKSpin';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Spin.defaultProps, {

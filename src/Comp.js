@@ -4,10 +4,10 @@ import {Model, Proxy0, SK} from 'sk-js';
 import Reacts from './Reacts';
 
 export default class Comp extends React.Component {
-  static KS_PROPS_PREFIX = 'ks';//applay for all sub specify element
+  static KS_PROPS_PREFIX = 'ks';//apply for all sub specify element
   static SK_COMP_NAME = 'Comp';
   static SK_COMP_STATE_ID_PREFIX = 'skCompStateUid';
-  static SK_PROPS_PREFIX = 'sk';//applay for all sub element
+  static SK_PROPS_PREFIX = 'sk';//apply for all sub element
   static SK_PROPS_SYS = 'sys';
   static SK_PROPS = {
     //sk
@@ -218,12 +218,6 @@ export default class Comp extends React.Component {
     return [];
   }
 
-  clearAllErrors() {
-    if (this.skModel()) {
-      this.skModel().setErrors();
-    }
-  }
-
   denyTransProps2Child(child) {
     return [];
   }
@@ -233,7 +227,7 @@ export default class Comp extends React.Component {
   }
 
   n2m(val) {
-    return this.skVal(Proxy0._.isFunction(this.props.n2mConvertor) ? this.props.n2mConvertor(this, this.skModel(), val) : this.n2mConvertor(val));
+    return this.skVal(Proxy0._.isFunction(this.props.n2mConvertor) ? this.props.n2mConvertor(val, this.skModel(), this) : this.n2mConvertor(val));
   }
 
   n2mConvertor(val) {
@@ -241,6 +235,8 @@ export default class Comp extends React.Component {
   }
 
   /**
+   * @see Comp.skBfo you can use this method in more scenario
+   *
    * Returns boolean value of boolean, function or object with skWhen properties
    *
    * @param {boolean|function|object} bfo
@@ -259,10 +255,6 @@ export default class Comp extends React.Component {
     }
   }
 
-  getErrors() {
-    return this.skModel().getErrors(this.getModelId());
-  }
-
   /**
    * Get modelId: x.xx.xxx
    *
@@ -277,7 +269,7 @@ export default class Comp extends React.Component {
   }
 
   /**
-   * Get prop value: prop -> skProp -> skSysProp
+   * Get prop value: prop -> skFormInputprop
    *
    * @param {string}prop
    * @param {*} defaultValue
@@ -293,7 +285,7 @@ export default class Comp extends React.Component {
 
   //model 2 node(DOM Element Node/React Component Node)
   m2n() {
-    return Proxy0._.isFunction(this.props.m2nConvertor) ? this.props.m2nConvertor(this, this.skModel(), this.skVal()) : this.m2nConvertor();
+    return Proxy0._.isFunction(this.props.m2nConvertor) ? this.props.m2nConvertor(this.skVal(), this.skModel(), this) : this.m2nConvertor();
   }
 
   m2nConvertor() {
@@ -320,7 +312,8 @@ export default class Comp extends React.Component {
   }
 
   renderPreview() {
-    return this.m2v();
+    // return this.m2v();//for form components
+    return this.renderComp();
   }
 
   /**
@@ -349,7 +342,7 @@ export default class Comp extends React.Component {
   skProp(prop, defaultValue = undefined) {
     let rtn = this.props[prop];
     if (rtn === undefined) {
-      rtn = this.ksProp(prop);
+      rtn = this.ksProp(prop, defaultValue);
     }
     if (rtn === undefined) {
       rtn = this.props[Comp.SK_PROPS_PREFIX + SK.upperWordsFirstChar(prop)];
@@ -358,11 +351,6 @@ export default class Comp extends React.Component {
       rtn = this.props[Comp.SK_PROPS_PREFIX + SK.upperWordsFirstChar(Comp.SK_PROPS_SYS) + SK.upperWordsFirstChar(prop)];
     }
     return rtn === undefined ? defaultValue : rtn;
-  }
-
-  //@Deprecated
-  skTmpVal(id = this.getModelId(), value) {
-    return arguments.length > 1 ? this.skModel().skVal(`tmp.${id}`, value) : this.skModel().skVal(`tmp.${id}`);
   }
 
   skTransProps2Child(children = this.props.children) {

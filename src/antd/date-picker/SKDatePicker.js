@@ -31,6 +31,10 @@ DatePicker.propTypes = SK.extends(true, {}, {
 
 DatePicker.NON_SK_COMP_NAME = 'DatePicker';
 
+/**
+ * @HasPreview
+ * @MustModelId
+ */
 export default class SKDatePicker extends AntdComp {
   static SK_COMP_NAME = 'SKDatePicker';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, DatePicker.defaultProps, {
@@ -74,5 +78,9 @@ export default class SKDatePicker extends AntdComp {
         {this.skTransProps2Child()}
       </CompTag>
     );
+  }
+
+  renderPreview() {
+    return this.renderAntdCompPreview();
   }
 }

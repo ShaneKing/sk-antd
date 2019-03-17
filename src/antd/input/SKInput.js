@@ -4,7 +4,12 @@ import React from 'react';
 import {Mesgs, Proxy0, SK} from 'sk-js';
 import OriginInput from './OriginInput';
 import AntdComp from '../AntdComp';
+import {SIZE} from '../AntdConst';
 
+/**
+ * @HasPreview
+ * @MustModelId
+ */
 //origin exist, use origin
 export default class SKInput extends AntdComp {
   static SK_COMP_NAME = 'SKInput';
@@ -35,11 +40,15 @@ export default class SKInput extends AntdComp {
         {...this.skTransProps2Self(CompTag)}
         onChange={this.handleChange}
         placeholder={placeholder || Mesgs.get('Please_input')}
-        size={this.skProp(AntdComp.SK_PROPS.SIZE)}
+        size={this.skProp(AntdComp.SK_PROPS.SIZE, SIZE.Default)}
         value={this.m2n()}
       >
         {this.skTransProps2Child()}
       </CompTag>
     );
+  }
+
+  renderPreview() {
+    return this.renderAntdCompPreview();
   }
 }

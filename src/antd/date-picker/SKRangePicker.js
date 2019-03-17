@@ -35,6 +35,10 @@ RangePicker.propTypes = SK.extends(true, {}, {
 
 RangePicker.NON_SK_COMP_NAME = 'RangePicker';
 
+/**
+ * @HasPreview
+ * @MustModelId
+ */
 export default class SKRangePicker extends AntdComp {
   static SK_COMP_NAME = 'SKRangePicker';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, RangePicker.defaultProps, {
@@ -82,5 +86,9 @@ export default class SKRangePicker extends AntdComp {
         {this.skTransProps2Child()}
       </CompTag>
     );
+  }
+
+  renderPreview() {
+    return this.renderAntdCompPreview();
   }
 }

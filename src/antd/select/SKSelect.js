@@ -1,13 +1,18 @@
 import {Select} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Mesgs, Proxy0, SK} from 'sk-js';
+import {Color0, Mesgs, Proxy0, SK} from 'sk-js';
 import OriginSelect from './OriginSelect';
 import AntdComp from '../AntdComp';
 import {SELECT_MODE} from '../AntdConst';
+import SKTag from '../tag/SKTag';
+import SKTooltip from '../tooltip/SKTooltip';
 import SKDiv from '../../h/SKDiv';
 
-//default: implement Select with search field local, SKRemoteSelect support remote
+/**
+ * @HasPreview
+ * @MustModelId
+ */
 export default class SKSelect extends AntdComp {
   static SK_COMP_NAME = 'SKSelect';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Select.OptGroup.defaultProps, Select.Option.defaultProps, OriginSelect.defaultProps, {
@@ -21,7 +26,8 @@ export default class SKSelect extends AntdComp {
     showSearch: true,
   });
   static propTypes = SK.extends(true, {}, AntdComp.propTypes, Select.OptGroup.propTypes, Select.Option.propTypes, OriginSelect.propTypes, {
-    dataId: PropTypes.string.isRequired,
+    data: PropTypes.array,
+    dataId: PropTypes.string,
     ssChange: PropTypes.func,
   });
 
@@ -37,6 +43,7 @@ export default class SKSelect extends AntdComp {
         this.n2m(option ? (Proxy0._.isArray(option) ? option.map(item => item.key) : option.key) : undefined);
       }
     };
+    this.handleSearch = undefined;
   }
 
   addExtendChangedMonitor() {
@@ -50,27 +57,28 @@ export default class SKSelect extends AntdComp {
   }
 
   renderPreview() {
-    const {dataId} = this.props;
+    const {data, dataId} = this.props;
+    let dataArray = dataId ? this.skModel().skVal(dataId) : SK.s4a(data);
 
     if (this.props.mode === SELECT_MODE.Multiple) {
-      return (<SKDiv>{this.skModel().skVal(dataId).filter((item) => {
+      return (<SKDiv>{dataArray.filter((item) => {
         return this.m2n().includes(item.id);
       }).map((item) => {
-        return item.text;
+        return <SKTooltip title={item.id}><SKTag color={Color0.hexColor(item.id)}>{item.text}</SKTag></SKTooltip>;
       }).join()}</SKDiv>)
     } else {
       let tmpPreview = {};
-      this.skModel().skVal(dataId).forEach((item) => {
+      dataArray.forEach((item) => {
         if (item.id === this.m2n()) {
           tmpPreview = item;
         }
       });
-      return (<SKDiv>{tmpPreview.text}</SKDiv>);
+      return (<SKDiv><SKTooltip title={tmpPreview.id}><SKTag color={Color0.hexColor(tmpPreview.id)}>{tmpPreview.text}</SKTag></SKTooltip></SKDiv>);
     }
   }
 
   renderComp() {
-    const {compTag: CompTag, dataId, placeholder} = this.props;
+    const {compTag: CompTag, data, dataId, placeholder} = this.props;
 
     return (
       <CompTag
@@ -80,9 +88,9 @@ export default class SKSelect extends AntdComp {
         value={this.m2n()}
         getPopupContainer={triggerNode => triggerNode.parentNode}
       >
-        {dataId ? this.skModel().skVal(dataId).map((selectOption) => {
+        {(data || dataId) ? ((dataId ? this.skModel().skVal(dataId) : SK.s4a(data)).map((selectOption) => {
           return OriginSelect.optionMap(selectOption);
-        }) : this.skTransProps2Child()}
+        })) : this.skTransProps2Child()}
       </CompTag>
     );
   }

@@ -52,6 +52,9 @@ Modal.propTypes = SK.extends(true, {}, {
 
 Modal.NON_SK_COMP_NAME = 'Modal';
 
+/**
+ * @MustModelId
+ */
 export default class SKModal extends AntdComp {
   static SK_COMP_NAME = 'SKModal';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Modal.defaultProps, {

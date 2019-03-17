@@ -8,7 +8,10 @@ import SKSubMenu from './SKSubMenu';
 import AntdComp from '../AntdComp';
 import SKIcon from '../icon/SKIcon';
 
-//modelId is selectedKeysId
+/**
+ * if ssClick, must modelId
+ * if ssOpenChange, must openKeysId
+ */
 export default class SKMenu extends AntdComp {
   static SK_COMP_NAME = 'SKMenu';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, SKMenuItem.defaultProps, SKSubMenu.defaultProps, OriginMenu.defaultProps, {
@@ -18,12 +21,18 @@ export default class SKMenu extends AntdComp {
     }
   });
   static propTypes = SK.extends(true, {}, AntdComp.propTypes, SKMenuItem.propTypes, SKSubMenu.propTypes, OriginMenu.propTypes, {
-    dataId: PropTypes.string.isRequired,
+    data: PropTypes.array,
+    dataId: PropTypes.string,
     displayItem: PropTypes.func,
     openKeysId: PropTypes.string.isRequired,
     ssClick: PropTypes.func,
     ssOpenChange: PropTypes.func,
   });
+
+  state = {
+    openKeys: [],
+    selectedKeys: [],
+  };
 
   constructor(...args) {
     super(...args);
@@ -32,14 +41,22 @@ export default class SKMenu extends AntdComp {
       if (this.props.ssClick && Proxy0._.isFunction(this.props.ssClick)) {
         this.props.ssClick(clickInfo);
       } else {
-        this.n2m([clickInfo.key]);
+        if (this.getModelId()) {
+          this.n2m([clickInfo.key]);
+        } else {
+          this.setState({selectedKeys: [clickInfo.key]});
+        }
       }
     };
     this.handleOpenChange = (openKeys) => {
       if (this.props.ssOpenChange && Proxy0._.isFunction(this.props.ssOpenChange)) {
         this.props.ssOpenChange(openKeys);
       } else {
-        this.skModel().skVal(this.props.openKeysId, openKeys);
+        if (this.props.openKeysId) {
+          this.skModel().skVal(this.props.openKeysId, openKeys);
+        } else {
+          this.setState({openKeys: openKeys});
+        }
       }
     };
     this.menuMap = (itemInfo) => {
@@ -87,20 +104,20 @@ export default class SKMenu extends AntdComp {
   }
 
   render() {
-    const {compTag: CompTag, dataId, openKeysId, theme} = this.props;
+    const {compTag: CompTag, data, dataId, openKeysId, theme} = this.props;
 
     return (
       <CompTag
         {...this.skTransProps2Self(CompTag)}
         onClick={this.handleClick}
         onOpenChange={this.handleOpenChange}
-        openKeys={this.skModel().skVal(openKeysId)}
-        selectedKeys={this.m2n()}
+        openKeys={openKeysId ? this.skModel().skVal(openKeysId) : this.state.openKeys}
+        selectedKeys={this.getModelId() ? this.m2n() : this.state.selectedKeys}
         theme={theme}
       >
-        {dataId ? this.skModel().skVal(dataId).map((itemInfo) => {
+        {(data || dataId) ? ((dataId ? this.skModel().skVal(dataId) : SK.s4a(data)).map((itemInfo) => {
           return this.menuMap(itemInfo);
-        }) : this.skTransProps2Child()}
+        })) : this.skTransProps2Child()}
       </CompTag>
     );
   }

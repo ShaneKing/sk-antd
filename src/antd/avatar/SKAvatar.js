@@ -23,6 +23,9 @@ Avatar.propTypes = SK.extends(true, {}, {
 
 Avatar.NON_SK_COMP_NAME = 'Avatar';
 
+/**
+ * @MustModels
+ */
 export default class SKAvatar extends AntdComp {
   static SK_COMP_NAME = 'SKAvatar';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Avatar.defaultProps, {

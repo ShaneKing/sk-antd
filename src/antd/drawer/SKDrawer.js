@@ -27,6 +27,9 @@ Drawer.propTypes = SK.extends(true, {}, {
 
 Drawer.NON_SK_COMP_NAME = 'Drawer';
 
+/**
+ * @MustModelId
+ */
 export default class SKDrawer extends AntdComp {
   static SK_COMP_NAME = 'SKDrawer';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Drawer.defaultProps, {

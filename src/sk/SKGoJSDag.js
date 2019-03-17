@@ -5,6 +5,10 @@ import {Proxy0, SK} from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
+/**
+ * @MustModelId
+ * @NoChild
+ */
 //a.$q=b.V[Za("7eba17a4ca3b1a8346")][Za("78a118b7")](b.V,yk,4,4);
 //a.$q=function(){return true;};
 export default class SKGoJSDag extends Comp {

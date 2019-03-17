@@ -21,6 +21,10 @@ TextArea.propTypes = SK.extends(true, {}, {
 
 TextArea.NON_SK_COMP_NAME = 'TextArea';
 
+/**
+ * @HasPreview
+ * @MustModelId
+ */
 export default class SKTextArea extends AntdComp {
   static SK_COMP_NAME = 'SKTextArea';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, TextArea.defaultProps, {
@@ -53,5 +57,9 @@ export default class SKTextArea extends AntdComp {
         {this.skTransProps2Child()}
       </CompTag>
     );
+  }
+
+  renderPreview() {
+    return this.renderAntdCompPreview();
   }
 }

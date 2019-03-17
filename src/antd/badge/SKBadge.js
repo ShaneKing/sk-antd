@@ -24,6 +24,9 @@ Badge.propTypes = SK.extends(true, {}, {
 
 Badge.NON_SK_COMP_NAME = 'Badge';
 
+/**
+ * @MustModels
+ */
 export default class SKBadge extends AntdComp {
   static SK_COMP_NAME = 'SKBadge';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Badge.defaultProps, {

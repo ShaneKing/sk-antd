@@ -5,6 +5,10 @@ import {Proxy0, SK} from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
+/**
+ * @MustModelId
+ * @NoChild
+ */
 export default class SKCountUp extends Comp {
   static SK_COMP_NAME = 'SKCountUp';
   static defaultProps = SK.extends(true, {}, Comp.defaultProps, {

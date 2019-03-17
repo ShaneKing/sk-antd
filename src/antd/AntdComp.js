@@ -94,12 +94,12 @@ export default class AntdComp extends Comp {
   rmvExtendErroredMonitor() {
   }
 
-  // other
+  //@Deprecated
   hasSpecialChild(specialChildName) {
     return Reacts.some(this.props.children, $child => $child.type && $child.type.name === specialChildName, this);
   }
 
-  renderPreview() {
+  renderAntdCompPreview() {
     return (<SKDiv>{this.m2v()}</SKDiv>);
   }
 }

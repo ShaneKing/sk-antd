@@ -22,6 +22,10 @@ Checkbox.propTypes = SK.extends(true, {}, {
 
 Checkbox.NON_SK_COMP_NAME = 'Checkbox';
 
+/**
+ * @MustModelId
+ * @PreviewIsDisabled
+ */
 export default class SKCheckbox extends AntdComp {
   static SK_COMP_NAME = 'SKCheckbox';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Checkbox.defaultProps, {
@@ -50,6 +54,7 @@ export default class SKCheckbox extends AntdComp {
       <CompTag
         {...this.skTransProps2Self(CompTag)}
         checked={this.m2n()}
+        disabled={this.skBfo(AntdComp.SK_PROPS.DISABLED) || this.skBfo(AntdComp.SK_PROPS.PREVIEW)}
         onChange={this.handleChange}
       >
         {this.skTransProps2Child()}

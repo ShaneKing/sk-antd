@@ -7,6 +7,9 @@ import {Proxy0, SK} from 'sk-js';
 import Comp from '../Comp';
 import Reacts from '../Reacts';
 
+/**
+ * @NoChild
+ */
 export default class SKECharts extends Comp {
   static SK_COMP_NAME = 'SKECharts';
   static defaultProps = SK.extends(true, {}, Comp.defaultProps, {

@@ -2,6 +2,7 @@ import {Switch} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {Proxy0, SK} from 'sk-js';
+import SKDiv from '../../h/SKDiv';
 import AntdComp from '../AntdComp';
 import {SIZE} from '../AntdConst';
 
@@ -33,6 +34,10 @@ Switch.propTypes = SK.extends(true, {}, {
 
 Switch.NON_SK_COMP_NAME = 'Switch';
 
+/**
+ * @MustModelId
+ * @NoChild
+ */
 export default class SKSwitch extends AntdComp {
   static SK_COMP_NAME = 'SKSwitch';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Switch.defaultProps, {
@@ -54,17 +59,19 @@ export default class SKSwitch extends AntdComp {
     };
   }
 
-  render() {
-    const {compTag: CompTag, checkedChildren, unCheckedChildren} = this.props;
+  renderComp() {
+    const {compTag: CompTag} = this.props;
 
     return (
       <CompTag
         {...this.skTransProps2Self(CompTag)}
         checked={this.m2n()}
-        checkedChildren={checkedChildren}
         onChange={this.handleChange}
-        unCheckedChildren={unCheckedChildren}
       />
     );
+  }
+
+  renderPreview() {
+    return this.m2n() ? <SKDiv>{this.props.checkedChildren}</SKDiv> : undefined;
   }
 }

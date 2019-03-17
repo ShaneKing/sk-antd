@@ -23,6 +23,9 @@ CodeMirror.propTypes = SK.extends(true, {}, {}, CodeMirror.propTypes, {});
 
 CodeMirror.NON_SK_COMP_NAME = 'SqlCodeMirror';
 
+/**
+ * @MustModelId
+ */
 export default class SKSqlCodeMirror extends Comp {
   static SK_COMP_NAME = 'SKSqlCodeMirror';
   static defaultProps = SK.extends(true, {}, Comp.defaultProps, CodeMirror.defaultProps, {
@@ -86,7 +89,9 @@ export default class SKSqlCodeMirror extends Comp {
 
   render() {
     const {compTag: CompTag} = this.props;
-    let options = SK.extends(true, {}, SKSqlCodeMirror.defaultProps.options, this.props.options);
+    //TODO
+    //this.skBfo(Comp.SK_PROPS.PREVIEW) ? {readOnly: true} : {}
+    let options = SK.extends(true, {}, SKSqlCodeMirror.defaultProps.options, this.props.options, this.props.optionsId ? this.skModel().skVal(this.props.optionsId) : {}, this.skBfo(Comp.SK_PROPS.PREVIEW) ? {readOnly: true} : {});
     options = this.props.hintOptionsId ? SK.extends(true, {}, options, {hintOptions: this.skModel().skVal(this.props.hintOptionsId)}) : options;
 
     return (

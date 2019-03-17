@@ -51,6 +51,10 @@ Table.propTypes = SK.extends(true, {}, {
 
 Table.NON_SK_COMP_NAME = 'Table';
 
+/**
+ * @MustModelId
+ * @NoChild
+ */
 export default class SKTable extends AntdComp {
   static SK_COMP_NAME = 'SKTable';
   static defaultProps = SK.extends(true, {}, AntdComp.defaultProps, Table.defaultProps, {
