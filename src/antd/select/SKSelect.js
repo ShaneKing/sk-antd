@@ -73,7 +73,7 @@ export default class SKSelect extends AntdComp {
           tmpPreview = item;
         }
       });
-      return (<SKDiv><SKTooltip title={tmpPreview.id}><SKTag color={Color0.hexColor(tmpPreview.id)}>{tmpPreview.text}</SKTag></SKTooltip></SKDiv>);
+      return (<SKDiv><SKTooltip title={tmpPreview.id}>{tmpPreview.text}</SKTooltip></SKDiv>);
     }
   }
 

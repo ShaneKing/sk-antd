@@ -342,7 +342,7 @@ export default class Comp extends React.Component {
   skProp(prop, defaultValue = undefined) {
     let rtn = this.props[prop];
     if (rtn === undefined) {
-      rtn = this.ksProp(prop, defaultValue);
+      rtn = this.ksProp(prop);
     }
     if (rtn === undefined) {
       rtn = this.props[Comp.SK_PROPS_PREFIX + SK.upperWordsFirstChar(prop)];
