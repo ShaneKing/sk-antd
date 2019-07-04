@@ -43,7 +43,9 @@
   "scripts": {
     "build": "rm -rf lib && babel src -d lib",
     "lint": "eslint --fix --ext .js src",
-    "test": "jest && codecov"
+    "test": "jest && codecov",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "jest": {
     "collectCoverage": true
@@ -63,7 +65,8 @@
     "react": "16.8.4",
     "react-dom": "16.8.4",
     "sk-js": "0.3.16",
-    "sql-formatter": "2.3.2"
+    "sql-formatter": "2.3.2",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@babel/cli": "7.2.3",
@@ -86,5 +89,6 @@
     "jest-cli": "24.1.0",
     "webpack": "4.29.6",
     "webpack-cli": "3.2.3"
-  }
+  },
+  "snyk": true
 }
