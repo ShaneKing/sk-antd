@@ -1,5 +1,4 @@
 import { DatePicker } from 'antd/lib/index';
-import moment from 'moment/moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Mesgs } from 'sk-i18n';
@@ -15,7 +14,7 @@ DatePicker.defaultProps = SK.extends(true, {}, {
 
 DatePicker.propTypes = SK.extends(true, {}, {
   //https://ant.design/components/date-picker-cn/#DatePicker
-  defaultValue: PropTypes.instanceOf(moment),
+  defaultValue: PropTypes.instanceOf(Proxy0.moment),
   disabledTime: PropTypes.func,
   format: PropTypes.string,
   renderExtraFooter: PropTypes.func,
@@ -23,9 +22,9 @@ DatePicker.propTypes = SK.extends(true, {}, {
     PropTypes.object,
     PropTypes.bool,
   ]),
-  //showTime.defaultValue:PropTypes.instanceOf(moment),
+  //showTime.defaultValue:PropTypes.instanceOf(Proxy0.moment),
   showToday: PropTypes.bool,
-  value: PropTypes.instanceOf(moment),
+  value: PropTypes.instanceOf(Proxy0.moment),
   onChange: PropTypes.func,
   onOk: PropTypes.func,
 }, CommonPicker.propTypes, DatePicker.propTypes, {});
@@ -62,7 +61,7 @@ export default class SKDatePicker extends AntdComp {
   }
 
   m2nConvertor() {
-    return this.skVal() ? moment(this.skVal(), this.props.format) : undefined;
+    return this.skVal() ? Proxy0.momentAny(this.skVal(), this.props.format) : undefined;
   }
 
   renderComp() {

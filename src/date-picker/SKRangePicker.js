@@ -1,5 +1,4 @@
 import { DatePicker } from 'antd/lib/index';
-import moment from 'moment/moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Mesgs } from 'sk-i18n';
@@ -27,7 +26,7 @@ RangePicker.propTypes = SK.extends(true, {}, {
     PropTypes.object,
     PropTypes.bool,
   ]),
-  //showTime.defaultValue:PropTypes.instanceOf(moment),
+  //showTime.defaultValue:PropTypes.instanceOf(Proxy0.moment),
   value: PropTypes.array,
   onCalendarChange: PropTypes.func,
   onChange: PropTypes.func,
@@ -66,7 +65,7 @@ export default class SKRangePicker extends AntdComp {
   }
 
   m2nConvertor() {
-    return this.skVal() ? [moment(this.skVal()[0], this.props.format), moment(this.skVal()[1], this.props.format)] : undefined;
+    return this.skVal() ? [Proxy0.momentAny(this.skVal()[0], this.props.format), Proxy0.momentAny(this.skVal()[1], this.props.format)] : undefined;
   }
 
   m2vConvertor() {
