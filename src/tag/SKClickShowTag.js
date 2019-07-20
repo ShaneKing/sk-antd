@@ -1,4 +1,5 @@
-import { Mesgs, Proxy0, SK } from 'sk-js';
+import { Mesgs } from 'sk-i18n';
+import { Proxy0, SK } from 'sk-js';
 import { Tag } from 'antd/lib/index';
 import React from 'react';
 import PropTypes from 'prop-types';
