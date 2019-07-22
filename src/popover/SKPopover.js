@@ -1,8 +1,7 @@
 import { Popover } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Mesgs } from 'sk-i18n';
-import { SK } from 'sk-js';
+import { Mesgs, SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 import CommonTip from '../tooltip/CommonTip';
 

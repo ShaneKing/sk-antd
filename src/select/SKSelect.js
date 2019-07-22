@@ -1,8 +1,7 @@
 import { Select } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Mesgs } from 'sk-i18n';
-import { Color0, Proxy0, SK } from 'sk-js';
+import { Color0, Mesgs, Proxy0, SK } from 'sk-js';
 import { SKDiv } from 'sk-react';
 import OriginSelect from './OriginSelect';
 import AntdComp from '../AntdComp';

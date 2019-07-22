@@ -1,8 +1,7 @@
 import { Input } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Mesgs } from 'sk-i18n';
-import { Proxy0, SK } from 'sk-js';
+import { Mesgs, Proxy0, SK } from 'sk-js';
 import OriginInput from './OriginInput';
 import AntdComp from '../AntdComp';
 import { SIZE } from '../AntdConst';

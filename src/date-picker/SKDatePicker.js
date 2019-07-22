@@ -1,8 +1,7 @@
 import { DatePicker } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Mesgs } from 'sk-i18n';
-import { Proxy0, SK } from 'sk-js';
+import { Mesgs, Proxy0, SK } from 'sk-js';
 import CommonPicker from './CommonPicker';
 import AntdComp from '../AntdComp';
 

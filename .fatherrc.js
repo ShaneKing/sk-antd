@@ -1,15 +1,15 @@
 export default {
   // cjs: { type: 'babel' },
-  cjs: 'rollup',
+  cjs: 'babel',
   doc: {
     base: '/sk-antd',
   },
   entry: 'src/index.js',
-  esm: 'rollup',
+  esm: 'babel',
   extraBabelPlugins: [
     ['babel-plugin-import', {
       libraryName: 'antd',
-      libraryDirectory: 'lib',
+      libraryDirectory: 'es',
       style: true,
     }],
   ],

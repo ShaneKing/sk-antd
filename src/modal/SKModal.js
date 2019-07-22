@@ -1,7 +1,6 @@
 import { Modal } from 'antd';
 import PropTypes from 'prop-types';
-import { Mesgs } from 'sk-i18n';
-import { Proxy0, SK } from 'sk-js';
+import { Mesgs, Proxy0, SK } from 'sk-js';
 import AntdComp from '../AntdComp';
 import { BUTTON_TYPE } from '../AntdConst';
 
