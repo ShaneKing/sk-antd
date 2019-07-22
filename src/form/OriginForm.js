@@ -1,4 +1,4 @@
-import { Form } from 'antd/lib/index';
+import { Form } from 'antd';
 import PropTypes from 'prop-types';
 import { SK } from 'sk-js';
 import { Dir } from '../AntdConst';

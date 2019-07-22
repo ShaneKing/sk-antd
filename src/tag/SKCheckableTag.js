@@ -1,6 +1,6 @@
 import AntdComp from '../AntdComp';
 import { SK } from 'sk-js';
-import { Tag } from 'antd/lib/index';
+import { Tag } from 'antd';
 import React from 'react';
 import CommonTag from './CommonTag';
 import PropTypes from 'prop-types';

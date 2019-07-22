@@ -1,4 +1,4 @@
-import { Badge } from 'antd/lib/index';
+import { Badge } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { SK } from 'sk-js';

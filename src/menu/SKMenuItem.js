@@ -1,4 +1,4 @@
-import { Menu } from 'antd/lib/index';
+import { Menu } from 'antd';
 import PropTypes from 'prop-types';
 import { SK } from 'sk-js';
 import OriginMenu from './OriginMenu';

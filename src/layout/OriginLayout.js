@@ -1,4 +1,4 @@
-import { Layout } from 'antd/lib/index';
+import { Layout } from 'antd';
 import { SK } from 'sk-js';
 import CommonLayout from './CommonLayout';
 

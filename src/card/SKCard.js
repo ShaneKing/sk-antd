@@ -1,4 +1,4 @@
-import { Card } from 'antd/lib/index';
+import { Card } from 'antd';
 import PropTypes from 'prop-types';
 import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';

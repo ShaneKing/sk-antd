@@ -1,4 +1,4 @@
-import { Dropdown } from 'antd/lib/index';
+import { Dropdown } from 'antd';
 import PropTypes from 'prop-types';
 import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';

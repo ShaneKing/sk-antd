@@ -1,4 +1,4 @@
-import { Popover } from 'antd/lib/index';
+import { Popover } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Mesgs } from 'sk-i18n';

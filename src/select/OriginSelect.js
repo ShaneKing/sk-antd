@@ -1,4 +1,4 @@
-import { Select } from 'antd/lib/index';
+import { Select } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Mesgs } from 'sk-i18n';

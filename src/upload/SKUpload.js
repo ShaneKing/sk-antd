@@ -1,4 +1,4 @@
-import { Upload } from 'antd/lib/index';
+import { Upload } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { SK } from 'sk-js';

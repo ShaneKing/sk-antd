@@ -6,4 +6,11 @@ export default {
   },
   entry: 'src/index.js',
   esm: 'rollup',
+  extraBabelPlugins: [
+    ['babel-plugin-import', {
+      libraryName: 'antd',
+      libraryDirectory: 'lib',
+      style: true,
+    }],
+  ],
 };

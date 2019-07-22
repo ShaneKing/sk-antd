@@ -1,4 +1,4 @@
-import { Form } from 'antd/lib/index';
+import { Form } from 'antd';
 import { SK } from 'sk-js';
 import OriginForm from './OriginForm';
 import AntdComp from '../AntdComp';

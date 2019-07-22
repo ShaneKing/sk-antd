@@ -1,4 +1,4 @@
-import { Button } from 'antd/lib/index';
+import { Button } from 'antd';
 import PropTypes from 'prop-types';
 import { SK } from 'sk-js';
 import { Reacts } from 'sk-react';

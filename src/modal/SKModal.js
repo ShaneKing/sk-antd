@@ -1,4 +1,4 @@
-import { Modal } from 'antd/lib/index';
+import { Modal } from 'antd';
 import PropTypes from 'prop-types';
 import { Mesgs } from 'sk-i18n';
 import { Proxy0, SK } from 'sk-js';

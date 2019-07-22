@@ -1,4 +1,4 @@
-import { Affix } from 'antd/lib/index';
+import { Affix } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { SK } from 'sk-js';

@@ -1,4 +1,4 @@
-import { Menu } from 'antd/lib/index';
+import { Menu } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Proxy0, SK } from 'sk-js';

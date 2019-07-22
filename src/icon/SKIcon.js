@@ -1,4 +1,4 @@
-import { Icon } from 'antd/lib/index';
+import { Icon } from 'antd';
 import PropTypes from 'prop-types';
 import { SK } from 'sk-js';
 import AntdComp from '../AntdComp';

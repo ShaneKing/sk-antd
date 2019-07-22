@@ -1,4 +1,4 @@
-import { Row } from 'antd/lib/index';
+import { Row } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { SK } from 'sk-js';

@@ -1,4 +1,4 @@
-import { Avatar } from 'antd/lib/index';
+import { Avatar } from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { SK } from 'sk-js';
