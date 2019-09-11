@@ -1,6 +1,6 @@
 {
   "name": "sk-antd",
-  "version": "0.5.20",
+  "version": "0.6.0",
   "description": "ShaneKing for AntD",
   "homepage": "https://github.com/ShaneKing/sk-antd",
   "author": {
@@ -47,17 +47,17 @@
     "test": "father test --coverage && codecov"
   },
   "dependencies": {
-    "antd": "3.20.5",
+    "antd": "3.23.2",
     "prop-types": "15.7.2",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "sk-js": "0.5.20",
-    "sk-react": "0.5.20"
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "sk-js": "0.5.21",
+    "sk-react": "0.6.0"
   },
   "devDependencies": {
-    "babel-plugin-import": "1.12.0",
+    "babel-plugin-import": "1.12.1",
     "codecov": "3.5.0",
-    "father": "2.13.6"
+    "father": "2.18.1"
   },
   "jest": {
     "collectCoverage": true
