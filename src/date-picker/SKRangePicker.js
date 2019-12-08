@@ -8,7 +8,7 @@ import AntdComp from '../AntdComp';
 let {RangePicker} = DatePicker;
 
 RangePicker.defaultProps = SK.extends(true, {}, {}, CommonPicker.defaultProps, RangePicker.defaultProps, {
-  format: SK.DEFAULT_MOMENT_DATETIME,
+  format: SK.DEFAULT_MOMENT_DATE_TIME,
 });
 
 RangePicker.propTypes = SK.extends(true, {}, {

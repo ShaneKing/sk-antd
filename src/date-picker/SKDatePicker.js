@@ -8,7 +8,7 @@ import AntdComp from '../AntdComp';
 DatePicker.defaultProps = SK.extends(true, {}, {
   showToday: true,
 }, CommonPicker.defaultProps, DatePicker.defaultProps, {
-  format: SK.DEFAULT_MOMENT_DATETIME,
+  format: SK.DEFAULT_MOMENT_DATE_TIME,
 });
 
 DatePicker.propTypes = SK.extends(true, {}, {
