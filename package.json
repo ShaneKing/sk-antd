@@ -47,7 +47,7 @@
     "test": "father test --coverage && codecov"
   },
   "dependencies": {
-    "antd": "3.25.2",
+    "antd": "3.26.2",
     "prop-types": "15.7.2",
     "react": "16.12.0",
     "react-dom": "16.12.0",
@@ -55,9 +55,9 @@
     "sk-react": "0.6.2"
   },
   "devDependencies": {
-    "babel-plugin-import": "1.12.2",
+    "babel-plugin-import": "1.13.0",
     "codecov": "3.6.1",
-    "father": "2.27.0"
+    "father": "2.29.0"
   },
   "jest": {
     "collectCoverage": true
