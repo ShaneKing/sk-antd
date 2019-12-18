@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 
 export default class CommonPicker {
   static defaultProps = SK.extends(true, {}, {
     allowClear: true,
     autoFocus: false,
-    className: SK.CHAR_EMPTY,
+    className: SK.STR_EMPTY,
     disabled: false,
     popupStyle: {},
     // style: {},

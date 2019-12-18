@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Proxy0, SK } from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import SKCol from '../col/SKCol';
 import SKFormItem from '../form/SKFormItem';
@@ -35,8 +35,8 @@ export default class FormComp extends AntdComp {
     const needFormItem = this.skBfo(FormComp.SK_PROPS.NEED_FROM_ITEM);
 
     const errorObj = this.skModel().getErrors(this.getModelId());
-    const help = Proxy0._.isEmpty(errorObj) ? SK.CHAR_EMPTY : Proxy0._.join(errorObj.skVals(), SK.CHAR_BLANK + SK.CHAR_AMPERSAND + SK.CHAR_AMPERSAND + SK.CHAR_BLANK);
-    const validateStatus = Proxy0._.isEmpty(errorObj) ? SK.CHAR_EMPTY : SK.STR_ERROR;
+    const help = Proxy0._.isEmpty(errorObj) ? SK.STR_EMPTY : Proxy0._.join(errorObj.skVals(), SK.CHAR_BLANK + SK.CHAR_AMPERSAND + SK.CHAR_AMPERSAND + SK.CHAR_BLANK);
+    const validateStatus = Proxy0._.isEmpty(errorObj) ? SK.STR_EMPTY : SK.STR_ERROR;
 
     if (inFormRow && needFormItem) {
       return (
