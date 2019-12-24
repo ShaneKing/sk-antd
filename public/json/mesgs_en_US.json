@@ -1,0 +1,11 @@
+{
+  "${field}_is_required": "[${field}] is required",
+  "Cancel": "Cancel",
+  "Click_Show": "Click Show",
+  "Description": "Description",
+  "Not_Found": "Not Found",
+  "Ok": "Ok",
+  "Please_input": "Please input",
+  "Please_select": "Please select",
+  "Return": "Return"
+}
