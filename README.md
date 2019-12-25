@@ -6,9 +6,9 @@ Let's write page like java, wrap ant-design implements mvc(Model-Validator-Compo
 
 ## Features
 - MVC
-  - Model: <https://github.com/ShaneKing/sk-js/blob/mirror/src/Model.md>
-  - Validator: <https://github.com/ShaneKing/sk-js/blob/mirror/src/Validator.md>
-  - Components: <https://github.com/ShaneKing/sk-antd>
+  - Model: <https://github.com/ShaneKing/sk-react/blob/master/src/Model.md>
+  - Validator: <https://github.com/ShaneKing/sk-react/blob/master/src/Validator.md>
+  - Components: <https://github.com/ShaneKing/sk-antd/blob/master/src>
 - Two-way Binding
   - component --- add listener --- modelId on model
   - modelId's value change --- fireEvent -- component auto refresh
