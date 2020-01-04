@@ -1,14 +1,14 @@
-import { Layout } from 'antd';
+import {Layout} from 'antd';
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { BREAKPOINT } from '../AntdConst';
+import {BREAKPOINT} from '../AntdConst';
 import OriginLayout from './OriginLayout';
 
 const {Sider} = Layout;
 
 Sider.defaultProps = SK.extends(true, {}, {
-  collapsedWidth: 64,
+  // collapsedWidth: 64, // fixed for @ant-design/pro-layout
   collapsible: false,
   defaultCollapsed: false,
   reverseArrow: false,

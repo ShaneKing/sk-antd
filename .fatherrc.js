@@ -2,7 +2,7 @@ export default {
   // cjs: { type: 'babel' },
   cjs: 'babel',
   doc: {
-    base: '/sk-antd',
+    base: '/sk-react-antd',
   },
   entry: 'src/index.js',
   esm: 'babel',

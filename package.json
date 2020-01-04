@@ -1,15 +1,15 @@
 {
-  "name": "sk-antd",
-  "version": "0.6.5",
-  "description": "ShaneKing for AntD",
-  "homepage": "https://github.com/ShaneKing/sk-antd",
+  "name": "sk-react-antd",
+  "version": "0.6.7",
+  "description": "React AntD fro ShaneKing",
+  "homepage": "https://github.com/ShaneKing/sk-react-antd",
   "author": {
     "name": "ShaneKing",
     "email": "github@azolla.org",
     "url": "http://shaneking.org"
   },
   "bugs": {
-    "url": "https://github.com/ShaneKing/sk-antd/issues"
+    "url": "https://github.com/ShaneKing/sk-react-antd/issues"
   },
   "license": "Apache-2.0",
   "licenses": [
@@ -20,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:ShaneKing/sk-antd.git"
+    "url": "git@github.com:ShaneKing/sk-react-antd.git"
   },
   "files": [
     "dist",

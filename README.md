@@ -1,14 +1,14 @@
-# sk-antd
+# sk-react-antd
 Let's write page like java, wrap ant-design implements mvc(Model-Validator-Component)
 
 ## Example
-[CodeSandbox](https://codesandbox.io/search?refinementList%5Btags%5D%5B0%5D=sk-antd.test)
+[CodeSandbox](https://codesandbox.io/search?refinementList%5Btags%5D%5B0%5D=sk-react-antd.test)
 
 ## Features
 - MVC
   - Model: <https://github.com/ShaneKing/sk-react/blob/master/src/Model.md>
   - Validator: <https://github.com/ShaneKing/sk-react/blob/master/src/Validator.md>
-  - Components: <https://github.com/ShaneKing/sk-antd/blob/master/src>
+  - Components: <https://github.com/ShaneKing/sk-react-antd/blob/master/src>
 - Two-way Binding
   - component --- add listener --- modelId on model
   - modelId's value change --- fireEvent -- component auto refresh
