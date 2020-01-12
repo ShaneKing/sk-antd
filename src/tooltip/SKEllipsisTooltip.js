@@ -1,7 +1,7 @@
-import { Tooltip } from 'antd';
+import {Tooltip} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import SKTooltip from './SKTooltip';
 
 /**
@@ -27,6 +27,7 @@ export default class SKEllipsisTooltip extends SKTooltip {
   render() {
     const {compTag: CompTag, title, ellipsis} = this.props;
 
-    return title.length > ellipsis ? <CompTag {...this.skTransProps2Self(CompTag)}>{SK.ellipsis(title, ellipsis)}</CompTag> : title;
+    return title.length > ellipsis ?
+      <CompTag {...this.skTransProps2Self(CompTag)}>{SK.ellipsis(title, ellipsis)}</CompTag> : title;
   }
 }

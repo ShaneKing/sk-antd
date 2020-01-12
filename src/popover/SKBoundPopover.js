@@ -1,7 +1,7 @@
-import { Popover } from 'antd';
+import {Popover} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Proxy0, SK } from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import SKPopover from './SKPopover';
 
 /**

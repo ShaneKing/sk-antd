@@ -1,10 +1,10 @@
-import { Switch } from 'antd';
+import {Switch} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Proxy0, SK } from 'sk-js';
-import { SKDiv } from 'sk-react';
+import {Proxy0, SK} from 'sk-js';
+import {SKDiv} from 'sk-react';
 import AntdComp from '../AntdComp';
-import { SIZE } from '../AntdConst';
+import {SIZE} from '../AntdConst';
 
 Switch.defaultProps = SK.extends(true, {}, {
   allowClear: false,

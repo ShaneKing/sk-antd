@@ -1,6 +1,6 @@
-import { Layout } from 'antd';
+import {Layout} from 'antd';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import OriginLayout from './OriginLayout';
 import AntdComp from '../AntdComp';
 

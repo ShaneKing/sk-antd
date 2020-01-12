@@ -1,7 +1,7 @@
-import { BackTop } from 'antd';
+import {BackTop} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
 BackTop.defaultProps = SK.extends(true, {}, {}, BackTop.defaultProps, {

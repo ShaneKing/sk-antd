@@ -1,9 +1,9 @@
-import { Spin } from 'antd';
+import {Spin} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SIZE } from '../AntdConst';
+import {SIZE} from '../AntdConst';
 
 Spin.defaultProps = SK.extends(true, {}, {
   size: SIZE.Default,

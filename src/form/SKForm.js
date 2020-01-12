@@ -1,5 +1,5 @@
-import { Form } from 'antd';
-import { SK } from 'sk-js';
+import {Form} from 'antd';
+import {SK} from 'sk-js';
 import OriginForm from './OriginForm';
 import AntdComp from '../AntdComp';
 

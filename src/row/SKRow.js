@@ -1,9 +1,9 @@
-import { Row } from 'antd';
+import {Row} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { ALIGN, JUSTIFY } from '../AntdConst';
+import {ALIGN, JUSTIFY} from '../AntdConst';
 
 //comments because has skGutter
 // Row.defaultProps = SK.extends(true, {}, {

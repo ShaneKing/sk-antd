@@ -1,11 +1,11 @@
-import { Select } from 'antd';
+import {Select} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Color0, Mesgs, Proxy0, SK } from 'sk-js';
-import { SKDiv } from 'sk-react';
+import {Color0, Mesgs, Proxy0, SK} from 'sk-js';
+import {SKDiv} from 'sk-react';
 import OriginSelect from './OriginSelect';
 import AntdComp from '../AntdComp';
-import { SELECT_MODE } from '../AntdConst';
+import {SELECT_MODE} from '../AntdConst';
 import SKTag from '../tag/SKTag';
 import SKTooltip from '../tooltip/SKTooltip';
 

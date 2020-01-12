@@ -1,7 +1,7 @@
-import { Form } from 'antd';
+import {Form} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import OriginForm from './OriginForm';
 import AntdComp from '../AntdComp';
 

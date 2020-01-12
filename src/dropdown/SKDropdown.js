@@ -1,6 +1,6 @@
-import { Dropdown } from 'antd';
+import {Dropdown} from 'antd';
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
 Dropdown.defaultProps = SK.extends(true, {}, {}, Dropdown.defaultProps, {});

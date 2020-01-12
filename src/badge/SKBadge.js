@@ -1,9 +1,9 @@
-import { Badge } from 'antd';
+import {Badge} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { STATUS } from '../AntdConst';
+import {STATUS} from '../AntdConst';
 
 Badge.defaultProps = SK.extends(true, {}, {
   dot: false,

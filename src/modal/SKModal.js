@@ -1,8 +1,8 @@
-import { Modal } from 'antd';
+import {Modal} from 'antd';
 import PropTypes from 'prop-types';
-import { Mesgs, Proxy0, SK } from 'sk-js';
+import {Mesgs, Proxy0, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { BUTTON_TYPE } from '../AntdConst';
+import {BUTTON_TYPE} from '../AntdConst';
 
 Modal.defaultProps = SK.extends(true, {}, {
   bodyStyle: {},

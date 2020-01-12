@@ -1,7 +1,7 @@
-import { Popover } from 'antd';
+import {Popover} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import SKPopover from './SKPopover';
 
 /**
@@ -27,6 +27,7 @@ export default class SKEllipsisPopover extends SKPopover {
   render() {
     const {compTag: CompTag, content, ellipsis} = this.props;
 
-    return content.length > ellipsis ? <CompTag {...this.skTransProps2Self(CompTag)}>{SK.ellipsis(content, ellipsis)}</CompTag> : content;
+    return content.length > ellipsis ?
+      <CompTag {...this.skTransProps2Self(CompTag)}>{SK.ellipsis(content, ellipsis)}</CompTag> : content;
   }
 }

@@ -1,7 +1,7 @@
-import { Affix } from 'antd';
+import {Affix} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
 Affix.defaultProps = SK.extends(true, {}, {}, Affix.defaultProps, {});

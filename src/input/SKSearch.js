@@ -1,6 +1,6 @@
-import { Input } from 'antd';
+import {Input} from 'antd';
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import OriginInput from './OriginInput';
 import SKInput from './SKInput';
 

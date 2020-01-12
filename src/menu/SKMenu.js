@@ -1,7 +1,7 @@
-import { Menu } from 'antd';
+import {Menu} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Proxy0, SK } from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import OriginMenu from './OriginMenu';
 import SKMenuItem from './SKMenuItem';
 import SKSubMenu from './SKSubMenu';

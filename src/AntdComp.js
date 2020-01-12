@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Proxy0, SK } from 'sk-js';
-import { Comp, Model, Reacts, SKDiv } from 'sk-react';
-import { SIZE } from './AntdConst';
+import {Proxy0, SK} from 'sk-js';
+import {Comp, Model, Reacts, SKDiv} from 'sk-react';
+import {SIZE} from './AntdConst';
 
 /**
  * 1.The defaultProps and propTypes of AntD just can be use in wrapper Comp or non-Comp

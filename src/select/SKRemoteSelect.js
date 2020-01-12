@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Proxy0, SK } from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import SKSelect from './SKSelect';
 
 export default class SKRemoteSelect extends SKSelect {

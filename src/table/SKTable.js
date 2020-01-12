@@ -1,9 +1,9 @@
-import { Table } from 'antd';
+import {Table} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SIZE } from '../AntdConst';
+import {SIZE} from '../AntdConst';
 
 Table.defaultProps = SK.extends(true, {}, {
   bordered: false,

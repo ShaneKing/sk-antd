@@ -1,5 +1,5 @@
-import { SK } from 'sk-js';
-import { SKSqlCodeMirror } from 'sk-react';
+import {SK} from 'sk-js';
+import {SKSqlCodeMirror} from 'sk-react';
 import FormComp from './FormComp';
 
 export default class SKFormSqlCodeMirror extends FormComp {

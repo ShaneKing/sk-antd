@@ -1,7 +1,7 @@
-import { Upload } from 'antd';
+import {Upload} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
 Upload.defaultProps = SK.extends(true, {}, {

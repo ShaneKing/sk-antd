@@ -1,7 +1,7 @@
-import { LocaleProvider } from 'antd';
+import {LocaleProvider} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
 LocaleProvider.defaultProps = SK.extends(true, {}, {}, LocaleProvider.defaultProps, {});

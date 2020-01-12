@@ -1,9 +1,9 @@
-import { Drawer } from 'antd';
+import {Drawer} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Proxy0, SK } from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { PLACEMENT } from '../AntdConst';
+import {PLACEMENT} from '../AntdConst';
 
 Drawer.defaultProps = SK.extends(true, {}, {}, Drawer.defaultProps, {});
 

@@ -1,9 +1,9 @@
-import { Avatar } from 'antd';
+import {Avatar} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SHAPE, SIZE } from '../AntdConst';
+import {SHAPE, SIZE} from '../AntdConst';
 
 Avatar.defaultProps = SK.extends(true, {}, {
   shape: SHAPE.Circle,

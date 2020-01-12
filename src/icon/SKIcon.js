@@ -1,8 +1,8 @@
-import { Icon } from 'antd';
+import {Icon} from 'antd';
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { ICON_THEME } from '../AntdConst';
+import {ICON_THEME} from '../AntdConst';
 
 Icon.defaultProps = SK.extends(true, {}, {
   spin: false,

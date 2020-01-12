@@ -1,8 +1,8 @@
-import { Input } from 'antd';
+import {Input} from 'antd';
 import PropTypes from 'prop-types';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
-import { SIZE } from '../AntdConst';
+import {SIZE} from '../AntdConst';
 
 const {Group} = Input;
 

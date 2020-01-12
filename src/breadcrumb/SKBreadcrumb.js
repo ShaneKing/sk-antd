@@ -1,7 +1,7 @@
-import { Breadcrumb } from 'antd';
+import {Breadcrumb} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
 Breadcrumb.defaultProps = SK.extends(true, {}, {

@@ -1,7 +1,7 @@
-import { Checkbox } from 'antd';
+import {Checkbox} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Proxy0, SK } from 'sk-js';
+import {Proxy0, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
 Checkbox.defaultProps = SK.extends(true, {}, {

@@ -1,8 +1,8 @@
-import { Select } from 'antd';
+import {Select} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Mesgs, SK } from 'sk-js';
-import { SELECT_MODE, SIZE } from '../AntdConst';
+import {Mesgs, SK} from 'sk-js';
+import {SELECT_MODE, SIZE} from '../AntdConst';
 
 Select.defaultProps = SK.extends(true, {}, {
   //allowClear: false,
@@ -81,6 +81,7 @@ export default class OriginSelect {
   static defaultProps = SK.extends(true, {}, Select.defaultProps, {});
   static propTypes = SK.extends(true, {}, Select.propTypes, {});
   static optionMap = (selectOption) => {
-    return selectOption.label ? <Select.OptGroup key={selectOption.id} label={selectOption.label}/> : <Select.Option key={selectOption.id} disabled={selectOption.disabled}>{selectOption.text}</Select.Option>;
+    return selectOption.label ? <Select.OptGroup key={selectOption.id} label={selectOption.label}/> :
+      <Select.Option key={selectOption.id} disabled={selectOption.disabled}>{selectOption.text}</Select.Option>;
   }
 }

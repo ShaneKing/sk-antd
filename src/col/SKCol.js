@@ -1,7 +1,7 @@
-import { Col } from 'antd';
+import {Col} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SK } from 'sk-js';
+import {SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 
 Col.defaultProps = SK.extends(true, {}, {

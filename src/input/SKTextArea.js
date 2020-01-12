@@ -1,6 +1,6 @@
-import { Input } from 'antd';
+import {Input} from 'antd';
 import PropTypes from 'prop-types';
-import { Mesgs, Proxy0, SK } from 'sk-js';
+import {Mesgs, Proxy0, SK} from 'sk-js';
 import AntdComp from '../AntdComp';
 import React from 'react';
 
