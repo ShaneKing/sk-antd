@@ -1,6 +1,6 @@
 {
   "name": "sk-react-antd",
-  "version": "0.6.7",
+  "version": "0.10.0",
   "description": "React AntD fro ShaneKing",
   "homepage": "https://github.com/ShaneKing/sk-react-antd",
   "author": {
@@ -51,8 +51,8 @@
     "prop-types": "15.7.2",
     "react": "16.12.0",
     "react-dom": "16.12.0",
-    "sk-js": "0.6.5",
-    "sk-react": "0.6.5"
+    "sk-js": "0.10.0",
+    "sk-react": "0.10.0"
   },
   "devDependencies": {
     "babel-plugin-import": "1.13.0",
